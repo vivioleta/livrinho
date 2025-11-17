@@ -277,7 +277,9 @@
 
 \maketitle
 
-(espiral infinita em pixel art)
+\begin{center}
+        \includegraphics[scale=2.5]{desenhos/ordinais.png}
+\end{center}
 
 O que são números? Sempre que fazemos alguma pergunta do tipo ``o que é $ x$?'' vamos chegar em muitas respostas, todas erradas, mas todas refletindo algum aspecto do fenômeno natural que estamos tentando compreender. Aqui, vou apresentar uma das respostas existentes pra essa pergunta, que nos leva a definição de dois tipos de números, ordinais e cardinais. Estes naturalmente se generalizam para o infinito, e são nossa primeira ferramenta fundamental para pensarmos uma combinatória que transcende o finito.
 
@@ -516,9 +518,11 @@ A partir de agora, falamos de ordinais serem maiores ou menores que outros, escr
 
 Dado um ordinal qualquer $\alpha$, temos que ou $\varnothing \in \alpha$ ou $\alpha \in \varnothing$ pelo primeiro ponto do toerema anterior. Mas $\varnothing$ não possui elementos, logo $\varnothing \in \alpha$. Assim, $\varnothing$, que definimos anteriormente como o $0$ é o menor ordinal. Pelo segundo ponto, $1 = S(0)$ é o próximo ordinal, sem nenhum entre eles. Seguindo assim, vemos que as construções que fizemos dos números naturais e após estes o $\omega$, os $\omega + n$ e por aí em diante formam exatamente o início dos ordinais.
 
-Uma forma melhor de visualizar é este processo é, ao invés de colocarmos os elementos em uma sequência linear, os colocamos em círculos. E toda vez que colocamos um novo elemento sucessor, diminuimos a distância do anterior de forma que as distâncias entre eles formam uma série convergente. Assim, o passo limite é realmente um limite de uma sequência convergente. Seguimos assim, usando convergências para visualizar os passos limites, diminuindo os passos e o raio do círculo, formando uma espiral:
+Uma forma de visualizar este processo é usar a convergência topológica que estamos acostumados para representar os limites de ordinais. Começamos escolhendo algum ponto do plano como o primeiro ordinal e vamos escolhendo pontos a frente dele (em alguma reta qualquer), um para cada sucessor. Porém, fazemos isso de forma que para cada escolha de sucessor, diminuimos a distância do novo ao anterior de forma que estas distâncias formam uma série convergente. Assim, o ponto limite desta sequência de pontos é associado ao ordinal limite da sequência de ordinais. Agora, seguimos tomando mais sucessores em convergência, até onde gostariamos de desenhar.
 
-(espiral)
+\begin{exercicio}
+  \luafacil Desenhe alguns passos desta visualização. Um jeito que fica ainda mais bonito é, ao invés de escolher pontos em uma reta, escolher pontos em alguma curva, como uma espiral. Quanto menor você fizer a distância mais ordinais irá conseguir representar.
+\end{exercicio}
 
 O maior uso que vamos ter para ordinais nesse livro é através da generalização do princípio de indução sobre os naturais para um princípio de indução sobre os ordinais, conhecida como indução transfinita. Muitos objetos de tamanhos arbitrariamente grandes podem ser construidos passo-a-passo, mas possivelmente com mais de uma infinitude de passos. A indução transfinita consegue alcançar estes objetos.
 
@@ -635,7 +639,103 @@ A minha propriedade favorita do $\epsilon_0$ é que ele ainda é contável. Não
 
 \section{Aprendendo a contar}
 
+A outra noção que a teoria de conjuntos consegue nos formalizar é a de contar coisas. O conjunto $\{a,b,c,d,e\}$ e o conjunto $\{f,g,h,i,j\}$ tem ``algo'' em comum - como nomear isso? Bom, este ``algo'' é efetivamente reconhecido através do procedimento que associa o elemento $a$ ao $f$, $b$ ao $g$, $c$ ao $h$, $d$ ao $i$ e $e$ ao $j$. Ou seja, temos uma associação um-a-um que exausta os elementos de cada conjunto, isto é, uma bijeção. Conseguimos, então, uma relação entre conjuntos.
 
+\begin{definicao*}[Cardinalidade]
+  Dizemos que dois conjuntos $A,B$ tem a mesma cardinalidade quando existe uma função injetora e sobrejetora de $A$ em $B$.
+\end{definicao*}
 
+\begin{exercicio}
+  \luafacil Se convença que ter a mesma cardinalidade é uma relação de equivalência.
+\end{exercicio}
+
+Da mesma forma que os ordinais são uma escolha de uma boa ordem para cada classe de boas ordens isomorfas, queremos agora encontrar um conjunto para usarmos de referência em cada classe de conjuntos de mesma cardinalidade. Assim, teremos um objeto $|A|$ associado a cada conjunto $A$, que será dito a sua cardinalidade. Estes objetos serão nossos números cardinais - o procurado ``algo'' em comum dos conjuntos de mesmo ``tamanho''. De posse já dos ordinais, e se simplesmente os usarmos para isso? Os finitos $0,1,2,3, \dots$ todos denotam cardinalidades diferentes, e logo depois deles temos o primeiro infinito $\omega$, mas após ele, $\omega + 1$, começamos a repetir cardinalidades.
+
+\begin{exercicio}
+  \luafacil Mostre que $\omega$ e $\omega + 1$ possuem a mesma cardinalidade.
+\end{exercicio}
+
+\begin{definicao*}[Cardinal]
+  Um ordinal $\alpha$ é dito um cardinal (ou, às vezes, ordinal inicial) quando, para todo $\beta < \alpha$, temos que $\beta$ e $\alpha$ não tem a mesma cardinalidade.
+
+  Quando um conjunto $A$ tem a mesma cardinalidade de um cardinal $\alpha$, denotamos $|A|$ como sendo este $\alpha$.
+\end{definicao*}
+
+\begin{exercicio}
+  \luamedio Usando o Axioma da Escolha (ou melhor, o Príncipio da Boa Ordenação, que é equivalente), mostre que todo conjunto tem a mesma cardinalidade que exatamente um cardinal.
+\end{exercicio}
+
+É natural pensarmos em uma noção de ordem entre cardinais baseada em funções: se $f: A \rightarrow B$ é uma injeção, então deveríamos ter $|A| \leq |B|$, e se $f: A \rightarrow B$ é uma sobrejeção, deveríamos ter $|A| \geq |B|$. Felizmente, a ordem usual dos ordinais captura esta intuição.
+
+\begin{proposicao*}[Ordem dos cardinais e funções]
+  Sejam $A,B$ conjuntos, e $|A|, |B|$ suas cardinalidades.
+  \begin{itemize}[label=\ding{212}]
+    \item $|A| \leq |B|$ se e somente se existe uma função injetiva $f: A \rightarrow B$
+    \item $|A| \geq |B|$ se e somente se existe uma função sobrejetiva $f: A \rightarrow B$
+  \end{itemize}
+\end{proposicao*}
+\begin{prova}
+  A existência de uma função injetiva $f: A \rightarrow B$ garante a existência de uma função sobrejetiva $g: B \rightarrow A$ (defina $g$ como $f^{-1}$ onde ela está definida, e onde não está mande para um elemento qualquer de $A$), e é claro, ao contrário também temos que uma função sobrejetiva dá origem a uma função injetiva com domínio e contradomínio trocados. Com isto é direto mostrar que o segundo item segue do primeiro item.
+
+  Vamos provar o primeiro item, então. Se $|A| \leq |B|$, lembremos que como conjuntos temos $|A| \subset |B|$. Assim, a inclusão é uma injeção de $|A|$ em $|B|$. Compondo esta inclusão com as bijeções de $A$ em $|A|$ e $B$ em $|B|$, temos uma injeção de $A$ em $B$.
+
+  Para a volta, suponha que temos uma função injetiva $f: A \rightarrow B$. Se tivessemos que $|A| > |B|$, teríamos pela construção do parágrafo anterior uma função injetiva $g: B \rightarrow A$. É um resultado clássico de conjuntos, conhecido como teorema de Schröder-Bernstein, que a existência de duas funções injetivas $f: A \rightarrow B$ e $g: B \rightarrow A$ garante a existência de uma bijeção entre $A$ e $B$. Isto mostraria que $|B| = |A|$, contradizendo nossa suposição que $|B| > |A|$.
+
+  Vamos esboçar a demonstração do teorema de Schroder-Bernstein, para finalizar a prova. Para cada $a \in A$ e $b \in B$, construímos uma sequência infinita com duas direções. Para frente, alternamos entre aplicar $f$ ou $g$ de acordo com se o elemento está em $A$ ou em $B$, e para trás, aplicamos $f^{-1}$ ou $g^{-1}$ sempre que for possível (estas funções não estão definidas em $A$ ou $B$ inteiros) - assim, para trás, ela pode ser infinita ou não.
+
+  \[
+  \dots \rightarrow f^{-1}(g^{-1}(a)) \rightarrow g^{-1}(a) \rightarrow a \rightarrow f(a) \rightarrow g(f(a)) \rightarrow \dots
+  \]
+
+  Como ambas $f$ e $g$ são injetoras, duas sequências deste tipo devem ser disjuntas ou idênticas. Assim, estas sequências particionam a união disjunta de $A$ com $B$. Para construirmos uma bijeção de $A$ em $B$, então, basta construirmos para cada sequência uma bijeção entre os elementos de $A$ e os elementos de $B$ dela. 
+  
+  Para fazer isso, veja que podemos separar as sequências em três tipos: as que terminam a esquerda em um elemento de $A$, as que terminam a esquerda em um elemento de $B$, e as que não terminam a esquerda. Para as sequências do primeiro tipo, a função $f$ funciona como uma bijeção. Para as sequências do segundo tipo, a função $g$ funciona como uma bijeção. Para as do terceiro tipo, qualquer uma, $f$ ou $g$, funciona como uma bijeção.
+
+\end{prova}
+
+Quando ambos os $A$ e $B$ são finitos, a existência de uma injeção não sobrejetiva de $A$ em $B$ já garante que $|A|$ é estritamente menor que $|B|$. No caso infinito, em geral, subconjuntos estritos podem ter a mesma cardinalidade que o conjunto que estão contidos, como já mostramos mais cedo no exercício que mostra que $\omega$ e $\omega + 1$ tem a mesma cardinalidade. É um exercício clássico mostrar que na sequência usual de sistemas numéricos até aos racionais $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q}$ todos tem a mesma cardinalidade, também a mesma de $\omega$, uma cardinalidade particularmente importante por ser a primeira infinita.
+
+\begin{definicao*}[Contáveis]
+  Um conjunto $A$ é contável (ou enumerável) se ele é finito ou $|A| = \omega$.
+\end{definicao*}
+
+É um dos resultados matemáticos mais celebrados e controversos a existência (e ubiquidade) de conjuntos incontáveis.
+
+\begin{teorema*}[Teorema de Cantor]
+  Seja $A$ um conjunto e $\mathcal{P}(A) \defeq \{B \mid B \subset A\}$. Então $|\mathcal{P}(A)| > |A|$. 
+\end{teorema*}
+\begin{prova}
+  Suponha que $|\mathcal{P}(A)| \leq |A|$. Pela proposição anterior, deve existir uma função sobrejetiva $f: A \rightarrow \mathcal{P}(A)$. Defina $R = \{a \in A \mid a \notin f(a)\} \subset A$. Como $f$ é sobrejetiva, deve existir $a \in A$ tal que $R = f(a)$. Mas daí $a \in R \iff a \notin R$, contradição.
+\end{prova}
+
+Se tomarmos $A = \omega$, este resultado mostra que $\mathcal{P}(\omega)$ é incontável.
+
+\begin{exercicio}
+  \luamedio Mostre que $B = \{0,1\}^{\omega} = \{\text{sequências infinitas binárias} \}$, o conjunto dos números reais $\mathbb{R}$ e $\mathcal{P}(\omega)$ tem todos a mesma cardinalidade.
+\end{exercicio}
+
+A associação entre $\{0,1\}^{\omega}$ e $\mathcal{P}(\omega)$ é facilmente generalizada. Um subconjunto $B \subset A$ é naturalmente associado a uma função $f: A \rightarrow \{0,1\}$ que diz $f(a) = 1$ quando $a \in B$ e $f(a) = 0$ quando $a \notin B$. E, é claro, qualquer função $f: A \rightarrow \{0,1\}$ é associada ao subconjunto $f^{-1}(1)$. Assim, $\{0,1\}^{A}$ está em bijeção com $\mathcal{P}(A)$, e como $2 = \{0,1\}$, geralmente denotamos $\{0,1\}^{A} = 2^A$ e $|\mathcal{P}(A)| = 2^{|A|}$ (na verdade, isto não é exatamente apenas notação, pois existe uma teoria de exponenciação de cardinais dentro da aritmética de cardinais, mas não vou entrar nisto aqui).
+
+Mais um pouco de notação. Como os ordinais são bem ordenados, os cardinais também serão. Assim, podemos usar os próprios ordinais para indexar cardinais, começando a partir do primeiro infinito.
+
+\begin{definicao*}[Notação $\aleph$ para cardinais]
+  Definimos $\aleph_0$ como o primeiro cardinal infinito, $\omega$. Recursivamente, dado um ordinal $\alpha$, defina $\aleph_{\alpha}$ como sendo o menor cardinal maior que $\aleph_{\beta}$ para todos os $\beta < \alpha$.
+\end{definicao*}
+
+\begin{exercicio}
+  \luafacil Se convença, usando o Teorema de Cantor, que a construção recursiva da definição anterior está bem definida para qualquer ordinal $\alpha$.
+\end{exercicio}
+
+Com estas notações, podemos afirmar a Hipótese do Contínuo.
+
+\begin{aviso}
+  \textbf{Hipótese do Contínuo:}
+  
+  \[ 2^{\aleph_0} = \aleph_1 \]
+\end{aviso}
+
+Ou seja, a Hipótese do Contínuo diz que o primeiro infinito incontável é exatamente o infinito incontável mais comum no dia-a-dia do matemático - o conhecido como a cardinalidade do contínuo, a dos números reais. Por mais razoável que esta hipótese possa ser, ela é independente dos axiomas agora já tradicionais de conjuntos, a axiomática ZFC, como mostrou Gödel e Cohen. Gödel mostrou que existem modelos de ZFC onde a hipótese é verdadeira (usando o universo construtível), e muitos anos mais tarde Cohen mostrou que existem modelos onde a hipótese é falsa (usando a técnica de forcing).
+
+Sabendo ordenar e contar para muito além do finito, vamos agora seguir para os objetos principais de estudo do livro - grafos infinitos.
 
 \end{document}
