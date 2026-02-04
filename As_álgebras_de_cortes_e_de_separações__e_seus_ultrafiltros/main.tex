@@ -1,0 +1,607 @@
+\let\varphi\phi
+
+\documentclass[11pt]{article}
+
+% Pacotes
+\RequirePackage{luatex85}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsthm}
+\usepackage{framed, color,xcolor}
+\usepackage{stmaryrd}
+\usepackage{rotating}           % Usado para rotacionar o texto
+\usepackage[all,knot,arc,import,poly]{xy}   % Pacote para desenhos gráficos
+% Este pacote pode conflitar com outros pacotes gráficos como o ``pictex''
+% Então é necessário usar apenas um dos pacotes conflitantes
+\usepackage{tikz, tikz-cd}
+\usepackage{epigraph}
+\usetikzlibrary{babel}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usepackage[stix2]{newtxmath}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{mathtools, nccmath}
+\usepackage{amssymb, mathrsfs}
+\usepackage[numbers]{natbib}
+\usepackage{fontspec}
+\usepackage[shortlabels]{enumitem} % pra substituir o símbolo do itemize por alguma coisa legal, tipo setinhas:  \begin{itemize}[\ding{212}]
+\usepackage{pifont}
+\usepackage{stmaryrd} % for \arrownot (notação de adjacência em grafo)
+\usepackage{quiver} %pacote do quiver pra desenhar diagramas mais legais
+
+%Fontes e Línguas
+\usepackage[portuguese]{babel}
+\usepackage{eufrak}
+\setmainfont{DarwinSerif-Regular.otf}
+\newfontfamily\fakebold[FakeBold=1.75]{DarwinSerif-Regular.otf}
+\newfontfamily\fakeitalic[FakeSlant=0.2]{DarwinSerif-Regular.otf}
+\renewcommand{\textbf}[1]{{\fakebold#1}}
+\renewcommand{\textit}[1]{{\fakeitalic#1}}
+\renewcommand{\bfseries}{\fakebold}
+\renewcommand{\itshape}{\fakeitalic}
+
+%Cores
+
+
+%Comandinhos que gosto
+\usepackage{mathtools}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\eqdef}{=\vcentcolon}
+\newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+\newcommand{\logo}{\Rightarrow}
+\newcommand{\pulinho}{\vspace{.5cm}}
+\newcommand{\edge}{%
+  \mathrel{-}% minus as a relation
+  \joinrel\joinrel % some backup
+  \mathrel{-}% minus as a relation
+}
+\newcommand{\notedge}{%
+  \mathrel{\mkern2mu}% a small advancement
+  \arrownot % a short slash
+  \mathrel{\mkern-2mu}% compensate
+  \edge
+}
+
+
+%Caixinhas coloridas
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Teorema}
+\newenvironment{teorema}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{theorem}
+}
+{
+\end{theorem}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{theorem*}{Teorema}
+\newenvironment{teorema*}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{theorem*}
+}
+{
+\end{theorem*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{prop}{Proposição}
+\newenvironment{proposicao}{
+\definecolor{shadecolor}{HTML}{FFDBDF}
+\begin{shaded}
+\begin{prop}
+}
+{
+\end{prop}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{prop*}{Proposição}
+\newenvironment{proposicao*}{
+\definecolor{shadecolor}{HTML}{FFDBDF}
+\begin{shaded}
+\begin{prop*}
+}
+{
+\end{prop*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{cor}{Corolário}
+\newenvironment{corolario}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{cor}
+}
+{
+\end{cor}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{cor*}{Corolário}
+\newenvironment{corolario*}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{cor*}
+}
+{
+\end{cor*}
+\end{shaded}
+}
+
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}
+\newenvironment{definicao}{
+\definecolor{shadecolor}{HTML}{defcfc}
+\begin{shaded}
+\begin{definition}
+}
+{
+\end{definition}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{definition*}{Definição}
+\newenvironment{definicao*}{
+\definecolor{shadecolor}{HTML}{defcfc}
+\begin{shaded}
+\begin{definition*}
+}
+{
+\end{definition*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{example}{Exemplo}
+\newenvironment{exemplo}{
+\definecolor{shadecolor}{HTML}{b9e6d3}
+\begin{shaded}
+\begin{example}
+}
+{
+\end{example}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{example*}{Exemplo}
+\newenvironment{exemplo*}{
+\definecolor{shadecolor}{HTML}{b9e6d3}
+\begin{shaded}
+\begin{example*}
+}
+{
+\end{example*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{veronica}{Lema}
+\newenvironment{lema}{
+\definecolor{shadecolor}{HTML}{FFF1F2}
+\begin{shaded}
+\begin{veronica}
+}
+{
+\end{veronica}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{veronica*}{Lema}
+\newenvironment{lema*}{
+\definecolor{shadecolor}{HTML}{FFF1F2}
+\begin{shaded}
+\begin{veronica*}
+}
+{
+\end{veronica*}
+\end{shaded}
+}
+
+\newenvironment{prova}{\paragraph{Demonstração:}}{\hfill$\square$ 
+\pulinho
+}
+
+\newenvironment{aviso}{
+\definecolor{shadecolor}{HTML}{fffe9a}
+\begin{shaded}
+}{\end{shaded}}
+
+%Tamanho do papel
+\usepackage[a4paper,top=1cm,bottom=1cm,margin=3.5cm]{geometry}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Definições só pra esse texto
+\usepackage[bb=boondox]{mathalpha}
+\newcommand{\almostequal}{\stackrel{*}{=}}
+
+\title{As álgebras de cortes e de separações, e seus ultrafiltros}
+\author{Violeta Mar}
+\date{}
+
+\begin{document}
+\maketitle
+
+Quando retiramos vértices de um grafo de forma a deixá-lo desconexo, chamamos isso de uma separação. Quando retiramos arestas de um grafo de forma a deixá-lo desconexo, chamamos isso de um corte. Vamos mostrar aqui que cortes e separações tem uma álgebra natural, que será uma álgebra de Boole. De posse de uma álgebra de Boole, deveríamos entender quem é seu espaço de ultrafiltros. Estes espaços que aparecem acabam sendo uma generalização natural dos conceitos de espaços de extremidades e direções, contendo como caso especial ambos estes objetos, nas suas versões em vértices ou arestas. Sendo espaços de ultrafiltros, eles serão compactos, e assim veremos que eles formam uma compactificação do espaço de extremidades (via vértices ou via arestas), e também do próprio grafo em sua realização geométrica. Na seção final, mostramos como o espaço de emaranhados (nossa tradução pros \textit{tangles}, em inglês), descritos no trabalho do Diestel \cite{Diestel2017} como também uma compactificação do grafo, é o mesmo que a nossa compactificação. Assim, todos os espaços aqui definidos já eram conhecidos - nossa contribuição se dá em trazer uma nova descrição deles, através da álgebra de separações, e unificando esta construção com seu análogo natural via arestas, a álgebra de cortes.  (um aviso: todos os nossos grafos aqui são assumidos conexos, provavelmente)
+
+\section{Extremidades e direções, via vértices e arestas}
+Revisamos aqui rapidamente os espaços relevantes para este trabalho. Começamos com a definição combinatória usual.
+
+\begin{definicao*}[Raios, caudas, raios equivalentes e extremidades]
+    Um \textit{caminho} em um grafo é uma sequência de vértices que são dois a dois adjacentes, de forma que todas os vértices e todas as arestas desta sequência são distintas. Um \textit{raio} é um caminho cuja sequência de vértices é infinita. Uma \textit{cauda} de um raio $\eta$ é um raio obtido excluindo os primeiros $n$ vértices de $\eta$, para algum $n$ finito.
+
+    \pulinho
+
+    Consideramos dois raios \textit{equivalentes} se existem infinitos caminhos vértice-disjuntos que ligam vértices de um raio a vértices de outro. A classe de equivalência de um raio induzida por essa relação é chamada de uma \textit{extremidade}, e o conjunto de extremidades é denotado $\Omega(G)$. 
+\end{definicao*}
+
+Estas são as extremidades via vértices, e já já definiremos o análogo para arestas, que serão as arestas-extremidades. Se a palavra for usada sem especificar qual dos dois é, geralmente ela deve se referir a definição via vértice, que é a mais comum. 
+
+\pulinho
+
+O conjunto de extremidades admite uma topologia natural, se tornando o espaço de extremidades.
+
+\begin{definicao*}[Espaço de extremidades]
+    Seja $F$ um conjunto finito de vértices de um grafo $G$, e $\varepsilon$ uma extremidade de $G$. Ao retirarmos de $G$ os elementos de $F$, e todas as arestas adjacentes a estes elementos, obtemos um grafo possivelmente desconexo, denotado $G \setminus F$. $\varepsilon$ deve conter então uma cauda em alguma componente conexa de $G$, que chamamos de $C(F,\varepsilon)$. Defina $\Omega(F,\varepsilon) = \{\eta \in \Omega(G) \mid C(F,\eta) = C(F,\varepsilon)\}$. Tomamos estes conjuntos, para todo $F$ finito e $\varepsilon$ extremidade, como base para uma topologia em $\Omega(G)$, chamado agora de \textit{espaço de extremidades}.
+\end{definicao*}
+
+Temos uma primeira definição alternativa, que será equivalente a esta.
+
+\begin{definicao*}[Direções]
+    Dado um grafo $G$, uma \textit{direção} $\rho$ é uma função que dado um conjunto finito de vértices $F$, retorna uma componente conexa $\rho(F)$ do grafo $G \setminus F$. Pedimos que esta função seja consistente com a inclusão: se $F \subset F'$, então $\rho(F') \subset \rho(F)$. O conjunto de direções de $G$ é denotado $\mathcal{D}(G)$
+\end{definicao*}
+
+Topologizamos analogamente o conjunto de direções.
+
+\begin{definicao*}[Espaço de Direções]
+    Seja $F$ um conjunto finito de vértices de um grafo $G$ e $\rho$ uma direção. Definimos $\mathcal{D}(F,\rho) = \{\rho' \in \mathcal{D}(G) \mid \rho'(F) = \rho(F)\}$, e tomamos estes conjuntos como base para uma topologia em $\mathcal{D}(G)$, chamado agora de \textit{espaço de direções}
+\end{definicao*}
+
+Estes na verdade são o mesmo espaço, para quaisquer grafos.
+
+\begin{proposicao}[Espaço de extremidades é homeomorfo ao espaço de direções]
+    Seja $G$ um grafo e $\varepsilon$ uma extremidade de $G$. Defina $\rho_{\varepsilon}$ como a função onde, dado um conjunto finito de vértices $F$,  $\rho_{\varepsilon}(F)$ é a componente conexa de $G \setminus F$ que alguma cauda de $\varepsilon$ pertence. Então $\rho_{\varepsilon}$ é uma direção e o mapa $\varepsilon \mapsto \rho_{\varepsilon}$ é um homeomorfismo entre $\Omega(G)$ e $\mathcal{D}(G)$
+\end{proposicao}
+\begin{prova}
+    Em \cite{Diestel2003}, no Teorema 2.2, temos a demonstração da bijeção, e não é difícil ver que esta bijeção e sua inversa levam os abertos básicos de um espaço nos abertos básicos do outro.
+\end{prova}
+
+Na definição de equivalência de raios, existe uma ênfase nos vértices: dois raios não são equivalentes apenas quando existe um conjunto finito de vértices que, ao serem retirados, as caudas dos raios ficarão em componentes conexas diferentes. Poderíamos ter, alternativamente, definido equivalência de raios como sendo raios que não podem ser separados por finitas arestas. Isto nos leva a definição de extremidades por arestas.
+
+\begin{definicao*}[Espaço de extremidades por arestas]
+    Dois raios são ditos \textit{aresta-equivalentes} se existem infinitos caminhos aresta-disjuntos (mas não necessariamente vértices disjuntos) que ligam vértices de um raio a vértices de outro. A classe de equivalência de um raio induzida por essa relação é chamada de uma \textit{aresta-extremidade}, e o conjunto de extremidades é denotado $\Omega_E(G)$. Dada uma aresta-extremidade $\varepsilon$ e um conjunto finito $F_E$ de \textit{arestas}, se as retirarmos do grafo deve existir apenas uma componente conexa $C(F_E,\varepsilon)$ que alguma cauda de $\varepsilon$ estará contida. Colocamos uma topologia em $\Omega_E(G)$ como sendo a gerada pela base $\Omega_E(F_E,\epsilon) = \{\eta \in \Omega_E(G) \mid C(F_E,\varepsilon) = C(F_E,\eta)\}$.
+\end{definicao*}
+
+Da mesma forma, fazemos o análogo para arestas do espaço de direções.
+
+\begin{definicao*}[Espaço de Direções por Arestas]
+    Dado um grafo $G$, uma \textit{aresta-direção} $\rho$ é uma função que dado um conjunto finito de arestas $F_E$, retorna uma componente conexa \textit{infinita} $\rho(F)$ do grafo $G \setminus F_E$. Pedimos que esta função seja consistente com a inclusão: se $F \subset F'$, então $\rho(F') \subset \rho(F)$. O conjunto de aresta-direções de $G$ é denotado $\mathcal{D}_E(G)$. Seja $F_E$ um conjunto finito de arestas de um grafo $G$ e $\rho$ uma aresta-direção. Definimos $\mathcal{D}_E(F_E,\rho) = \{\rho' \in \mathcal{D}_E(G) \mid \rho'(F_E) = \rho(F_E)\}$, e tomamos estes conjuntos como base para uma topologia em $\mathcal{D}_E(G)$, chamado agora de \textit{espaço de direções por arestas}.
+\end{definicao*}
+
+Note que agora pedimos que nossas arestas-direções escolhem apenas componentes conexas infinitas de $G \setminus F_E$. Não precisávamos pedir isto no caso de direções por vértices, pois a própria definição já tem como consequência que apenas componentes infinitas são escolhidas. Se permitíssemos a escolha de componentes finitas, o espaço de direções se tornaria um pouco maior... que será o espaço de ultrafiltros que irá aparecer em breve. Antes de introduzi-lo, vamos clarificar a relação das extremidades por arestas com as direções por arestas. Diferentemente no caso dos vértices, agora não temos o mesmo espaço:
+
+\begin{proposicao}[Inclusão das aresta-extremidades nas aresta-direções]
+Existe um embedding $\Omega_E(G) \xhookrightarrow{} \mathcal{D}_E(G)$. Toda aresta-direção que não está na imagem deste embedding é definida do tipo $\rho_v$ para um vértice $v$ de grau infinito, onde $\rho_v$ é a direção que escolhe sempre a componente conexa que $v$ pertence.
+\end{proposicao}
+\begin{prova}
+    O morfismo $\Omega_E(G) \xhookrightarrow{} \mathcal{D}_E(G)$ é o análogo para arestas do isomorfismo da Proposição 1: é o que leva um raio $\varepsilon$ à direção $\rho$ que dado um conjunto finito de arestas $F$, temos que $\rho(F)$ é a componente conexa de $G \setminus F$ que uma cauda do $\varepsilon$ pertence. É rotineiro verificar que isto é injetivo, contínuo e aberto sobre a imagem, como pode ser encontrado com um pouco mais de detalhe na Definição 2.1.2 de \cite{meninos2025}. Lá também pode ser encontrado a demonstração que as únicas direções via arestas faltando na imagem são as do tipo $\rho_v$.
+\end{prova}
+
+\pulinho
+
+\section{Álgebra de cortes}
+
+\begin{definicao*}[Álgebra de cortes]
+Em um grafo $G$, um par  $\{A,B\}$ de conjuntos de vértices de $G$ disjuntos é dito um \textit{corte} se $A \cup B = V(G)$. O corte é \textit{finito} se existem finitas arestas que ligam vértices de $A$ com vértices de $B$.
+
+\pulinho
+
+O conjunto $\mathfrak{C}(G) \defeq \{A \subset V(G) \mid \{A, V(G) \setminus A\} \text{ é corte finito}\}$ é naturalmente uma álgebra de Boole sob as operações de união, interseção e complementar. Esta é dita a \textit{álgebra de cortes finitos} de $G$.
+\end{definicao*}
+
+Veja que um elemento da álgebra de cortes define o mesmo corte que seu complementar. Intuitivamente, um elemento da álgebra de cortes é melhor visto como um corte ordenado, e seu complementar se refere ao mesmo corte orientado ao contrário.
+
+Se temos uma álgebra de Boole, deveríamos olhar para seu espaço de Stone associado, o espaço de ultrafiltros. Para a álgebra de cortes finitos, vamos usar a notação $\widetilde{\mathcal{T}_E}(G)$ para este espaço - este nome esquisito vai ser justificado mais tarde.
+
+\begin{definicao*}[Ultrafiltros de cortes finitos]
+O espaço de Stone associado à álgebra de cortes finitos de um grafo $G$ é denotado como $\widetilde{\mathcal{T}_E}(G)$. A sua topologia tem como base os conjuntos $O(A) \defeq \{u \in \mathcal{T}_E(G) \mid A \in u\}$ para cada $A \in \mathfrak{C}(G)$. Dado um vértice $v$ de $G$, o ultrafiltro definido por $u_v \defeq \{A \in \mathfrak{C}(G) \mid v \in A\}$ é dito o ultrafiltro do vértice $v$, e isto define um mapa injetivo $V(G) \rightarrow \widetilde{\mathcal{T}_E}(G)$, que consideramos como uma inclusão. O conjunto de ultrafiltros que não são de vértices é denotado como $\mathcal{T}_E(G)$.
+\end{definicao*}
+
+Um detalhe importante: o ultrafiltro definido por $u_v$ pode \textit{não} ser principal! Lembrando, ultrafiltros principais são ultrafiltros que possuem menor elemento. Se $v$ for de grau finito, então $\{v\} \in \mathfrak{C}(G)$ e assim é menor elemento de $u_v$. Mas se $v$ for de grau infinito, então isso não precisa mais ocorrer. Por exemplo:
+
+\begin{exemplo*}[Ultrafiltro de vértice não principal]
+A estrela infinita enumerável
+    \begin{center}
+        \includegraphics[scale=0.65]{desenhos/estrela infinita.png}
+\end{center}
+
+tem como corte finito qualquer escolha de finitos ou cofinitos vértices-folha, isto é, os de grau $1$ ligados ao seu centro. Assim, $\mathfrak{C}(E) \cong \text{Finco}(\omega) = \{A \subset \omega \mid A \text{ é finito ou } A^c \text{ é finito} \}$. Os únicos ultrafiltros desta álgebra são os principais que selecionam cada um dos vértices de grau finito, ou, o ultrafiltro que seleciona todos os conjuntos infinitos, que é exatamente o ultrafiltro do vértice central - e este é não principal.
+
+\end{exemplo*}
+
+Ultrafiltros sobre cortes finitos vão ser objetos que já conhecíamos antes.
+
+\begin{teorema}[Ultrafiltros de cortes são aresta-direções]
+
+Dado um grafo $G$ conexo, temos uma sequência de embeddings
+
+\[\mathcal{T}_E(G) \xhookrightarrow{\rho_\bullet} \Omega_E(G) \xhookrightarrow{} \mathcal{D}_E(G) \xhookrightarrow{u_\bullet} \widetilde{\mathcal{T}_E}(G)\]
+
+Mais detalhadamente, a imagem do primeiro morfismo será $\{\varepsilon \in \Omega_E(G) \mid \text{não existe vértice infinitamente conectado a } \varepsilon\}$ (estes são os raios que chamamos de \textit{raios não dominados}) e a imagem do terceiro morfismo $\{u \in \widetilde{\mathcal{T}_E}(G) \mid u \neq u_v \text{ para todo vértice } v  \text{ de grau finito}\}$.
+    
+\end{teorema}
+
+\begin{prova}
+    O morfismo do meio é o descrito na Proposição 2. A partir de agora identificamos $\Omega_E(G)$ com sua imagem em $\mathcal{D}_E(G).$
+
+    Vamos construir uma direção $\rho_u$ a partir de um ultrafiltro $u \in \mathcal{T}_E(G)$, e mostrar que na verdade $\rho_u = \rho_\varepsilon$ para algum raio $\varepsilon \in \Omega_E(G)$, construindo assim uma função $\mathcal{T}_E(G) \rightarrow{} \Omega_E(G)$. Dado um conjunto finito de arestas $F$, o grafo $G \setminus F$ é dividido em um número finito de componentes conexas $\{S_1, \dots, S_n\}$ (como o grafo é conexo, infinitas componentes conexas de $G \setminus F$ implicaria em $F$ ser infinito). Como $F$ é finito, o corte $(S_i, \underset{j \ne i}{\bigcup} S_j)$ é um corte finito, e logo $S_i \in \mathfrak{C}(G)$ para todo $i$. Como $u$ é ultrafiltro, um e apenas um dos $S_i$ deve pertencer a $u$. Defina $\rho_u(F)$ como sendo este $S_i$. Para mostrarmos que isto define uma direção, seja $F'$ um conjunto finito de arestas com $F \subset F'$. Ao removermos mais arestas, cada $S_i$ se divide em componentes conexas $S_{1}^{i},\dots, S_{m_i}^{i}$. Todas estas formam o conjunto de componentes conexas de $G \setminus F$. Se $S_i \in u$, não podemos ter $S_k^{j} \in u$ para um $j \neq i$, pois $S_k^{j} \cap S_i = \varnothing$. Logo, temos um dos $S_k^{i} \in u$ e assim $\rho_u(F') = S_k^{i} \subset S_i = \rho_u(F)$. Resta mostrar que não estamos escolhendo nenhuma componente conexa finita. De fato, suponha que $\rho_u(F)$ fosse finito, digamos $\rho_u(F) = \{v_1, \dots, v_m\}$. Veja que todos os vértices estão conectados finitamente ao resto do grafo e logo são todos de grau finito. Assim, temos $\{v_i\} \in \mathfrak{C}(G)$ para todo $i$ e portanto um e apenas um $\{v_i\} \in u$ e logo $u = u_{v_i}$, o que contradiz $u$ não vir de um vértice.
+
+    Pelo Corolário 2.2.2 em \cite{meninos2025}, as direções $\rho \in \mathcal{D}_E(G)$ ou são da forma $\rho_\varepsilon$ para algum raio $\varepsilon$ ou são da forma $\rho_v$ para algum vértice $v$, isto é, a direção que sempre escolhe a componente conexa que o vértice $v$ pertence. O fato de $u$ não ser ultrafiltro de vértice garante que $\rho_u \neq \rho_v$ para todo vértice $v$ (de fato, se supormos que fosse, teríamos que o ultrafiltro $u_v$ está contido em $u$ e aí por maximalidade teríamos $u = u_v$). Assim, $\rho_u = \rho_\varepsilon$ como gostaríamos e temos nossa função $\rho_{\bullet}:\mathcal{T}_E(G) \rightarrow{} \Omega_E(G)$. Continhas rotineiras seguem para mostrarmos que esta função é injetora, contínua e aberta sobre a imagem:
+    \begin{itemize}[\ding{212}]
+    \item injetividade: se $u \neq v$, existe $A \in u$ e $V(G) \setminus A \in v$. Como $A$ induz corte finito, temos um conjunto finito de arestas $F$ que liga $A$ à $V(G) \setminus A$. E aí, $\rho_u(F) \subset A$ e $\rho_v(F) \subset V(G) \setminus A$, ou seja, $\rho_u \ne \rho_v$.
+    \item continuidade: usando a notação das páginas 2 e 3, veja que inversa de básico é básico $\rho_{\bullet}^{-1}(\Omega_E(F,\varepsilon)) = \{u \in \widetilde{\mathcal{T}_E}(G) \mid C(F,\varepsilon) \in u\} = X_{C(F,\varepsilon)}$
+    \item aberta sobre a imagem: denotamos $I$ a imagem de $\rho_\bullet$, $A \in \mathfrak{C}(G)$ e $F$ o conjunto finito de arestas que liga $A$ ao seu complementar. Assim, temos $\rho_\bullet(X_A \cap \mathcal{T}_E(G)) = \underset{\varepsilon \text{ raio com cauda em }A}{\bigcup} \Omega_E(F,\varepsilon) \cap I$.
+    
+        \end{itemize}
+
+Vamos para o último morfismo. Dada uma direção $\rho$, construímos o ultrafiltro $u_\rho$ que seleciona, dado um corte, a partição dita pela direção. Formalmente, $u_\rho \defeq \{ A \in \mathfrak{C}(G) \mid \rho(F_A) \subset A \}$, onde $F_A$ é o conjunto finito de arestas ligando os vértices de $A$ ao seu complementar. Vamos mostrar que isto realmente define um ultrafiltro. Como $\rho(F_A)$ é uma componente conexa de $G \setminus F_A$, ela está contida em $A$ ou $V(G) \setminus A$. Assim, para qualquer $A \in \mathfrak{C}(G)$, ou $A \in u_\rho$ ou $V(G) \setminus A \in u_\rho$. Também temos $V(G) \in u_\rho$. Se $A,B \in u_\rho$, veja que  $\rho(F_A \cup F_B) \subset \rho(F_A) \subset A $ e $\rho(F_A \cup F_B) \subset \rho(F_B) \subset B$, ou seja $\rho(F_A \cup F_B) \subset A \cap B$. Como $F_{A\cap B} \subset F_A \cup F_B$, também temos $\rho(F_A \cup F_B) \subset \rho(F_{A\cap B})$, logo não podemos ter $\rho(F_{A\cap B})$ contido no complementar de $A \cap B$ e portanto $\rho(F_{A\cap B}) \subset A \cap B$. De forma similar podemos argumentar que se $A \in u_\rho$ e $A \subset \tilde{A}$, então $\rho(F_A \cup F_{\tilde{A}}) \subset A$ e $\rho(F_A \cup F_{\tilde{A}}) \subset \rho(F_{\tilde{A}})$ logo $\rho(F_{\tilde{A}})$ não pode estar no complementar de $A$ e portanto não pode estar no complementar de $\tilde{A}$ e assim $\rho(F_{\tilde{A}}) \subset \tilde{A}$. Com tudo isso, concluímos que $u_\rho$ é ultrafiltro.
+
+Denote o mapa $\rho \mapsto u_\rho$ como $u_\bullet: \mathcal{D}_E(G) \rightarrow \widetilde{\mathcal{T}_E}(G)$. Mais continhas vão mostrar que isto é um embedding:
+
+\begin{itemize}[\ding{212}]
+    \item injetividade: se $\rho \neq \rho'$ são direções distintas, deve existir $F$ um conjunto finito de arestas tal que $\rho(F) \neq \rho'(F)$. Sabemos que as componente conexas $\rho(F)$ e $\rho'(F)$ induzem cortes finitos e portanto devem estar na álgebra de Boole de $G$. Assim, temos $\rho(F) \in u_\rho$ e $\rho'(F) \in u_{\rho'}$. Como estes conjuntos são disjuntos, concluímos que $u_\rho \neq u_{\rho'}$
+    \item continuidade: se $A \in \mathfrak{C}(G)$, e $F$ é o conjunto finito de arestas que ligam vértices de $A$ a vértices fora de $A$, então $u_\bullet^{-1}(X_A) = \underset{\rho \text{ direção tal que } \rho(F) \subset A}{\bigcup}\mathcal{D}_E(F,\rho)$
+    \item aberto sobre a imagem: sejam $J$ a imagem de $u_\bullet$, $F$ um conjunto finito de arestas e $\rho$ uma direção, então $u_\bullet(\mathcal{D}_E(F,\rho)) = X_{\rho(F)} \cap J$
+\end{itemize}
+
+Para finalizar, vamos calcular as imagens dos morfismos. Começamos com o último: $u_\bullet(\mathcal{D}_E(G)) = \{u \in \widetilde{\mathcal{T}_E}(G) \mid u \neq u_v \text{ para todo vértice } v  \text{ de grau finito}\}$. Se $p$ é uma direção, então $u_\rho$ não pode ser igual à um $u_v$ para um vértice $v$ de grau finito: se fosse, então ao tomarmos $F_v$ o conjunto de arestas adjacentes ao $v$, teríamos $\rho(F_v) \subset \{v\}$ por $\{v\} \in u_\rho$ e assim a direção estaria escolhendo uma componente finita, o que é proibido pela definição de direção. Reciprocamente, dado um ultrafiltro $u$ que não é de um vértice de grau finito, podemos fazer a mesma construção que define a função $\rho_\bullet$ para obter a direção $\rho_u$. A demonstração de boa definição desta construção no segundo parágrafo é idêntica, com o único detalhe que na frase final apenas precisamos que $u$ não é de um vértice de grau finito para garantir que a direção não escolhe componentes finitas. E, daí, $u_{\rho_u} = u$.
+
+Agora, provamos $p_\bullet(\mathcal{T}_E(G)) = \{\varepsilon \in \Omega_E(G) \mid \text{não existe vértice infinitamente conectado a } \varepsilon\}$. Dado um ultrafiltro $u \in \mathcal{T}_E(G)$, suponha que $\rho_u$ fosse uma direção dada por um raio $\varepsilon$ dominado por $v$ (isto é, dizemos que um vértice $v$ domina um raio $\varepsilon$ quando $v$ é infinitamente conectado à $\epsilon$). Nesse caso, dado qualquer $A \in \mathfrak{C}(G)$ com $v \in A$, veja que $\rho_u(F_A)$ deve ser a componente conexa com alguma cauda de $\varepsilon$ e como $v$ é infinitamente conectado à $\varepsilon$, temos $v \in \rho_u(F_A)$. Logo, como $\rho_u(F_A)$ ou está totalmente contido em $A$ ou no complementar e $v \in A$, concluímos que $\rho_u(F_A) \subset A$. Como $\rho_u(F_A) \in u$, devemos ter $A \in u$. Veja que isso mostra que $u_v \subset u$ e logo $u_v = u$, contradizendo $u$ não ser de vértice. Reciprocamente, dada uma direção $\rho_\varepsilon$ vinda de um raio $\varepsilon$ não dominado, podemos usar o mapa $u_\bullet$ para construir o ultrafiltro $u_{\rho_\varepsilon}$. Já sabemos pelo cálculo da imagem anterior que $u_{\rho_\varepsilon}$ não é de nenhum vértice de grau finito, e se ele fosse de algum vértice $v$ de grau infinito, teríamos que $v$ dominaria $\varepsilon$. Assim, $u_{\rho_\varepsilon} \in \mathcal{T}_E(G)$ e finalmente, é rotineiro verificar que $\rho_{ u_{\rho_\varepsilon}} = \rho_\varepsilon$.
+
+\end{prova}
+
+Veja que quando calculamos a imagem do terceiro morfismo, generalizamos o mapa $p_\bullet$  para quase todo o $\widetilde{\mathcal{T}_E}(G)$, tirando apenas os principais de vértice de grau finito, proibidos pelo pedido na definição de direções que as componentes conexas escolhidas sejam finitas. Se tirássemos essa restrição da definição, teríamos o mapa $p_\bullet$ definido em todo o $\widetilde{\mathcal{T}_E}(G)$, e assim ele e o $u_\bullet$ seriam um par de homeomorfismos inversos um do outro. Assim, o espaço $\widetilde{\mathcal{T}_E}(G)$ pode ser visto como um espaço de direções onde agora as direções podem escolher vértices de grau finito (como uma direção que se `afunila' em um único vértice).
+
+Ao identificarmos $\mathcal{T}_E(G)$ com sua imagem em $\Omega_E(G)$, podemos considerar os ultrafiltros não principais de cortes finitos como sendo raios não dominados e assim podemos visualizar $\Omega_E(G)$ como uma união disjunta dos raios dominados com os ultrafiltros não principais de cortes finitos. Ao passarmos de $\Omega_E(G)$ para $\mathcal{D}_E(G)$, os únicos objetos a mais que ganhamos são vértices de grau infinito (isto é, direções associadas a estes vértices), como argumentado no Corolário 2.2.2 do \cite{meninos2025}. Estes também podem ser vistos como ultrafiltros, mas principais, sobre o vértice de grau infinito. E ao passarmos de $\mathcal{D}(G)$ à $\widetilde{\mathcal{T}_E}(G)$, ganhamos os vértices de grau finito (isto é, os ultrafiltros principais de vértices de grau finito).
+
+No artigo \cite{meninos2025}, é argumentado que $\mathcal{D}(G)$ é um limite de espaços finitos discretos, o que significa que ele é um espaço de Stone. Como ele está contido em $\widetilde{\mathcal{T}_E}(G)$, isto sugere que podemos encontrar sua álgebra de Boole correspondente a partir do $\mathfrak{C}(G)$. De fato:
+
+\begin{proposicao}[Álgebra de Boole do espaço de direções via arestas]
+    Seja $I \defeq \{U \subset V(G) \mid U \text{ é finito e só contém vértices de grau finito }\}$. Então, I é um ideal de $\mathfrak{C}(G)$. Denote $\frac{\mathfrak{C}(G)}{I}$ como sendo a álgebra de Boole quociente de $\mathfrak{C}(G)$ por $I$, e $\frac{\widetilde{\mathcal{T}_E}(G)}{I}$ seu espaço de Stone. Teremos que o mapa quociente $q: \mathfrak{C}(G) \rightarrow \frac{\mathfrak{C}(G)}{I}$ induz uma função $i: \frac{\widetilde{\mathcal{T}_E}(G)}{I} \rightarrow \widetilde{\mathcal{T}_E}(G)$  contínua, injetora, aberta sobre sua imagem, que é exatamente $\mathcal{D}_E(G)$ (onde aqui identificamos este espaço com sua imagem homeomorfa em $\widetilde{\mathcal{T}_E}(G)$ como na proposição anterior). Assim, $\frac{\widetilde{\mathcal{T}_E}(G)}{I} \cong \mathcal{D}_E(G) $
+\end{proposicao}
+\begin{prova}
+    $I$ é fechado por união, e a interseção de um $A \in I$ com qualquer outro $B \in I$ ainda está em $I$, e logo $I$ é um ideal. O mapa $i: \frac{\widetilde{\mathcal{T}_E}(G)}{I} \rightarrow \widetilde{\mathcal{T}_E}(G)$ induzido pelo quociente $q: \mathfrak{C}(G) \rightarrow \frac{\mathfrak{C}(G)}{I}$ pode ser explicitado como sendo $u \mapsto \{U \in \mathfrak{C}(G) \mid  q(U) \in u \}$. É um resultado elementar da teoria de dualidade de Stone que este mapa é contínuo, injetor e aberto sobre a imagem, tudo isto seguindo do fato que $q$ é um homomorfismo de álgebra de Boole sobrejetor. Vamos argumentar que a imagem de $i$ é $\mathcal{D}_E(G)$. Estamos identificado este espaço com sua imagem em $\widetilde{\mathcal{T}_E}(G)$, que pela proposição anterior é igual a $\{u \in \widetilde{\mathcal{T}_E}(G) \mid u \neq u_v \text{ para todo vértice } v  \text{ de grau finito}\}$. Dado um $u \in \widetilde{\mathcal{T}_E}(G)$, se $i(u) \notin \mathcal{D}_E(G)$, teríamos $i(u) = u_v$ para algum vértice $v$ de grau finito. Mas daí $\{v\} \in i(u)$, ou seja, $0 = q(\{v\}) \in u$, contradizendo $u$ ser um ultrafiltro. Reciprocamente, dado um $u \in \mathcal{D}_E(G)$, defina $v \defeq \{\tilde{U} \in \frac{\mathfrak{C}(G)}{I} \mid q^{-1}(\tilde{U})\subset u\}$. Como $u$ não pode conter nenhum conjunto finito de vértices de grau finito, podemos fazer uma continha que garante que se $U,V \in \mathfrak{C}(G)$ e $q(U) = q(V)$ então $U \in u \iff V \in u$. Isto implica que $v = \{\tilde{U} \in \frac{\mathfrak{C}(G)}{I} \mid \exists U \in \mathfrak{C}(G) \text{ tal que } q(U) = \tilde{U} \text{ e } U \in u \} $. Assim, $v$ é ultrafiltro:
+    
+    \begin{itemize}[\ding{212}]
+    \item $0 \notin v$, pois nenhum conjunto finito de vértices de grau finito pertence a $u$
+    \item $1 \in v$, pois $V(G) \in u$ e $q(V(G)) = 1$
+    \item $\tilde{U},\tilde{V} \in v$ implica que existem $U,V \in \mathfrak{C}(G)$ com $q(U) = \tilde{U}, q(V) = \tilde{V}$ e $U,V \in u$, e daí $U\cap V \in u$ e $q(U \cap V) = q(U) \cap q(V) = \tilde{U} \cap \tilde{V}$, ou seja, $\tilde{U} \cap \tilde{V} \in v$
+    \item $\tilde{U} \in v, \tilde{V} \in \frac{\mathfrak{C}(G)}{I}$, $\tilde{U}  \leq \tilde{V}$ implica que $\tilde{U} = q(U), \tilde{V}=q(V), U \in u$ e $\tilde{U} = \tilde{U}\cap\tilde{V}$. Daí $q(U) = q(U\cap V)$ e portanto $U\cap V \in u$. Como $U\cap V \subset V$, temos $V \in u$ e logo $\tilde{V} \in u$
+    \item $q(U) =\tilde{U} \in \frac{\mathfrak{C}(G)}{I}$. Como $U \in u$ ou $V(G) \setminus U \in u$ e $q(V(G) \setminus U) = -\tilde{U}$, concluímos que ou $\tilde{U} \in v$ ou $-\tilde{U} \in v$
+    \end{itemize}
+
+    E como claramente $u\subset i(v)$, e ambos são ultrafiltros, concluímos $u = i(v)$.
+\end{prova}
+
+Pelo que conhecemos, a álgebra de cortes como descrita aqui só foi considerada no contexto de teoria geométrica de grupos, como no capítulo 2 de \cite{Dicks1980}. Lá, apenas o caso localmente finito era considerado, onde todos os espaços de extremidades e direções, via vértices ou arestas, são os mesmos. Uma forma equivalente de descrever a álgebra de cortes, no caso de árvores localmente finitas, é conhecida como \textit{tree algebra} na teoria de álgebras de Boole, como descrita no Handbook of Boolean Algebras. \cite{booleanhandbook}
+
+\section{Álgebra de separações}
+
+\begin{definicao*}[Álgebra de separações]
+    Uma \textit{separação} $\{A,B\}$ de um grafo $G$ são dois conjuntos $A,B$ de vértices tais que todo vértice de $G$ está em $A$ ou em $B$ e toda aresta de $G$ está no subgrafo induzido por $A$ ou no subgrafo induzido por $B$. Em símbolos: $G[A] \cup G[B] = G$. A separação é finita quando $A \cap B$ é finito.
+
+    \pulinho
+
+    Juntamos as separações em um conjunto usando conjuntos de arestas. O conjunto $\mathfrak{S}(G) \defeq \{ E \subset E(G) \mid V(E) \cap V(E^c) \text{ é finito} \}$ define uma álgebra de Boole, que chamamos de \textit{álgebra de separações finitas} do grafo.
+
+    \pulinho
+\end{definicao*}
+
+Um elemento $E \in \mathfrak{S}(G)$ define uma separação tomando os conjuntos $\{V(E), V(E^c)\}$, e uma separação $\{A,B\}$ é traduzida para um conjunto de arestas usando os conjuntos $E_A \defeq E(A) \cup E(A,A\cap B)$ e $E_B \defeq E(B) \cup E(B,A\cap B) $. Aqui, $E(X)$ sempre se refere ao conjunto de arestas cujas ambas pontas estão em um dado conjunto $X$ e $E(X,Y)$ se refere ao conjunto de arestas com uma ponta em $X$ e outra em $Y$ - usaremos esta notação algumas vezes daqui pra frente. Veja que nesta associação $E$ e o complementar $E^c$ são levados na mesma separação. Intuitivamente, assim como no caso da álgebra de cortes, um elemento da álgebra de separações é melhor visto como uma separação ordenada, e seu complementar se refere a mesma separação ordenada ao contrário.
+
+\begin{definicao*}[Ultrafiltros de separações finitas]
+O espaço de Stone associado à álgebra de cortes finitos de um grafo $G$ é denotado como $\widetilde{\mathcal{T}}(G)$. A sua topologia tem como base os conjuntos $O(A) \defeq \{u \in \mathcal{T}(G) \mid A \in u\}$ para cada $A \in \mathfrak{S}(G)$. Dado uma aresta $e$ de $G$, o ultrafiltro definido por $u_e \defeq \{A \in \mathfrak{S}(G) \mid e \in A\}$ é dito o ultrafiltro principal de $e$, e isto define um mapa injetivo $E(G) \rightarrow \widetilde{\mathcal{T}}(G)$, que consideramos como uma inclusão. O conjunto de ultrafiltros não principais é denotado como $\mathcal{T}(G)$.
+    
+\end{definicao*}
+
+Por simplicidade, usamos a mesma notação para os abertos básicos da álgebra de cortes - espero que pelo contexto fique claro qual está sendo referindo. Outro detalhe a se notar aqui é que, como todos os conjuntos finitos de arestas estão contidos em $\mathfrak{S}(G)$, um ultrafiltro é principal se e somente se ele é $u_e$ para alguma aresta. Logo, aqui podemos usar a nomenclatura usual de principalidade para nos referir a estes ultrafiltros, diferentemente do caso anterior de álgebra de cortes.
+
+\pulinho
+
+Os conjuntos da forma $\{e\}$ estão todos na álgebra de separações finitas. Então, o aberto básico de $\{e\}$ em $\widetilde{\mathcal{T}}(G)$ contém apenas o ultrafiltro principal referente ao elemento $e$. Isto mostra que o subconjunto de todos os ultrafiltros principais é uma união de abertos, e portanto seu complementar $\mathcal{T}(G)$ é um fechado de um espaço de Stone - e portanto também é espaço de Stone. Em particular, é compacto.
+
+Quando o grafo é localmente finito, seu espaço de extremidades é compacto. Também, ao `adicionar'' as extremidades ao grafo original, obtemos um espaço compacto. Mais precisamente, definimos a realização geométrica do grafo como sendo o espaço topológico que é a união do grafo com a topologia de $1$-complexo com o espaço de extremidade. Esta realização é sempre compacta no caso localmente finito. Ao adicionarmos a possibilidade de termos vértices de grau infinito, perdemos a compacidade - por exemplo, a estrela infinita de raios tem como espaço de extremidades o conjunto discreto com enumeráveis elementos, que não é compacto. Também não temos compacidade do próprio grafo, mesmo sem raios - a estrela infinita com um único vértice de grau infinito tem sua realização geométrica não compacta. O nosso espaço $\mathcal{T}(G)$ é, de certa forma, uma extensão do espaço de extremidades que irá compactificar não só as extremidades, mas também a realização geométrica do grafo. Veja, um raio $\varepsilon$ sempre tem uma cauda contida em apenas um dentre o $A$ e o $B$ de uma separação de ordem finita $\{A,B\}$ - não será difícil argumentar que isso define um ultrafiltro, e assim o espaço de extremidades vai estar contido no $\mathcal{T}(G)$, com a mesma topologia. O resto dos elementos de $\mathcal{T}(G)$ são o que falta para podermos compactifica o espaço de extremidades e a realização geométrica do grafo.
+
+
+
+\begin{teorema}[Extremidades são ultrafiltros de cortes]
+    Existe um embedding $\Omega(G)\xhookrightarrow{} \mathcal{T}(G)$. A imagem deste embedding é fechada se e somente se $\Omega(G)$ é compacto.
+\end{teorema}
+\begin{prova}
+Como comentamos mais cedo, um raio $\varepsilon$ sempre tem uma cauda contida em apenas um dentre o $A$ e o $B$ de uma separação de ordem finita $\{A,B\}$, e assim podemos usar esta escolha para definir nosso ultrafiltro. Defina $\tau_\varepsilon$ como sendo o  $\{E \in \mathfrak{S}(G) \mid \text{existe uma cauda de } \varepsilon \text{ contida em } E\}$. Para qualquer $E \in \mathfrak{S}(G)$, ao retirarmos os finitos vértices $V(E) \cap V(E^c)$, restam componentes conexas inteiramente contidas em $E$ ou inteiramente contidas em $E^c$, e nosso raio morará em apenas uma delas - assim ou $E$ ou $E^c$ estão em $\tau_\varepsilon$. O vazio não está lá (como pode haver uma cauda no vazio?), e se temos dois $E_1,E_2$ com caudas de $\varepsilon$, tome a cauda mais a frente dentre as duas e ela estará na interseção. Assim, temos um ultrafiltro, que será não principal pois caudas são infinitas, isto é, nenhuma mora em uma componente conexa finita e assim nenhum conjunto finito é escolhido.
+
+Chame este mapa $\varepsilon \mapsto \tau_\varepsilon$ de $\varphi$. Para qualquer $E$ em $\mathfrak{S}(G)$, é rotineiro verificar que 
+
+\[\varphi^{(-1}(O(E)) = \underset{C \text{ componente conexas em } E }{\bigcup} \Omega(V(E)\cap V(E^c),C) \]
+
+onde as componentes conexas $C$ são as do grafo $G \setminus (V(E) \cap V(E^c))$. 
+
+\pulinho
+
+Similarmente, dado um conjunto finito $X$ de vértices e uma componente conexa $C$ de $G \setminus X$
+
+\[
+\varphi(O(X,C)) = O(E_C) \cap \varphi(\Omega(G))
+\]
+
+onde $E_C$ é o conjunto de todas as arestas com pelo menos uma ponta em $C$.
+
+\pulinho
+
+Isto mostra que temos um mapa contínuo e aberto sobre sua imagem, ou seja, um embedding. A outra afirmação é uma simples consequência topológica vinda do fato de $\mathcal{T}(G)$ ser um compacto Hausdorff. Se a imagem do embedding é fechada, temos $\Omega(G)$ homeomorfo a um fechado de um compacto, que é compacto. Reciprocamente, se $\Omega(G)$ é compacto, sua imagem é um compacto de um compacto Hausdorff, que deve então ser fechado.
+    
+\end{prova}
+
+A situação só é realmente diferente no caso não localmente finito.
+
+\begin{proposicao}[$\aleph_0$-emaranhado de localmente finito vem de um raio]
+    O embedding $\Omega(G)\xhookrightarrow{} \mathcal{T}(G)$ é sobrejetor quando $G$ é localmente finito.
+\end{proposicao}
+\begin{prova}
+    Aquele argumento errado que o embedding é sobrejetivo quando $\Omega(G)$ é compacto funciona aqui.
+\end{prova}
+
+
+Vamos ver alguns exemplos destes espaços e álgebras.
+
+\begin{exemplo*}[Estrela infinita, raio, estrela com infinitas finitas caudas, pente infinito, árvore binária]
+    \begin{itemize}[\ding{212}]
+        \item Já vimos que a estrela infinita tem a álgebra de cortes como sendo a álgebra dos finitos-cofinitos sobre $\omega$, cujo espaço de Stone é a compactificação de $1$ ponto de $\omega$. Indo para álgebra de separações, vamos obter a outra famosa compactificação dos naturais. De fato, veja que qualquer conjunto de arestas da estrela só intercepta seu complementar no vértice do meio - assim, é finito. Daí, chamando de $T$ a estrela, $\mathfrak{S}(T) = \mathcal{P}(E(T)) \cong 2^\omega$. O espaço de Stone desta álgebra é $\beta\mathbb{N}$, a compactificação de Stone-Cech. Os ultrafiltros principais são os conjuntos de uma única aresta, e assim concluímos que $\mathcal{T}(T) \cong \beta\mathbb{N} - \mathbb{N}$.
+        \item No grafo $R$ que é apenas um raio, qualquer conjunto de arestas infinito em $\mathfrak{S}(R) $ deve conter uma cauda de um raio, se não existiriam infinitos vértices de separação. Assim, ele é cofinito, e concluímos que $\mathfrak{S}(R) \cong \text{Finco}(\omega) $, e seu único ultrafiltro não principal é o referente ao raio, como definido no embedding das extremidades em $\mathcal{T}(R)$.
+    \end{itemize}
+
+    \pulinho
+    
+
+    Para os próximos três exemplos, é mais conveniente descrever a álgebra $\frac{\mathfrak{S}(G)}{\text{Fin}(E(G))}$, que é a álgebra dual ao espaço $\mathcal{T}(G)$, como argumentaremos mais tarde na Proposição 7. É a situação análoga que já vimos no caso de álgebra de cortes: para retirar os ultrafiltros  principais basta quocientar pelos átomos.
+
+    \begin{itemize}[\ding{212}]
+        \item Nomeie cada folha da estrela infinita com um número natural $n$ e forme o grafo $R'$ colando na folha $n$ um caminho de $n-1$ vértices. Tome um $E \in \mathfrak{S}(R')$. O conjunto de arestas $E' \subset E$ vizinhas do vértice central irá definir todo o $E$: de fato, apenas finitas das caudas adicionadas podem ter a propriedade de ter algumas arestas em $E$ e algumas arestas fora. Todas as outras fora estas finitas devem ter seu pertencimento em $E$ determinado pela aresta adjacente ao vértice central. Concluímos que, a menos de quase-igualdade, $E'$ determina $E$ e assim $\frac{\mathfrak{S}(G)}{\text{Fin}(E(R'))} \cong \frac{2^\omega}{\text{Fin}(\omega)}$. Logo $\mathcal{T}(R') \cong \beta\mathbb{N} - \mathbb{N}$
+    \end{itemize}
+
+    \pulinho
+    
+    Nos próximos dois exemplos, traçamos o caminho contrário. Como o grafo é localmente finito, sabemos que $\mathcal{T}(G)$ é apenas o espaço de extremidades. Sabendo quem ele é, determinamos sua álgebra.
+
+        \begin{itemize}[\ding{212}]
+        \item O pente infinito $P$ tem o espaço de extremidades como sendo uma sequência convergente, ou seja, a compactificação de $1$ ponto dos naturais. Sua álgebra $\frac{\mathfrak{S}(P)}{\text{Fin}(E(P))}$ então, será isomorfa a $\text{Finco}(\omega)$.
+
+        \item A árvore regular de ordem 2 $T_2$ (a árvore binária) tem o conjunto de Cantor como seu espaço de extremidades. Assim, sua álgebra $\frac{\mathfrak{S}(T_2)}{\text{Fin}(E(T_2))}$ será a álgebra livre gerada por enumeráveis geradores. (também conhecida como sendo a única álgebra de Boole contável sem átomos).
+        \end{itemize}
+\end{exemplo*}
+
+Vamos clarificar a afirmação que $\mathcal{T}(G)$ compactifica todo o grafo.
+
+\begin{definicao*}[Realização geométrica e realização geométrica estendida]
+    A realização geométrica de um grafo $G$ é o espaço topológico  $|G|$ dado pelos vértices e arestas do grafo com a topologia de $1$-complexo usual - a que vem induzida da colagem de vários intervalos $[0,1]$ referentes as arestas. 
+    
+    \pulinho
+    Estendemos esta realização pro infinito com o espaço $|G|^* \defeq |G| \cup \mathcal{T}(G)$ onde os abertos básicos serão os abertos básicos de $|G|$ e os abertos básicos ao redor dos ultrafiltros de cortes, mas agora estendidos para conter arestas e vértices do grafo $O(E)^* = O(E) \cup  E \cup V(E) \setminus V(E)\cap V(E^c)$. 
+\end{definicao*} 
+
+A nossa definição $|G|^*$ naturalmente contém como subespaço a definição mais usual do espaço $|G| \cup \Omega(G)$, que é compacto no caso localmente finito. No caso geral, este subespaço é estritamente menor que o $|G|^*$.
+
+\begin{proposicao}[Realização geométrica estendida é compacta]
+    $|G|^*$ é compacto.
+\end{proposicao}
+\begin{prova}
+Dada uma cobertura aberta de $|G|^*$, podemos refiná-la para uma cobertura por abertos básicos. Em particular, ela cobre $\mathcal{T}(G)$ - e se esse espaço é coberto por conjuntos do tipo $O(E)^*$, ele é claro coberto por conjuntos do tipo $O(E)$. Mas $\mathcal{T}(G)$ é compacto, e logo existem finitos destes que o cobrem, digamos $\mathcal{T}(G) \subset O(E_1) \cup \dots O(E_n)$. Esta inclusão vai nos garantir que os conjuntos $E_1, \dots, E_n$ cobrem todas as arestas de $G$ a menos, possivelmente, de finitas arestas. De fato, suponha que existam infinitas arestas não cobertas por estes conjuntos, ou seja, a interseção $E_1^c \cap \dots \cap E_n^c$ é infinita. Construa o filtro $\{E \in \mathfrak{S}(G) \mid E_1^c \cap \dots \cap E_n^c \subset E \}$ e seja $u$ um ultrafiltro que o contém. Ele será não principal por possuir apenas conjuntos infinitos, e $E_i^c \in u$ para todo $i$, o que contradiz a cobertura $\mathcal{T}(G) \subset O(E_1) \cup \dots O(E_n)$. 
+
+Seja $G'$ o subgrafo finito induzido por todas as (finitas) arestas não cobertas por $E_1, \dots, E_n$ e por todos os (finitos) vértices dos conjuntos $V(E_1)\cap V(E_1^c), \dots, V(E_n)\cap V(E_n)^c$. Teremos então que $|G|^* \subset O(E_1)^* \cup \dots \cup O(E_n)^* \cup G'$. Mas $G'$ é finito e portanto compacto e assim podemos refinar a cobertura aberta original para uma subcobertura finita que cobre o $G'$, e assim encontramos uma subcobertura finita para o $|G|^*$, como queríamos.
+\end{prova}
+
+\section{Emaranhados}
+
+Vamos finalmente justificar porque estamos usando a letra $\mathcal{T}$ para o espaço de ultrafiltros. O conceito de \textit{tangle} nasceu na teoria de grafos como uma tentativa de abstrair a noção de uma parte bastante emaranhada de um grafo - assim, os traduzimos em português para emaranhados. Os emaranhados, quando estendidos para sua versão infinita, chamados de $\aleph_0$-emaranhados, agora não apontam exatamente para uma parte muito conectada do grafo - mas apontam para suas direções no infinito, de forma a recuperar os conceitos de extremidades e direções (via vértices). Em \cite{Diestel2017}, foi mostrado que estes são descritos por um limite inverso de ultrafiltros. Aqui, mostramos que basta uma única álgebra de Boole, a álgebra de separações finitas, para obtermos todos os $\aleph_0$-emaranhados, que serão seus ultrafiltros não principais.
+
+\begin{definicao*}[Orientação, contradição e emaranhado]
+
+A \textit{ordem} de uma separação $\{A,B\}$ é o cardinal $k = |A \cap B|$. Uma \textit{orientação de }$\{A,B\}$ é uma escolha de ordem $(A,B)$, onde agora temos um par ordenado. Uma $k$\textit{-orientação} é um conjunto que contém uma única orientação para cada separação $\{A,B\}$ de ordem estritamente menor que $k$.
+
+Diremos que $n$ separações orientadas $(A_1,B_1), \dots, (A_n, B_n)$ formam uma \textit{contradição} se $G[A_1] \cup \dots \cup G[A_n] = G$. Diremos que $n$ é a ordem dessa contradição.
+
+Um $k$-\textit{emaranhado} $\tau$ é uma $k$-orientação sem contradições de ordem $1$, $2$ ou $3$. Isto é, é um conjunto com uma única orientação para cada separação de ordem estritamente menor que $k$ tal que nenhum de seus subconjuntos forma uma contradição de ordem $1,2$ ou $3$.
+\end{definicao*}
+
+\begin{teorema}[$\aleph_0$-emaranhados são a mesma coisa que ultrafiltros não principais de separações finitas]
+Em um grafo $G$ conexo, ultrafiltros não principais da álgebra de separações finitas $\mathfrak{S}(G)$ estão em bijeção com os $\aleph_0$-emaranhados de $G$.
+\end{teorema}
+\begin{prova}
+Vamos construir um $\aleph_0$-emaranhado a partir de um ultrafiltro não principal $u$. Dada uma separação $\{A,B\}$ de ordem finita, vamos ter que $E(A),E(B) \in \mathfrak{S}(G)$ pelo fato de não existir arestas entre $A \setminus B$ e $B \setminus A$ e de $A \cap B$ ser finito. Disso também concluímos que $E(A)^c = E(B) \setminus E(A \cap B)$. Como $u$ é não principal e $E(A\cap B)$ é finito, temos que $E(A)^c \in u \iff E(B) \in u$, e portanto $E(A) \in u \iff E(B) \notin u$. Assim, $u$ escolhe um e apenas um dentre estes dois conjuntos e portanto podemos definir a $\aleph_0$-orientação $\tau_u \defeq \{(A,B) \mid E(B) \in u\}$. Resta apenas verificarmos que ela não possui contradições. De fato, se $(A_1,B_1), \dots, (A_n,B_n) \in \tau_u$ formassem uma contradição, teríamos que $E(A_1) \cup \dots E(A_n) = E(G)$ e portanto $E(A_1)^c \cap \dots \cap E(A_n)^c = \varnothing$, mas todos estes $E(A_i)^c$ estão em $u$, que não pode conter o vazio e é fechado por interseção.
+
+Resta agora mostrar a volta - construir um ultrafiltro não principal a partir de um $\aleph_0$-emaranhado $\tau$. Dado um $E \in \mathfrak{S}(G)$, defina a separação $\{V(E),V(E^c)\}$, que será finita. (note que aqui usamos que $G$ é conexo para garantir que não há vértices isolados, e assim esse par realmente é separação). Assim, $\tau$ a ordena, e com isso podemos construir $u_\tau \defeq \{E \in \mathfrak{S}(G) \mid (V(E^c),V(E)) \in \tau \}$ que iremos argumentar que forma um ultrafiltro não principal. Por construção, para qualquer $E \in \mathfrak{S}(G)$ teremos $E$ ou $E^c$ em $u_\tau$. O vazio não estará lá, pois $(\varnothing, V(G)) \in \tau$. Para ver que é fechado por interseção, tome dois $E_1,E_2 \in u_\tau$ e primeiramente note que $V(E_1) \cap V(E_2) \almostequal V(E_1 \cap E_2)$. De fato, qualquer vértice que seja adjacente a uma aresta em $E_1$ e a uma aresta em $E_2$ deve necessariamente ou estar em $V(E_1 \cap E_2)$ (quando uma destas arestas estiver na interseção $E_1 \cap E_2$) ou estar em $V(E_1)\cap V(E_1^c)$ e em $V(E_2) \cap V(E_2^c)$, que são ambos finitos. Voltando, então, suponha que $E_1 \cap E_2 \notin u_\tau$, ou seja, $(V(E_1 \cap E_2), V(E_1^c \cup E_2^c))\in \tau$. Como a orientação de $\tau$ é preservada por quase-igualdade, temos que $(V(E_1) \cap V(E_2), V(E_1^c \cup E_2^c))\in \tau$. Mas, daí, teríamos uma $3$-contradição $(V(E_1) \cap V(E_2), V(E_1^c \cup E_2^c)), (V(E_1^c),V(E_1)), (V(E_2^c),V(E_2))$ contida em $\tau$. Isto conclui nossa demonstração que $u_\tau$ é ultrafiltro, e ele deverá ser não principal pois não conterá nenhum conjunto finito: se $\{A,B\}$ é uma separação com $A$ finito, temos $(A,B)\in \tau$ sempre.
+
+    Ambas estas construções são inversas uma da outra, que pode ser visto através de uma conta rotineira (porém carregada de notações) que explicita todas as definições:
+    \begin{itemize}[\ding{212}]
+        \item do ultrafiltro para o emaranhado de volta para o ultrafiltro
+        
+        \begin{align*}
+            u &\mapsto \tau_u = \{(A,B) \mid E(B) \in u\} \\
+            &\mapsto  u_{\tau_u} = \{E \in \mathfrak{S}(G) \mid (V(E^c),V(E)) \in \tau_u\}
+        \end{align*}  
+
+        E aí, usando que $E(V(E)) = E \cup E(V(E)\cap V(E^c))$, isto é, $E(V(E))$ e $E$ diferem por um conjunto finito, temos
+
+        \begin{align*}
+        E \in u_{\tau_u} &\iff (V(E^c),V(E)) \in \tau_u\ \\
+        &\iff E(V(E)) \in u \\ 
+        &\iff E \in u
+         \end{align*}
+
+         \item do emaranhado para o ultrafiltro de volta para o ultrafiltro
+
+            \begin{align*}
+            \tau &\mapsto u_\tau = \{E \in \mathfrak{S}(G) \mid (V(E^c),V(E)) \in \tau\} \\ 
+            &\mapsto \tau_{u_\tau} = \{(A,B) \mid E(B) \in u_\tau\}
+        \end{align*}
+
+        E aí, usando que $V(E(B)) = B$, e que $V(E(B)^c)$ difere de $A$ por um conjunto finito de vértices, temos 
+
+                \begin{align*}
+        (A,B) \in \tau_{u_\tau} &\iff (V(E(B)^c),V(E(B)))\in \tau \\
+        &\iff (A,B) \in \tau 
+         \end{align*}
+         
+    \end{itemize}
+\end{prova}
+
+Em \cite{Diestel2017}, uma topologia é colocada nos $\aleph_0$-emaranhados ao descrevê-lo como um limite inverso de espaços de ultrafiltros. Resumidamente, lá é mostrado que todo $\aleph_0$-emaranhado $\tau$ define unicamente, para cada subconjunto finito de vértices $X$, um ultrafiltro $v_{\tau,X}$ nas álgebras de Boole $\mathcal{P}(\mathcal{C}_X)$, onde $\mathcal{C}_X$ é o conjunto de componentes conexas de $G \setminus X$. Estes satisfazem uma condição de compatibilidade quando $X \subset X'$ dada pela função $f_{X',X}$ que associa um ultrafiltro em $\mathcal{P}(\mathcal{C}_{X'})$ a um ultrafiltro em $\mathcal{P}(\mathcal{C}_X)$. Reciprocamente, qualquer escolha de ultrafiltros $(v_X)$ em $\mathcal{P}(\mathcal{C}_X)$ para cada $X$ que satisfaça a condição de compatibilidade $f_{X',X}(v_X') = v_X$ define um $\aleph_0$-emaranhado. Usando a topologia de Stone em cada um dos espaços de ultrafiltros de $\mathcal{P}(\mathcal{C}_X)$, a topologia induzida no espaço de $\aleph_0$-emaranhados será a topologia de subespaço da topologia produto de todos estes espaços de ultrafiltros.
+
+\begin{proposicao}[Topologia por limite inverso é a topologia de Stone nos $\aleph_0$-emaranhados]
+    A topologia induzida por limite inverso nos $\aleph_0$-emaranhados é homeomorfa a topologia de Stone em $\mathcal{T}(G)$.
+\end{proposicao}
+\begin{prova}
+    Dado um $u \in \mathcal{T}(G)$, na bijeção construída no teorema anterior, o associamos ao $\aleph_0$-emaranhado $\tau_u = \{(A,B) \mid E(B) \in u\}$. Este, por sua vez, é associado como em \cite{Diestel2017}, aos ultrafiltros $(\tau_{u_{X}})$ onde $\tau_{u_{X}} \defeq \{C \subset \mathcal{C}_X \mid  (\bigcup(\mathcal{C}_X \setminus C) \cup X, \bigcup C  \cup X) \in \tau_u\}$. A condição se traduz em $E(\bigcup C  \cup X) \in \tau$, que é equivalente a dizer que $E_C = E(C) \cup E(C,X) \in \tau$. 
+
+    Os abertos básicos na topologia do limite inverso serão os conjuntos $O(X,C) \defeq \{\tau \mid C \in \tau_X\}$ onde $\tau_X$ é o ultrafiltro correspondente ao conjunto finito $X$ do $\aleph_0$-emaranhado $\tau$ e $C$ é um conjunto de componentes conexa de $G \setminus X$. Os abertos básicos na topologia de Stone são os da forma $O(E) \defeq \{u \in \mathcal{T}(G) \mid E \in u\}$ para um dado $E \in \mathfrak{S}(G)$. Na bijeção, básico será mandado em básico. A imagem de um básico $O(X,C)$ será exatamente $O(E_C)$; reciprocamente, a imagem de um básico $O(E)$ será $O(X,C_E)$ onde $X = V(E) \cap V(E^c)$ e $C_E \defeq \{C \in C_X \mid C \subset V(E)\}$.
+\end{prova}
+
+Em \cite{Diestel2017}, a realização geométrica estendida definida lá é inteiramente análoga a nossa, tendo sido inspirada nela, e não é difícil de se ver que ambas são homeomorfas. 
+
+\pulinho
+
+O espaço $\mathcal{T}(G)$ é um subespaço fechado de um compacto Hausdorff totalmente desconexo, e portanto é também compacto Hausdorff totalmente desconexo - isto é, um espaço de Stone. Obtemos a sua álgebra de Boole através da mesma ideia que usamos para a álgebra de cortes, quocientando $\mathfrak{S}(G)$ por um ideal, agora o ideal de todos os conjuntos finitos de arestas. Esta mesma álgebra pode ser obtida de outra maneira, através do resultado anterior. Aplicamos o funtor de dualização ao limite inverso que caracteriza $\mathcal{T}(G)$, e assim obtemos um limite direto de álgebras de Boole.
+
+\begin{proposicao}[Álgebra de Boole dos $\aleph_0$-emaranhados]
+    A álgebra de Boole dual ao espaço $\mathcal{T}(G)$ é $\frac{\mathfrak{S}(G)}{\text{Fin}(E(G))}$ onde $\text{Fin}(E(G)) \defeq \{E \subset E(G) \mid E \text{ é finito }\}$. 
+    
+    \pulinho
+    Para cada conjunto finito de vértices $X \subset V(G)$, seja $S_X$ o conjunto de componentes conexas de $G - X$ e $\mathcal{P}(S_X)$ seu conjunto de partes, munido da sua estrutura usual como álgebra de Boole. Dado dois conjuntos finitos de vértices $X \subset X'$, defina $f_{X,X'}: \mathcal{P}(S_X) \rightarrow \mathcal{P}(S_{X'})$ como sendo $f(A) = \{C' \in S_{X'} \mid \text{ existe } C \in A \text{ tal que } C \subset C' \}$. Então, $\frac{\mathfrak{S}(G)}{\text{Fin}(E(G))}$ é o limite direto do diagrama dado pelos mapas $f_{X,X'}$.
+\end{proposicao}
+\begin{prova}
+    A primeira parte é um resultado usual de álgebras de Boole: para retirar ultrafiltros não principais do espaço de Stone basta quocientar sua álgebra pelo ideal gerado por todos os átomos. (o dual da derivada de Cantor-Bendixson). Para a segunda parte, basta aplicar o funtor de dualização entre álgebras de Boole e espaços de Stone. no diagrama de limite inverso da proposição anterior - lembrando que o funtor é contravariante, isto é, ele reverte setas, logo limite inverso vira limite direto.
+\end{prova}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

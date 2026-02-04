@@ -1,0 +1,335 @@
+\documentclass[11pt]{article}
+
+% Pacotes
+\RequirePackage{luatex85}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsthm}
+\usepackage{framed, color,xcolor}
+\usepackage{stmaryrd}
+\usepackage{rotating}           % Usado para rotacionar o texto
+\usepackage[all,knot,arc,import,poly]{xy}   % Pacote para desenhos gráficos
+% Este pacote pode conflitar com outros pacotes gráficos como o ``pictex''
+% Então é necessário usar apenas um dos pacotes conflitantes
+\usepackage{tikz, tikz-cd}
+\usepackage{epigraph}
+\usetikzlibrary{babel}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usepackage[stix2]{newtxmath}
+\usepackage{mathtools, nccmath}
+%\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{amssymb, mathrsfs}
+\usepackage[numbers]{natbib}
+\usepackage{fontspec}
+\usepackage{enumitem} % pra substituir o símbolo do itemize por alguma coisa legal, tipo setinhas:  \begin{itemize}[label=\ding{212}]
+\usepackage{pifont}
+\usepackage{stmaryrd} % for \arrownot (notação de adjacência em grafo)
+\usepackage{quiver} %pacote do quiver pra desenhar diagramas mais legais
+
+%Fontes e Línguas
+\usepackage[portuguese]{babel}
+%\usepackage{eufrak}
+\usepackage{emoji}
+\setmainfont{DarwinSerif-Regular.otf}
+\newfontfamily\fakebold[FakeBold=1.75]{DarwinSerif-Regular.otf}
+\newfontfamily\fakeitalic[FakeSlant=0.2]{DarwinSerif-Regular.otf}
+\renewcommand{\textbf}[1]{{\fakebold#1}}
+\renewcommand{\textit}[1]{{\fakeitalic#1}}
+\renewcommand{\bfseries}{\fakebold}
+\renewcommand{\itshape}{\fakeitalic}
+
+
+
+%Cores
+
+
+%Comandinhos que gosto
+\usepackage{mathtools}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\eqdef}{=\vcentcolon}
+\newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+\newcommand{\logo}{\Rightarrow}
+\newcommand{\pulinho}{\vspace{.5cm}}
+\newcommand{\edge}{%
+  \mathrel{-}% minus as a relation
+  \joinrel\joinrel % some backup
+  \mathrel{-}% minus as a relation
+}
+\newcommand{\notedge}{%
+  \mathrel{\mkern2mu}% a small advancement
+  \arrownot % a short slash
+  \mathrel{\mkern-2mu}% compensate
+  \edge
+}
+
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\Cay}{\text{Cay}}
+
+\newcommand{\luafacil}{
+\emoji{waxing-crescent-moon}
+}
+
+\newcommand{\luamedio}{
+\emoji{first-quarter-moon}
+}
+
+\newcommand{\luadificil}{
+\emoji{waxing-gibbous-moon}
+}
+
+\newcommand{\luaprojeto}{
+\emoji{full-moon}
+}
+
+\let\varphi\phi
+
+%Caixinhas coloridas
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Teorema}
+\newenvironment{teorema}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{theorem}
+}
+{
+\end{theorem}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{theorem*}{Teorema}
+\newenvironment{teorema*}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{theorem*}
+}
+{
+\end{theorem*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{prop}{Proposição}
+\newenvironment{proposicao}{
+\definecolor{shadecolor}{HTML}{FFDBDF}
+\begin{shaded}
+\begin{prop}
+}
+{
+\end{prop}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{prop*}{Proposição}
+\newenvironment{proposicao*}{
+\definecolor{shadecolor}{HTML}{FFDBDF}
+\begin{shaded}
+\begin{prop*}
+}
+{
+\end{prop*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{cor}{Corolário}
+\newenvironment{corolario}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{cor}
+}
+{
+\end{cor}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{cor*}{Corolário}
+\newenvironment{corolario*}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{cor*}
+}
+{
+\end{cor*}
+\end{shaded}
+}
+
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}
+\newenvironment{definicao}{
+\definecolor{shadecolor}{HTML}{defcfc}
+\begin{shaded}
+\begin{definition}
+}
+{
+\end{definition}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{definition*}{Definição}
+\newenvironment{definicao*}{
+\definecolor{shadecolor}{HTML}{defcfc}
+\begin{shaded}
+\begin{definition*}
+}
+{
+\end{definition*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{example}{Exemplo}
+\newenvironment{exemplo}{
+\definecolor{shadecolor}{HTML}{b9e6d3}
+\begin{shaded}
+\begin{example}
+}
+{
+\end{example}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{example*}{Exemplo}
+\newenvironment{exemplo*}{
+\definecolor{shadecolor}{HTML}{b9e6d3}
+\begin{shaded}
+\begin{example*}
+}
+{
+\end{example*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{veronica}{Lema}
+\newenvironment{lema}{
+\definecolor{shadecolor}{HTML}{FFF1F2}
+\begin{shaded}
+\begin{veronica}
+}
+{
+\end{veronica}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{veronica*}{Lema}
+\newenvironment{lema*}{
+\definecolor{shadecolor}{HTML}{FFF1F2}
+\begin{shaded}
+\begin{veronica*}
+}
+{
+\end{veronica*}
+\end{shaded}
+}
+
+\newenvironment{prova}{\paragraph{Demonstração:}}{\hfill$\square$ 
+\pulinho
+}
+
+\newenvironment{aviso}{
+\definecolor{shadecolor}{HTML}{fffe9a}
+\begin{shaded}
+}{\end{shaded}}
+
+\theoremstyle{definition}
+\newtheorem{exersisio}{Exercício}
+\newenvironment{exercicio}{
+\definecolor{shadecolor}{HTML}{CFB5FF}
+\begin{shaded}
+\begin{exersisio}
+}
+{
+\end{exersisio}
+\end{shaded}
+}
+
+%Tamanho do papel
+\usepackage[a4paper,top=1cm,bottom=1cm,margin=3.5cm]{geometry}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Definições só pra esse texto
+\usepackage[bb=boondox]{mathalpha}
+
+
+
+\title{Emaranhados}
+\author{Violeta Mar}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+A teoria de emaranhados (\textit{tangles}, em inglês) nasce na teoria de conectividade de grafos finitos. Aqui apresentamos uma versão `conjuntista' dela, vinda da versão simplificada apresentada por Diestel em seu livro cujo objetivo era aplicações em inteligência artificial. \cite{diestel2024tangles}
+
+\begin{definicao*}[Emaranhados e consistência]Seja $V$ um conjunto, e $S \subset \mathcal{P}(V)$ um subconjunto fechado para complementar. Uma função $\tau: S \rightarrow \{0,1\}$ é dita um \textit{emaranhado} se satisfaz
+  \begin{itemize}[label=\ding{212}]
+  \item $\tau(A) = 1$ ou $\tau(\lnot A) = 1$ para qualquer $A \in S$
+  \item \textit{consistência}: dados quaisquer $A,B,C \in S$, se a interseção destes três é vazia, então pelo menos um dos $\tau(A),\tau(B), \tau(C)$ é $0$.
+  \end{itemize} 
+\end{definicao*}
+
+Vamos dizer que $\tau$ escolhe um $A$ se $\tau(A) = 1$. Veja que consistência implica que $\tau$ sempre escolhe apenas um dentre $A$ e seu complementar $\lnot A$.
+
+Esta definição pode lembrar a definição de ultrafiltros para álgebras de Boole. De fato, se $S$ é uma álgebra de Boole, emaranhados são apenas ultrafiltros.
+
+\begin{proposicao}[Emaranhados são ultrafiltros quando $S$ é de Boole]
+  Suponha que $S$ seja fechado para união e interseção, ou seja, $S$ forma uma álgebra de Boole (ou corpo de conjuntos). Então $\tau:S \rightarrow \{0,1\}$ é um emaranhado se e somente se é um homomorfismo de álgebras de Boole, ou seja, um ultrafiltro.
+\end{proposicao}
+\begin{prova}
+  Se $\tau$ é homomorfismo, então $\tau(A\cap B \cap C) = 0$ quando $A \cap B \cap C = \varnothing$, logo $\tau(A)\tau(B)\tau(C) = 0$, que só pode acontecer se pelo menos um destes valores é $0$.
+
+  Reciprocamente, dado um emaranhado $\tau$ e dois elementos $A,B \in S$, considere os quatro casos de valores para $\tau(A)$ e $\tau(B)$. Faremos o primeiro: suponha $\tau(A) = \tau(B) = 1$. Como a interseção de $A$, $B$ e $\lnot (A \cap B)$ é vazia, devemos ter $\tau (\lnot (A \cap B)) = 0$ e portanto $\tau(A \cap B) = 1 = \tau(A)\tau(B)$. Como a interseção de $A \cap B$ e $\lnot A \cap \lnot B$ é vazia, então $\tau(\lnot A \cap \lnot B) = 0 $. Mas $\lnot (\lnot A \cap \lnot B) = A \cup B$ e logo $\tau(A \cup B) = 1 = \tau(A) + \tau(B)$. Fazemos contas análogas para cada um dos outros três casos e concluimos que $\tau$ é homomorfismo.
+\end{prova}
+
+Vamos deixar essa prova um pouco mais clara introduzindo alguns conceitos a mais.
+
+\begin{definicao*}[Cantos e comparabilidade]
+  Dados dois conjuntos $A,B \in S$, chamamos os quatro conjuntos $A \cap B, A \cap \lnot B, \lnot A \cap B, \lnot A \cap \lnot B$ de cantos do par $A,B$. Dizemos que $A$ e $B$ são comparáveis se pelo menos um destes conjuntos é vazio, caso contrário dizemos que são incomparáveis.
+\end{definicao*}
+
+Veja que $A$ é comparável a $B$ exatamente quando pelo menos uma das inclusões $A \subset B, A \subset \lnot B, \lnot A \subset B, \lnot A \subset \lnot B$ é verdadeira. Ou seja, $A$ e $B$ são incomparáveis quando $\{A, B, \lnot A, \lnot B\}$ é um conjunto de elementos que são incomparáveis em relação a ordem dada pela inclusão.
+
+O valor de $\tau$ dos quatro cantos é inteiramente determinado pelo valor de $\tau$ em $A$ e em $B$ - é isto que essencialmente mostramos nos quatro casos da demonstração da Proposição $1$.
+
+Os cantos de um par de conjuntos em $S$ podem não estar presentes em $S$. Dado um $S \subset \mathcal{P}(V)$ fechado pra complementar, dizer que todos os cantos de $S$ sempre estão em $S$ é equivalente a dizer que $S$ é uma álgebra de Boole. Na teoria de emaranhados, uma versão mais fraca vai ser suficiente para estabelecermos os resultados legais que buscamos.
+
+\begin{definicao*}[Álgebras sub-Boole]
+  Um subconjunto $S \subset \mathcal{P}(V)$ é dito sub-Boole (ou, na terminologia do Diestel, um conjunto submodular) se é fechado por complementar e dados quaisquer dois $A,B \in S$ temos que $A \cup B \in S$ ou $A \cap B \in S$.
+\end{definicao*}
+
+Temos dois pares de cantos que dizemos \textit{opostos}: $A \cap B$ e $\lnot A \cap \lnot B$; $\lnot A \cap B$ e $A \cap \lnot B$. Dado um $S \subset \mathcal{P}(V)$ fechado pra complementar, dizer que dentre dois cantos opostos, pelo menos um está em $S$ é equivalente a dizer que $S$ é sub-Boole.
+
+Adicionando cantos, então, sempre conseguimos estender um dado $S$ para um $\tilde{S}$ que seja um sub-Boole ou uma de fato álgebra de Boole. Porém, um emaranhado $\tau$ de $S$ não necessariamente se estende para um emaranhado $\tilde{\tau}$ em $\tilde{S}$: veja, na definição, pedimos apenas que triplas de conjuntos com interseção vazia devem ter pelo menos um de seus conjuntos não escolhidos por $\tau$. Ao adicionarmos cantos ao $S$, não só triplas mas agora interseções de possivelmente até $6$ conjuntos devem ser consistentes para que tenhamos um emaranhado. Nem todo emaranhado vai ter esse nível mais alto de consistência. Por exemplo...
+
+\begin{exemplo*}
+  Seja $V = \{1,2,3,4\}$, $A = \{2,3,4\}, B = \{1,3,4\}, C = \{1,2,4\}, D = \{1,2,3\}$. Faça $S = \{A,B,C,D,\lnot A, \lnot B, \lnot C, \lnot D\}$. Então, a função $\tau$ que atribui $1$ a todos os $A,B,C,D$ e $0$ a seus complementares é um emaranhado. Mas, se adicionarmos apenas o canto $A \cap B$ a $S$, já não podemos estender $\tau$ para um $\tilde{\tau}$. Pois, se pudessemos, o valor de $\tilde{\tau}$ em $A \cap B$ deveria ser $1$, porém $(A \cap B) \cap C \cap D$ é vazio, e nenhum dos três $\tilde{\tau}(A \cap B), \tilde{\tau}(C), \tilde{\tau}(D)$ é $0$.
+\end{exemplo*}
+
+É claro, como o valor de um emaranhado $\tau$ em qualquer um dos quatro cantos de $A,B$ é determinado pelos valores de $\tau$ em $A$ e $B$, se existir uma extensão $\tilde{\tau}$ para $\tilde{S}$ então ela deve ser única.
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+
+\end{document}

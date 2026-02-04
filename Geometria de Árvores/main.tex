@@ -19,8 +19,8 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
 \usepackage[stix2]{newtxmath}
-\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{mathtools, nccmath}
+%\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{amssymb, mathrsfs}
 \usepackage[numbers]{natbib}
 \usepackage{fontspec}
@@ -31,7 +31,8 @@
 
 %Fontes e Línguas
 \usepackage[portuguese]{babel}
-\usepackage{eufrak}
+%\usepackage{eufrak}
+\usepackage{emoji}
 \setmainfont{DarwinSerif-Regular.otf}
 \newfontfamily\fakebold[FakeBold=1.75]{DarwinSerif-Regular.otf}
 \newfontfamily\fakeitalic[FakeSlant=0.2]{DarwinSerif-Regular.otf}
@@ -68,11 +69,19 @@
 \newcommand{\Cay}{\text{Cay}}
 
 \newcommand{\luafacil}{
-oi
+\emoji{waxing-crescent-moon}
 }
 
 \newcommand{\luamedio}{
-oi
+\emoji{first-quarter-moon}
+}
+
+\newcommand{\luadificil}{
+\emoji{waxing-gibbous-moon}
+}
+
+\newcommand{\luaprojeto}{
+\emoji{full-moon}
 }
 
 \let\varphi\phi
@@ -257,35 +266,34 @@ oi
 %Definições só pra esse texto
 \usepackage[bb=boondox]{mathalpha}
 
-\title{DECLARAÇÃO DE RESIDÊNCIA CONJUNTA}
-\author{}
+
+
+\title{Geometria de Árvores}
+\author{Violeta Mar}
 \date{}
+
 
 \begin{document}
 
 \maketitle
 
-Eu, Violeta Martins de Freitas, civilmente registrada como Raffael Domacir de Freitas, brasileira, estudante, inscrita no CPF sob o nº 156.012.797-05 e no RG nº 37.179.272-1, declaro para os devidos fins que possuo residência e domicílio com  Wesley Nigel Whitehead, estadunidense, artista, inscrito no CPF sob o nº 002.182.689-71, no endereço Rua Dr. Joaquim Inácio de Moraes, nº 250 - Vila Izabel, CEP 13570-782, na cidade de São Carlos - SP, conforme comprovante de endereço anexo.
+texto do gromov sobre árvores como inspiração filosofica artistica
 
-Por ser a expressão da verdade, firmo a presente para efeitos legais e sob as penas da lei, tendo ciência de que eventual falsidade implicaria em sanções civis, administrativas e criminais, conforme artigo 299 do Código Penal.
+\section{As Árvores}
+árvores combinatórias(falar de resultados elementares, um único caminho entre quaisquer dois pontos, mais), real trees (provar equiv entre definição do john roe e definição como não tendo subespaço homeomorfo a circulo?), árvores conjuntistas
 
-\pulinho
+\section{Os Pontos}
+produto de gromov, caracterização via configuaração três pontos (triangulos são tripods), caracterização via configuração quadrilateros (matriz com as três somas, dois sendo iguais e o do produto de gromov ser maior que o minimo dos outros produtos de gromov)
 
-São Carlos - SP, 26 de setembro de 2025.
+comentar aqui da analogia com geometria hiperbolica e arvoers como 0-hiperbolicas
 
+\section{As Simetrias}
+teoria de bass serre, caracterização dos grupos de simetria como produtos wedge de grupos simétricos
 
-\pulinho
+o que mais se sabe sobre simetrias de árvores infinitas? (ou de árvores finitas mesmo?)
 
-\pulinho
-
-\pulinho
-
-
-Violeta Martins de Freitas
-
-
-
-
+\section{O Absoluto}
+equivalência categórica entre espaços ultramétricos e árvores, analogia entre o absoluto hiperbolico e o end space
 
 
 \end{document}

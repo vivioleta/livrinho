@@ -1,6 +1,6 @@
-PWD /home/violeta/Área de trabalho/meu phd :)/é hora de escrever/docu
+PWD /home/viola/Área de trabalho/livrinho/Emaranhados
 INPUT /usr/local/texlive/2025/texmf-var/web2c/luahbtex/lualatex.fmt
-INPUT /home/violeta/Área de trabalho/meu phd :)/é hora de escrever/docu/main.tex
+INPUT /home/viola/Área de trabalho/livrinho/Emaranhados/main.tex
 OUTPUT main.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tex-ini-files/lualatexquotejobname.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/ltluatex.lua
@@ -15,7 +15,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/luatex/lualibs/lualibs-extended.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/luatex/lualibs/lualibs-extended-merged.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/luatex/luaotfload/luaotfload-log.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/luatex/luaotfload/fontloader-basics-gen.lua
-OUTPUT /home/violeta/.texlive2025/texmf-var/m_t_x_t_e_s_t.tmp
+OUTPUT /home/viola/.texlive2025/texmf-var/m_t_x_t_e_s_t.tmp
 INPUT /usr/local/texlive/2025/texmf-dist/tex/luatex/luaotfload/luaotfload-parsers.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/luatex/luaotfload/luaotfload-configuration.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/luatex/luaotfload/luaotfload-status.lua
@@ -60,10 +60,11 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/luatex/luaotfload/luaotfload-tounic
 INPUT /usr/local/texlive/2025/texmf-dist/tex/luatex/luaotfload/luaotfload-case.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/luatex/luaotfload/luaotfload-bcp47.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.lua
+INPUT /usr/local/texlive/2025/texmf-dist/tex/luatex/lua-uni-algos/lua-uni-stage-tables.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/size11.clo
-INPUT /home/violeta/.texlive2025/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz
-INPUT /home/violeta/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc
+INPUT /home/viola/.texlive2025/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz
+INPUT /home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/luatex85/luatex85.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -257,7 +258,6 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/oberdiek/centernot.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/kastrup/binhex.tex
-INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/graphics/dvipsnam.def
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/mathtools/mathtools.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/mathtools/mhsetup.sty
@@ -273,7 +273,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec.cfg
-INPUT /home/violeta/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc
+INPUT /home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/pifont.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/upzd.fd
@@ -292,13 +292,14 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/babel/babel.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/babel/luababel.def
 INPUT /usr/local/texlive/2025/texmf-var/tex/generic/config/language.dat
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/babel/luababel.def
-INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/babel-portuges/portuguese.ldf
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/babel/locale/pt/babel-portuguese.tex
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/babel/locale/pt/babel-pt.ini
+INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/babel-portuges/portuguese.ldf
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/hyph-utf8/loadhyph/loadhyph-pt.tex
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/hyph-utf8/patterns/tex/hyph-pt.tex
-INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/eufrak.sty
-INPUT /home/violeta/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/darwinserif-regular.luc
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/emoji/emoji.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/emoji/emoji-table.def
+INPUT /home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/darwinserif-regular.luc
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/iftex/ifvtex.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/mathalpha/mathalpha.sty
@@ -416,6 +417,9 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/ursfs.fd
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
+INPUT /home/viola/.texlive2025/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc
+INPUT /home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/notocoloremoji.luc
+INPUT /home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/hb/11d3e5db254c6b73d86ac3bbd5f6ef0aecc7463fab9726ee04d7203d35016ba4.luc
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/rm-lmr12.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/rm-lmr9.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/rm-lmr7.tfm
@@ -510,5 +514,13 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./main.bbl
 INPUT ./main.aux
 INPUT ./main.out
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb
