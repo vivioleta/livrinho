@@ -319,14 +319,88 @@ Temos dois pares de cantos que dizemos \textit{opostos}: $A \cap B$ e $\lnot A \
 
 Adicionando cantos, então, sempre conseguimos estender um dado $S$ para um $\tilde{S}$ que seja um sub-Boole ou uma de fato álgebra de Boole. Porém, um emaranhado $\tau$ de $S$ não necessariamente se estende para um emaranhado $\tilde{\tau}$ em $\tilde{S}$: veja, na definição, pedimos apenas que triplas de conjuntos com interseção vazia devem ter pelo menos um de seus conjuntos não escolhidos por $\tau$. Ao adicionarmos cantos ao $S$, não só triplas mas agora interseções de possivelmente até $6$ conjuntos devem ser consistentes para que tenhamos um emaranhado. Nem todo emaranhado vai ter esse nível mais alto de consistência. Por exemplo...
 
-\begin{exemplo*}
+\begin{exemplo*}[Emaranhado não estendível]
   Seja $V = \{1,2,3,4\}$, $A = \{2,3,4\}, B = \{1,3,4\}, C = \{1,2,4\}, D = \{1,2,3\}$. Faça $S = \{A,B,C,D,\lnot A, \lnot B, \lnot C, \lnot D\}$. Então, a função $\tau$ que atribui $1$ a todos os $A,B,C,D$ e $0$ a seus complementares é um emaranhado. Mas, se adicionarmos apenas o canto $A \cap B$ a $S$, já não podemos estender $\tau$ para um $\tilde{\tau}$. Pois, se pudessemos, o valor de $\tilde{\tau}$ em $A \cap B$ deveria ser $1$, porém $(A \cap B) \cap C \cap D$ é vazio, e nenhum dos três $\tilde{\tau}(A \cap B), \tilde{\tau}(C), \tilde{\tau}(D)$ é $0$.
 \end{exemplo*}
 
 É claro, como o valor de um emaranhado $\tau$ em qualquer um dos quatro cantos de $A,B$ é determinado pelos valores de $\tau$ em $A$ e $B$, se existir uma extensão $\tilde{\tau}$ para $\tilde{S}$ então ela deve ser única.
 
+Continuando a introdução dos conceitos necessários para chegarmos ao nosso principal teorema, o teorema das árvores de emaranhados, trazemos agora os conjuntos árvore.
 
+\begin{definicao*}[Encaixados, conjunto árvore]
+  Dizemos que dois conjuntos $A,B \subset V$ estão encaixados se ou $A$ é comparável com $B$ em relação a inclusão (isto é, $A \subset B$ ou $B \subset A$) ou então $\lnot A$ é comparável com $B$ (isto é, $\lnot A \subset B$ ou $B \subset \lnot A$).
 
+  Um $S \subset \mathcal{P}(V)$ é dito um conjunto árvore se quaisquer dois $A,B \in S$ (que não sejam complementares um do outro) estão encaixados.
+\end{definicao*}
+
+Lembrando que estamos sempre conceitualizando um $A \subset V$ como uma partição de $V$ em dois pedaços: $A$ e seu complementar $\lnot A$.
+
+Vamos entender o que tem de árvore em conjuntos árvore.  Primeiramente, toda árvore define um conjunto árvore.
+
+\begin{proposicao}[Conjunto árvore da árvore]
+  Seja $T$ uma árvore (um grafo simples sem ciclos). Defina $S(T) = \{A \subset V(T) \mid \text{ existe uma única aresta entre } A \text{ e } \lnot A\}$. Então $S$ é um conjunto árvore.
+\end{proposicao}
+\begin{prova}
+Veja que cada aresta $e$ de $T$ define um $A \in S(T)$, tomando $A$ como uma das duas componentes conexas de $T \setminus e$, sendo a outra $\lnot A$. E, por outro lado, dado um $A \in S(T)$, se tomarmos $e$ como a aresta que liga $A$ a seu complementar, então $A$ é uma das componentes conexas de $G \setminus e$. Sabendo isso, vamos agora mostrar que $S(T)$ é um conjunto árvore. Tome dois $A,B \in S(T)$ não complementares, e seja $e,f$ suas arestas correspondentes. $f$ deve ligar dois vértices de uma das componentes conexas de $G\setminus e$, ou seja, $f$ é uma aresta do grafo induzido por $A$ ou uma aresta do grafo induzido por $\lnot A$. Digamos que $f$ é uma aresta de vértices em $A$. Então, ao retirarmos $f$, $\lnot A$ continua conexo. Logo $\lnot A$ será um subconjunto de uma das componentes conexas de $G \setminus F$, isto é, de $B$ ou $\lnot B$. Igualmente, se $f$ é uma aresta de vértices em $\lnot A$, então teriamos que $A$ é subconjunto de $B$ ou $\lnot B$. Concluimos que $S(T)$ é um conjunto árvore.
+\end{prova}
+
+\begin{proposicao}[Emaranhados de árvores são principais e recuperam a árvore]
+  Seja $T$ uma árvore, e $S(T)$ seu conjunto árvore. Todos os emaranhados de $S(T)$ são da forma $\tau_v$ para um $v \in V(T)$, onde $\tau_v(A) = 1 \Leftrightarrow v \in A$. E mais: dois vértices $v,w \in T$ são adjacentes se e somente se seus emaranhados $\tau_v$ e $\tau_w$ são distintos em apenas um $A \in S(T)$.
+\end{proposicao}
+\begin{prova}
+Enumere as arestas de $T$ como $\{e_1,\dots, e_k\}$. Lembre-se da descrição na demonstração anterior de $S(T)$ via as componentes conexas de cortes da árvore. Dentre as duas componentes conexas de $T \setminus e_1$, $\tau$ seleciona uma delas, digamos $C_1$. Para quaisquer outras arestas $\{e_{i_1}, \dots, e_{i_m}\}$ na outra componente conexa, $\lnot C_1$, a consistência de $\tau$ implica que ela selecionará componentes conexas $\{C_{i_1}, \dots, C_{i_m}\}$ que vão conter $C_1$. Logo $C_1 \cap C_{i_1} \cap \dots \cap C_{i_m} = C_1$. Se $C_1$ já é um conjunto contendo apenas um vértice $v$, então esta última interseção é a interseção de todos os conjuntos selecionados por $\tau$, e portanto $\tau$ será o $\tau_v$ deste $v$. Caso contrário, devemos ter pelo menos uma aresta $e_j$ entre vértices de $C_1$. Seja $C_j$ a componente conexa escolhida por $\tau$ de $T \setminus e_j$. Olhando agora apenas ao $C_1$, ao retirarmos $e_j$ iremos ficar com duas componentes conexas, ambas não vazias: $C_1 \cap C_j$ e $C_1 \cap \lnot C_j$. Se $C_1 \cap C_j$ conter apenas um vértice, então $\tau$ é o principal em relação a este vértice. Caso contrário, ela deve conter alguma aresta, e assim poderiamos continuar este processo, encontrando a componente conexa escolhida por $\tau$ na retirada dessa aresta, e interceptando-a com $C_1$ e $C_j$. Como existem apenas finitas arestas, em algum momento esta interceção deve conter apenas um vértice, que será o $v$ tal que $\tau = \tau_v$.
+
+Agora, se dois vértices $v,w \in T$ são adjacentes, digamos pela aresta $e_i$, então com certeza $v$ e $w$ estão em componentes conexas diferentes ao remover $e_i$, assim $\tau_v$ e $\tau_w$ diferem no corte relativo a esta aresta. E, na retirada de qualquer outra aresta $e_j$, a $e_i$ se mantém, logo os vértices estarão na mesma componente conexa e portanto $\tau_v$ e $\tau_w$ concordaram no corte relativo a $e_j$. Já se eles não forem adjacentes, deve haver um caminho entre eles contendo no mínimo duas arestas. A retirada de ambas estas arestas coloca os vértices em componentes conexas diferentes, e portanto $\tau_v$ e $\tau_w$ diferem em pelo menos dois valores (de fato, a quantidade de diferenças é exatamente o número de arestas do caminho entre os vértices, recuperando a métrica da árvore).
+\end{prova}
+
+Vamos agora mostrar que todo conjunto árvore finito vem de uma árvore por esta construção. Já podemos ter uma ideia de como isso se dá pensando em como a última proposição sugere que os emaranhados do $S(T)$ recuperam a estrutura da árvore. Se estamos de posse de seu $S(T)$, poderiamos reconstruir a árvore $T$ tomando como conjunto de vértices os emaranhados de $S(T)$ e ligando eles entre si quando diferem em apenas um valor. Este seria um caminho pra construir a árvore a partir de um $S$ qualquer. Não vamos fazer isso. Vamos construir uma árvore explicitamente em um processo indutivo (porque essa foi a primeira ideia que eu tive).
+
+\begin{proposicao}[Árvore do conjunto árvore]
+ Todo conjunto árvore finito $S$ é isomorfo a um $S(T)$ para uma única árvore (aqui estamos tomando isomorfismo por significar uma bijeção entre conjuntos que preserva inclusão).
+\end{proposicao}
+\begin{prova}
+Vamos construir uma árvore $T$ para um dado $S$ conjunto árvore finito de forma que $S \cong S(T)$. Tome alguma ordenação $S = \{A_1,\lnot A_1, A_2, \lnot A_2, \dots, A_n \lnot A_n\}$. Comece a árvore $T$ por uma árvore $T_1$ composta por dois vértices $e_1^-$ e $e_1^+$ e e uma aresta direcionada de $e_1^-$ para $e_1^+$ que nomearemos por $e_1$. Para um $i < n$, seja $S_i = \{A_1,\lnot A_1, A_2, \lnot A_2, \dots, A_i, \lnot A_i\}$. Suponha que já construimos uma árvore $T_i$ que satisfaz
+
+\begin{itemize}[label=\ding{212}]
+  \item $T_i$ possui $i$ arestas direcionadas $\{e_1, \dots, e_i\}$
+  \item $S_i \cong S(T_i) = \{\tilde{A_1},\lnot \tilde{A_1}, \tilde{A_2}, \lnot \tilde{A_2}, \dots, \tilde{A_i}, \lnot \tilde{A_i}\}$, onde cada $\tilde{A_j}$ é a imagem do $A_j$ de $S_i$
+  \item $\tilde{A_j}$ é a componente conexa que contém o $e_j^+$, e portanto $\lnot \tilde{A_j}$ é a componente conexa que contém o $e_j^-$
+\end{itemize}  
+
+Já temos $T_1$ satisfazendo essas condições. Continuando o processo indutivo, vamos agora adicionar uma aresta no lugar certo de $T_i$ para construir $T_{i+1}$. Para isso, veja que o elemento $A_{i+1}$ define um emaranhado $\tau_{i+1}$ de $S_i$ da seguinte maneira.
+\[ \tau_{i+1}(A_j) = 1 \text{ se } A_{i+1} \subset A_j \text{ ou } \lnot A_{i+1} \subset A_j \]
+\[ \tau_{i+1}(\lnot A_j) = 1 \text{ se }  A_{i+1} \subset \lnot A_j \text{ ou } \lnot A_{i+1} \subset \lnot A_{j} \]
+Como $S$ é conjunto árvore, um (e apenas um) destes dois casos deve ocorrer, dando uma função $\tau_{i+1}$ bem definida. Resta mostrar consistência dela. Faça essa conta.
+
+Temos então um emaranhado $\tau_{i+1}$ de $S_i$, que naturalmente define um emaranhado $\tilde{\tau}_{i+1}$ de $S(T_i)$. Pela proposição anterior, sabemos que $\tau_{i+1}$ é principal, ou seja, existe um vértice $v \in T_i$ tal que $\tilde{\tau}_{i+1}(A) = 1 \Leftrightarrow v \in A$. Sejam $\{e_{k_1}, \dots, e_{k_m}\}$ as arestas adjacentes a $v$.``Abra'' o vértice $v$ em dois vértices $e_{i+1}^-$ e $e_{i+1}^+$ e uma aresta direcionada $e_{i+1}$ de $e_{i+1}^-$ para $e_{i+1}^+$. Para cada $k$ dentre os $k_1,\dots, k_m$, faça: 
+
+\begin{itemize}[label=\ding{212}]
+  \item se $A_{i+1} \subset A_k$, coloque o $e_k$ apontando para $e_{i+1}^-$ 
+  \item se $\lnot A_{i+1} \subset A_k$, coloque o $e_k$ apontando para $e_{i+1}^+$ 
+  \item se $A_{i+1} \subset \lnot A_k$, coloque o $e_k$ saindo de $e_{i+1}^-$ 
+  \item se $\lnot A_{i+1} \subset \lnot A_k$, coloque o $e_k$ saindo de $e_{i+1}^+$ 
+\end{itemize}
+
+Assim temos nossa nova $T_{i+1}$, e seja $S(T_i) = \{\tilde{A_1},\lnot \tilde{A_1}, \tilde{A_2}, \lnot \tilde{A_2}, \dots, \widetilde{A_{i+1}}, \lnot \widetilde{A_{i+1}}\}$ - veja que aqui estamos cometendo um abuso de notação, repetindo os mesmos nomes $\tilde{A_j}$ que antes eram as partições da árvore anterior $S(T_i)$. Isto não é grande problema: a única diferença entre estes conjuntos é que o elemento $v$ é substituido por dois elementos $e_{i+1}^-$ e $e_{i+1}^+$. Precisamos nos convencer que $S_{i+1} \cong S(T_{i+1})$. As relações entre os novos $\tilde{A}_j$ para $j < i+1$ não mudam, pois apenas temos a troca de $v$ por $e_{i+1}^-$ e $e_{i+1}^+$ em todos os conjuntos. Basta mostrar, então, que $\widetilde{A}_{i+1}$ é encaixado com cada $\tilde{A}_j$ da mesma maneira que $A_{i+1}$ é encaixado com cada $A_j$. Tome um $j < i + 1$ e vamos fazer o caso $A_{i+1} \subset A_j$ - os outros três são análogos.
+
+Se a aresta $e_j$ referente ao $\tilde{A}_j$ em $T_i$ era adjacente a $v$, então por construção $e_j$ aponta para $e_{i+1}^-$. Assim, o único caminho de $e_{i+1}^+$ para $e_j^+$ é a aresta $e_{i+1}$. Logo, qualquer caminho da componente conexa $\tilde{A}_{i+1}$ de $T_{i+1} \setminus e_{i+1}$ não passa pela aresta $e_k$, o que nos permite concluir que $\tilde{A}_{i+1} \subset \tilde{A}_k$.
+
+Já se $e_j$ não for adjacente a $v$, deve existir algum caminho de $e_j^+$ até $v$. Este caminho, ao final, chega em alguma aresta $e_k$ adjacente a $v$. Gostariamos que $e_k$ fosse colocada em $e_{i+1}^-$ na construção do $T_{i+1}$, pois se isso acontece, então o único caminho de $e_{i+1}^+$ até a aresta $e_j$ passa por $e_{i+1}$ e aí conseguiriamos concluir que $\widetilde{A}_{i+1} \subset \tilde{A}_j$. Suponha, então, que $e_k$ não é colocada em $e_{i+1}^-$ na construção do $T_{i+1}$, e sim colocada em $e_{i+1}^+$. Isto só ocorre se temos que $\lnot A_{i+1}$ é subconjunto de $A_k$ ou de $\lnot A_k$. Se $\lnot A_{i+1} \subset A_k$, então $e_k$ aponta na direção de $e_{i+1}^+$. Assim, a componente conexa da ponta $e_k^+$ deve ser a que não contém a aresta $e_j$ e portanto $A_k \subset A_j$.  Mas daí teriamos $\lnot A_{i+1} \subset A_k \subset A_j$ o que contradiz $A_{i+1} \subset A_j$. Já se $\lnot A_{i+1} \subset \lnot A_k$, então $e_k$ aponta na direção oposta de $e_{i+1}^+$. Mas daí teriamos $A_k \subset \lnot A_{i+1} \subset A_j$ e também teriamos que $e_j^-$ possui um caminho até $e_k^+$ que não passa por $k$, ou seja, $e_j^- \in A_k \subset A_j$, contradição. Concluimos que $e_k$ realmente é colocada em $e_{i+1}^-$ e assim chegamos a $\widetilde{A}_{i+1} \subset \tilde{A}_j$, finalizando nossa demonstração.
+
+Na verdade, resta provar a unicidade: se começarmos com um $S = S(T)$ para alguma árvore $T$, a árvore construida pelo algoritmo anterior é isomorfa a $T$. A demonstração disso segue facilmente se entendemos como os emaranhados de uma árvore finita recuperam a sua estrutura, como descrito na proposição anterior. De fato, suponha que $S(T_1) \cong S(T_2)$. Dado um vértice $v \in T_1$, seu emaranhado $\tau_v$ irá definir um emaranhado em $S(T_2)$, que também deverá ser principal, digamos referente ao vértice $v'$. Mapeie $\phi: v \mapsto v'$. Como também todo vértice de $T_2$ define um emaranhado que pode ser traduzido para um emaranhado de $T_1$, temos que $\phi$ é bijetora. Ela será um morfismo de grafos, isto é, $v \edge w \Leftrightarrow \phi(v) \edge \phi(w)$, pois adjacência de dois vértices acontece se e somente se seus emaranhados diferem por apenas um vértice, como descrito na proposição anterior. 
+
+\end{prova}
+
+A noção de principalidade é muito dependente do conjunto base $V$. No isomorfismo que construimos agora $S \cong S(T)$, os emaranhados de $S$ podem estar em bijeção com os de $S(T)$, mas não necessariamente são principais como serão em $S(T)$. Isto acontece pois a interseção de todos os seus conjuntos selecionados pode ser vazia.
+
+\begin{exemplo*}[Buraco negro]
+  Voltando ao exemplo anterior de um emaranhado não estendível. Temos $V = \{1,2,3,4\}$, $S = \{A,B,C,D,\lnot A, \lnot B, \lnot C, \lnot D\}$ onde $A = \{2,3,4\}, B = \{1,3,4\}, C = \{1,2,4\}, D = \{1,2,3\}$. Veja que a árvore construido pelo algoritmo anterior é a estrela com todas as uas arestas apontadas para o vértice central. Temos então $5$ emaranhados nesta árvore, todos principais em $S(T)$, mas o relativo ao vértice central não é principal em $S$. Sua interseção de todos os conjuntos escolhidos é vazia (buraco negro).
+
+\end{exemplo*}
+
+Relação com tree algebra?
+
+E no caso infinito?
 
 \bibliographystyle{plain}
 \bibliography{references}

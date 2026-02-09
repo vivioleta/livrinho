@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.1.23)  3 FEB 2026 18:24
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.1.23)  9 FEB 2026 18:57
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"/home/viola/Área de trabalho/livrinho/Emaranhados/main.tex"
@@ -1227,12 +1227,22 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 (Font)              scaled to size 6.6pt on input line 279.
 [1
 
-{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./main.bbl
+{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 1231) in paragraph at lines 323--324
+[]\TU/DarwinSerif-Regular.otf(1)/m/n/10.95 Exem-plo (Ema-ra-nhado não es-ten-dí-vel). []\TU/DarwinSerif-Regular.otf(0)/m/n/10.95 Seja $\OML/ntxstx2mi/m/it/10.95 V \U/ntxmia/m/it/10.95 = \LMS/ntxsy/m/n/10.95 f\OT1/lmr/m/n/10.95 1\OML/ntxstx2mi/m/it/10.95 ; \OT1/lmr/m/n/10.95 2\OML/ntxstx2mi/m/it/10.95 ; \OT1/lmr/m/n/10.95 3\OML/ntxstx2mi/m/it/10.95 ; \OT1/lmr/m/n/10.95 4\LMS/ntxsy/m/n/10.95 g$\TU/DarwinSerif-Regular.otf(0)/m/n/10.95 , $\OML/ntxstx2mi/m/it/10.95 A \U/ntxmia/m/it/10.95 = \LMS/ntxsy/m/n/10.95 f\OT1/lmr/m/n/10.95 2\OML/ntxstx2mi/m/it/10.95 ; \OT1/lmr/m/n/10.95 3\OML/ntxstx2mi/m/it/10.95 ; \OT1/lmr/m/n/10.95 4\LMS/ntxsy/m/n/10.95 g\OML/ntxstx2mi/m/it/10.95 ; B \U/ntxmia/m/it/10.95 =
+ []
+
+[2] [3]
+Overfull \hbox (36.17215pt too wide) in paragraph at lines 362--363
+\TU/DarwinSerif-Regular.otf(0)/m/n/10.95 nada de $\OML/ntxstx2mi/m/it/10.95 e[]$ \TU/DarwinSerif-Regular.otf(0)/m/n/10.95 para $\OML/ntxstx2mi/m/it/10.95 e[]$ \TU/DarwinSerif-Regular.otf(0)/m/n/10.95 que no-me-a-re-mos por $\OML/ntxstx2mi/m/it/10.95 e[]$\TU/DarwinSerif-Regular.otf(0)/m/n/10.95 . Para um $\OML/ntxstx2mi/m/it/10.95 i < n$\TU/DarwinSerif-Regular.otf(0)/m/n/10.95 , seja $\OML/ntxstx2mi/m/it/10.95 S[] \U/ntxmia/m/it/10.95 = \LMS/ntxsy/m/n/10.95 f\OML/ntxstx2mi/m/it/10.95 A[]; \LMS/ntxsy/m/n/10.95 :\OML/ntxstx2mi/m/it/10.95 A[]; A[]; \LMS/ntxsy/m/n/10.95 :\OML/ntxstx2mi/m/it/10.95 A[]; [] ; A[]; \LMS/ntxsy/m/n/10.95 :\OML/ntxstx2mi/m/it/10.95 A[]\LMS/ntxsy/m/n/10.95 g$\TU/DarwinSerif-Regular.otf(0)/m/n/10.95 .
+ []
+
+[4] [5] (./main.bbl
 
 LaTeX Font Warning: Font shape `TU/DarwinSerif-Regular.otf(0)/m/it' undefined
 (Font)              using `TU/DarwinSerif-Regular.otf(0)/m/n' instead on input line 5.
 
-[2]) [3] (./main.aux)
+) [6] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1246,19 +1256,19 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 38554 strings out of 476076
+ 38567 strings out of 476076
  125129,1373583 words of node,token memory allocated
- 629 words of node memory still in use:
-   8 hlist, 2 vlist, 3 rule, 5 glue, 5 kern, 1 glyph, 15 attribute, 65 glue_spec, 9 attribute_list, 2 write nodes
-   avail lists: 2:658,3:359,4:91,5:3184,6:38,7:7706,8:39,9:277,10:11,11:691
- 59885 multiletter control sequences out of 65536+600000
- 188 fonts using 16017351 bytes
- 84i,6n,96p,3294b,495s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}<./DarwinSerif-Regular.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (3 pages, 86316 bytes).
+ 641 words of node memory still in use:
+   8 hlist, 2 vlist, 3 rule, 5 glue, 5 kern, 1 glyph, 19 attribute, 65 glue_spec, 11 attribute_list, 2 write nodes
+   avail lists: 2:922,3:359,4:91,5:3340,6:38,7:8583,8:39,9:699,10:31,11:691
+ 59889 multiletter control sequences out of 65536+600000
+ 190 fonts using 16442327 bytes
+ 84i,6n,96p,3294b,432s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}<./DarwinSerif-Regular.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on main.pdf (6 pages, 158950 bytes).
 
-PDF statistics: 75 PDF objects out of 1000 (max. 8388607)
- 50 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 131072)
+PDF statistics: 113 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
+ 17 named destinations out of 1000 (max. 131072)
  16 words of extra memory for PDF output out of 10000 (max. 100000000)
 

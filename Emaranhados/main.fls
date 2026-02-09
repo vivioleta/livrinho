@@ -519,8 +519,12 @@ INPUT ./main.aux
 INPUT ./main.out
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb
