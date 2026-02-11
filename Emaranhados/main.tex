@@ -330,7 +330,7 @@ Continuando a introdução dos conceitos necessários para chegarmos ao nosso pr
 \begin{definicao*}[Encaixados, conjunto árvore]
   Dizemos que dois conjuntos $A,B \subset V$ estão encaixados se ou $A$ é comparável com $B$ em relação a inclusão (isto é, $A \subset B$ ou $B \subset A$) ou então $\lnot A$ é comparável com $B$ (isto é, $\lnot A \subset B$ ou $B \subset \lnot A$).
 
-  Um $S \subset \mathcal{P}(V)$ é dito um conjunto árvore se quaisquer dois $A,B \in S$ (que não sejam complementares um do outro) estão encaixados.
+  Um $S \subset \mathcal{P}(V)$, fechado para complementar e que não contém o vazio, é dito um conjunto árvore se quaisquer dois $A,B \in S$ (que não sejam complementares um do outro) estão encaixados.
 \end{definicao*}
 
 Lembrando que estamos sempre conceitualizando um $A \subset V$ como uma partição de $V$ em dois pedaços: $A$ e seu complementar $\lnot A$.
@@ -410,7 +410,7 @@ Até agora, estivemos considerando um conjunto $S$ qualquer de subconjuntos de u
 
 Chamamos $\mathcal{S}(G)$ de uma álgebra pois ela, de fato, forma sempre uma álgebra de Boole, o que não acontece necessariamente com os $S_k$.
 
-Conjuntos árvore de $\mathcal{S}(G)$ vão ser objetos mais conhecidos na literatura como decomposições em árvore. Relembrando:
+Conjuntos árvore de $\mathcal{S}(G)$ nos permitem encontrar uma estrutura de árvore escondida dentro do nosso grafo. Na literatura, isto foi originalmente feito através da definição de decomposição em árvores. Relembrando:
 
 \begin{definicao*}[Decomposição em árvore]
   Uma decomposição em árvore de um grafo $G$ é uma árvore $T$ e uma função $f$ que, dada um $t \in V(T)$, te retorna um subgrafo de $G$, satisfazendo as condições
@@ -423,29 +423,47 @@ Conjuntos árvore de $\mathcal{S}(G)$ vão ser objetos mais conhecidos na litera
 
 E então
 
-\begin{proposicao}[Conjuntos árvore de separações $=$ decomposição em árvore]
-  Seja $G$ grafo conexo. Dada uma decomposição em árvore de adesão finita $T,f$, existe um conjunto árvore $S$ de $\mathcal{S}(G)$ cuja árvore correspondente é isomorfa a $T$. Reciprocamente, todo conjunto árvore de $\mathcal{S}(G)$ vem de uma única decomposição em árvore de adesão finita.
+\begin{proposicao}[Conjuntos árvore de separações induzem uma decomposição em árvore]
+  Seja $G$ grafo conexo. Se existe um conjunto árvore $S \subset \mathcal{S}(G)$ tal que sua árvore correspondente é $T$ (isto é, $S \cong S(T)$), então existe uma decomposição em árvore de $G$ cuja árvore é $T$.
 \end{proposicao}
 \begin{prova}
-Seja $T,f$ uma decomposição em árvore de $G$. Denote por $V_t$ os vértices do subgrafo $f(t)$ para cada $t \in V(T)$ (as chamadas bags da decomposição). Para cada aresta $e$ de $T$ entre dois vértices $t_1$ e $t_2$, defina $X = V_{t_1} \cap V_{t_2}$. Seja $U_1$ a componente conexa de $T \setminus e$ que contém $t_1$ e $U_2$ a componente que contém $t_2$. Seja $\tilde{U}_1$ a união de todos as bags $V_t$ de $t \in U_1$ e $\tilde{U}_2$ a união de todas as bags $V_t$ de $t \in U_2$.
+Para cada vértice $t$ de $T$, podemos definir o emaranhado principal $\tau_t$ em $S(T)$, que através do isomorfismo $S \cong S(T)$ induz um emaranhado $\widetilde{\tau_t}$ em $S$. Defina $f(t) = \bigcap\limits_{E \in S, \widetilde{\tau_t}(E) = 1}^{}V(E)$. 
+
+Como $G$ é conexo, pra qualquer vértice $v$ existe uma aresta $e$ adjacente a $v$. Esta aresta define um emaranhado principal $\tilde{\tau}$ em $S$, que pelo isomorfismo $S \cong S(T)$ induz um emaranhado $\tau$ em $S(T)$. Como todo emaranhado de $S(T)$ é principal, devemos ter $\tau = \tau_t$ para algum $t \in T$. Assim, ao construir $f(t)$, a interseção é tomada em todos os $E \in S$ tal que $\tilde{\tau}$ vale $1$, ou seja, todos conjuntos que contém $e$. Logo $v \in V(E)$ para todos estes, ou seja, $v \in f(t)$. Isto mostra que $\bigcup\limits_{t \in V(T)}^{}f(t) = G $.
+
+Para a segunda condição, suponha que $t$ está entre $t_1$ e $t_2$. Dado uma aresta $e$ de $T$,uma componente conexa de $T \setminus e$ que não contenha nem o $t_1$ nem o $t_2$ não pode também conter o $t$. Assim, se $E \in S(T)$ é tal que $\tau_{t}(E) = 1$ então $\tau_{t_1}(E) = 1$ ou $\tau_{t_2}(E) = 1$. Essa propriedade se mantém verdade após passarmos o isomorfismo e obtermos os $\widetilde{\tau_{t}}, \widetilde{\tau_{t_1}}, \widetilde{\tau_{t_2}}$. Assim, como $f(t_1) \cap f(t_2)$ é a interseção de todos os $V(E)$ tal que $\tau_{t_1}(E) = 1$ ou $\tau_{t_2}(E) = 1$, podemos concluir que $f(t_1) \cap f(t_2) \subset f(t)$.
+
+Um detalhe: quando $t_1$ é adjacente a $t_2$, vamos ter a igualdade $f(t_1) \cap f(t_2) = V(E) \cap V(\lnot E)$, onde $E$ é o conjunto de $S$ referente ao elemento de $S(T)$ da aresta entre $t_1$ e $t_2$ (preguicinha de escrever, mas isto segue do fato de que sempre que um $E'$ diferente de $E$ é um dos conjuntos contados na interseção $f(t_1) \cap f(t_2)$, então teremos $E \subset E$ ou $\lnot E \subset E'$, estamos aqui só trazendo as propriedades de separação de uma árvore de volta pro $S$). Assim, o fato de $S$ ser composto de separações finitas implica que a decomposição tem adesão finita.
+  
 \end{prova}
 
-(note que na demonstração a finitude das separações não é necessária - decomposições em árvore sem adesão finita continuam sendo conjuntos árvore, porém agora de separações infinitas)
+A recíproca dessa proposição é aproximadamente verdade: toda decomposição em árvore induz naturalmente um conjunto de separações que será um conjunto árvore (se ele não for trivial). O final da demonstração anterior, e a própria definição de adesão finita, já sugere quem são as separações: os conjuntos $f(t_1) \cap f(t_2)$ vão ser vértices que, ao retirados, separam o grafo. Os dois lados da separação do grafo vem dos dois lados da separação da árvore: se chamarmos de $A_1$ e $A_2$ as duas componentes conexas de $T \setminus e$ onde $e$ é a aresta entre $t_1$ e $t_2$, então a união de todas as bags $f(t)$ com $t \in A_1$ e a união de todas as bags $f(t)$ com $t \in A_2$ são separados pelo conjunto $f(t_1) \cap f(t_2)$ (isto não é muito difícil de provar, segue diretamente da definição de decomposição). O fato de separações de árvores serem encaixadas permite então provar que estas separações em $G$ também são encaixadas, obtendo, então, um conjunto árvore. Porém, esta decomposição pode ser `degenerada' de forma que a árvore desse conjunto árvore pode não ser a mesma que a da decomposição. O exemplo mais simples disso é a decomposição trivial, que escolhe $G$ para qualquer vértice da árvore. Podemos fazer isso para qualquer árvore, mas o conjunto de separações é sempre o trivial (que, formalmente, nem consideramos como conjunto árvore em nossa definição). Também poderiamos simplesmente adicionar uma aresta a mais em algum $t$ da árvore da decomposição, e repetir o $f(t)$ como o subgrafo do novo vértice adjacente a $t$. O conjunto de separações se manterá, mas a árvore muda. Acredito que deve haver alguma condição natural a se pedir da decomposição para que isto não ocorra e assim obtermos uma bijeção entre conjuntos árvores de separações e decomposições em árvore. O Diestel provavelmente já fez isso aqui \cite{diesteltreesets}, mas eu não li direito. A definição original de decomposição em árvores, em \cite{original}, pede que os vértices de $f(t_1) \cap f(t_2)$ não possuem arestas entre si, mas acho que isso não é suficiente.
+
+De qualquer forma, seguimos.
 
 De posse de todos estes objetos, podemos afirmar nosso principal teorema.
 
-\begin{teorema}[Teorema da Árvores de Emaranhados]
-  Em qualquer $S \subset \mathcal{P}(V)$ sub-Boole existe um conjunto árvore $S' \subset S$ que exibe todos os emaranhados de $S$.
+\begin{teorema}[Teorema da Árvores de Emaranhados - finito]
+  Seja $V$ finito. Em qualquer $S \subset \mathcal{P}(V)$ sub-Boole existe um conjunto árvore $S' \subset S$ que exibe todos os emaranhados de $S$.
 \end{teorema}
+\begin{prova}
+  Traduzir a demonstração do Diestel ou de Jan pra sua versão conjuntista?
+\end{prova}
 
+Este resultado implica na versão clássica de \cite{original} que originou essa teoria abstrata de emaranhados.
 
-\begin{proposicao}
-  Decomposição que exibe $k$-tangles
+\begin{proposicao}[A decomposição de Seymour-Hoffman]
+  Para qualquer $G$ finito, existe uma decomposição em árvore de $G$ que exibe todos os $k$-emaranhados de $G$.
 \end{proposicao}
 
-\begin{proposicao}
+Emaranhados de $\mathcal{S}(G)$, quando $G$ é infinito, vão ser extremidades ou emaranhados esquisitos não principais. Existe uma versão do teorema da árvore de emaranhados que resulta em uma decomposição que exibe esses tangles.
+
+\begin{proposicao}[Teorma da Árvores de Emaranhados - infinito]
   Decomposição que exibe ends
 \end{proposicao}
+\begin{prova}
+  Descobrir como faz isso?
+\end{prova}
 
 
 
