@@ -441,13 +441,42 @@ A recíproca dessa proposição é aproximadamente verdade: toda decomposição 
 
 De qualquer forma, seguimos.
 
-De posse de todos estes objetos, podemos afirmar nosso principal teorema.
+Uma última definição antes de afirmarmos nosso principal teorema.
 
+\begin{definicao*}[Exibição de emaranhados]
+  Dizemos que um $S' \subset S \subset \mathcal{P}(V)$ exibe um conjunto de emaranhados $\mathcal{E}$ se para quaisquer dois $\tau, \tau' \in \mathcal{E}$, existe um $A \in S'$ tal que $\tau(A) \neq \tau'(A)$.
+\end{definicao*}
 \begin{teorema}[Teorema da Árvores de Emaranhados - finito]
-  Seja $V$ finito. Em qualquer $S \subset \mathcal{P}(V)$ sub-Boole existe um conjunto árvore $S' \subset S$ que exibe todos os emaranhados de $S$.
+  Seja $V$ finito. Em qualquer $S \subset \mathcal{P}(V)$ sub-Boole existe um conjunto árvore $N \subset S$ que exibe todos os emaranhados de $S$.
 \end{teorema}
 \begin{prova}
-  Traduzir a demonstração do Diestel ou de Jan pra sua versão conjuntista?
+Vamos apresentar um algoritmo que constrói o $N$. Suponha que já construimos um conjunto árvore $N$ que diferencia um conjunto $\mathcal{O}$ de $n -1$ emaranhados de $S$, e ainda resta mais emaranhados para diferenciar. Escolha um emaranhado $\tau$ que $N$ não diferencia. Deve, então, existir algum outro $\tau' \in \mathcal{O}$ que concorda com $\tau$ em todos os elementos de $N$. Qualquer outro $\tau'' \in \mathcal{O}$ é diferenciado de $\tau'$ em algum elemento de $N$ por suposição, então é diferenciado de $\tau$ também. Ou seja, o único par que precisamos consertar é o $\tau$ e $\tau'$. Para isso, adicione a $N$ algum elemento $A \in S$ em que $\tau$ e $\tau'$ diferem - que, é claro, existe, pois $\tau$ e $\tau'$ são dois emaranhados distintos. Agora $N \cup {A}$ diferencia $\mathcal{O} \cup \{\tau\}$, mas pode não ser mais conjunto árvore. Isto pode acontecer caso o $A$ não seja encaixado com alguns elementos de $\mathcal{N}$. Seja $B$ um desses elementos. Vamos resolver esse não encaixamento substituindo $A$ ou $B$ por algum dos conjuntos dentre $\{A \cap B, \lnot A \cap B, A \cap \lnot B, \lnot A \cap \lnot B\}$, que são os conjuntos que chamamos de cantos de $A$ e $B$. Cantos funcionam bem pois eles não vão atrapalhar nenhum encaixamento, como vamos provar ao final. Não necessariamente todos os cantos vão estar em $S$, mas alguns pelo menos vão estar, pelo fato de $S$ ser sub-Boole, e isso será suficiente.  Para decidirmos qual substituição vamos fazer, precisamos escolher a que não vai nos fazer perder a diferenciação de nenhum emaranhado. Vamos por casos. Primeiramente, suponha $\tau(B) = 1$.
+
+Suponha que $A \cap B \in S$. Como $\tau(B) = 1$, e $A$ diferencia $\tau$ e $\tau'$, então $A \cap B$ também diferencia $\tau$ de $\tau'$. Construa $N'$ substituindo $A$ por $A\cap B$ em $N \cup {A}$, isto é, $N' = N \cup {A \cap B}$. $N'$ continua a diferenciar $\mathcal{O} \cup \{\tau\}$.
+
+Suponha que $A \cap B \notin S$. Então por $S$ ser sub-Boole, $A \cup B \in S$. A união não é suficiente para diferenciar $\tau$ e $\tau'$, então agora não podemos fazer o mesmo truque do caso anterior sem perder a diferenciação de $\tau$. E se substituissemos o $B$? Possivelmente poderiamos perder a diferenciação de algum outro par $\tilde{\tau}$ e $\tilde{\tau}'$ em $\mathcal{O}$. De fato, se existir um par destes, ele será único, como provaremos ao final em um lema. Então precisamos apenas nos preocupar com este par $\tilde{\tau}$ e $\tilde{\tau}'$. Se o $A$ diferencia este par, então podemos simplesmente definir $N' = N \setminus B \cup {A}$, que irá continuar a diferenciar $\mathcal{O} \cup \{\tau\}$ com um não encaixamento a menos. Caso contrário, $A$ pode valer ou $0$ em ambos ou $1$ em ambos. Se ele vale $0$ em ambos, então $A \cup B$ diferencia $\tilde{\tau}$ e $\tilde{\tau}'$. Defina neste caso $N' = N \setminus B \cup {A, A \cup B}$. Se ele vale $1$ em ambos, vamos ter que procurar novos cantos. Olhe para o par $A, \lnot B$. Se a interseção $A \cap \lnot B \in S$, então ela diferencia $\tilde{\tau}$ e $\tilde{\tau}'$ e podemos definir $N' = N \setminus B \cup {A, A \cap \lnot B}$. Se $A \cap \lnot B \notin S$, então a união $A \cup \lnot B \in S$. Neste caso não temos a diferenciação do $\tilde{\tau}$ e $\tilde{\tau}'$, mas temos a diferenciação do $\tau$ e do $\tau'$, então podemos voltar a ideia anterior e subtituir o $A$! Defina daí $N' = N \cup \{A \cup \lnot B\}$.
+
+Começamos a argumentação dos dois parágrafos anteriores supondo que $\tau(B) = 1$. Se este não for o caso, troque $B$ por $\lnot B$ na argumentação inteira. 
+
+Finalmente, em qualquer um dos casos, chegamos a um $N'$ que diferencia $\mathcal{O} \cup \{\tau\}$ e que substitui dentre dois $A,B$ não encaixados, um deles por um do seus cantos.
+
+\begin{lema*}
+  Tome dois conjuntos $A,B$ não encaixados e um $C$ encaixado com $A$ ou com $B$. Então $C$ está encaixado com qualquer um dos cantos $\{A \cap B, A \cap \lnot B, \lnot A \cap B, \lnot A \cap \lnot B\}$.
+\end{lema*}
+
+Com este lema, garantimos que nosso $N'$ tem exatamente um não encaixamento a menos que $N$. Repita este processo até não ter mais não encaixamentos, e assim chegará a um conjunto árvore que diferencia $n$ emaranhados, finalizando nosso passo indutivo.
+
+Resta apenas demonstrar um fato afirmado durante a demonstração e não provado: que existe um único par $\tilde{\tau}$ e $\tilde{\tau}'$ em $\mathcal{O}$ diferenciado por $B$ e não diferenciado por nenhum outro elemento de $N$.
+
+\begin{lema*}
+  Seja $N$ um conjunto árvore, $B \in N$ e $\mathcal{O}$ um conjunto de emaranhados diferenciados por $N$. Se existe um par de emaranhados $\tilde{\tau}$ e $\tilde{\tau}'$ em $\mathcal{O}$ diferenciado apenas por $B$ e por mais ninguém, então este par é único.
+\end{lema*}
+
+
+
+
+
+
 \end{prova}
 
 Este resultado implica na versão clássica de \cite{original} que originou essa teoria abstrata de emaranhados.

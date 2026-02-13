@@ -2,7 +2,8 @@
 
 \bibitem{diestel2024tangles}
 R.~Diestel.
-\newblock {\em Tangles: A Structural Approach to Artificial Intelligence in the Empirical Sciences}.
+\newblock {\em Tangles: A Structural Approach to Artificial Intelligence in the
+  Empirical Sciences}.
 \newblock Cambridge University Press, 2024.
 
 \bibitem{diesteltreesets}
@@ -12,6 +13,7 @@ Reinhard Diestel.
 \bibitem{original}
 Neil Robertson and P.D Seymour.
 \newblock Graph minors. x. obstructions to tree-decomposition.
-\newblock {\em Journal of Combinatorial Theory, Series B}, 52(2):153–190, July 1991.
+\newblock {\em Journal of Combinatorial Theory, Series B}, 52(2):153–190,
+  July 1991.
 
 \end{thebibliography}
