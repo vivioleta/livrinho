@@ -22,7 +22,7 @@
 \usepackage{mathtools, nccmath}
 %\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{amssymb, mathrsfs}
-\usepackage[numbers]{natbib}
+%\usepackage[numbers]{natbib}
 \usepackage{fontspec}
 \usepackage{enumitem} % pra substituir o símbolo do itemize por alguma coisa legal, tipo setinhas:  \begin{itemize}[label=\ding{212}]
 \usepackage{pifont}
@@ -290,7 +290,9 @@
 
 \maketitle
 
-A teoria de emaranhados (\textit{tangles}, em inglês) nasce na teoria de conectividade de grafos finitos. Aqui, tentamos desenvolver uma versão `conjuntista' dela. Na teoria usual, a definição de sistemas de separação envolve uma ordem parcial e uma involução arbitrária. No nosso caso, iremos sempre pensar em sistemas de separação definidos por conjuntos.
+A teoria de emaranhados (\textit{tangles}, em inglês) nasce na teoria de conectividade de grafos finitos. Aqui, tentamos desenvolver uma versão `conjuntista' dela. A principal referência que estou usando aqui é a tese de doutorado de Jay Kneip \cite{wheretofindthem}.
+
+Na teoria usual, a definição de sistemas de separação envolve uma ordem parcial e uma involução arbitrária. No nosso caso, iremos sempre pensar em sistemas de separação definidos por conjuntos.
 
 
 \section{Sistemas, emaranhados e perfis}
@@ -461,7 +463,9 @@ Temos nesta última proposição uma descrição de como $S(T)$ contém a estrut
  Todo conjunto árvore finito $S$ admite um isomorfismo (de sistemas) a um $S(T)$ para uma única árvore.
 \end{proposicao}
 \begin{prova}
-Vamos construir uma árvore $T$ para um dado $S$ conjunto árvore finito de forma que $S \cong S(T)$. Tome alguma ordenação $S = \{A_1,\lnot A_1, A_2, \lnot A_2, \dots, A_n \lnot A_n\}$. Comece a árvore $T$ por uma árvore $T_1$ composta por dois vértices $e_1^-$ e $e_1^+$ e e uma aresta direcionada de $e_1^-$ para $e_1^+$ que nomearemos por $e_1$. Para um $i < n$, seja $S_i = \{A_1,\lnot A_1, A_2, \lnot A_2, \dots, A_i, \lnot A_i\}$. Suponha que já construimos uma árvore $T_i$ que satisfaz
+Vamos construir uma árvore $T$ para um dado $S$ conjunto árvore finito de forma que $S \cong S(T)$. Tome alguma ordenação $S = \{A_1,\lnot A_1, A_2, \lnot A_2, \dots, A_n \lnot A_n\}$. Comece a árvore $T$ por uma árvore $T_1$ composta por dois vértices $e_1^-$ e $e_1^+$ e e uma aresta direcionada de $e_1^-$ para $e_1^+$ que nomearemos por $e_1$.
+
+Para um $i < n$, seja $S_i = \{A_1,\lnot A_1, A_2, \lnot A_2, \dots, A_i, \lnot A_i\}$. Suponha que já construimos uma árvore $T_i$ que satisfaz
 
 \begin{itemize}[label=\ding{212}]
   \item $T_i$ possui $i$ arestas direcionadas $\{e_1, \dots, e_i\}$
@@ -503,9 +507,12 @@ Na verdade, resta provar a unicidade: se começarmos com um $S = S(T)$ para algu
   Quem são os espaços $\text{Per}(S)$ quando $S$ é conjunto árvore?
 \end{pergunta}
 
+
+\pulinho
+
+
 \begin{exemplo*}
  Seja $V = \{1,2,3,4\}$, $S = \{A,B,C,D,\lnot A, \lnot B, \lnot C, \lnot D\}$ onde $A = \{2,3,4\}, B = \{1,3,4\}, C = \{1,2,4\}, D = \{1,2,3\}$. $S$ é um conjunto árvore, e se aplicarmos o algoritmo da proposição anterior, obteremos uma árvore $T$ em formato de estrela, ou seja, um vértice central com quatro arestas ligadas a ele. Temos então $5$ emaranhados nesta árvore, todos principais, relativos aos $5$ vértices de $T$. Note que o principal do vértice central não será principal em $S$: ele se traduzirá no emaranhado que escolhe sempre os complementares $\lnot A, \lnot B, \lnot C, \lnot D$, cuja interseção de todos os conjuntos escolhidos é vazia.
-
 \end{exemplo*}
 
 \begin{exemplo*}[Visualização]
@@ -569,7 +576,7 @@ Vamos agora ao nosso segundo teorema principal. Antes, algumas definições.
   \item Existe um emaranhado que evita $\mathcal{F}$
   \item Existe um conjunto árvore $S' \subset S$ cujas estrelas estão todas em $\mathcal{F}$
 \end{itemize}
-  \end{teorema}
+  \end{teorema*}
 
   \begin{pergunta}
     O que acontece quando $S$ é infinito?
