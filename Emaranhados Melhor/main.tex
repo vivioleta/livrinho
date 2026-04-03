@@ -354,7 +354,7 @@ Porém, podemos consertar esse problema adicionando elementos ao $V$.
 \end{definicao*}
 
 \begin{proposicao*}[A menos de isomorfismo perfis sempre são principais]
-  Dado um $S \subset \mathcal{P}(V)$, existe um $S' \subset \mathcal{P}(V')$ tal que $S \cong S'$ e em $S'$ todo perfil é principal. O isomorfismo preserva interseções e uniões. Podemos tomar este $S'$ e este $V'$ de forma que todo perfil é principal para um único $v \in V'$. 
+  Dado um $S \subset \mathcal{P}(V)$ fechado pra complementar, existe um $S' \subset \mathcal{P}(V')$ tal que $S \cong S'$ e em $S'$ todo perfil é principal. O isomorfismo preserva interseções e uniões. Podemos tomar este $S'$ e este $V'$ de forma que todo perfil é principal para um único $v \in V'$. 
 \end{proposicao*}
 \begin{prova}
   Para cada perfil não principal $\tau$ de $S$, defina um elemento $\alpha_{\tau}$ arbitrário e único e seja $V'$ o conjunto $V$ unido dos $\alpha_{\tau}$. Para cada $A \in S$, adicione à $A$ todo $\alpha_{\tau}$ tal que $\tau$ escolhe $A$. Ou seja, defina $A' \defeq A \cup \{\alpha_{\tau} \mid \tau(A) = 1\}$ e seja $S' = \{A' \mid A \in S\} \subset \mathcal{P}(V')$. Veja que $A \subset B$ implica em $A' \subset B'$ pela consistência de $\tau$, e é claro que $A' \subset B'$ implica em $A \subset B$. Assim, o mapa $A \mapsto A'$ é uma bijeção que preserva inclusão. O fato de $\tau$ ser uma orientação ($\tau$ escolhe um e apenas um dentre $A$ e $\lnot A$) garante que $(\lnot A)' = \lnot (A')$. Concluimos que este mapa é um isomorfismo de sistemas e logo $S \cong S'$. A propriedade P de perfil garante que $A' \cap B' = (A \cap B)'$ e portanto o isomorfismo preserva interseções e uniões quando elas existem.
