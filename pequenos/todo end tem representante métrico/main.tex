@@ -19,7 +19,7 @@
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
 \usepackage[stix2]{newtxmath}
-%\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{mathtools, nccmath}
 \usepackage{amssymb, mathrsfs}
 \usepackage[numbers]{natbib}
@@ -257,7 +257,7 @@ oi
 %Definições só pra esse texto
 \usepackage[bb=boondox]{mathalpha}
 
-\title{Exercício 1.11.11}
+\title{Pergunta do Aurichi}
 \author{Violeta Mar}
 \date{}
 
@@ -265,11 +265,17 @@ oi
 \maketitle
 
 \begin{proposicao*}
-Existe um grafo enumerável onde cada par de vértices distintos possui um único vizinho em comum, mas nenhum vértice está ligado a todos os outros.
+Toda extremidade de um grafo localmente finito admite um representante geodésico.
 \end{proposicao*}
 
 \begin{prova}
-Construimos este grafo indutivamente. Suponha que no passo $i$ temos um grafo enumerável $G_i$ onde todos os pares de vértices distintos possuem ou nenhum vizinho em comum ou apenas um vizinho em comum. Suponha também que nenhum vértice está ligado a todos os outros. Adicione ao grafo $G_i$ um vértice novo para cada par de vértices distintos com nenhum vizinho em comum, e ligue este vértice apenas a este par de vértices. A cada adição de um vértice dessa forma, mantemos a propriedade de que todo par de vértices distintos possue no máximo $1$ vizinho em comum. Também mantemos a propriedade que nenhum vértice está ligado a todos os outros. Defina $G_{i+1}$ como o grafo obtido após a adição destes vértices novos para cada par de vértices de $G_i$. Ao unirmos todos os $G_i$, obteremos o grafo desejado. Começamos esta construção a partir do grafo $G_0$ com enumeráveis vértices, todos não adjacentes entre si. 
+  Começamos argumentando que qualquer grafo localmente finito $G$ deve conter uma geodésica infinita. Para isso, fixe um vértice $v$ qualquer de $G$. Chame de $B(v,n)$ o conjunto de vértices a uma distância menor ou igual a $n \in \mathbb{N}$. Como $G$ é localmente finito, cada $B(v,n)$ é finito. Queremos juntar todos os possíveis caminhos de $G$ que começam em $v$ em um espaço, incluindo ambos os finitos e infinitos. Crie um símbolo arbitrário $\text{``fim ''}$ e defina o conjunto $B_n \defeq B(v,n) \cup \text{``fim''}$. Colocando a topologia discreta em cada um dos $B_n$, teremos pelo Teorema de Tychonoff que o produto $\prod_{n \in \mathbb{N}}^{} B_n$ é compacto. O espaço de sequências que realmente definem caminhos será chamado de $C \subset \prod_{n \in \mathbb{N}}^{} B_n$. Os elementos de $C$ são sequências que: caso apareça um ``fim'', todos os próximos elementos também são ``fim''; se temos dois elementos adjacentes $x_n$ e $x_{n+1}$, então existe uma aresta entre eles. Dentre os caminhos de $C$, defina $M \subset C$ como sendo os geodésicos (isto é, os caminhos tais que a distância entre $x_1$ e $x_n$ é sempre $n$, pra qualquer $n$ natural). É rotineiro verificar que os complementos de $C$ e de $M$ são abertos, e portanto ambos são conjuntos fechados de um compacto, e portanto são compactos.
+  
+  Como $G$ é infinito, cada $B(v,n)$ deve ser não vazio, e portanto deve existir uma geodésica saindo de $v$ e de tamanho $n$ para cada $n \in \mathbb{N}$. Chame esta geodésica de $\gamma_n$. Temos uma sequência infinita em $M$ compacto, e portanto ela admite um ponto de acumulação $\gamma$ em $M$. Como todo aberto ao redor de $\gamma$ contém infinitos $\gamma_n$, o $\gamma$ deve ser um caminho infinito. Assim, $\gamma$ será nossa geodésica infinita procurada.
+
+  (sugestão do Gustavo: trocar a demonstração anterior por uma muito mais curta usando Lema de Konig)
+
+  Vamos voltar ao objetivo original: encontrar um representante geodésico para uma dada extremidade $\epsilon$ de um grafo localmente finito $G$. Tome uma árvore geradora normal $T \subset G$ que exiba todas as extremidades de $G$, e seja $\sigma$ o raio representante em $T$ de $\epsilon$. Chame de $\tilde{G}$ o subgrafo induzido de $\sigma$ em $G$. Pelo que provamos ao início, $\tilde{G}$ deve conter uma geodésica infinita $\gamma$, que representa a mesma extremidade $\epsilon$. A normalidade de $T$ garante que $\gamma$ ser geodésica em $\tilde{G}$ implica em $\gamma$ ser geodésica em $G$, concluindo nossa demonstração.
 \end{prova}
 
 

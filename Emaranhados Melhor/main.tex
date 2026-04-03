@@ -1,0 +1,584 @@
+\documentclass[11pt]{article}
+
+% Pacotes
+\RequirePackage{luatex85}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsthm}
+\usepackage{framed, color,xcolor}
+\usepackage{stmaryrd}
+\usepackage{rotating}           % Usado para rotacionar o texto
+\usepackage[all,knot,arc,import,poly]{xy}   % Pacote para desenhos gráficos
+% Este pacote pode conflitar com outros pacotes gráficos como o ``pictex''
+% Então é necessário usar apenas um dos pacotes conflitantes
+\usepackage{tikz, tikz-cd}
+\usepackage{epigraph}
+\usetikzlibrary{babel}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usepackage[stix2]{newtxmath}
+\usepackage{mathtools, nccmath}
+%\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{amssymb, mathrsfs}
+\usepackage[numbers]{natbib}
+\usepackage{fontspec}
+\usepackage{enumitem} % pra substituir o símbolo do itemize por alguma coisa legal, tipo setinhas:  \begin{itemize}[label=\ding{212}]
+\usepackage{pifont}
+\usepackage{stmaryrd} % for \arrownot (notação de adjacência em grafo)
+\usepackage{quiver} %pacote do quiver pra desenhar diagramas mais legais
+
+%Fontes e Línguas
+\usepackage[portuguese]{babel}
+%\usepackage{eufrak}
+\usepackage{emoji}
+\setmainfont{DarwinSerif-Regular.otf}
+\newfontfamily\fakebold[FakeBold=1.75]{DarwinSerif-Regular.otf}
+\newfontfamily\fakeitalic[FakeSlant=0.2]{DarwinSerif-Regular.otf}
+\renewcommand{\textbf}[1]{{\fakebold#1}}
+\renewcommand{\textit}[1]{{\fakeitalic#1}}
+\renewcommand{\bfseries}{\fakebold}
+\renewcommand{\itshape}{\fakeitalic}
+
+
+
+%Cores
+
+
+%Comandinhos que gosto
+\usepackage{mathtools}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\eqdef}{=\vcentcolon}
+\newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+\newcommand{\logo}{\Rightarrow}
+\newcommand{\pulinho}{\vspace{.5cm}}
+\newcommand{\edge}{%
+  \mathrel{-}% minus as a relation
+  \joinrel\joinrel % some backup
+  \mathrel{-}% minus as a relation
+}
+\newcommand{\notedge}{%
+  \mathrel{\mkern2mu}% a small advancement
+  \arrownot % a short slash
+  \mathrel{\mkern-2mu}% compensate
+  \edge
+}
+
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\Cay}{\text{Cay}}
+
+\newcommand{\luafacil}{
+\emoji{waxing-crescent-moon}
+}
+
+\newcommand{\luamedio}{
+\emoji{first-quarter-moon}
+}
+
+\newcommand{\luadificil}{
+\emoji{waxing-gibbous-moon}
+}
+
+\newcommand{\luaprojeto}{
+\emoji{full-moon}
+}
+
+\let\varphi\phi
+
+%Caixinhas coloridas
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Teorema}
+\newenvironment{teorema}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{theorem}
+}
+{
+\end{theorem}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{theorem*}{Teorema}
+\newenvironment{teorema*}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{theorem*}
+}
+{
+\end{theorem*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{prop}{Proposição}
+\newenvironment{proposicao}{
+\definecolor{shadecolor}{HTML}{FFDBDF}
+\begin{shaded}
+\begin{prop}
+}
+{
+\end{prop}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{prop*}{Proposição}
+\newenvironment{proposicao*}{
+\definecolor{shadecolor}{HTML}{FFDBDF}
+\begin{shaded}
+\begin{prop*}
+}
+{
+\end{prop*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{cor}{Corolário}
+\newenvironment{corolario}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{cor}
+}
+{
+\end{cor}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{cor*}{Corolário}
+\newenvironment{corolario*}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{cor*}
+}
+{
+\end{cor*}
+\end{shaded}
+}
+
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}
+\newenvironment{definicao}{
+\definecolor{shadecolor}{HTML}{defcfc}
+\begin{shaded}
+\begin{definition}
+}
+{
+\end{definition}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{definition*}{Definição}
+\newenvironment{definicao*}{
+\definecolor{shadecolor}{HTML}{defcfc}
+\begin{shaded}
+\begin{definition*}
+}
+{
+\end{definition*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{example}{Exemplo}
+\newenvironment{exemplo}{
+\definecolor{shadecolor}{HTML}{b9e6d3}
+\begin{shaded}
+\begin{example}
+}
+{
+\end{example}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{example*}{Exemplo}
+\newenvironment{exemplo*}{
+\definecolor{shadecolor}{HTML}{b9e6d3}
+\begin{shaded}
+\begin{example*}
+}
+{
+\end{example*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{veronica}{Lema}
+\newenvironment{lema}{
+\definecolor{shadecolor}{HTML}{FFF1F2}
+\begin{shaded}
+\begin{veronica}
+}
+{
+\end{veronica}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{veronica*}{Lema}
+\newenvironment{lema*}{
+\definecolor{shadecolor}{HTML}{FFF1F2}
+\begin{shaded}
+\begin{veronica*}
+}
+{
+\end{veronica*}
+\end{shaded}
+}
+
+\newenvironment{prova}{\paragraph{Demonstração:}}{\hfill$\square$ 
+\pulinho
+}
+
+\newenvironment{aviso}{
+\definecolor{shadecolor}{HTML}{fffe9a}
+\begin{shaded}
+}{\end{shaded}}
+
+\theoremstyle{definition}
+\newtheorem{exersisio}{Exercício}
+\newenvironment{exercicio}{
+\definecolor{shadecolor}{HTML}{CFB5FF}
+\begin{shaded}
+\begin{exersisio}
+}
+{
+\end{exersisio}
+\end{shaded}
+}
+
+
+\theoremstyle{definition}
+\newtheorem{preguta}{Pergunta}
+\newenvironment{pergunta}{
+\definecolor{shadecolor}{HTML}{FFF8F0}
+\begin{shaded}
+\begin{preguta}
+}
+{
+\end{preguta}
+\end{shaded}
+}
+
+%Tamanho do papel
+\usepackage[a4paper,top=1cm,bottom=1cm,margin=3.5cm]{geometry}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Definições só pra esse texto
+\usepackage[bb=boondox]{mathalpha}
+
+
+
+\title{Emaranhados}
+\author{Violeta Mar}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+A teoria de emaranhados (\textit{tangles}, em inglês) nasce na teoria de conectividade de grafos finitos. Aqui, tentamos desenvolver uma versão `conjuntista' dela. Na teoria usual, a definição de sistemas de separação envolve uma ordem parcial e uma involução arbitrária. No nosso caso, iremos sempre pensar em sistemas de separação definidos por conjuntos.
+
+
+\section{Sistemas, emaranhados e perfis}
+
+A categoria que trabalhamos será a seguinte.
+
+\begin{definicao*}[Sistemas e morfismos]
+  Um conjunto $S \subset \mathcal{P}(V)$ fechado para complementar vai ser chamado de sistema. Estamos interessados em como seus elementos estão contidos entre si, e como se relacionam com a operação de complementar, logo um morfismo de sistemas será uma função $f: S \rightarrow S'$ entre dois sistemas $S \subset \mathcal{P}(V)$ e $S' \subset \mathcal{P}(V')$ que preserva inclusão e complementar. $f$ é isomorfismo de sistemas se é bijeção e sua inversa é um morfismo de sistemas e neste caso escrevemos $S \cong S'$.
+\end{definicao*}
+
+\begin{pergunta}
+Essa é a definição apropriada de morfismo a se considerar aqui?
+\end{pergunta}
+
+Nosso objeto principal de estudo serão os emaranhados e os perfis de sistemas.
+
+\begin{definicao*}[Emaranhados e perfis]Seja $V$ um conjunto, e $S \subset \mathcal{P}(V)$ um subconjunto fechado para complementar. Uma função $\tau: S \rightarrow \{0,1\}$ é dita um \textit{emaranhado} se satisfaz
+  \begin{itemize}[label=\ding{212}]
+  \item $\tau(A) = 1$ ou $\tau(\lnot A) = 1$ e ambos não podem acontecer ao mesmo tempo, para qualquer $A \in S$ 
+  \item se $A \subset B$, então $\tau(A) \leq \tau(B)$
+  \end{itemize}
+Se $\tau$ satisfaz ainda a propriedade
+\begin{itemize}[label=\ding{212}]
+  \item se $A,B \in S$ e $A \cap B \in S$, então $\tau(A \cap B) = \tau(A)\tau(B)$
+\end{itemize}
+então dizemos que $\tau$ é um perfil.
+
+
+Geralmente dizemos que $\tau$ escolhe um $A$ se $\tau(A) = 1$. 
+
+Outros nomes na literatura: a primeira condição diz que $\tau$ é uma orientação; a segunda condição diz que essa orientação é consistente; a terceira condição é dita a propriedade P.
+\end{definicao*}
+
+\begin{pergunta}
+  Existe uma descrição categórica para emaranhados e perfis?
+\end{pergunta}
+
+Esta definição se aproxima muito de uma das possíveis definições de ultrafiltros para álgebras de Boole. De fato, se $S$ é uma álgebra de Boole, perfis são apenas ultrafiltros.
+
+\begin{proposicao}[Perfis são ultrafiltros quando $S$ é de Boole]
+  Suponha que $S$ seja fechado para união e interseção, ou seja, $S$ forma uma álgebra de Boole (ou corpo de conjuntos). Então $\tau:S \rightarrow \{0,1\}$ é um perfil se e somente se é um homomorfismo de álgebras de Boole, ou seja, um ultrafiltro.
+\end{proposicao}
+\begin{prova}
+ Lembrar que ultrafiltros são apenas homomorfismos da álgebra na álgebra $\{0,1\}$
+\end{prova}
+
+\begin{pergunta}
+  Qual a relação entre os emaranhados, os perfis, os filtros e os ultrafiltros de $S$?
+\end{pergunta}
+
+Todo ultrafiltro de $\mathcal{P}(V)$ se restringe a um perfil de $S$, mas nem todo perfil de $S$ se estende para um ultrafiltro.
+
+\begin{exemplo*}[Perfil não estendível]
+  Seja $V = \{1,2,3,4\}$, $S = \{A,B,C,D,\lnot A, \lnot B, \lnot C, \lnot D\}$ onde $A = \{2,3,4\}, B = \{1,3,4\}, C = \{1,2,4\}, D = \{1,2,3\}$. A função $\tau$ que seleciona apenas os complementares $\lnot A, \lnot B, \lnot C, \lnot D$ é um perfil, porém se estendermos $S$ para a álgebra de Boole $\mathcal{P}(\{1,2,3,4\})$, $\tau$ não se estende para um ultrafiltro, já que a interseção de $\lnot A, \lnot B, \lnot C, \lnot D$ é vazia.
+\end{exemplo*}
+
+Porém, podemos consertar esse problema adicionando elementos ao $V$.
+
+\begin{definicao*}[Principal]
+  Um perfil $\tau$ de $S \subset \mathcal{P(V)}$ é dito principal se existe um $v \in V$ tal que para todo $A \in S$, $\tau(A) = 1$ se e somente se $v \in A$. 
+\end{definicao*}
+
+\begin{proposicao*}[A menos de isomorfismo perfis sempre são principais]
+  Dado um $S \subset \mathcal{P}(V)$, existe um $S' \subset \mathcal{P}(V')$ tal que $S \cong S'$ e em $S'$ todo perfil é principal. O isomorfismo preserva interseções e uniões. Podemos tomar este $S'$ e este $V'$ de forma que todo perfil é principal para um único $v \in V'$. 
+\end{proposicao*}
+\begin{prova}
+  Para cada perfil não principal $\tau$ de $S$, defina um elemento $\alpha_{\tau}$ arbitrário e único e seja $V'$ o conjunto $V$ unido dos $\alpha_{\tau}$. Para cada $A \in S$, adicione à $A$ todo $\alpha_{\tau}$ tal que $\tau$ escolhe $A$. Ou seja, defina $A' \defeq A \cup \{\alpha_{\tau} \mid \tau(A) = 1\}$ e seja $S' = \{A' \mid A \in S\} \subset \mathcal{P}(V')$. Veja que $A \subset B$ implica em $A' \subset B'$ pela consistência de $\tau$, e é claro que $A' \subset B'$ implica em $A \subset B$. Assim, o mapa $A \mapsto A'$ é uma bijeção que preserva inclusão. O fato de $\tau$ ser uma orientação ($\tau$ escolhe um e apenas um dentre $A$ e $\lnot A$) garante que $(\lnot A)' = \lnot (A')$. Concluimos que este mapa é um isomorfismo de sistemas e logo $S \cong S'$. A propriedade P de perfil garante que $A' \cap B' = (A \cap B)'$ e portanto o isomorfismo preserva interseções e uniões quando elas existem.
+
+  Todo perfil é principal em $S'$, pois: tome um perfil $\tau'$ de $S'$. Pelo isomorfismo, obtemos um perfil $\tau$ em $S$. Os $A'$ selecionados por $\tau'$ serão exatamente os $A$ selecionados por $\tau$, portanto cada $A'$ deve conter o elemento $\alpha_{\tau}$. Logo $\tau'$ deve ser o perfil principal em relação a $\alpha_{\tau}$.
+
+  Para que tenhamos a parte da unicidade, defina $V''$ como sendo o quociente de $V'$ pela relação de equivalência $v \cong w$ quando $\tau_v = \tau_w$, onde estes são os perfis principais de $S$ em relação a $v,w$ respectivamente. Defina $A''$ como o quociente de $A'$ e $S'' = \{A'' \mid A' \in S'\} \subset \mathcal{P}(V'')$. Veja que $\tau_v = \tau_w$ é equivalente a dizer que $v \in A'$ se e somente se $w \in A'$ para qualquer $A' \in S'$. Assim, pode-se mostrar que $A' \subset B' \iff A'' \subset B''$ e $(\lnot A')' = \lnot (A'')$, para quaisquer $A',B' \in S'$, e portanto $S' \cong S''$. É direto ver que os perfis de $S''$ se mantém todos principais, agora principais em relação a um único elemento.
+\end{prova}
+
+Um detalhe sobre a última prova é que o único momento que precisamos da propriedade P de perfis é para garantir que o isomorfismo preserva uniões e interseções. Portanto, tirando isto, o resultado é válido para emaranhados.
+
+Este resultado nos dá uma `forma canônica' para sistemas e seus perfis. Nesta forma, $S$ se torna, essencialmente, uma família de subconjuntos de $V$ que separa cada um destes elementos: para cada par $\alpha,\beta \in V$, existe um $A \in S$ tal que $\alpha \in A, \beta \notin A$.
+
+Assim como definimos a topologia de Stone no espaço de ultrafiltros de uma álgebra de Boole, definimos uma topologia no espaço de perfis.
+
+\begin{definicao*}[Espaço de perfis]
+Definimos uma topologia no conjunto de perfis $\text{Per}(S) = \{\tau: S \rightarrow \{0,1\} \text{ é perfil }\}$ como sendo a gerada pela sub-base de conjuntos da forma $U_b \defeq \{\tau \in \text{Per}(S) \mid \tau(b) = 1\}$ para cada $b \in S$.
+\end{definicao*}
+
+Como $S$ é fechado pra complementar e $\tau(b) = 1$ se e somente se $\tau(\lnot b) = 0$, temos que $U_b = \lnot U_{\lnot b}$. Assim, os geradores da topologia são fechados-abertos, e portanto $\text{Per}(S)$ é zero-dimensional. Também, conseguimos separar dois $\tau, \tau'$ distintos através do $U_b$ onde $b$ é um elemento tal que $\tau(b) \neq \tau'(b)$; ou seja, $\text{Per}(S)$ é Hausdorff.
+
+\begin{pergunta}
+  Todo $\text{Per}(S)$ é compacto?
+\end{pergunta}
+
+Se isso fosse verdade, então na verdade os espaços $\text{Per}(S)$ são apenas espaços de Stone.
+
+\begin{pergunta}
+  Se não, quem são os espaços $\text{Per}(S)$? A categoria formada por eles exibe um funtor de volta para a categoria de sistemas?
+\end{pergunta}
+
+
+
+
+Queremos chegar a dois teoremas pilares da teoria de emaranhados: o teorema da dualidade árvore-emaranhado e o teorema da árvore de emaranhados. Começamos com o primeiro.
+
+
+\section{Teorema da Árvore de Emaranhados}
+
+Algumas definições antes do teorema.
+
+\begin{definicao*}[Cantos e comparabilidade]
+  Dados dois conjuntos $A,B \in S$, chamamos os quatro conjuntos $A \cap B, A \cap \lnot B, \lnot A \cap B, \lnot A \cap \lnot B$ de cantos do par $A,B$. Dizemos que $A$ e $B$ são comparáveis se pelo menos um destes conjuntos é vazio, caso contrário dizemos que são incomparáveis.
+\end{definicao*}
+
+Veja que $A$ é comparável a $B$ exatamente quando pelo menos uma das inclusões $A \subset B, A \subset \lnot B, \lnot A \subset B, \lnot A \subset \lnot B$ é verdadeira. Ou seja, $A$ e $B$ são incomparáveis quando $\{A, B, \lnot A, \lnot B\}$ é um conjunto de elementos que são incomparáveis em relação a ordem dada pela inclusão.
+
+Veja também que o valor de $\tau$ dos quatro cantos é inteiramente determinado pelo valor de $\tau$ em $A$ e em $B$.
+
+Os cantos de um par de conjuntos em $S$ podem não estar presentes em $S$. Dado um $S \subset \mathcal{P}(V)$ fechado pra complementar, dizer que todos os cantos de $S$ sempre estão em $S$ é equivalente a dizer que $S$ é uma álgebra de Boole. Se pedirmos um pouco menos de $S$, já conseguimos o suficiente para provar o teorema de árvore de emaranhados que iremos enunciar em breve.
+
+\begin{definicao*}[Sistemas sub-Boole]
+  Um subconjunto $S \subset \mathcal{P}(V)$ é dito sub-Boole (ou, na terminologia do Diestel, um conjunto submodular) se é fechado por complementar e dados quaisquer dois $A,B \in S$ temos que $A \cup B \in S$ ou $A \cap B \in S$.
+\end{definicao*}
+
+Temos dois pares de cantos que dizemos \textit{opostos}: $A \cap B$ e $\lnot A \cap \lnot B$; $\lnot A \cap B$ e $A \cap \lnot B$. Dado um $S \subset \mathcal{P}(V)$ fechado pra complementar, dizer que dentre dois cantos opostos, pelo menos um está em $S$ é equivalente a dizer que $S$ é sub-Boole.
+
+Adicionando cantos, então, sempre conseguimos estender um dado $S$ para um $\tilde{S}$ que seja um sub-Boole ou uma de fato álgebra de Boole. Porém, um perfil $\tau$ de $S$ não necessariamente se estende para um perfil $\tilde{\tau}$ em $\tilde{S}$.
+
+É claro, como o valor de um perfil $\tau$ em qualquer um dos quatro cantos de $A,B$ é determinado pelos valores de $\tau$ em $A$ e $B$, se existir uma extensão $\tilde{\tau}$ para $\tilde{S}$ então ela deve ser única.
+
+Continuando a introdução dos conceitos necessários para chegarmos ao teorema das árvores de emaranhados, trazemos agora os conjuntos árvore.
+
+\begin{definicao*}[Encaixados, conjunto árvore]
+  Dizemos que dois conjuntos $A,B \subset V$ estão encaixados se ou $A$ é comparável com $B$ em relação a inclusão (isto é, $A \subset B$ ou $B \subset A$) ou então $\lnot A$ é comparável com $B$ (isto é, $\lnot A \subset B$ ou $B \subset \lnot A$).
+
+  Um $S \subset \mathcal{P}(V)$, fechado para complementar e que não contém o vazio, é dito um conjunto árvore se quaisquer dois $A,B \in S$ (que não sejam complementares um do outro) estão encaixados.
+\end{definicao*}
+
+Lembrando que estamos sempre conceitualizando um $A \subset V$ como uma partição de $V$ em dois pedaços: $A$ e seu complementar $\lnot A$.
+
+Vamos entender o que tem de árvore em conjuntos árvore.  Primeiramente, toda árvore define um conjunto árvore.
+
+\begin{proposicao}[Conjunto árvore da árvore]
+  Seja $T$ uma árvore (um grafo simples sem ciclos). Defina $S(T) = \{A \subset V(T) \mid \text{ existe uma única aresta entre } A \text{ e } \lnot A\}$. Então $S$ é um conjunto árvore.
+\end{proposicao}
+\begin{prova}
+Veja que cada aresta $e$ de $T$ define um $A \in S(T)$, tomando $A$ como uma das duas componentes conexas de $T \setminus e$, sendo a outra $\lnot A$. E, por outro lado, dado um $A \in S(T)$, se tomarmos $e$ como a aresta que liga $A$ a seu complementar, então $A$ é uma das componentes conexas de $G \setminus e$. Sabendo isso, vamos agora mostrar que $S(T)$ é um conjunto árvore. Tome dois $A,B \in S(T)$ não complementares, e seja $e,f$ suas arestas correspondentes. $f$ deve ligar dois vértices de uma das componentes conexas de $G\setminus e$, ou seja, $f$ é uma aresta do grafo induzido por $A$ ou uma aresta do grafo induzido por $\lnot A$. Digamos que $f$ é uma aresta de vértices em $A$. Então, ao retirarmos $f$, $\lnot A$ continua conexo. Logo $\lnot A$ será um subconjunto de uma das componentes conexas de $G \setminus F$, isto é, de $B$ ou $\lnot B$. Igualmente, se $f$ é uma aresta de vértices em $\lnot A$, então teriamos que $A$ é subconjunto de $B$ ou $\lnot B$. Concluimos que $S(T)$ é um conjunto árvore.
+\end{prova}
+
+\begin{proposicao}[Perfis de árvores finitas são principais e recuperam a árvore]
+  
+  Seja $T$ uma árvore finita, e $S(T)$ seu conjunto árvore. Todos os emaranhados de $S(T)$ (e portanto todos os perfis de $S(T)$) são da forma $\tau_v$ para um $v \in V(T)$, onde $\tau_v(A) = 1 \Leftrightarrow v \in A$ para todo $A \in S$. Ou seja, $\tau_v$ é o perfil principal em relação a $v$. 
+
+  \pulinho
+
+  E mais: as adjacências e a métrica da árvore são recuperadas pela informação contida nos perfis. Isto é, dados dois vértices $v,w \in T$, sua distância na árvore é $n$ se e somente se seus perfis $\tau_v$ e $\tau_w$ são distintos em exatamente $n$ elementos $A \in S(T)$. No caso $n = 1$, temos que dois vértices são adjacentes se seus perfis são distintos em exatamente um elemento.
+\end{proposicao}
+\begin{prova}
+Enumere as arestas de $T$ como $\{e_1,\dots, e_k\}$. Lembre-se da descrição na demonstração anterior de $S(T)$ via as componentes conexas de cortes da árvore. Dentre as duas componentes conexas de $T \setminus e_1$, $\tau$ seleciona uma delas, digamos $C_1$. Para quaisquer outras arestas $\{e_{i_1}, \dots, e_{i_m}\}$ na outra componente conexa, $\lnot C_1$, a consistência de $\tau$ implica que ela selecionará componentes conexas $\{C_{i_1}, \dots, C_{i_m}\}$ que vão conter $C_1$. Logo $C_1 \cap C_{i_1} \cap \dots \cap C_{i_m} = C_1$. Se $C_1$ já é um conjunto contendo apenas um vértice $v$, então esta última interseção é a interseção de todos os conjuntos selecionados por $\tau$, e portanto $\tau$ será o $\tau_v$ deste $v$. Caso contrário, devemos ter pelo menos uma aresta $e_j$ entre vértices de $C_1$. Seja $C_j$ a componente conexa escolhida por $\tau$ de $T \setminus e_j$. Olhando agora apenas ao $C_1$, ao retirarmos $e_j$ iremos ficar com duas componentes conexas, ambas não vazias: $C_1 \cap C_j$ e $C_1 \cap \lnot C_j$. Se $C_1 \cap C_j$ conter apenas um vértice, então $\tau$ é o principal em relação a este vértice. Caso contrário, ela deve conter alguma aresta, e assim poderiamos continuar este processo, encontrando a componente conexa escolhida por $\tau$ na retirada dessa aresta, e interceptando-a com $C_1$ e $C_j$. Como existem apenas finitas arestas, em algum momento esta interceção deve conter apenas um vértice, que será o $v$ tal que $\tau = \tau_v$.
+
+Agora, se dois vértices $v,w \in T$ são adjacentes, digamos pela aresta $e_i$, então com certeza $v$ e $w$ estão em componentes conexas diferentes ao remover $e_i$, assim $\tau_v$ e $\tau_w$ diferem no corte relativo a esta aresta. E, na retirada de qualquer outra aresta $e_j$, a $e_i$ se mantém, logo os vértices estarão na mesma componente conexa e portanto $\tau_v$ e $\tau_w$ concordaram no corte relativo a $e_j$. Já se eles não forem adjacentes, deve haver um caminho entre eles contendo no mínimo duas arestas. A retirada de ambas estas arestas coloca os vértices em componentes conexas diferentes, e portanto $\tau_v$ e $\tau_w$ diferem em pelo menos dois valores. De fato, a quantidade de diferenças é exatamente o número de arestas do caminho entre os vértices, recuperando a métrica da árvore.
+\end{prova}
+
+\begin{pergunta}
+  O que acontece no caso de $T$ infinita?
+
+  (acredito que os perfis de $S(T)$ são todos ou ultrafiltros principais ou ultrafiltros de extremidades de $T$)
+\end{pergunta}
+
+Temos nesta última proposição uma descrição de como $S(T)$ contém a estrutura da árvore $T$. Se estamos de posse de seu $S(T)$, poderiamos reconstruir $T$ tomando como conjunto de vértices os perfis de $S(T)$ e ligando eles entre si quando diferem em apenas um valor. Este seria um caminho para mostrar que todo conjunto árvore finito $S$ vem de uma árvore: usando os perfis de $S$ como vértices para construir a árvore. Mas, para provar esta proposição, não vamos fazer isso. Vamos construir uma árvore explicitamente em um processo indutivo (porque essa foi a primeira ideia que eu tive).
+
+\begin{proposicao}[Árvore do conjunto árvore]
+ Todo conjunto árvore finito $S$ admite um isomorfismo (de sistemas) a um $S(T)$ para uma única árvore.
+\end{proposicao}
+\begin{prova}
+Vamos construir uma árvore $T$ para um dado $S$ conjunto árvore finito de forma que $S \cong S(T)$. Tome alguma ordenação $S = \{A_1,\lnot A_1, A_2, \lnot A_2, \dots, A_n \lnot A_n\}$. Comece a árvore $T$ por uma árvore $T_1$ composta por dois vértices $e_1^-$ e $e_1^+$ e e uma aresta direcionada de $e_1^-$ para $e_1^+$ que nomearemos por $e_1$. Para um $i < n$, seja $S_i = \{A_1,\lnot A_1, A_2, \lnot A_2, \dots, A_i, \lnot A_i\}$. Suponha que já construimos uma árvore $T_i$ que satisfaz
+
+\begin{itemize}[label=\ding{212}]
+  \item $T_i$ possui $i$ arestas direcionadas $\{e_1, \dots, e_i\}$
+  \item $S_i \cong S(T_i) = \{\tilde{A_1},\lnot \tilde{A_1}, \tilde{A_2}, \lnot \tilde{A_2}, \dots, \tilde{A_i}, \lnot \tilde{A_i}\}$, onde cada $\tilde{A_j}$ é a imagem do $A_j$ de $S_i$
+  \item $\tilde{A_j}$ é a componente conexa que contém o $e_j^+$, e portanto $\lnot \tilde{A_j}$ é a componente conexa que contém o $e_j^-$
+\end{itemize}  
+
+Já temos $T_1$ satisfazendo essas condições. Continuando o processo indutivo, vamos agora adicionar uma aresta no lugar certo de $T_i$ para construir $T_{i+1}$. Para isso, veja que o elemento $A_{i+1}$ define um emaranhado $\tau_{i+1}$ de $S_i$ da seguinte maneira.
+\[ \tau_{i+1}(A_j) = 1 \text{ se } A_{i+1} \subset A_j \text{ ou } \lnot A_{i+1} \subset A_j \]
+\[ \tau_{i+1}(\lnot A_j) = 1 \text{ se }  A_{i+1} \subset \lnot A_j \text{ ou } \lnot A_{i+1} \subset \lnot A_{j} \]
+Como $S$ é conjunto árvore, um (e apenas um) destes dois casos deve ocorrer, dando uma função $\tau_{i+1}$ bem definida. Resta mostrar consistência. Faça essa conta.
+
+Temos então um emaranhado $\tau_{i+1}$ de $S_i$, que naturalmente define um emaranhado $\tilde{\tau}_{i+1}$ de $S(T_i)$. Pela proposição anterior, sabemos que $\tau_{i+1}$ é principal, ou seja, existe um vértice $v \in T_i$ tal que $\tilde{\tau}_{i+1}(A) = 1 \Leftrightarrow v \in A$. Sejam $\{e_{k_1}, \dots, e_{k_m}\}$ as arestas adjacentes a $v$.``Abra'' o vértice $v$ em dois vértices $e_{i+1}^-$ e $e_{i+1}^+$ e uma aresta direcionada $e_{i+1}$ de $e_{i+1}^-$ para $e_{i+1}^+$. Para cada $k$ dentre os $k_1,\dots, k_m$, faça: 
+
+\begin{itemize}[label=\ding{212}]
+  \item se $A_{i+1} \subset A_k$, coloque o $e_k$ apontando para $e_{i+1}^-$ 
+  \item se $\lnot A_{i+1} \subset A_k$, coloque o $e_k$ apontando para $e_{i+1}^+$ 
+  \item se $A_{i+1} \subset \lnot A_k$, coloque o $e_k$ saindo de $e_{i+1}^-$ 
+  \item se $\lnot A_{i+1} \subset \lnot A_k$, coloque o $e_k$ saindo de $e_{i+1}^+$ 
+\end{itemize}
+
+Assim temos nossa nova $T_{i+1}$, e seja $S(T_i) = \{\tilde{A_1},\lnot \tilde{A_1}, \tilde{A_2}, \lnot \tilde{A_2}, \dots, \widetilde{A_{i+1}}, \lnot \widetilde{A_{i+1}}\}$ - veja que aqui estamos cometendo um abuso de notação, repetindo os mesmos nomes $\tilde{A_j}$ que antes eram as partições da árvore anterior $S(T_i)$. Isto não é grande problema: a única diferença entre estes conjuntos é que o elemento $v$ é substituido por dois elementos $e_{i+1}^-$ e $e_{i+1}^+$. Precisamos nos convencer que $S_{i+1} \cong S(T_{i+1})$. As relações entre os novos $\tilde{A}_j$ para $j < i+1$ não mudam, pois apenas temos a troca de $v$ por $e_{i+1}^-$ e $e_{i+1}^+$ em todos os conjuntos. Basta mostrar, então, que $\widetilde{A}_{i+1}$ é encaixado com cada $\tilde{A}_j$ da mesma maneira que $A_{i+1}$ é encaixado com cada $A_j$. Tome um $j < i + 1$ e vamos fazer o caso $A_{i+1} \subset A_j$ - os outros três são análogos.
+
+Se a aresta $e_j$ referente ao $\tilde{A}_j$ em $T_i$ era adjacente a $v$, então por construção $e_j$ aponta para $e_{i+1}^-$. Assim, o único caminho de $e_{i+1}^+$ para $e_j^+$ é a aresta $e_{i+1}$. Logo, qualquer caminho da componente conexa $\tilde{A}_{i+1}$ de $T_{i+1} \setminus e_{i+1}$ não passa pela aresta $e_k$, o que nos permite concluir que $\tilde{A}_{i+1} \subset \tilde{A}_k$.
+
+Já se $e_j$ não for adjacente a $v$, deve existir algum caminho de $e_j^+$ até $v$. Este caminho, ao final, chega em alguma aresta $e_k$ adjacente a $v$. Gostariamos que $e_k$ fosse colocada em $e_{i+1}^-$ na construção do $T_{i+1}$, pois se isso acontece, então o único caminho de $e_{i+1}^+$ até a aresta $e_j$ passa por $e_{i+1}$ e aí conseguiriamos concluir que $\widetilde{A}_{i+1} \subset \tilde{A}_j$. Suponha, então, que $e_k$ não é colocada em $e_{i+1}^-$ na construção do $T_{i+1}$, e sim colocada em $e_{i+1}^+$. Isto só ocorre se temos que $\lnot A_{i+1}$ é subconjunto de $A_k$ ou de $\lnot A_k$. Se $\lnot A_{i+1} \subset A_k$, então $e_k$ aponta na direção de $e_{i+1}^+$. Assim, a componente conexa da ponta $e_k^+$ deve ser a que não contém a aresta $e_j$ e portanto $A_k \subset A_j$.  Mas daí teriamos $\lnot A_{i+1} \subset A_k \subset A_j$ o que contradiz $A_{i+1} \subset A_j$. Já se $\lnot A_{i+1} \subset \lnot A_k$, então $e_k$ aponta na direção oposta de $e_{i+1}^+$. Mas daí teriamos $A_k \subset \lnot A_{i+1} \subset A_j$ e também teriamos que $e_j^-$ possui um caminho até $e_k^+$ que não passa por $k$, ou seja, $e_j^- \in A_k \subset A_j$, contradição. Concluimos que $e_k$ realmente é colocada em $e_{i+1}^-$ e assim chegamos a $\widetilde{A}_{i+1} \subset \tilde{A}_j$, finalizando nossa demonstração.
+
+Na verdade, resta provar a unicidade: se começarmos com um $S = S(T)$ para alguma árvore $T$, a árvore construida pelo algoritmo anterior é isomorfa a $T$. A demonstração disso segue facilmente se entendemos como os emaranhados de uma árvore finita recuperam a sua estrutura, como descrito na proposição anterior. De fato, suponha que $S(T_1) \cong S(T_2)$. Dado um vértice $v \in T_1$, seu emaranhado $\tau_v$ irá definir um emaranhado em $S(T_2)$, que também deverá ser principal, digamos referente ao vértice $v'$. Mapeie $\phi: v \mapsto v'$. Como também todo vértice de $T_2$ define um emaranhado que pode ser traduzido para um emaranhado de $T_1$, temos que $\phi$ é bijetora. Ela será um morfismo de grafos, isto é, $v \edge w \Leftrightarrow \phi(v) \edge \phi(w)$, pois adjacência de dois vértices acontece se e somente se seus emaranhados diferem por apenas um vértice, como descrito na proposição anterior. 
+
+\end{prova}
+
+\begin{pergunta}
+  O que acontece quando $S$ é infinito?
+
+  Tem um artigo \cite{arvoredoconjuntoarvore} que é demonstrado que nesse caso o teorema é válido substituindo $T$ por um "tree-like space". Será que é válido substituindo $T$ por uma árvore de ordem?
+\end{pergunta}
+
+\begin{pergunta}
+  Quem são os espaços $\text{Per}(S)$ quando $S$ é conjunto árvore?
+\end{pergunta}
+
+\begin{exemplo*}
+ Seja $V = \{1,2,3,4\}$, $S = \{A,B,C,D,\lnot A, \lnot B, \lnot C, \lnot D\}$ onde $A = \{2,3,4\}, B = \{1,3,4\}, C = \{1,2,4\}, D = \{1,2,3\}$. $S$ é um conjunto árvore, e se aplicarmos o algoritmo da proposição anterior, obteremos uma árvore $T$ em formato de estrela, ou seja, um vértice central com quatro arestas ligadas a ele. Temos então $5$ emaranhados nesta árvore, todos principais, relativos aos $5$ vértices de $T$. Note que o principal do vértice central não será principal em $S$: ele se traduzirá no emaranhado que escolhe sempre os complementares $\lnot A, \lnot B, \lnot C, \lnot D$, cuja interseção de todos os conjuntos escolhidos é vazia.
+
+\end{exemplo*}
+
+\begin{exemplo*}[Visualização]
+  Dado um conjunto árvore $S(T)$, podemos desenhar o $V$ em formato da árvore $T$ com as separações de $S(T)$ explicitadas.
+\end{exemplo*}
+
+Uma última definição antes de afirmarmos nosso principal teorema.
+
+\begin{definicao*}[Exibição de perfil]
+  Dizemos que um $S' \subset S \subset \mathcal{P}(V)$ exibe um conjunto de perfis $\mathcal{E}$ se para quaisquer dois $\tau, \tau' \in \mathcal{E}$, existe um $A \in S'$ tal que $\tau(A) \neq \tau'(A)$.
+\end{definicao*}
+\begin{teorema*}[Teorema da Árvores de Emaranhados - finito]
+  Seja $V$ finito. Em qualquer $S \subset \mathcal{P}(V)$ sub-Boole existe um conjunto árvore $N \subset S$ que exibe todos os perfis de $S$.
+\end{teorema*}
+\begin{prova}
+Vamos apresentar um algoritmo que constrói o $N$. Suponha que já construimos um conjunto árvore $N$ que diferencia um conjunto $\mathcal{O}$ de $n -1$ perfis de $S$, e ainda resta mais perfis para diferenciar. Escolha um perfil $\tau$ que $N$ não diferencia. Deve, então, existir algum outro $\tau' \in \mathcal{O}$ que concorda com $\tau$ em todos os elementos de $N$. Qualquer outro $\tau'' \in \mathcal{O}$ é diferenciado de $\tau'$ em algum elemento de $N$ por suposição, então é diferenciado de $\tau$ também. Ou seja, o único par que precisamos consertar é o $\tau$ e $\tau'$. Para isso, adicione a $N$ algum elemento $A \in S$ em que $\tau$ e $\tau'$ diferem - que, é claro, existe, pois $\tau$ e $\tau'$ são dois perfis distintos. Agora $N \cup {A}$ diferencia $\mathcal{O} \cup \{\tau\}$, mas pode não ser mais conjunto árvore. Isto pode acontecer caso o $A$ não seja encaixado com alguns elementos de $\mathcal{N}$. Seja $B$ um desses elementos. Vamos resolver esse não encaixamento substituindo $A$ ou $B$ por algum dos conjuntos dentre $\{A \cap B, \lnot A \cap B, A \cap \lnot B, \lnot A \cap \lnot B\}$, que são os conjuntos que chamamos de cantos de $A$ e $B$. Cantos funcionam bem pois eles não vão atrapalhar nenhum encaixamento, como vamos provar ao final. Não necessariamente todos os cantos vão estar em $S$, mas alguns pelo menos vão estar, pelo fato de $S$ ser sub-Boole, e isso será suficiente.  Para decidirmos qual substituição vamos fazer, precisamos escolher a que não vai nos fazer perder a diferenciação de nenhum perfil. Vamos por casos. Primeiramente, suponha $\tau(B) = 1$.
+
+Suponha que $A \cap B \in S$. Como $\tau(B) = 1$, e $A$ diferencia $\tau$ e $\tau'$, então $A \cap B$ também diferencia $\tau$ de $\tau'$. Construa $N'$ substituindo $A$ por $A\cap B$ em $N \cup {A}$, isto é, $N' = N \cup {A \cap B}$. $N'$ continua a diferenciar $\mathcal{O} \cup \{\tau\}$.
+
+Suponha que $A \cap B \notin S$. Então por $S$ ser sub-Boole, $A \cup B \in S$. A união não é suficiente para diferenciar $\tau$ e $\tau'$, então agora não podemos fazer o mesmo truque do caso anterior sem perder a diferenciação de $\tau$. E se substituissemos o $B$? Possivelmente poderiamos perder a diferenciação de algum outro par $\tilde{\tau}$ e $\tilde{\tau}'$ em $\mathcal{O}$. De fato, se existir um par destes, ele será único, como provaremos ao final em um lema. Então precisamos apenas nos preocupar com este par $\tilde{\tau}$ e $\tilde{\tau}'$. Se o $A$ diferencia este par, então podemos simplesmente definir $N' = N \setminus B \cup {A}$, que irá continuar a diferenciar $\mathcal{O} \cup \{\tau\}$ com um não encaixamento a menos. Caso contrário, $A$ pode valer ou $0$ em ambos ou $1$ em ambos. Se ele vale $0$ em ambos, então $A \cup B$ diferencia $\tilde{\tau}$ e $\tilde{\tau}'$. Defina neste caso $N' = N \setminus B \cup {A, A \cup B}$. Se ele vale $1$ em ambos, vamos ter que procurar novos cantos. Olhe para o par $A, \lnot B$. Se a interseção $A \cap \lnot B \in S$, então ela diferencia $\tilde{\tau}$ e $\tilde{\tau}'$ e podemos definir $N' = N \setminus B \cup {A, A \cap \lnot B}$. Se $A \cap \lnot B \notin S$, então a união $A \cup \lnot B \in S$. Neste caso não temos a diferenciação do $\tilde{\tau}$ e $\tilde{\tau}'$, mas temos a diferenciação do $\tau$ e do $\tau'$, então podemos voltar a ideia anterior e subtituir o $A$! Defina daí $N' = N \cup \{A \cup \lnot B\}$.
+
+Começamos a argumentação dos dois parágrafos anteriores supondo que $\tau(B) = 1$. Se este não for o caso, troque $B$ por $\lnot B$ na argumentação inteira. 
+
+Finalmente, em qualquer um dos casos, chegamos a um $N'$ que diferencia $\mathcal{O} \cup \{\tau\}$ e que substitui dentre dois $A,B$ não encaixados, um deles por um do seus cantos.
+
+\begin{lema*}
+  Tome dois conjuntos $A,B$ não encaixados e um $C$ encaixado com $A$ ou com $B$. Então $C$ está encaixado com qualquer um dos cantos $\{A \cap B, A \cap \lnot B, \lnot A \cap B, \lnot A \cap \lnot B\}$.
+\end{lema*}
+
+Com este lema, garantimos que nosso $N'$ tem exatamente um não encaixamento a menos que $N$. Repita este processo até não ter mais não encaixamentos, e assim chegará a um conjunto árvore que diferencia $n$ perfis, finalizando nosso passo indutivo.
+
+Resta apenas demonstrar um fato afirmado durante a demonstração e não provado: que existe um único par $\tilde{\tau}$ e $\tilde{\tau}'$ em $\mathcal{O}$ diferenciado por $B$ e não diferenciado por nenhum outro elemento de $N$.
+
+\begin{lema*}
+  Seja $N$ um conjunto árvore, $B \in N$ e $\mathcal{O}$ um conjunto de perfis diferenciados por $N$. Se existe um par de perfis $\tilde{\tau}$ e $\tilde{\tau}'$ em $\mathcal{O}$ diferenciado apenas por $B$ e por mais ninguém, então este par é único.
+\end{lema*}
+
+\end{prova}
+
+Usando nossa forma canônica para $S$, o teorema é equivalente a demonstrar que, dado uma família de subconjuntos $S \subset \mathcal{P}(V)$ que é sub-Boole e separa cada elemento de $V$, existe um conjunto árvore $N \subset S$ que ainda separa cada elemento de $V$.
+
+\begin{pergunta}
+  Quando $S$ é infinito, o que precisamos pedir aqui para garantir a existência de $N$?
+\end{pergunta}
+
+\begin{pergunta}
+Existe uma condição topológica em $\text{Per}(S)$ que é equivalente a $N$ exibir todos os perfis? Isto ajuda a generalizar o teorema para o caso infinito?
+\end{pergunta}
+
+\section{Teorema da Dualidade Árvore-Emaranhado}
+
+Vamos agora ao nosso segundo teorema principal. Antes, algumas definições.
+
+\begin{definicao*}[Estrela]
+  Dizemos que $S$ é uma estrela se $S$ é isomorfo a um $S(T)$ onde $T$ é uma árvore composta de um vértice conectado a todos os outros vértices, que não estão conectados entre si (ou seja, uma estrela no sentido clássico de teoria de grafos). Equivalentemente, $S$ é uma estrela se para quaisquer dois $A,B \in S$ temos $\lnot A \subset B$.
+\end{definicao*}
+
+\begin{teorema*}[Dualidade Árvore-Emaranhados]
+  Seja $S \subset \mathcal{P}(V)$ fechado para complementar. Seja $\mathcal{F}$ um conjunto de estrelas de $S$. Suponha que $\mathcal{F}$ satisfaz a hipótese da dualidade. Então, vale apenas uma dentre as seguintes afirmações:
+\begin{itemize}[label=\ding{212}]
+  \item Existe um emaranhado que evita $\mathcal{F}$
+  \item Existe um conjunto árvore $S' \subset S$ cujas estrelas estão todas em $\mathcal{F}$
+\end{itemize}
+  \end{teorema}
+
+  \begin{pergunta}
+    O que acontece quando $S$ é infinito?
+  \end{pergunta}
+
+
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+
+\end{document}
