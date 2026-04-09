@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2025.9.22)  3 APR 2026 18:05
+This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2025.9.22)  9 APR 2026 16:16
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex"
@@ -1149,19 +1149,19 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 38810 strings out of 477805
+ 38811 strings out of 477805
  100000,1144653 words of node,token memory allocated
  632 words of node memory still in use:
    8 hlist, 2 vlist, 3 rule, 5 glue, 5 kern, 1 glyph, 17 attribute, 64 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 2:938,3:313,4:119,5:3477,6:46,7:8072,8:43,9:609,10:31,11:727
+   avail lists: 2:876,3:313,4:119,5:3507,6:46,7:8050,8:43,9:602,10:31,11:722
  57867 multiletter control sequences out of 65536+600000
  202 fonts using 17152471 bytes
- 84i,6n,84p,3293b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,6n,84p,3293b,525s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}<./DarwinSerif-Regular.otf></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (11 pages, 175793 bytes).
+Output written on main.pdf (11 pages, 176204 bytes).
 
-PDF statistics: 167 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 131072)
+PDF statistics: 168 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
+ 40 named destinations out of 1000 (max. 131072)
  40 words of extra memory for PDF output out of 10000 (max. 100000000)
 
