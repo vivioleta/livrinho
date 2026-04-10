@@ -460,7 +460,13 @@ Agora, se dois vértices $v,w \in T$ são adjacentes, digamos pela aresta $e_i$,
 \begin{pergunta}
   O que acontece no caso de $T$ infinita?
 
-  (acredito que os perfis de $S(T)$ são todos ou ultrafiltros principais ou ultrafiltros de extremidades de $T$)
+  Conjecture mais ou menos intuitivamente demonstrada: os perfis de $S(T)$ são todos ou ultrafiltros principais ou ultrafiltros de extremidades de $T$.
+\end{pergunta}
+
+\begin{pergunta}
+  Como definir $S(T)$ para uma árvore de ordem $T$? E quem são seus perfis?
+
+  Conjectura mais ou menos intuitivamente demonstrada: faça do jeito mais óbvio possível, e vai dar certo, e seus perfis vão ser ultrafiltros principais ou ramos maximais.
 \end{pergunta}
 
 Temos nesta última proposição uma descrição de como $S(T)$ contém a estrutura da árvore $T$. Se estamos de posse de seu $S(T)$, poderiamos reconstruir $T$ tomando como conjunto de vértices os perfis de $S(T)$ e ligando eles entre si quando diferem em apenas um valor. Este seria um caminho para mostrar que todo conjunto árvore finito $S$ vem de uma árvore: usando os perfis de $S$ como vértices para construir a árvore. Mas, para provar esta proposição, não vamos fazer isso. Vamos construir uma árvore explicitamente em um processo indutivo (porque essa foi a primeira ideia que eu tive).
@@ -507,10 +513,14 @@ Na verdade, resta provar a unicidade: se começarmos com um $S = S(T)$ para algu
   O que acontece quando $S$ é infinito?
 
   Tem um artigo \cite{arvoredoconjuntoarvore} que é demonstrado que nesse caso o teorema é válido substituindo $T$ por um "tree-like space". Será que é válido substituindo $T$ por uma árvore de ordem?
+  
+  Conjectura intuitivamente mais ou menos demonstrada: o teorema segue verdade, substituindo $T$ por uma árvore de ordem. Agora a unicidade acredito que possa não valer, por causa de uma liberdade na escolha de raiz. Mas o espaço topológico definido pelos vértices da árvore vai ser o mesmo.
 \end{pergunta}
 
 \begin{pergunta}
-  Quem são os espaços $\text{Per}(S)$ quando $S$ é conjunto árvore?
+  No caso $S$ infinito, quem são os espaços $\text{Per}(S)$ quando $S$ é conjunto árvore?  
+  
+  Conjectura intuitivamente mais ou menos demonstrada: são os vértices da árvore (possivelmente de ordem) com topologia discreta, aderindo aos ramos da árvore.
 \end{pergunta}
 
 
@@ -576,11 +586,21 @@ Vamos agora ao nosso segundo teorema principal. Antes, algumas definições.
   Dizemos que $S$ é uma estrela se $S$ é isomorfo a um $S(T)$ onde $T$ é uma árvore composta de um vértice conectado a todos os outros vértices, que não estão conectados entre si (ou seja, uma estrela no sentido clássico de teoria de grafos). Equivalentemente, $S$ é uma estrela se para quaisquer dois $A,B \in S$ temos $\lnot A \subset B$.
 \end{definicao*}
 
+Dado um conjunto árvore finito $S$, sabemos que $S \cong S(T)$ para uma única árvore $T$. Cada vértice $v$ de $T$ induz uma estrela $E_v$ em $S(T)$. A imagem de $E_v$ em $S$ pelo isomorfismo é dito uma estrela-vértice do conjunto árvore $S$.
+
+\begin{pergunta}
+Como definir intrinsicamente os estrela-vértice? Ideia: são as estrelas de $S$ tal que nenhum $A$ de $S$ pode ser substituido por um $B$ tal que $B \subset A$ e estrela se mantém estrela?
+\end{pergunta}
+
+\begin{pergunta}
+  A definição intrínseca de estrela resulta no que no caso de conjunto árvore infinitos? Raios? Isso pode indicar um possível caminho de generalização pro teorema da dualidade?
+\end{pergunta}
+
 \begin{teorema*}[Dualidade Árvore-Emaranhados]
-  Seja $S \subset \mathcal{P}(V)$ fechado para complementar. Seja $\mathcal{F}$ um conjunto de estrelas de $S$. Suponha que $\mathcal{F}$ satisfaz a hipótese da dualidade. Então, vale apenas uma dentre as seguintes afirmações:
+  Seja $S \subset \mathcal{P}(V)$ fechado para complementar e finito. Seja $\mathcal{F}$ um conjunto de estrelas de $S$. Suponha que $\mathcal{F}$ satisfaz a hipótese da dualidade. Então, vale apenas uma dentre as seguintes afirmações:
 \begin{itemize}[label=\ding{212}]
   \item Existe um emaranhado que evita $\mathcal{F}$
-  \item Existe um conjunto árvore $S' \subset S$ cujas estrelas estão todas em $\mathcal{F}$
+  \item Existe um conjunto árvore $S' \subset S$ cujas estrelas-vértices estão todas em $\mathcal{F}$
 \end{itemize}
   \end{teorema*}
 
