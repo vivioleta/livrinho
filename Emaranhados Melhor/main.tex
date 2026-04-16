@@ -583,29 +583,73 @@ Existe uma condição topológica em $\text{Per}(S)$ que é equivalente a $N$ ex
 Vamos agora ao nosso segundo teorema principal. Antes, algumas definições.
 
 \begin{definicao*}[Estrela]
-  Dizemos que $S$ é uma estrela se $S$ é isomorfo a um $S(T)$ onde $T$ é uma árvore composta de um vértice conectado a todos os outros vértices, que não estão conectados entre si (ou seja, uma estrela no sentido clássico de teoria de grafos). Equivalentemente, $S$ é uma estrela se para quaisquer dois $A,B \in S$ temos $\lnot A \subset B$.
+  $E \subset \mathcal{P}(V)$ é uma estrela se para quaisquer dois $A,B \in S$ temos $\lnot A \subset B$.
+
+  Veja que $E$ é estrela se e somente se seu fecho pra complementar é $S(T)$ para algum $T$ que é uma estrela no sentido de grafos. (finita ou infinita!)
 \end{definicao*}
 
-Dado um conjunto árvore finito $S$, sabemos que $S \cong S(T)$ para uma única árvore $T$. Cada vértice $v$ de $T$ induz uma estrela $E_v$ em $S(T)$. A imagem de $E_v$ em $S$ pelo isomorfismo é dito uma estrela-vértice do conjunto árvore $S$.
+Dado um conjunto árvore finito $S$, sabemos que $S \cong S(T)$ para uma única árvore $T$. Cada vértice $v$ de $T$ induz uma estrela $E_v$ em $S(T)$. Formalmente, $E_v$ é o conjunto de conjuntos $A$ de $S$ tal que a única aresta que liga $A$ a $\lnot A$ é uma aresta adjacente a $v$, e além disso $v \in A$. A imagem de $E_v$ em $S$ pelo isomorfismo é dito uma estrela-vértice do conjunto árvore $S$.
 
 \begin{pergunta}
 Como definir intrinsicamente os estrela-vértice? Ideia: são as estrelas de $S$ tal que nenhum $A$ de $S$ pode ser substituido por um $B$ tal que $B \subset A$ e estrela se mantém estrela?
+
+ A definição intrínseca de estrela resulta no que no caso de conjunto árvore infinitos? 
 \end{pergunta}
 
-\begin{pergunta}
-  A definição intrínseca de estrela resulta no que no caso de conjunto árvore infinitos? Raios? Isso pode indicar um possível caminho de generalização pro teorema da dualidade?
-\end{pergunta}
+
+
+\begin{definicao*}[As hipóteses da dualidade]
+  Dizemos que $\mathcal{F}$ decide $A \in S$ se ou $\{A\} \in \mathcal{F}$ ou $\{\lnot A\} \in \mathcal{F}$
+
+  Um conjunto de estrelas $\mathcal{F}$ é dito consistente se sempre que $\{A\} \in \mathcal{F}$ então nenhum $B \subset A$ é tal que $\{\lnot B\} \in \mathcal{F}$.
+  
+  Dado dois conjuntos $R,A$ de interseção vazia, definimos um mapa $\mathcal{P}(V) \rightarrow \mathcal{P}(V)$ que chamamos de $(R,A)$-relativização. Dado um $X$, o mapa leva
+
+  \begin{align*} 
+X &\mapsto  X \cap R \text{ se } X \subset \lnot A \\ 
+X &\mapsto \lnot(X \cap R) \text{ se } \lnot X \subset \lnot A \\
+X &\mapsto X \text{ caso contrário}
+\end{align*}
+
+  Dizemos que $S \subset \mathcal{P}(V)$ satisfaz a hipótese da dualidade se preserva $(R,A)$ relativizações pra quaisquer par $R,A \in S$ de interseção vazia.
+  
+  Dizemos que um conjunto de estrelas $\mathcal{F}$ satisfaz a hipótese da dualidade se para quaisquer dois $A,B \in S$ com interseção vazia, existe um $R \in S$ tal que $R \subset \lnot A$, $\lnot R \subset \lnot B$, e a imagem de qualquer estrela em $\mathcal{F}$ via $(R,A)$-relativização ou $(R,B)$-relativização é ainda uma estrela em $\mathcal{F}$.
+\end{definicao*}
+
 
 \begin{teorema*}[Dualidade Árvore-Emaranhados]
-  Seja $S \subset \mathcal{P}(V)$ fechado para complementar e finito. Seja $\mathcal{F}$ um conjunto de estrelas de $S$. Suponha que $\mathcal{F}$ satisfaz a hipótese da dualidade. Então, vale apenas uma dentre as seguintes afirmações:
+  Seja $S \subset \mathcal{P}(V)$ fechado para complementar, finito, e satisfazendo a hipótese da dualidade. Seja $\mathcal{F}$ um conjunto de estrelas de $S$ satisfazendo a hipótese da dualidade.
+
+  Então, vale apenas uma dentre as seguintes afirmações:
+
 \begin{itemize}[label=\ding{212}]
   \item Existe um emaranhado que evita $\mathcal{F}$
   \item Existe um conjunto árvore $S' \subset S$ cujas estrelas-vértices estão todas em $\mathcal{F}$
 \end{itemize}
   \end{teorema*}
+  \begin{prova}
+    Primeiro provamos que as afirmações não botem ser ambas verdades. Isto acontece devido a um simples fato: dado uma árvore, qualquer escolha de orientação para todas as suas arestas (colocar uma seta na aresta em uma direção ou outra) é tal que existe pelo menos um vértice onde todas as setas apontam para ele. Retraduzindo este resultado grafista para nossa linguagem abstrata:
+
+    \begin{lema*}
+      Dada um emaranhado $\tau$ de um conjunto árvore $S(T)$, existe uma estrela-vértice cujos elementos são todos escolhidos por $\tau$.
+    \end{lema*}
+    \begin{prova}
+      Um emaranhado induz, para cada aresta de $T$, uma orientação. Assim, agora temos uma árvore orientada. Chame de ralo um vértice cujas setas adjacentes todas apontam para ele. Começando a partir de qualquer vértice, se ele não for um ralo, existe uma aresta apontando para fora. Trace um caminho seguindo por arestas direcionadas para fora sempre que possível. Como a árvore é finita, este caminho deve terminar em algum vértice, e como árvores não possuem ciclos, este vértice final deve necessariamente ser um ralo. A estrela vértice referente a este ralo é tal que todos os seus elementos são escolhidos por $\tau$
+    \end{prova}
+
+    Portanto, um emaranhado que evita $\mathcal{F}$ induziria um emaranhado que evita $\mathcal{F}$ em um conjunto árvore qualquer $S'$ de $S$, que necessariamente deve ser tal que nenhuma estrela vértice está em $\mathcal{F}$.
+
+    Agora seguimos para demonstrar que pelo menos uma dessas opções acontece.
+
+
+  \end{prova}
 
   \begin{pergunta}
     O que acontece quando $S$ é infinito?
+  \end{pergunta}
+
+    \begin{pergunta}
+   A apresentação de $S$ com todos os emaranhados sendo principais simplifica a demonstração ou a intuição por trás do teorema?
   \end{pergunta}
 
 
