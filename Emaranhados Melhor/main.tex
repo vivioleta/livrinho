@@ -582,13 +582,14 @@ Existe uma condição topológica em $\text{Per}(S)$ que é equivalente a $N$ ex
 
 Vamos agora ao nosso segundo teorema principal. Antes, algumas definições.
 
-\begin{definicao*}[Estrela]
+\begin{definicao*}[Estrela e estrela-vértice]
   $E \subset \mathcal{P}(V)$ é uma estrela se para quaisquer dois $A,B \in S$ temos $\lnot A \subset B$.
 
   Veja que $E$ é estrela se e somente se seu fecho pra complementar é $S(T)$ para algum $T$ que é uma estrela no sentido de grafos. (finita ou infinita!)
+
+  Dado um conjunto árvore finito $S$, sabemos que $S \cong S(T)$ para uma única árvore $T$. Cada vértice $v$ de $T$ induz uma estrela $E_v$ em $S(T)$. Formalmente, $E_v$ é o conjunto de conjuntos $A$ de $S$ tal que a única aresta que liga $A$ a $\lnot A$ é uma aresta adjacente a $v$, e além disso $v \in A$. A imagem de $E_v$ em $S$ pelo isomorfismo é dito uma estrela-vértice do conjunto árvore $S$.
 \end{definicao*}
 
-Dado um conjunto árvore finito $S$, sabemos que $S \cong S(T)$ para uma única árvore $T$. Cada vértice $v$ de $T$ induz uma estrela $E_v$ em $S(T)$. Formalmente, $E_v$ é o conjunto de conjuntos $A$ de $S$ tal que a única aresta que liga $A$ a $\lnot A$ é uma aresta adjacente a $v$, e além disso $v \in A$. A imagem de $E_v$ em $S$ pelo isomorfismo é dito uma estrela-vértice do conjunto árvore $S$.
 
 \begin{pergunta}
 Como definir intrinsicamente os estrela-vértice? Ideia: são as estrelas de $S$ tal que nenhum $A$ de $S$ pode ser substituido por um $B$ tal que $B \subset A$ e estrela se mantém estrela?
@@ -596,34 +597,37 @@ Como definir intrinsicamente os estrela-vértice? Ideia: são as estrelas de $S$
  A definição intrínseca de estrela resulta no que no caso de conjunto árvore infinitos? 
 \end{pergunta}
 
+\begin{definicao*}[Evitar]
+  Dizemos que um emaranhado $\tau$ de $S$ evita um conjunto $\mathcal{F}$ de subconjuntos de $S$ se nenhum $E \in \mathcal{F}$ é tal que $\tau$ seleciona todos os elementos de $E$.
+\end{definicao*}
 
 
 \begin{definicao*}[As hipóteses da dualidade]
   Dizemos que $\mathcal{F}$ decide $A \in S$ se ou $\{A\} \in \mathcal{F}$ ou $\{\lnot A\} \in \mathcal{F}$
 
-  Um conjunto de estrelas $\mathcal{F}$ é dito consistente se sempre que $\{A\} \in \mathcal{F}$ então nenhum $B \subset A$ é tal que $\{\lnot B\} \in \mathcal{F}$.
+  Um conjunto de estrelas $\mathcal{F}$ é dito $S$-consistente se sempre que $\{A\} \in \mathcal{F}$ então nenhum $B \subset A$, $B \in S$ é tal que $\{\lnot B\} \in \mathcal{F}$.
   
   Dado dois conjuntos $R,A$ de interseção vazia, definimos um mapa $\mathcal{P}(V) \rightarrow \mathcal{P}(V)$ que chamamos de $(R,A)$-relativização. Dado um $X$, o mapa leva
 
   \begin{align*} 
-X &\mapsto  X \cap R \text{ se } X \subset \lnot A \\ 
-X &\mapsto \lnot(X \cap R) \text{ se } \lnot X \subset \lnot A \\
+X &\mapsto  X \cap R \text{ se } X \subset A \\ 
+X &\mapsto \lnot(\lnot X \cap R) \text{ se } \lnot X \subset A \\
 X &\mapsto X \text{ caso contrário}
 \end{align*}
 
   Dizemos que $S \subset \mathcal{P}(V)$ satisfaz a hipótese da dualidade se preserva $(R,A)$ relativizações pra quaisquer par $R,A \in S$ de interseção vazia.
   
-  Dizemos que um conjunto de estrelas $\mathcal{F}$ satisfaz a hipótese da dualidade se para quaisquer dois $A,B \in S$ com interseção vazia, existe um $R \in S$ tal que $R \subset \lnot A$, $\lnot R \subset \lnot B$, e a imagem de qualquer estrela em $\mathcal{F}$ via $(R,A)$-relativização ou $(R,B)$-relativização é ainda uma estrela em $\mathcal{F}$.
+  Dizemos que um conjunto de estrelas $\mathcal{F}$ satisfaz a $S$-hipótese da dualidade se para quaisquer dois $A,B \in S$ com interseção vazia e não decididos por $\mathcal{F}$, existe um $R \in S$ tal que $R \subset A$, $\lnot R \subset B$, e a imagem de qualquer estrela em $\mathcal{F}$ via $(R,A)$-relativização e também via $(\lnot R,B)$-relativização é ainda uma estrela em $\mathcal{F}$.
 \end{definicao*}
 
 
 \begin{teorema*}[Dualidade Árvore-Emaranhados]
-  Seja $S \subset \mathcal{P}(V)$ fechado para complementar, finito, e satisfazendo a hipótese da dualidade. Seja $\mathcal{F}$ um conjunto de estrelas de $S$ satisfazendo a hipótese da dualidade.
+  Seja $S \subset \mathcal{P}(V)$ fechado para complementar, finito, e satisfazendo a hipótese da dualidade. Seja $\mathcal{F}$ um conjunto de estrelas de $S$ que seja $S$-consistente e satisfazendo a $S$-hipótese da dualidade.
 
   Então, vale apenas uma dentre as seguintes afirmações:
 
 \begin{itemize}[label=\ding{212}]
-  \item Existe um emaranhado que evita $\mathcal{F}$
+  \item Existe um emaranhado de $S$ que evita $\mathcal{F}$
   \item Existe um conjunto árvore $S' \subset S$ cujas estrelas-vértices estão todas em $\mathcal{F}$
 \end{itemize}
   \end{teorema*}
@@ -639,13 +643,73 @@ X &\mapsto X \text{ caso contrário}
 
     Portanto, um emaranhado que evita $\mathcal{F}$ induziria um emaranhado que evita $\mathcal{F}$ em um conjunto árvore qualquer $S'$ de $S$, que necessariamente deve ser tal que nenhuma estrela vértice está em $\mathcal{F}$.
 
-    Agora seguimos para demonstrar que pelo menos uma dessas opções acontece.
+    Agora seguimos para demonstrar que pelo menos uma dessas opções acontece. Faremos isto por indução no número de elementos de $S$ não decididos por $\mathcal{F}$. Suponha que não existe conjunto não decidido. Então podemos formar o conjunto $\{A \mid \{\lnot A\} \in \mathcal{F}\}$ como o único candidato possível para ser um emaranhado que evita $\mathcal{F}$. A consistência de $\mathcal{F}$ garante que ele é realmente um emaranhado, porém ele pode não evitar $\mathcal{F}$. Se este for o caso, existe uma estrela $E \subset S$ em $\mathcal{F}$ tal que todo $A \in E$ é tal que $\{\lnot A\} \in \mathcal{F}$. Como $E$ é estrela, $E$ também é conjunto árvore, referente a uma árvore que é uma estrela no sentido clássico de teoria de grafos - e todas as suas estrelas-vértices vão estar em $\mathcal{F}$ pois estas são apenas o próprio conjunto $E$ e os $\{\lnot A\}$. Então o teorema vale para $0$ conjuntos não decididos.
+    
+    Suponha que valha para $n$ conjuntos não decididos, e vamos supor que existem $n+1$ conjuntos não decididos. Tome um $A \in S$ não decidido. A ideia básica da demonstração é a seguinte: estenda $\mathcal{F}$ para $\mathcal{F}_1 \defeq \mathcal{F} \cup \{A\}$ e também para $\mathcal{F}_2 \defeq \mathcal{F} \cup \{\lnot A\}$. Se ambos estes conjuntos ainda forem consistentes e satisfazerem a hipótese da dualidade, então por eles conterem um conjunto decidido a menos, podemos aplicar o teorema. Um emaranhado que evita $\mathcal{F}_1$ ou $\mathcal{F}_2$ com certeza já evita $\mathcal{F}$. Agora, se estivermos no caso onde existem conjuntos árvore $S_1, S_2$ com suas estrelas em $\mathcal{F}_1$ e $\mathcal{F}_2$, iremos colar ambas estas árvores para formar uma única árvore com estrelas em $\mathcal{F}$, finalizando a demonstração. Vamos aos detalhes disso - esta construção será na verdade mais sutil do que a descrição que acabamos de dar.
+
+    Para podermos garantir que $\mathcal{F}_1$ e $\mathcal{F}_2$ são consistentes e satisfazem a hipótese da dualidade, iremos ter que defini-los diferente do que afirmamos no parágrafo anterior. Seja $B_1$ maximal em $\{B \in S \mid A \subset B \text{ e } B \text{ não é decidido por }\mathcal{F}\}$, e $B_2$ maximal em $\{B \in S \mid \lnot A \subset B \text{ e } B \text{ não é decidido por }\mathcal{F}\}$. Defina então $\mathcal{F}_1 \defeq \mathcal{F} \cup \{\lnot B_1\}$ e $\mathcal{F}_2 \defeq \mathcal{F} \cup \{\lnot B_2\}$. 
+
+    $\mathcal{F}_1$ é consistente: basta verificar que nenhum $Z \subset \lnot B_1$ é tal que $\{Z\} \in \mathcal{F}_1$ - o que é válido pois a existência de um $Z$ desse implicaria que $\lnot Z$ contradiz a maximalidade de $B_1$. Da mesma forma, $\mathcal{F}_2$ é consistente.
+
+    $\mathcal{F}_1$ satisfaz a hipótese da dualidade: dados dois $A',B'$ de interseção não vazia e não decididos por $\mathcal{F}$, precisamos apenas garantir que a $(R,A')$-relativização (e a $(R,B')$ relativização) da estrela $\{\lnot B_1\}$ ainda é um elemento de  $\mathcal{F}_1$. Se a relativização preserva o $\lnot B_1$, então não há nada o que fazer. A maximalidade de $B_1$ garante que não podemos ter $B_1 \subset \lnot A'$. Resta apenas o caso em que $\lnot B_1 \subset \lnot A'$. Neste caso, a relativização da estrela resultará no conjunto $\{ \lnot B_1 \cap R \}$. É claro que $B_1 \subset \lnot( \lnot B_1 \cap R ) = B_1 \cup \lnot R$. A maximalidade de $B_1$ garante que $B_1 \cup \lnot R$ precisa ser decidido por $\mathcal{F}$. A consistência de $\mathcal{F}$ garante que $\{B_1 \cup \lnot R\} \notin \mathcal{F}$. Logo $\{\lnot B_1 \cap R\} \in \mathcal{F}$. É claro que, analogamente, provamos que a $(R,B')$ relativização também é preservada.
+
+    Podemos então aplicar a hipótese de indução em $\mathcal{F}_1$, obtendo ou um emaranhado que evita $\mathcal{F}_1$, resolvendo nosso problema, ou obtendo um conjunto-árvore $S_1$ com todas as suas estrelas em $\mathcal{F}_1$. Se essas estrelas estiverem em $\mathcal{F}$, resolvido. Caso contrário, uma das estrelas será o $\{\lnot{B_1}\}$, e todas as outras em $\mathcal{F}$. Analogamente, fazemos todo o raciocíno anterior para obter um conjunto-árvore $S_2$ com uma estrela sendo $\{\lnot{B_2}\}$ e todas as suas estrelas em $\mathcal{F}$. Visualmente, temos duas árvores, uma com uma folha referente a $B_1$ e outra com uma folha refrente a $B_2$. Se estes conjuntos fossem complementares um dos outros, poderíamos colar estas duas árvores sem problemas (como faremos ao final dessa demonstração). Como eles não necessariamente são complementares, vamos ter que modificar estas árvores para corrigir esse problema - é aqui que entra, finalmente, o uso das relativizações.
+
+    Temos que $\lnot B_1$ e $\lnot B_2$ tem interseção vazia, e não são decididos por $\mathcal{F}$. Como $\mathcal{F}$ satisfaz a hipótese da dualidade, existe um $R \in S$ tal que $R \subset \lnot B_1$, $\lnot R \subset \lnot B_2$, e $\mathcal{F}$ preserva $(R,\lnot B_1)$-relativização e $(\lnot R, \lnot B_2)$-relativização.
+
+    Aplique $(R,\lnot B_1)$-relativização em todos os elementos de $S_1$, obtendo $S_1'$. É uma conta de muitos casos, porém direta, verificar que $S_1'$ ainda se mantém árvore. Pela preservação de estrelas, ela ainda é um conjunto árvore come estrelas todas em $\mathcal{F}$, menos uma única estrela, que agora é referente ao conjunto $\{R\}$. Similarmente, ao aplicarmos $(\lnot R,\lnot B_2)$-relativização em $S_2$, obtemos um conjunto árvore $S_2'$ com todas as estrelas em $\mathcal{F}$ menos uma única estrela referente ao conjunto $\{\lnot R\}$.
+
+    Agora, para finalizar a prova, combinaremos $S_1'$ e $S_2'$ em um $S'$ com todas as estrelas em $\mathcal{F}$.
+
+
+
+
+
+
+
+
 
 
   \end{prova}
 
+  Esse resultado é essencialmente um resultado sobre $\mathcal{F}$: sob a condição dele ser `consistente' e tendo `suficientes interseções', a única obstrução para juntarmos as estrelas em uma estrutura de árvore é a existência de uma orientação consistente dos subconjuntos adjacentes que compõe as estrelas de $\mathcal{F}$. Podemos refrasear o resultado sem menção a $S$, de duas formas diferentes, uma tomando o `menor' $S$ possível, e outra o `maior' $S$ possível.
+
+\begin{teorema*}[Dualidade Árvore-Emaranhados  - minimal]
+  Seja $\mathcal{F}$ um conjunto de estrelas de $\mathcal{P}(V)$, com $V$ finito. Seja $S$ o fecho pra complementar de $\cup \mathcal{F}$. Suponha que $\mathcal{F}$ seja $S$-consistente e satisfaça a $S$-hipótese da dualidade.
+
+  Então, vale apenas uma dentre as seguintes afirmações:
+
+\begin{itemize}[label=\ding{212}]
+  \item Existe um emaranhado de $S$ que evita $\mathcal{F}$
+  \item Existe um conjunto árvore $S' \subset S$ cujas estrelas-vértices estão todas em $\mathcal{F}$
+\end{itemize}
+  \end{teorema*}
+  \begin{prova}
+    Basta usar o teorema anterior com o $S$ sendo o fecho pra complementar de $\cup \mathcal{F}$ - como $\mathcal{F}$ satisfaz a $S$-hipótese da dualidade, o $S$ irá satisfazer a hipótese da dualidade.
+  \end{prova}
+
+  Ou então
+
+  \begin{teorema*}[Dualidade Árvore-Emaranhados - maximal]
+  Seja $\mathcal{F}$ um conjunto de estrelas de $\mathcal{P}(V)$, com $V$ finito. Suponha que $\mathcal{F}$ seja $\mathcal{P}(V)$-consistente e satisfaça a $\mathcal{P}(V)$-hipótese da dualidade.
+
+  Então, vale apenas uma dentre as seguintes afirmações:
+
+\begin{itemize}[label=\ding{212}]
+  \item Existe um $v \in V$ que não pertence a $\cap E$ pra todo $E \in \mathcal{F}$
+  \item Existe um conjunto árvore $S' \subset \mathcal{P}(V)$ cujas estrelas-vértices estão todas em $\mathcal{F}$
+\end{itemize}
+  \end{teorema*}
+  \begin{prova}
+    Basta usar o teorema com $S = \mathcal{P}(V)$ e lembrar que emaranhados sobre $\mathcal{P}(V)$ são todos ultrafiltros, e como esta é uma álgebra de Boole finita, são todos ultrafiltros principais.
+  \end{prova}
+
   \begin{pergunta}
-    O que acontece quando $S$ é infinito?
+    O que acontece quando $S$ é infinito? Contraexemplos? Casos especiais onde o resultado vale? (localmente finito, rayless) ``Quais são as outras obstruções para formarmos uma árvore infinita a partir de infinitas estrelas?''
+  \end{pergunta}
+
+  \begin{pergunta}
+    A versão maximal do teorema tem algum análogo em teoria de conjuntos clássica?
   \end{pergunta}
 
     \begin{pergunta}

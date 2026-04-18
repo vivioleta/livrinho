@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2025.9.22)  16 APR 2026 00:13
+This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2025.9.22)  18 APR 2026 15:42
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex"
@@ -1143,25 +1143,25 @@ Package fontspec Info: Font family 'NotoColorEmoji(0)' created for font 'Noto
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] (./main.bbl) [13] (./main.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] (./main.bbl) [15] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 68CAA6C77CF6CCBDCADD543BA0F15680;665.
 )
 
 Here is how much of LuaTeX's memory you used:
- 38818 strings out of 477805
+ 38823 strings out of 477805
  100000,1144653 words of node,token memory allocated
  613 words of node memory still in use:
    8 hlist, 2 vlist, 3 rule, 2 glue, 5 kern, 1 glyph, 18 attribute, 64 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 2:862,3:313,4:119,5:3702,6:46,7:8495,8:43,9:657,10:31,11:764
+   avail lists: 2:862,3:313,4:119,5:3842,6:46,7:8617,8:43,9:657,10:31,11:785
  57867 multiletter control sequences out of 65536+600000
  202 fonts using 17152471 bytes
- 84i,11n,84p,3293b,444s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,11n,84p,3293b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}<./DarwinSerif-Regular.otf></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on main.pdf (13 pages, 183912 bytes).
+Output written on main.pdf (15 pages, 196554 bytes).
 
-PDF statistics: 181 PDF objects out of 1000 (max. 8388607)
- 137 compressed objects within 2 object streams
- 47 named destinations out of 1000 (max. 131072)
+PDF statistics: 192 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
+ 52 named destinations out of 1000 (max. 131072)
  40 words of extra memory for PDF output out of 10000 (max. 100000000)
 

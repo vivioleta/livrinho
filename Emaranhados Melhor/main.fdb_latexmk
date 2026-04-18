@@ -1,20 +1,20 @@
 # Fdb version 3
-["bibtex main"] 1776274314 "main.aux" "main.bbl" "main" 1776309190
+["bibtex main"] 1776537311 "main.aux" "main.bbl" "main" 1776537739
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1776309190 2151 42faf793b7199bf94736298b1e23749c "lualatex"
+  "main.aux" 1776537739 2354 89139e4ff3c0be92931af443d8be9cb5 "lualatex"
   "references.bib" 1775250336 2150 7a3ff579565e46e99e8048ebe06fd6c8 ""
   (generated)
   "main.bbl"
   "main.blg"
-["lualatex"] 1776309188 "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" "main.pdf" "main" 1776309190
+["lualatex"] 1776537737 "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" "main.pdf" "main" 1776537739
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/hb/:usr:share:texlive:texmf-dist:fonts:truetype:google:noto-emoji:NotoColorEmoji.ttf:1" 1760745728 144802 168c8cca504f83a34a2db79bf98b8132 ""
-  "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/darwinserif-regular.luc" 1776273885 127263 3c006176e8cae2e96243a88235f89e89 ""
+  "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/darwinserif-regular.luc" 1776534754 127263 192ba70bc6110683a2381b9afeaf1c28 ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1758584787 124213 a3bd0e7906af025b007d0cfb6e758f8b ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1676317572 123142 a5bb91f587c7a560590d95e654431ffa ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/notocoloremoji.luc" 1760745728 386808 2196b06c45f77a6814be3a8ac48a3479 ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1760745728 484 0ec2989bdcec3e995fa2425edcc0c1b0 ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/names/luaotfload-names.luc" 1758584796 1704203 fef2d4c1c5806dd0ff2a0fe144a8c6e6 ""
-  "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" 1776309187 42328 86b3b3be7cc957e182e69e9a64c5d9b4 ""
+  "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" 1776537737 50836 1268c8be5ddc3bd5a8c75af7eecfa697 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -341,9 +341,9 @@
   "/var/lib/texmf/tex/generic/config/language.dat" 1758582029 5130 6d8cca2b40846333c1323ec98d5192f6 ""
   "/var/lib/texmf/web2c/luahbtex/lualatex.fmt" 1758582050 4555303 8e2fbc9f0496deb355be0524c277bb68 ""
   "DarwinSerif-Regular.otf" 1770982127 134196 a98621af05a09b3acbf5b155be2bad02 ""
-  "main.aux" 1776309190 2151 42faf793b7199bf94736298b1e23749c "lualatex"
-  "main.bbl" 1776274314 264 2e5058329f55c4a841238a37880c6eec "bibtex main"
-  "main.out" 1776309190 665 68caa6c77cf6ccbdcadd543ba0f15680 "lualatex"
+  "main.aux" 1776537739 2354 89139e4ff3c0be92931af443d8be9cb5 "lualatex"
+  "main.bbl" 1776537311 264 2e5058329f55c4a841238a37880c6eec "bibtex main"
+  "main.out" 1776537739 665 68caa6c77cf6ccbdcadd543ba0f15680 "lualatex"
   "quiver.sty" 1770982127 1606 ac24526cc82038afe47d6f803f11170f ""
   (generated)
   "main.aux"
