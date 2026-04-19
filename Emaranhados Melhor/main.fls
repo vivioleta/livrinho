@@ -741,6 +741,15 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/BOONDOX-r-ds.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/boondox/BOONDOX-r-ds.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/zxxrl7z.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/BOONDOX-r-ds.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/boondox/BOONDOX-r-ds.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/zxxrl7z.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/BOONDOX-r-ds.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/boondox/BOONDOX-r-ds.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/zxxrl7z.tfm
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT ./main.aux
@@ -756,3 +765,4 @@ INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb

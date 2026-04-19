@@ -333,10 +333,10 @@ Outros nomes na literatura: a primeira condição diz que $\tau$ é uma orienta�
 Esta definição se aproxima muito de uma das possíveis definições de ultrafiltros para álgebras de Boole. De fato, se $S$ é uma álgebra de Boole, perfis são apenas ultrafiltros.
 
 \begin{proposicao}[Perfis são ultrafiltros quando $S$ é de Boole]
-  Suponha que $S$ seja fechado para união e interseção, ou seja, $S$ forma uma álgebra de Boole (ou corpo de conjuntos). Então $\tau:S \rightarrow \{0,1\}$ é um perfil se e somente se é um homomorfismo de álgebras de Boole, ou seja, um ultrafiltro.
+  Suponha que $S \subset \mathcal{P}(V)$ seja fechado para união e interseção, ou seja, $S$ forma uma álgebra de Boole (ou corpo de conjuntos). Então $\tau:S \rightarrow \{0,1\}$ é um perfil se e somente se é um homomorfismo de álgebras de Boole, ou seja, um ultrafiltro.
 \end{proposicao}
 \begin{prova}
- Lembrar que ultrafiltros são apenas homomorfismos da álgebra na álgebra $\{0,1\}$
+ (Pra escrever - lembrar que ultrafiltros são apenas homomorfismos da álgebra na álgebra $\{0,1\})$
 \end{prova}
 
 \begin{pergunta}
@@ -460,7 +460,7 @@ Agora, se dois vértices $v,w \in T$ são adjacentes, digamos pela aresta $e_i$,
 \begin{pergunta}
   O que acontece no caso de $T$ infinita?
 
-  Conjecture mais ou menos intuitivamente demonstrada: os perfis de $S(T)$ são todos ou ultrafiltros principais ou ultrafiltros de extremidades de $T$.
+  Conjectura mais ou menos intuitivamente demonstrada: os perfis de $S(T)$ são todos ou ultrafiltros principais ou ultrafiltros de extremidades de $T$.
 \end{pergunta}
 
 \begin{pergunta}
@@ -532,13 +532,13 @@ Na verdade, resta provar a unicidade: se começarmos com um $S = S(T)$ para algu
 \end{exemplo*}
 
 \begin{exemplo*}[Visualização]
-  Dado um conjunto árvore $S(T)$, podemos desenhar o $V$ em formato da árvore $T$ com as separações de $S(T)$ explicitadas.
+  Pra escrever - dado um conjunto árvore $S(T)$, podemos desenhar o $V$ em formato da árvore $T$ com as separações de $S(T)$ explicitadas.
 \end{exemplo*}
 
 Uma última definição antes de afirmarmos nosso principal teorema.
 
 \begin{definicao*}[Exibição de perfil]
-  Dizemos que um $S' \subset S \subset \mathcal{P}(V)$ exibe um conjunto de perfis $\mathcal{E}$ se para quaisquer dois $\tau, \tau' \in \mathcal{E}$, existe um $A \in S'$ tal que $\tau(A) \neq \tau'(A)$.
+  Dizemos que um $S' \subset S \subset \mathcal{P}(V)$ exibe um conjunto $\mathcal{E}$ de perfis de $S$, se para quaisquer dois $\tau, \tau' \in \mathcal{E}$, existe um $A \in S'$ tal que $\tau(A) \neq \tau'(A)$.
 \end{definicao*}
 \begin{teorema*}[Teorema da Árvores de Emaranhados - finito]
   Seja $V$ finito. Em qualquer $S \subset \mathcal{P}(V)$ sub-Boole existe um conjunto árvore $N \subset S$ que exibe todos os perfis de $S$.
@@ -577,6 +577,22 @@ Usando nossa forma canônica para $S$, o teorema é equivalente a demonstrar que
 \begin{pergunta}
 Existe uma condição topológica em $\text{Per}(S)$ que é equivalente a $N$ exibir todos os perfis? Isto ajuda a generalizar o teorema para o caso infinito?
 \end{pergunta}
+
+No caso de $S$ álgebra de Boole infinita, podemos dizer algumas coisas.
+
+\begin{proposicao*}[Árvore de emaranhados vale no caso de álgebra de Boole enumerável]
+  Seja $S \subset \mathcal{P}(V)$ uma álgebra de Boole enumerável. Então existe um conjunto árvore $N \subset S$ que exibe todos os ultrafiltros de $S$.
+\end{proposicao*}
+\begin{prova}
+  (Pra ser escrito - aqui é aquilo da árvore cujo espaço de extremidades é o espaço de Boole de $S$)
+\end{prova}
+
+\begin{proposicao*}[Árvore de emaranhados não vale no caso de álgebra de Boole não-enumerável]
+  Não existe conjunto árvore que exibe todos os ultrafiltros de $\mathcal{P}(\mathbb{N})$.
+\end{proposicao*}
+\begin{prova}
+ (Pra ser escrito - ver https://mathoverflow.net/questions/508614/how-small-can-a-set-x-subset-2-omega-be-if-it-is-able-to-distinguish-any-ult)
+\end{prova}
 
 \section{Teorema da Dualidade Árvore-Emaranhado}
 
@@ -653,22 +669,15 @@ X &\mapsto X \text{ caso contrário}
 
     $\mathcal{F}_1$ satisfaz a hipótese da dualidade: dados dois $A',B'$ de interseção não vazia e não decididos por $\mathcal{F}$, precisamos apenas garantir que a $(R,A')$-relativização (e a $(R,B')$ relativização) da estrela $\{\lnot B_1\}$ ainda é um elemento de  $\mathcal{F}_1$. Se a relativização preserva o $\lnot B_1$, então não há nada o que fazer. A maximalidade de $B_1$ garante que não podemos ter $B_1 \subset \lnot A'$. Resta apenas o caso em que $\lnot B_1 \subset \lnot A'$. Neste caso, a relativização da estrela resultará no conjunto $\{ \lnot B_1 \cap R \}$. É claro que $B_1 \subset \lnot( \lnot B_1 \cap R ) = B_1 \cup \lnot R$. A maximalidade de $B_1$ garante que $B_1 \cup \lnot R$ precisa ser decidido por $\mathcal{F}$. A consistência de $\mathcal{F}$ garante que $\{B_1 \cup \lnot R\} \notin \mathcal{F}$. Logo $\{\lnot B_1 \cap R\} \in \mathcal{F}$. É claro que, analogamente, provamos que a $(R,B')$ relativização também é preservada.
 
-    Podemos então aplicar a hipótese de indução em $\mathcal{F}_1$, obtendo ou um emaranhado que evita $\mathcal{F}_1$, resolvendo nosso problema, ou obtendo um conjunto-árvore $S_1$ com todas as suas estrelas em $\mathcal{F}_1$. Se essas estrelas estiverem em $\mathcal{F}$, resolvido. Caso contrário, uma das estrelas será o $\{\lnot{B_1}\}$, e todas as outras em $\mathcal{F}$. Analogamente, fazemos todo o raciocíno anterior para obter um conjunto-árvore $S_2$ com uma estrela sendo $\{\lnot{B_2}\}$ e todas as suas estrelas em $\mathcal{F}$. Visualmente, temos duas árvores, uma com uma folha referente a $B_1$ e outra com uma folha refrente a $B_2$. Se estes conjuntos fossem complementares um dos outros, poderíamos colar estas duas árvores sem problemas (como faremos ao final dessa demonstração). Como eles não necessariamente são complementares, vamos ter que modificar estas árvores para corrigir esse problema - é aqui que entra, finalmente, o uso das relativizações.
+    Podemos então aplicar a hipótese de indução em $\mathcal{F}_1$, obtendo ou um emaranhado que evita $\mathcal{F}_1$, resolvendo nosso problema, ou obtendo um conjunto-árvore $S_1$ com todas as suas estrelas em $\mathcal{F}_1$. Se essas estrelas estiverem em $\mathcal{F}$, resolvido. Caso contrário, uma das estrelas será o $\{\lnot{B_1}\}$, e todas as outras em $\mathcal{F}$. 
+    
+    Analogamente, repetimos o raciocíno dos parágrafos anteriores agora com $\mathcal{F}_2$, e assim obtemos um conjunto-árvore $S_2$ com uma estrela sendo $\{\lnot{B_2}\}$ e todas as suas outras estrelas em $\mathcal{F}$. Visualmente, podemos imaginar duas árvores, uma com uma folha referente a $B_1$ e outra com uma folha refrente a $B_2$. Se estes conjuntos fossem complementar um do outro, poderamos colar estas duas árvores através de suas folhas e obtermos uma árvore com todas as estrels em $\mathcal{F}$ (como faremos ao final dessa demonstração). Como eles não necessariamente são complementares, vamos ter que modificar estas árvores para corrigir esse problema - é aqui que entra, finalmente, o uso das relativizações.
 
     Temos que $\lnot B_1$ e $\lnot B_2$ tem interseção vazia, e não são decididos por $\mathcal{F}$. Como $\mathcal{F}$ satisfaz a hipótese da dualidade, existe um $R \in S$ tal que $R \subset \lnot B_1$, $\lnot R \subset \lnot B_2$, e $\mathcal{F}$ preserva $(R,\lnot B_1)$-relativização e $(\lnot R, \lnot B_2)$-relativização.
 
-    Aplique $(R,\lnot B_1)$-relativização em todos os elementos de $S_1$, obtendo $S_1'$. É uma conta de muitos casos, porém direta, verificar que $S_1'$ ainda se mantém árvore. Pela preservação de estrelas, ela ainda é um conjunto árvore come estrelas todas em $\mathcal{F}$, menos uma única estrela, que agora é referente ao conjunto $\{R\}$. Similarmente, ao aplicarmos $(\lnot R,\lnot B_2)$-relativização em $S_2$, obtemos um conjunto árvore $S_2'$ com todas as estrelas em $\mathcal{F}$ menos uma única estrela referente ao conjunto $\{\lnot R\}$.
+    Aplique $(R,\lnot B_1)$-relativização em todos os elementos de $S_1$, obtendo $S_1'$. É uma conta de muitos casos, porém direta, verificar que $S_1'$ ainda se mantém árvore. Como $\mathcal{F}$ preserva estrelas após a relativização, $S_1'$ é um conjunto árvore cujas estrelas-vértices estão todas em $\mathcal{F}$, menos uma única estrela, que agora é referente ao conjunto $\{R\}$. Similarmente, ao aplicarmos $(\lnot R,\lnot B_2)$-relativização em $S_2$, obtemos um conjunto árvore $S_2'$ com todas as estrelas em $\mathcal{F}$ menos uma única estrela referente ao conjunto $\{\lnot R\}$.
 
-    Agora, para finalizar a prova, combinaremos $S_1'$ e $S_2'$ em um $S'$ com todas as estrelas em $\mathcal{F}$.
-
-
-
-
-
-
-
-
-
+    Agora, finalmente, podemos combinar $S_1'$ e $S_2'$ em um conjunto árvore $S'$ com todas as estrelas em $\mathcal{F}$. Olhe para as árvores $T_1$ e $T_2$ tais que $S_1' \cong S(T_1)$ e $S_2' \cong S(T_2)$. $T_1$ deve conter um vértice cuja estrela-vértice correspondente em $S_1'$ será $\{R\}$, e portanto este vértice deve necessariamente ser um vértice de grau $1$, o chamemos de $v_1$. Veja que toda aresta de $T_1$ separa a árvore de forma que uma das suas componentes conexas contém $\{v_1\}$. Como $\{v_1\}$ é a estrela que é mandada pra $\{R\}$ via o isomorfismo entre $S_1'$ e $S(T_1)$, concluimos que pra qualquer $X \in S_1$ teremos ou $R \subset X$ ou $R \subset \lnot X$. Analogamente, repetimos o mesmo raciocínio para $S_2'$ e sua árvore $T_2$, com seu vértice $v_2$ referente a estrela-vértice $\{\lnot R\}$. Daí, para qualquer $Y \in S_2'$, teremos ou $\lnot R \subset Y$ ou $\lnot R \subset \lnot Y$. Juntando estes dois fatos, concluimos que pra quaisquer $X \in S_1', Y \in S_2'$, estes dois conjuntos vão estar encaixados. Logo $\S' \defeq S_1' \cup S_2'$ é um conjunto árvore. Sua árvore correspondente será a árvore $T'$ obtida a partir de $T_1$ e $T_2$ unindo ambas as árvores, as colando através dos vértices $v_1$ e $v_2$, e aí eliminando estes vértices, deixando sobrar uma aresta ligando diretamente o vizinho de $v_1$ em $T_1$ ao vizinho de $v_2$ em $T_2$. Assim, as estrelas-vértices de $T'$ são ou estrelas-vértices de $T_1$ fora $\{R\}$ ou estrelas vértices de $T_2$ fora $\{\lnot R\}$ - todas em $\mathcal{F}$, finalizando nossa demonstração.  
 
   \end{prova}
 

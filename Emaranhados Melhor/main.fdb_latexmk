@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1776537311 "main.aux" "main.bbl" "main" 1776537739
+["bibtex main"] 1776611651 "main.aux" "main.bbl" "main" 1776612048
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1776537739 2354 89139e4ff3c0be92931af443d8be9cb5 "lualatex"
+  "main.aux" 1776612047 2558 df3b06a1e08452aa96aa27242d108127 "lualatex"
   "references.bib" 1775250336 2150 7a3ff579565e46e99e8048ebe06fd6c8 ""
   (generated)
   "main.bbl"
   "main.blg"
-["lualatex"] 1776537737 "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" "main.pdf" "main" 1776537739
+["lualatex"] 1776612046 "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" "main.pdf" "main" 1776612048
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/hb/:usr:share:texlive:texmf-dist:fonts:truetype:google:noto-emoji:NotoColorEmoji.ttf:1" 1760745728 144802 168c8cca504f83a34a2db79bf98b8132 ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/darwinserif-regular.luc" 1776534754 127263 192ba70bc6110683a2381b9afeaf1c28 ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1758584787 124213 a3bd0e7906af025b007d0cfb6e758f8b ""
@@ -14,13 +14,15 @@
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/notocoloremoji.luc" 1760745728 386808 2196b06c45f77a6814be3a8ac48a3479 ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1760745728 484 0ec2989bdcec3e995fa2425edcc0c1b0 ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/names/luaotfload-names.luc" 1758584796 1704203 fef2d4c1c5806dd0ff2a0fe144a8c6e6 ""
-  "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" 1776537737 50836 1268c8be5ddc3bd5a8c75af7eecfa697 ""
+  "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" 1776612046 53428 e66220850e061669c118c2dac1bcb51c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1246382020 928 2dc8d444221b7a635bb58038579b861a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1246382020 908 2921f8a10601f252058503cc6570e581 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/BOONDOX-r-ds.tfm" 1304615349 916 fbe573b4f4b204cfe65c92e2e101d105 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/zxxrl7z.tfm" 1304615349 740 9412be1bafb7b34037445bfb33534951 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/dsserif/DSSerifUni.tfm" 1525294017 824 8dcabda1c182c6c6672d8769ee0b53aa ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/NewTXMI.tfm" 1572128992 1408 ef71a9098da4d5a1a85b5920860b6731 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/ntxexa.tfm" 1589834365 760 e8ec875a87aa119f1af7ea4be48da9e8 ""
@@ -59,6 +61,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/xypic/xydash10.tfm" 1381187214 984 5c01c46b93e3ba8369f3f8edc6e62aef ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/xypic/xyluat10.tfm" 1381187214 608 a3a3bc08980c5126ff2a7a68fb5a64ff ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/xypic/xylubt10.tfm" 1381187214 608 a3a3bc08980c5126ff2a7a68fb5a64ff ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb" 1304615349 17115 e6f9070825b88e03075bbc6fdf632415 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb" 1572128992 32409 1452fa0ce4fabfb48acd5d077e296f6d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txexs.pfb" 1621283831 33424 f912ebe54685d0a65d3c046e3d517e38 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb" 1635022465 56686 b959be5e2e4a0232f5aa4c1c4be4574a ""
@@ -67,6 +70,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb" 1136849748 18865 ebb26de41fddbc82c044d680eec38cec ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb" 1136849748 27693 bfb340b71292c6ead561e4943433945d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb" 1136849748 45955 6dfcb282cf470ceb18d57d017b7898d6 ""
+  "/usr/share/texlive/texmf-dist/fonts/vf/public/boondox/BOONDOX-r-ds.vf" 1304615349 468 7995eab1335073d481e9e8949bc62870 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxexa.vf" 1487028062 576 6ffe6b42c20f7fbf4391e66fec9eda3f ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxexx.vf" 1471383769 1648 0d93cbefa82585faadc39ecd0ea4f212 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxsy.vf" 1583272976 1772 98ec0ab31216e818611c784f60ef51a5 ""
@@ -341,9 +345,9 @@
   "/var/lib/texmf/tex/generic/config/language.dat" 1758582029 5130 6d8cca2b40846333c1323ec98d5192f6 ""
   "/var/lib/texmf/web2c/luahbtex/lualatex.fmt" 1758582050 4555303 8e2fbc9f0496deb355be0524c277bb68 ""
   "DarwinSerif-Regular.otf" 1770982127 134196 a98621af05a09b3acbf5b155be2bad02 ""
-  "main.aux" 1776537739 2354 89139e4ff3c0be92931af443d8be9cb5 "lualatex"
-  "main.bbl" 1776537311 264 2e5058329f55c4a841238a37880c6eec "bibtex main"
-  "main.out" 1776537739 665 68caa6c77cf6ccbdcadd543ba0f15680 "lualatex"
+  "main.aux" 1776612047 2558 df3b06a1e08452aa96aa27242d108127 "lualatex"
+  "main.bbl" 1776611651 264 2e5058329f55c4a841238a37880c6eec "bibtex main"
+  "main.out" 1776612047 665 68caa6c77cf6ccbdcadd543ba0f15680 "lualatex"
   "quiver.sty" 1770982127 1606 ac24526cc82038afe47d6f803f11170f ""
   (generated)
   "main.aux"
