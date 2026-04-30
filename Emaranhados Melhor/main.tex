@@ -606,12 +606,23 @@ Vamos agora ao nosso segundo teorema principal. Antes, algumas definições.
   Dado um conjunto árvore finito $S$, sabemos que $S \cong S(T)$ para uma única árvore $T$. Cada vértice $v$ de $T$ induz uma estrela $E_v$ em $S(T)$. Formalmente, $E_v$ é o conjunto de conjuntos $A$ de $S$ tal que a única aresta que liga $A$ a $\lnot A$ é uma aresta adjacente a $v$, e além disso $v \in A$. A imagem de $E_v$ em $S$ pelo isomorfismo é dito uma estrela-vértice do conjunto árvore $S$.
 \end{definicao*}
 
+\begin{proposicao*}[Definição intrínseca de estrelas-vértice]
+  Tome $S(T)$ com $T$ finito ou infinito, e $E \subset S(T)$ uma estrela. Então, $E = E_v$ para um vértice $v$ de $T$ se e somente se ela satisfaz a `condição de minimalidade': não existe $A \in S(T) \setminus E$ e $X \subset E$ tais que $A \subset B$ pra todo $B \in X$ e $(E \setminus X) \cup \{A\}$ é uma estrela.
+\end{proposicao*}
+\begin{prova}
+Suponha $E = E_v$. Tome um $A \in S(T) \setminus E$ qualquer, e um conjunto $X \subset E$ tal que $A \subset B$ pra todo $B \in X$. $A$ corresponde a alguma aresta $e$ da árvore $T$, necessariamente uma que não é adjacente a $v$ por $A \notin E$. Seja $f$ a aresta adjacente a $v$ que inicia o caminho do vértice $v$ até $e$. Seja $B$ o conjunto em $E$ que contém $v$ e está ligado a seu complementar via $f$. Então, $\lnot B$ contém ambos os vértices adjacentes a aresta $e$, ou seja, contém um elemento de $A$ e de $\lnot A$ necessariamente. Disto segue dois fatos: o primeiro é que é impossível $A \subset B$, e portanto $B \in E \setminus X$. O segundo é que é impossível $\lnot A \subset B$, e portanto $E \setminus X \cup \{A\}$ não pode ser uma estrela. 
+
+Vamos provar a contrapositiva agora. Suponha que $E$ satisfaz a condição de minimalidade. Tome dois $A,B \in E$ quaisquer e sejam $e,f$ suas arestas em $T$ correspondentes. Seja $v$ a ponta da aresta $e$ em $A$ e $w$ a ponta da aresta $f$ em $B$. Queremos mostrar que $v = w$. Se eles fossem diferentes, então existe um caminho entre estes dois pontos. Seja $g$ a primeira aresta saindo de $v$ neste caminho. Seja $C$ a componente conexa de $T \setminus g$ que contém $v$. Veja que qualquer $D \in E$ será tal que ou $C \subset D$ ou $\lnot C \subset D$. Assim, se tomarmos como $X$ o conjunto de $D \in E$ tais que $C \subset D$, então teremos que $E \setminus X \cup \{C\}$ é uma estrela. Isto é proibido pela nossa hipótese inicial, e assim podemos concluir que $v = w$. Ou seja, todas as arestas vão ter o mesmo ponto inicial, digamos $v$. Pra finalizar a prova, basta vermos que todas as arestas adjacentes a $v$ tem uma de suas componentes conexas induzidas em $E$ - o que irá acontecer, pois se pra algum $e$ isto não acontecesse, bastaria adicionar a $E$ a componente conexa contendo $v$ e ainda teríamos uma estrela, contradizendo a condição de minimalidade (neste caso, $X = \varnothing$). Assim, $E = E_v$ como gostaríamos.
+
+\end{prova}
 
 \begin{pergunta}
-Como definir intrinsicamente os estrela-vértice? Ideia: são as estrelas de $S$ tal que nenhum $A$ de $S$ pode ser substituido por um $B$ tal que $B \subset A$ e estrela se mantém estrela?
-
- A definição intrínseca de estrela resulta no que no caso de conjunto árvore infinitos? 
+Quando $T$ for uma árvore de ordem, a definição intrínseca de estrelas-vértice ainda funciona pra capturar apenas os $E_v$? Os vértices limite precisam ser considerados como tendo 'raios' adjacentes a eles?
 \end{pergunta}
+
+\begin{pergunta}
+ A definição intrínseca de estrela-vértice no caso infinito ajuda a generalizar o teorema de dualidade pro caso infinito?
+ \end{pergunta}
 
 \begin{definicao*}[Evitar]
   Dizemos que um emaranhado $\tau$ de $S$ evita um conjunto $\mathcal{F}$ de subconjuntos de $S$ se nenhum $E \in \mathcal{F}$ é tal que $\tau$ seleciona todos os elementos de $E$.
@@ -657,7 +668,7 @@ X &\mapsto X \text{ caso contrário}
       Um emaranhado induz, para cada aresta de $T$, uma orientação. Assim, agora temos uma árvore orientada. Chame de ralo um vértice cujas setas adjacentes todas apontam para ele. Começando a partir de qualquer vértice, se ele não for um ralo, existe uma aresta apontando para fora. Trace um caminho seguindo por arestas direcionadas para fora sempre que possível. Como a árvore é finita, este caminho deve terminar em algum vértice, e como árvores não possuem ciclos, este vértice final deve necessariamente ser um ralo. A estrela vértice referente a este ralo é tal que todos os seus elementos são escolhidos por $\tau$
     \end{prova}
 
-    Portanto, um emaranhado que evita $\mathcal{F}$ induziria um emaranhado que evita $\mathcal{F}$ em um conjunto árvore qualquer $S'$ de $S$, que necessariamente deve ser tal que nenhuma estrela vértice está em $\mathcal{F}$.
+    Suponha que tivessemos um emaranhado  $\tau$ de $S$ que evita $\mathcal{F}$ e também um conjunto árvore $S' \subset S$ com estrelas-vértices todas em $\mathcal{F}$. $\tau$ induz, por restrição, um emaranhado $\tau'$ de $S'$ que pelo lema anterior, deve ter um estrela-vértice cujos elementos são todos escolhidos por $\tau'$ e portanto $\tau$. Mas este estrela-vértice está em $\mathcal{F}$, contradizendo $\tau$ evitar $\mathcal{F}$.
 
     Agora seguimos para demonstrar que pelo menos uma dessas opções acontece. Faremos isto por indução no número de elementos de $S$ não decididos por $\mathcal{F}$. Suponha que não existe conjunto não decidido. Então podemos formar o conjunto $\{A \mid \{\lnot A\} \in \mathcal{F}\}$ como o único candidato possível para ser um emaranhado que evita $\mathcal{F}$. A consistência de $\mathcal{F}$ garante que ele é realmente um emaranhado, porém ele pode não evitar $\mathcal{F}$. Se este for o caso, existe uma estrela $E \subset S$ em $\mathcal{F}$ tal que todo $A \in E$ é tal que $\{\lnot A\} \in \mathcal{F}$. Como $E$ é estrela, $E$ também é conjunto árvore, referente a uma árvore que é uma estrela no sentido clássico de teoria de grafos - e todas as suas estrelas-vértices vão estar em $\mathcal{F}$ pois estas são apenas o próprio conjunto $E$ e os $\{\lnot A\}$. Então o teorema vale para $0$ conjuntos não decididos.
     
@@ -723,6 +734,16 @@ X &\mapsto X \text{ caso contrário}
 
     \begin{pergunta}
    A apresentação de $S$ com todos os emaranhados sendo principais simplifica a demonstração ou a intuição por trás do teorema?
+  \end{pergunta}
+
+  Será? 
+
+  \begin{definicao*}[Extremidade de sistema de separação?]
+    Seja $S \subset \mathcal{P}(V)$ fechado pra complementar, $E$ um conjunto de elementos de $S$. Dizemos que $E$ é uma extremidade se $E = \{A_1, A_2, \dots\}$ e $A_{i+1} \subset A_i$ pra todo $i$
+  \end{definicao*}
+
+      \begin{pergunta}
+Teorema da dualide árvore-emaranhados infinito: pedir que o conjunto árvore tenha todas as suas estrelas-vértice e suas extremidades em $\mathcal{F}$?
   \end{pergunta}
 
 
