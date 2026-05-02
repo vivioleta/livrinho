@@ -1,6 +1,6 @@
-PWD /home/violeta/src/livrinho/Emaranhados Melhor
+PWD /home/violeta/src/livrinho/Cap -1
 INPUT /var/lib/texmf/web2c/luahbtex/lualatex.fmt
-INPUT /home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex
+INPUT /home/violeta/Desktop/livrinho/Cap -1/main.tex
 OUTPUT main.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/latexconfig/lualatexquotejobname.lua
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ltluatex.lua
@@ -412,6 +412,9 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/ncctools/nccmath.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
@@ -516,9 +519,9 @@ INPUT ./main.out
 INPUT ./main.out
 INPUT ./main.out
 INPUT ./main.out
-OUTPUT main.pdf
 INPUT ./main.out
 OUTPUT main.out
+OUTPUT main.pdf
 INPUT /usr/share/texmf/tex/latex/lm/ot1lmr.fd
 INPUT /usr/share/texmf/tex/latex/lm/ot1lmr.fd
 INPUT /usr/share/texmf/fonts/tfm/public/lm/rm-lmr10.tfm
@@ -741,28 +744,5 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/BOONDOX-r-ds.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/boondox/BOONDOX-r-ds.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/zxxrl7z.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/BOONDOX-r-ds.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/boondox/BOONDOX-r-ds.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/zxxrl7z.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/BOONDOX-r-ds.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/boondox/BOONDOX-r-ds.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/boondox/zxxrl7z.tfm
-INPUT ./main.bbl
-INPUT ./main.bbl
 INPUT ./main.aux
 INPUT ./main.out
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb
-INPUT /usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
-INPUT /usr/share/texmf/fonts/type1/public/lm/lmr6.pfb
-INPUT /usr/share/texmf/fonts/type1/public/lm/lmr8.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txexs.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb

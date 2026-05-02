@@ -395,41 +395,14 @@ Se isso fosse verdade, então na verdade os espaços $\text{Per}(S)$ são apenas
 \end{pergunta}
 
 
+\section{Conjuntos-Árvore}
 
+Conjuntos-árvore vão ser sistemas de separação que capturam a estrutura de separação de uma árvore (um grafo sem ciclos).
 
-Queremos chegar a dois teoremas pilares da teoria de emaranhados: o teorema da dualidade árvore-emaranhado e o teorema da árvore de emaranhados. Começamos com o primeiro.
-
-
-\section{Teorema da Árvore de Emaranhados}
-
-Algumas definições antes do teorema.
-
-\begin{definicao*}[Cantos e comparabilidade]
-  Dados dois conjuntos $A,B \in S$, chamamos os quatro conjuntos $A \cap B, A \cap \lnot B, \lnot A \cap B, \lnot A \cap \lnot B$ de cantos do par $A,B$. Dizemos que $A$ e $B$ são comparáveis se pelo menos um destes conjuntos é vazio, caso contrário dizemos que são incomparáveis.
-\end{definicao*}
-
-Veja que $A$ é comparável a $B$ exatamente quando pelo menos uma das inclusões $A \subset B, A \subset \lnot B, \lnot A \subset B, \lnot A \subset \lnot B$ é verdadeira. Ou seja, $A$ e $B$ são incomparáveis quando $\{A, B, \lnot A, \lnot B\}$ é um conjunto de elementos que são incomparáveis em relação a ordem dada pela inclusão.
-
-Veja também que o valor de $\tau$ dos quatro cantos é inteiramente determinado pelo valor de $\tau$ em $A$ e em $B$.
-
-Os cantos de um par de conjuntos em $S$ podem não estar presentes em $S$. Dado um $S \subset \mathcal{P}(V)$ fechado pra complementar, dizer que todos os cantos de $S$ sempre estão em $S$ é equivalente a dizer que $S$ é uma álgebra de Boole. Se pedirmos um pouco menos de $S$, já conseguimos o suficiente para provar o teorema de árvore de emaranhados que iremos enunciar em breve.
-
-\begin{definicao*}[Sistemas sub-Boole]
-  Um subconjunto $S \subset \mathcal{P}(V)$ é dito sub-Boole (ou, na terminologia do Diestel, um conjunto submodular) se é fechado por complementar e dados quaisquer dois $A,B \in S$ temos que $A \cup B \in S$ ou $A \cap B \in S$.
-\end{definicao*}
-
-Temos dois pares de cantos que dizemos \textit{opostos}: $A \cap B$ e $\lnot A \cap \lnot B$; $\lnot A \cap B$ e $A \cap \lnot B$. Dado um $S \subset \mathcal{P}(V)$ fechado pra complementar, dizer que dentre dois cantos opostos, pelo menos um está em $S$ é equivalente a dizer que $S$ é sub-Boole.
-
-Adicionando cantos, então, sempre conseguimos estender um dado $S$ para um $\tilde{S}$ que seja um sub-Boole ou uma de fato álgebra de Boole. Porém, um perfil $\tau$ de $S$ não necessariamente se estende para um perfil $\tilde{\tau}$ em $\tilde{S}$.
-
-É claro, como o valor de um perfil $\tau$ em qualquer um dos quatro cantos de $A,B$ é determinado pelos valores de $\tau$ em $A$ e $B$, se existir uma extensão $\tilde{\tau}$ para $\tilde{S}$ então ela deve ser única.
-
-Continuando a introdução dos conceitos necessários para chegarmos ao teorema das árvores de emaranhados, trazemos agora os conjuntos árvore.
-
-\begin{definicao*}[Encaixados, conjunto árvore]
+\begin{definicao*}[Encaixados, conjunto-árvore]
   Dizemos que dois conjuntos $A,B \subset V$ estão encaixados se ou $A$ é comparável com $B$ em relação a inclusão (isto é, $A \subset B$ ou $B \subset A$) ou então $\lnot A$ é comparável com $B$ (isto é, $\lnot A \subset B$ ou $B \subset \lnot A$).
 
-  Um $S \subset \mathcal{P}(V)$, fechado para complementar e que não contém o vazio, é dito um conjunto árvore se quaisquer dois $A,B \in S$ (que não sejam complementares um do outro) estão encaixados.
+  Um $S \subset \mathcal{P}(V)$, fechado para complementar e que não contém o vazio, é dito um conjunto-árvore se quaisquer dois $A,B \in S$ (que não sejam complementares um do outro) estão encaixados.
 \end{definicao*}
 
 Lembrando que estamos sempre conceitualizando um $A \subset V$ como uma partição de $V$ em dois pedaços: $A$ e seu complementar $\lnot A$.
@@ -535,11 +508,36 @@ Na verdade, resta provar a unicidade: se começarmos com um $S = S(T)$ para algu
   Pra escrever - dado um conjunto árvore $S(T)$, podemos desenhar o $V$ em formato da árvore $T$ com as separações de $S(T)$ explicitadas.
 \end{exemplo*}
 
-Uma última definição antes de afirmarmos nosso principal teorema.
+
+\section{Teorema da Árvore do Emaranhados}
+
+
+Precisamos de uma condição sobre $S$ para conseguirmos enunciar e provar o teorema de Árvore de Emaranhados.
+
+\begin{definicao*}[Sistemas sub-Boole]
+  Um subconjunto $S \subset \mathcal{P}(V)$ é dito sub-Boole (ou, na terminologia do Diestel, um conjunto submodular) se é fechado por complementar e dados quaisquer dois $A,B \in S$ temos que $A \cup B \in S$ ou $A \cap B \in S$.
+\end{definicao*}
+
+O seguinte conceito será útil na demonstração do teorema.
+
+\begin{definicao*}[Cantos, e cantos opostos]
+    Dados dois conjuntos $A,B \in S$, chamamos os quatro conjuntos $A \cap B, A \cap \lnot B, \lnot A \cap B, \lnot A \cap \lnot B$ de cantos do par $A,B$. Temos dois pares de cantos que dizemos \textit{opostos}: $A \cap B$ e $\lnot A \cap \lnot B$; $\lnot A \cap B$ e $A \cap \lnot B$. 
+  \end{definicao*}
+
+
+Os cantos de um par de conjuntos em $S$ podem não estar presentes em $S$.
+Dado um $S \subset \mathcal{P}(V)$ fechado pra complementar, dizer que dentre dois cantos opostos, pelo menos um está em $S$ é equivalente a dizer que $S$ é sub-Boole. Já dizer que todos os cantos de $S$ sempre estão em $S$ é equivalente a dizer que $S$ é uma álgebra de Boole. 
+
+Adicionando cantos, então, sempre conseguimos estender um dado $S$ para um $\tilde{S}$ que seja um sub-Boole ou uma álgebra de Boole. Porém, um perfil $\tau$ de $S$ não necessariamente se estende para um perfil $\tilde{\tau}$ em $\tilde{S}$.
+
+É claro, como o valor de um perfil $\tau$ em qualquer um dos quatro cantos de $A,B$ é determinado pelos valores de $\tau$ em $A$ e $B$, se existir uma extensão $\tilde{\tau}$ para $\tilde{S}$ então ela deve ser única.
+
+Agora, a última definicação necessária antes do teorema...
 
 \begin{definicao*}[Exibição de perfil]
   Dizemos que um $S' \subset S \subset \mathcal{P}(V)$ exibe um conjunto $\mathcal{E}$ de perfis de $S$, se para quaisquer dois $\tau, \tau' \in \mathcal{E}$, existe um $A \in S'$ tal que $\tau(A) \neq \tau'(A)$.
 \end{definicao*}
+
 \begin{teorema*}[Teorema da Árvores de Emaranhados - finito]
   Seja $V$ finito. Em qualquer $S \subset \mathcal{P}(V)$ sub-Boole existe um conjunto árvore $N \subset S$ que exibe todos os perfis de $S$.
 \end{teorema*}
@@ -594,6 +592,10 @@ No caso de $S$ álgebra de Boole infinita, podemos dizer algumas coisas.
  (Pra ser escrito - ver https://mathoverflow.net/questions/508614/how-small-can-a-set-x-subset-2-omega-be-if-it-is-able-to-distinguish-any-ult)
 \end{prova}
 
+\begin{pergunta}
+  (Pergunta do Gustavo) Todo conjunto aberto tem display? Todo $G_{\delta}$ tem display?
+\end{pergunta}
+
 \section{Teorema da Dualidade Árvore-Emaranhado}
 
 Vamos agora ao nosso segundo teorema principal. Antes, algumas definições.
@@ -607,7 +609,7 @@ Vamos agora ao nosso segundo teorema principal. Antes, algumas definições.
 \end{definicao*}
 
 \begin{proposicao*}[Definição intrínseca de estrelas-vértice]
-  Tome $S(T)$ com $T$ finito ou infinito, e $E \subset S(T)$ uma estrela. Então, $E = E_v$ para um vértice $v$ de $T$ se e somente se ela satisfaz a `condição de minimalidade': não existe $A \in S(T) \setminus E$ e $X \subset E$ tais que $A \subset B$ pra todo $B \in X$ e $(E \setminus X) \cup \{A\}$ é uma estrela.
+  Tome $S(T)$ com $T$ finito ou infinito, e $E \subset S(T)$ uma estrela. Então, $E = E_v$ para um vértice $v$ de $T$ se e somente se ela satisfaz a `condição de minimalidade': não existe $A \in S(T) \setminus E$ e $X \subset E$ próprio ($X \neq E$) tais que $A \subset B$ pra todo $B \in X$ e $(E \setminus X) \cup \{A\}$ é uma estrela.
 \end{proposicao*}
 \begin{prova}
 Suponha $E = E_v$. Tome um $A \in S(T) \setminus E$ qualquer, e um conjunto $X \subset E$ tal que $A \subset B$ pra todo $B \in X$. $A$ corresponde a alguma aresta $e$ da árvore $T$, necessariamente uma que não é adjacente a $v$ por $A \notin E$. Seja $f$ a aresta adjacente a $v$ que inicia o caminho do vértice $v$ até $e$. Seja $B$ o conjunto em $E$ que contém $v$ e está ligado a seu complementar via $f$. Então, $\lnot B$ contém ambos os vértices adjacentes a aresta $e$, ou seja, contém um elemento de $A$ e de $\lnot A$ necessariamente. Disto segue dois fatos: o primeiro é que é impossível $A \subset B$, e portanto $B \in E \setminus X$. O segundo é que é impossível $\lnot A \subset B$, e portanto $E \setminus X \cup \{A\}$ não pode ser uma estrela. 
@@ -745,6 +747,17 @@ X &\mapsto X \text{ caso contrário}
       \begin{pergunta}
 Teorema da dualide árvore-emaranhados infinito: pedir que o conjunto árvore tenha todas as suas estrelas-vértice e suas extremidades em $\mathcal{F}$?
   \end{pergunta}
+
+  \begin{teorema*}[Possível versão pro infinito da dualidade]
+    Seja $\mathcal{F}$ um conjunto de estrelas e extremidades de $S \subset \mathcal{P}(V)$. Adicione aqui as hipóteses necessárias sobre $\mathcal{F}$ que eu vou descobrir ainda. Então:
+
+    Existe um conjunto árvore $S' \subset S$ cujas estrelas-vértices e extremidades estão todas em $\mathcal{F}$ se e somente se todo emaranhado de $S$ seleciona uma estrela ou uma extremidade de $\mathcal{F}$
+  \end{teorema*}
+  \begin{prova}
+    Escrever a ida: essa é a versão infinita da demonstração que ambos os casos da dualidade não podem acontecer ao mesmo tempo (orientação de arestas em uma árvore ou cai num ralo ou vai pro infinito)
+
+    E a volta? 
+  \end{prova}
 
 
 

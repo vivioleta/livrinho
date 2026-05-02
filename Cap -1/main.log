@@ -1,8 +1,8 @@
-This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2025.9.22)  2 MAY 2026 17:57
+This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2025.9.22)  25 APR 2026 20:57
  restricted system commands enabled.
  file:line:error style messages enabled.
-**"/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex"
-("/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex"
+**"/home/violeta/Desktop/livrinho/Cap -1/main.tex"
+("/home/violeta/Desktop/livrinho/Cap -1/main.tex"
 LaTeX2e <2021-11-15> patch level 1
 Lua module: luaotfload 2021-05-21 3.18 Lua based OpenType font support
 Lua module: lualibs 2021-05-20 2.74 ConTeXt Lua standard libraries.
@@ -739,11 +739,17 @@ Package: nccmath 2006/01/20 v1.3 Additional Math Commands (NCC)
 ) (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup11
+) (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip67
+\bibsep=\skip68
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count322
 ) (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2022-01-21 L3 programming layer (loader) 
  (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2022-01-12 L3 backend support: PDF output (LuaTeX)
-\l__color_backend_stack_int=\count322
+\l__color_backend_stack_int=\count323
 \l__pdf_internal_box=\box69
 ))
 Package: xparse 2022-01-12 L3 Experimental document command parser
@@ -751,17 +757,17 @@ Package: xparse 2022-01-12 L3 Experimental document command parser
 Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
 Lua module: fontspec 2022/01/15 2.8a Font selection for XeLaTeX and LuaLaTeX (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 Package: fontspec-luatex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
-\l__fontspec_script_int=\count323
-\l__fontspec_language_int=\count324
-\l__fontspec_strnum_int=\count325
-\l__fontspec_tmp_int=\count326
-\l__fontspec_tmpa_int=\count327
-\l__fontspec_tmpb_int=\count328
-\l__fontspec_tmpc_int=\count329
-\l__fontspec_em_int=\count330
-\l__fontspec_emdef_int=\count331
-\l__fontspec_strong_int=\count332
-\l__fontspec_strongdef_int=\count333
+\l__fontspec_script_int=\count324
+\l__fontspec_language_int=\count325
+\l__fontspec_strnum_int=\count326
+\l__fontspec_tmp_int=\count327
+\l__fontspec_tmpa_int=\count328
+\l__fontspec_tmpb_int=\count329
+\l__fontspec_tmpc_int=\count330
+\l__fontspec_em_int=\count331
+\l__fontspec_emdef_int=\count332
+\l__fontspec_strong_int=\count333
+\l__fontspec_strongdef_int=\count334
 \l__fontspec_tmpa_dim=\dimen312
 \l__fontspec_tmpb_dim=\dimen313
 \l__fontspec_tmpc_dim=\dimen314
@@ -769,12 +775,12 @@ Package: fontspec-luatex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTe
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 ) (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip67
+\labelindent=\skip69
 \enit@outerparindent=\dimen315
 \enit@toks=\toks54
 \enit@inbox=\box70
-\enit@count@id=\count334
-\enitdp@description=\count335
+\enit@count@id=\count335
+\enitdp@description=\count336
 ) (/usr/share/texlive/texmf-dist/tex/latex/psnfss/pifont.sty
 Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
 LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
@@ -792,7 +798,7 @@ Package: quiver 2021/01/11 quiver
 \pgfdecoratedinputsegmentcompleteddistance=\dimen318
 \pgfdecoratedinputsegmentremainingdistance=\dimen319
 \pgf@decorate@distancetomove=\dimen320
-\pgf@decorate@repeatstate=\count336
+\pgf@decorate@repeatstate=\count337
 \pgfdecorationsegmentamplitude=\dimen321
 \pgfdecorationsegmentlength=\dimen322
 )
@@ -891,7 +897,7 @@ Package babel Info: Non-standard hyphenation setup on input line 118.
 \babelcatcodetablenum=\catcodetable12
 \bbl@pattcodes=\catcodetable13
 )
-\babel@savecnt=\count337
+\babel@savecnt=\count338
 \U@D=\dimen323
 \l@unhyphenated=\language88
  (/usr/share/texlive/texmf-dist/tex/generic/babel/luababel.def
@@ -943,14 +949,13 @@ Package fontspec Info: Font family 'DarwinSerif-Regular.otf(2)' created for
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
 (fontspec)             <->"[DarwinSerif-Regular.otf]:mode=node;script=latn;language=dflt;slant=0.2;+smcp;"
 
-\c@theorem=\count338
-\c@prop=\count339
-\c@cor=\count340
-\c@definition=\count341
-\c@example=\count342
-\c@veronica=\count343
-\c@exersisio=\count344
-\c@preguta=\count345
+\c@theorem=\count339
+\c@prop=\count340
+\c@cor=\count341
+\c@definition=\count342
+\c@example=\count343
+\c@veronica=\count344
+\c@exersisio=\count345
  (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
@@ -976,50 +981,50 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbb' in version `bold'
 ) (./main.aux)
 \openout1 = main.aux
 
-LaTeX Font Info:    Checking defaults for OML/ntxstx2mi/m/it on input line 289.
-LaTeX Font Info:    Trying to load font information for OML+ntxstx2mi on input line 289.
+LaTeX Font Info:    Checking defaults for OML/ntxstx2mi/m/it on input line 276.
+LaTeX Font Info:    Trying to load font information for OML+ntxstx2mi on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/omlntxstx2mi.fd
 File: omlntxstx2mi.fd 2018/04/26 Fontinst v1.933 font definitions for OML/ntxstx2mi.
 )
-LaTeX Font Info:    ... okay on input line 289.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 289.
-LaTeX Font Info:    ... okay on input line 289.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 289.
-LaTeX Font Info:    ... okay on input line 289.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 289.
-LaTeX Font Info:    ... okay on input line 289.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 289.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 289.
+LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 276.
+LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 276.
+LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 276.
+LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 276.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 289.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 289.
-LaTeX Font Info:    ... okay on input line 289.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 289.
-LaTeX Font Info:    ... okay on input line 289.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 289.
-LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 289.
+LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 276.
+LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 276.
+LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 276.
+LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 289.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 289.
-LaTeX Font Info:    ... okay on input line 289.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 289.
-LaTeX Font Info:    ... okay on input line 289.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 289.
-LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 289.
+LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 276.
+LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 276.
+LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 276.
+LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 289.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 289.
-LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 289.
+LaTeX Font Info:    ... okay on input line 276.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 276.
+LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 289.
+LaTeX Font Info:    ... okay on input line 276.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count349
@@ -1045,7 +1050,7 @@ Package grfext Info: Graphics extension search list:
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 289.
+Package hyperref Info: Link coloring ON on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1055,44 +1060,44 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count355
 )
-LaTeX Info: Redefining \ref on input line 289.
-LaTeX Info: Redefining \pageref on input line 289.
-LaTeX Info: Redefining \nameref on input line 289.
+LaTeX Info: Redefining \ref on input line 276.
+LaTeX Info: Redefining \pageref on input line 276.
+LaTeX Info: Redefining \nameref on input line 276.
  (./main.out) (./main.out)
 \@outlinefile=\write5
 
 \openout5 = main.out
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 289.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 276.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 289.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 289.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 289.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 289.
+LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 289.
+LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 289.
+LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 289.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 276.
  (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-Package xypdf Info: Line width: 0.61319pt on input line 289.
+Package xypdf Info: Line width: 0.61319pt on input line 276.
 luaotfload | cache : Lookup cache loaded from /home/violeta/.texlive2021/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
 
 Package fontspec Info: Font family 'NotoColorEmoji(0)' created for font 'Noto
@@ -1143,37 +1148,25 @@ Package fontspec Info: Font family 'NotoColorEmoji(0)' created for font 'Noto
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10]
-LaTeX Font Info:    Font shape `U/BOONDOX-ds/m/n' will be
-(Font)              scaled to size 10.95pt on input line 589.
-LaTeX Font Info:    Font shape `U/BOONDOX-ds/m/n' will be
-(Font)              scaled to size 8.0pt on input line 589.
-LaTeX Font Info:    Font shape `U/BOONDOX-ds/m/n' will be
-(Font)              scaled to size 6.1pt on input line 589.
-
-Overfull \hbox (8.57433pt too wide) in paragraph at lines 592--594
-[]\TU/DarwinSerif-Regular.otf(1)/m/n/10.95 De-mons-tra-ção:[] \TU/DarwinSerif-Regular.otf(0)/m/n/10.95 (Pra ser es-crito - ver https://matho-ver-flow.net/ques-ti-ons/508614/how-small-
- []
-
-[11] [12] [13] [14] [15] [16] (./main.bbl [17]) [18] (./main.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E737416C2C2FBD062147A23811CC3A28;791.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 )
 
 Here is how much of LuaTeX's memory you used:
- 38844 strings out of 477805
- 125007,1144653 words of node,token memory allocated
- 613 words of node memory still in use:
-   8 hlist, 2 vlist, 3 rule, 2 glue, 5 kern, 1 glyph, 18 attribute, 64 glue_spec, 11 attribute_list, 2 write nodes
-   avail lists: 2:978,3:313,4:119,5:4429,6:46,7:10265,8:43,9:718,10:31,11:951
- 57871 multiletter control sequences out of 65536+600000
- 208 fonts using 17462615 bytes
- 84i,11n,84p,3293b,520s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}<./DarwinSerif-Regular.otf></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb>
-Output written on main.pdf (18 pages, 215476 bytes).
+ 39073 strings out of 477805
+ 100000,1144653 words of node,token memory allocated
+ 641 words of node memory still in use:
+   8 hlist, 2 vlist, 3 rule, 5 glue, 5 kern, 1 glyph, 15 attribute, 67 glue_spec, 10 attribute_list, 2 write nodes
+   avail lists: 2:324,3:131,4:21,5:1557,6:36,7:3568,8:24,9:198,10:9,11:384
+ 58157 multiletter control sequences out of 65536+600000
+ 198 fonts using 16301815 bytes
+ 84i,6n,84p,3281b,355s stack positions out of 5000i,500n,10000p,200000b,80000s
+<./DarwinSerif-Regular.otf>
+Output written on main.pdf (1 page, 11470 bytes).
 
-PDF statistics: 220 PDF objects out of 1000 (max. 8388607)
- 169 compressed objects within 2 object streams
- 63 named destinations out of 1000 (max. 131072)
- 48 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 31 PDF objects out of 1000 (max. 8388607)
+ 22 compressed objects within 1 object stream
+ 8 named destinations out of 1000 (max. 131072)
+ 16 words of extra memory for PDF output out of 10000 (max. 100000000)
 
