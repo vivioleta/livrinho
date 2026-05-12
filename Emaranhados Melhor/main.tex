@@ -737,26 +737,36 @@ X &\mapsto X \text{ caso contrário}
     \begin{pergunta}
    A apresentação de $S$ com todos os emaranhados sendo principais simplifica a demonstração ou a intuição por trás do teorema?
   \end{pergunta}
+  
+  \begin{definicao*}[Extremidades]
+    Seja $S \subset \mathcal{P}(V)$ fechado pra complementar, $\epsilon$ um conjunto de elementos de $S$. Dizemos que $\epsilon$ é uma extremidade se $\epsilon = \{A_1, A_2, \dots\}$ e $A_{i+1} \subset A_i$ pra todo $i$.
 
-  Será? 
 
-  \begin{definicao*}[Extremidade de sistema de separação?]
-    Seja $S \subset \mathcal{P}(V)$ fechado pra complementar, $E$ um conjunto de elementos de $S$. Dizemos que $E$ é uma extremidade se $E = \{A_1, A_2, \dots\}$ e $A_{i+1} \subset A_i$ pra todo $i$
+    Dizemos que $\epsilon$ é uma extremidade de um conjunto de estrelas $\mathcal{F}$ se pra todo $i$ existe uma estrela $E$ em $\mathcal{F}$ tal que $\{A_i, \lnot A_{i+1}\} \subset E$. 
   \end{definicao*}
 
-      \begin{pergunta}
-Teorema da dualide árvore-emaranhados infinito: pedir que o conjunto árvore tenha todas as suas estrelas-vértice e suas extremidades em $\mathcal{F}$?
-  \end{pergunta}
 
-  \begin{teorema*}[Possível versão pro infinito da dualidade]
-    Seja $\mathcal{F}$ um conjunto de estrelas e extremidades de $S \subset \mathcal{P}(V)$. Adicione aqui as hipóteses necessárias sobre $\mathcal{F}$ que eu vou descobrir ainda. Então:
+    A volta vai ser a mesma demonstração do Jay, e notando que a orientação construida por elu evita extremidades. O jeito que eu fiz a demonstração delu foi construir um grafo a partir das estrelas de $\mathcal{F}$ (aresta entre estrela se dá pra juntar elas em uma árvore), mostrar que este grafo é uma floresta, descrever a condição neste grafo que garante a existência de um conjunto árvore com todas as estrelas-vértices em $\mathcal{F}$ e aí mostrar que se essa condição não vale podemos construir uma orientação que evita $\mathcal{F}$.
 
-    Existe um conjunto árvore $S' \subset S$ cujas estrelas-vértices e extremidades estão todas em $\mathcal{F}$ se e somente se todo emaranhado de $S$ seleciona uma estrela ou uma extremidade de $\mathcal{F}$
+
+
+  \begin{teorema*}[Dualidade fraca pro infinito]
+    Seja $\mathcal{F}$ um conjunto de estrelas de um sistema $S \subset \mathcal{P}(V)$.  Então:
+
+    Existe um conjunto-árvore $S(T) \cong S' \subset S$ cujas estrelas-vértices estão todas em $\mathcal{F}$ se e somente se toda orientação de $S$ seleciona uma estrela ou uma extremidade de $\mathcal{F}$.
   \end{teorema*}
   \begin{prova}
-    Escrever a ida: essa é a versão infinita da demonstração que ambos os casos da dualidade não podem acontecer ao mesmo tempo (orientação de arestas em uma árvore ou cai num ralo ou vai pro infinito)
+    Escrever a ida: essa é a versão infinita da demonstração que ambos os casos da dualidade não podem acontecer ao mesmo tempo (orientação de arestas em uma árvore ou cai num ralo ou vai pro infinito).
 
-    E a volta? 
+    Vamos para a volta. Primeiro resumimos a intuição da prova.Queremos construir um conjunto árvore a partir das estrelas de $\mathcal{F}$. Duas estrelas $E$ e $E'$ são `compatíveis', no sentido de que conseguimos colá-las em um processo de construção de uma árvore, apenas quando uma estrela possui um $A \in E$ e a outra o complementar $\lnot A \in E$. Este processo de colagem pode ser feito até chegarmos em uma árvore cujas estrelas são todas de $\mathcal[F]$. Se em toda possível tentativa desta construção falhar, por falta de estrelas em $\mathcal{F}$, isto será suficiente para construirmos uma orientação de $S$ que evita $\mathcal{F}$.
+
+    Para formalizarmos esta construção, definimos um grafo cujos vértices são as estrelas de $\mathcal{F}$. Duas estrelas $E$ e $E'$ serão adjacentes se existe um $A \in S$ tal que $A \in E$ e $\lnot A \in E'$ - e colorimos esta aresta com uma cor associada ao par $\{A,\lnot A\}$. As cores $\{A, \lnot A\}$ pra cada $A \in E$, são ditas as cores de $E$. Se $E$ tem pelo menos uma aresta pra cada uma de suas cores, dizemos que $E$ é uma estrela feliz - caso contrário, ela é uma estrela triste. 
+    
+    Primeiramente, note que este grafo é uma árvore.
+
+    Uma subárvore feliz $T_{f}$ é uma subárvore onde pra cada vértice $E$ dela: o $E$ é uma estrela feliz, e $T_f$ contém uma e apenas uma aresta pra toda cor de $E$. Se convença disso: achar uma subárvore feliz é a mesma coisa que encontrar um conjunto árvore $S' \subset S$ cujos estrela-vértice estão todos em $\mathcal{F}$.
+
+    Suponha que não exista subárvore feliz - vamos conseguir construir uma orientação $\tau$ de $S$ que não seleciona estrela nem extremidade de $\mathcal{F}$. Vamos olhar pra cada $A \in S$ e decidir se $\tau$ escolhe ele ou seu complementar. Pros $A \in S$ tais que $A$ nem $\lnot A$ estão em alguma estrela de $\mathcal{F}$, $\tau$ pode escolher qualquer um dos $A, \lnot A$.  Resta decidirmos os conjuntos que estão em estrelas. Para isso, tome uma estrela $E$ de $\mathcal{F}$. Primeiramente suponha que ela é triste. Então existe um $A \in E$ tal que $\lnot A \notin E'$ pra todo $E' \in \mathcal{F}$. Decida então que $\tau(\lnot A) = 1$ - isto já evita que $\tau$ escolhe $E$, e não toma nenhuma decisão sobre os conjuntos das outras estrelas. Agora suponha que $E$ é feliz. Faça agora uma construção indutiva em cada componente conexa de $\mathcal{F}$.
   \end{prova}
 
 
