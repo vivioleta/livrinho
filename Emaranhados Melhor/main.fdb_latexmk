@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1777920414.4024 "main.aux" "main.bbl" "main" 1778609924.31882 0
+["bibtex main"] 1783112329.88925 "main.aux" "main.bbl" "main" 1783112884.47096 0
   "./references.bib" 1777304213.3315 2150 7a3ff579565e46e99e8048ebe06fd6c8 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1778609923.53106 2389 35031c0b13c246f1086598be431a37d2 "lualatex"
+  "main.aux" 1783112883.85084 3136 85655beec5a3f43fc1c598a9ee7035f9 "lualatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["lualatex"] 1778609918.72335 "/home/viola/Área de trabalho/livrinho/Emaranhados Melhor/main.tex" "main.pdf" "main" 1778609924.31904 0
+["lualatex"] 1783112880.95742 "/home/viola/Área de trabalho/livrinho/Emaranhados Melhor/main.tex" "main.pdf" "main" 1783112884.47119 0
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/hb/11d3e5db254c6b73d86ac3bbd5f6ef0aecc7463fab9726ee04d7203d35016ba4.luc" 1769438857.38489 130376 52cef6f437f4b7248c4007f155c35efa ""
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/darwinserif-regular.luc" 1777307589.50116 150779 1936b5cf94fbe0c53415e24ca3cfc2e6 ""
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1769438855.40496 128410 3f752579a721aabb697cb5411c2b5223 ""
@@ -15,7 +15,7 @@
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/notocoloremoji.luc" 1769438857.2429 386799 76675ac66c072fb2a0e9abf8f2373f07 ""
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1769442863.41978 485 860487eb8a03fc2cd109eac7c3a38e68 ""
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz" 1769438854.38399 392839 9a60e9b8c85523fb50afd5137392a298 ""
-  "/home/viola/Área de trabalho/livrinho/Emaranhados Melhor/main.tex" 1777939122.32168 59623 4096f547c3727c144c1856e0758ccc89 ""
+  "/home/viola/Área de trabalho/livrinho/Emaranhados Melhor/main.tex" 1783112880.51298 79308 53764703cda98b116878241785e386ed ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -76,6 +76,7 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb" 1692649180 44726 c0c4f2d62278d1adbb6a666ba2cb0447 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb" 1724614892 45985 fd5f8adcc4f0e93e9a95469e12126723 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb" 1570829503 28408 7b4c7ed3cc9139b65b101faafa63ac88 ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Regular.pfb" 1570829503 47816 c273d49fa2031739d61b4d1afe455a97 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb" 1136849748 27693 bfb340b71292c6ead561e4943433945d ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb" 1136849748 45955 6dfcb282cf470ceb18d57d017b7898d6 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/vf/public/boondox/BOONDOX-r-ds.vf" 1304615349 468 7995eab1335073d481e9e8949bc62870 ""
@@ -347,10 +348,10 @@
   "/usr/local/texlive/2025/texmf-var/tex/generic/config/language.dat" 1769203418.92504 6798 53e15519854291768b0fbca1951526ab ""
   "/usr/local/texlive/2025/texmf-var/web2c/luahbtex/lualatex.fmt" 1769203705 5655606 4031de4728b2e7775aa756ceb0c6860c ""
   "DarwinSerif-Regular.otf" 1777304213.29651 134196 a98621af05a09b3acbf5b155be2bad02 ""
-  "main.aux" 1778609923.53106 2389 35031c0b13c246f1086598be431a37d2 "lualatex"
-  "main.bbl" 1777920414.55649 264 2e5058329f55c4a841238a37880c6eec "bibtex main"
-  "main.out" 1778609923.53206 791 e737416c2c2fbd062147a23811cc3a28 "lualatex"
-  "main.tex" 1777939122.32168 59623 4096f547c3727c144c1856e0758ccc89 ""
+  "main.aux" 1783112883.85084 3136 85655beec5a3f43fc1c598a9ee7035f9 "lualatex"
+  "main.bbl" 1783112330.04794 264 2e5058329f55c4a841238a37880c6eec "bibtex main"
+  "main.out" 1783112883.85184 966 dcb11dd4ee8c9d4fbbf0ba4d2f5cfb6e "lualatex"
+  "main.tex" 1783112880.51298 79308 53764703cda98b116878241785e386ed ""
   "quiver.sty" 1777304213.3315 1606 ac24526cc82038afe47d6f803f11170f ""
   (generated)
   "main.aux"

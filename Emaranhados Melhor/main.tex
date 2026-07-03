@@ -40,6 +40,8 @@
 \renewcommand{\textit}[1]{{\fakeitalic#1}}
 \renewcommand{\bfseries}{\fakebold}
 \renewcommand{\itshape}{\fakeitalic}
+\newcommand{\myref}[1]{\hyperref[#1]{\namecref{#1} \ref{#1}}}
+
 
 
 
@@ -85,6 +87,10 @@
 }
 
 \let\varphi\phi
+
+\newcommand{\prabaixo}[1]{\lceil #1 \rceil}
+\newcommand{\pracima}[1]{\lfloor #1 \rfloor}
+
 
 %Caixinhas coloridas
 
@@ -394,6 +400,15 @@ Se isso fosse verdade, então na verdade os espaços $\text{Per}(S)$ são apenas
   Se não, quem são os espaços $\text{Per}(S)$? A categoria formada por eles exibe um funtor de volta para a categoria de sistemas?
 \end{pergunta}
 
+Defina $B(S)$ como sendo a álgebra de Boole gerada por $S \subset \mathcal{P}(V)$. Seja $\text{Ult}(B(S))$ seu espaço de ultrafiltros.
+
+\begin{proposicao}[Inclusão do espaço de ultrafiltros no espaço de perfis]
+  Defina o mapa $i: \text{Ult}(B(S)) \rightarrow \text{Per}(S)$ que leva um ultrafiltro $u: B(S) \rightarrow \{0,1\}$ na sua restrição $u|_{S}: S \rightarrow \{0,1\}$. Então $i$ é um homeomorfismo sobre sua imagem.
+\end{proposicao}
+\begin{prova}
+  Como $S$ gera $B(S)$, $i$ é injetivo. A continuidade vem do fato de que pré inversa de básico vai ser básico. Pra concluir que é homeomorfismo sobre a imagem, usamos que uma bijeção contínua de um compacto em um Hausdorff é homeomorfismo.
+\end{prova}
+
 
 \section{Conjuntos-Árvore}
 
@@ -407,16 +422,31 @@ Conjuntos-árvore vão ser sistemas de separação que capturam a estrutura de s
 
 Lembrando que estamos sempre conceitualizando um $A \subset V$ como uma partição de $V$ em dois pedaços: $A$ e seu complementar $\lnot A$.
 
-Vamos entender o que tem de árvore em conjuntos árvore.  Primeiramente, toda árvore define um conjunto árvore.
+Vamos entender o que tem de árvore em conjuntos árvore. 
+
+Quando falamos árvore, queremos dizer um grafo simples e sem ciclos (não necessariamente finito). Quando falamos árvore de ordem, queremos dizer um conjunto parcialmente ordenado $T$ tal que o conjunto de todos os elementos menores que $t$ é bem ordenado, pra todo $t \in T$. Vamos relaxar a definição de árvore de ordem, e definir algo que vamos chamar de \textit{arvoreta}: $T$ é uma arvoreta quando é um conjunto parcialmente ordenado tal que todos os elementos menores que $t$ formam uma cadeia (conjunto totalmente ordenado), pra todo $t \in T$.
+
+Primeiramente, toda árvore define um conjunto árvore.
 
 \begin{proposicao}[Conjunto árvore da árvore]
-  Seja $T$ uma árvore (um grafo simples sem ciclos). Defina $S(T) = \{A \subset V(T) \mid \text{ existe uma única aresta entre } A \text{ e } \lnot A\}$. Então $S$ é um conjunto árvore.
+  Seja $T$ uma árvore (um grafo simples sem ciclos). Defina $S(T) = \{A \subset V(T) \mid \text{existe uma única aresta entre } A \text{ e } \lnot A\}$. Então $S$ é um conjunto árvore.
 \end{proposicao}
 \begin{prova}
 Veja que cada aresta $e$ de $T$ define um $A \in S(T)$, tomando $A$ como uma das duas componentes conexas de $T \setminus e$, sendo a outra $\lnot A$. E, por outro lado, dado um $A \in S(T)$, se tomarmos $e$ como a aresta que liga $A$ a seu complementar, então $A$ é uma das componentes conexas de $G \setminus e$. Sabendo isso, vamos agora mostrar que $S(T)$ é um conjunto árvore. Tome dois $A,B \in S(T)$ não complementares, e seja $e,f$ suas arestas correspondentes. $f$ deve ligar dois vértices de uma das componentes conexas de $G\setminus e$, ou seja, $f$ é uma aresta do grafo induzido por $A$ ou uma aresta do grafo induzido por $\lnot A$. Digamos que $f$ é uma aresta de vértices em $A$. Então, ao retirarmos $f$, $\lnot A$ continua conexo. Logo $\lnot A$ será um subconjunto de uma das componentes conexas de $G \setminus F$, isto é, de $B$ ou $\lnot B$. Igualmente, se $f$ é uma aresta de vértices em $\lnot A$, então teriamos que $A$ é subconjunto de $B$ ou $\lnot B$. Concluimos que $S(T)$ é um conjunto árvore.
 \end{prova}
 
+Toda arvoreta define um conjunto árvore. 
+Defina $\lfloor v \rfloor = \{w \in T \mid v \leq w\}$ pra um $v \in T$.
+
+\begin{proposicao}[Conjunto árvore de uma arvoreta]
+  Seja $T$ uma arvoreta. Defina $S(T) = \{A \subset T \mid A \text{ ou } A^c \text{ é da forma } \lfloor v \rfloor \text{ para algum } v \in T \}$. Então $S(T)$ é conjunto árvore.
+\end{proposicao}
+\begin{prova}
+É uma continha simples!
+\end{prova}
+
 \begin{proposicao}[Perfis de árvores finitas são principais e recuperam a árvore]
+  \label{perfis-arvore-finito}
   
   Seja $T$ uma árvore finita, e $S(T)$ seu conjunto árvore. Todos os emaranhados de $S(T)$ (e portanto todos os perfis de $S(T)$) são da forma $\tau_v$ para um $v \in V(T)$, onde $\tau_v(A) = 1 \Leftrightarrow v \in A$ para todo $A \in S$. Ou seja, $\tau_v$ é o perfil principal em relação a $v$. 
 
@@ -430,19 +460,36 @@ Enumere as arestas de $T$ como $\{e_1,\dots, e_k\}$. Lembre-se da descrição na
 Agora, se dois vértices $v,w \in T$ são adjacentes, digamos pela aresta $e_i$, então com certeza $v$ e $w$ estão em componentes conexas diferentes ao remover $e_i$, assim $\tau_v$ e $\tau_w$ diferem no corte relativo a esta aresta. E, na retirada de qualquer outra aresta $e_j$, a $e_i$ se mantém, logo os vértices estarão na mesma componente conexa e portanto $\tau_v$ e $\tau_w$ concordaram no corte relativo a $e_j$. Já se eles não forem adjacentes, deve haver um caminho entre eles contendo no mínimo duas arestas. A retirada de ambas estas arestas coloca os vértices em componentes conexas diferentes, e portanto $\tau_v$ e $\tau_w$ diferem em pelo menos dois valores. De fato, a quantidade de diferenças é exatamente o número de arestas do caminho entre os vértices, recuperando a métrica da árvore.
 \end{prova}
 
-\begin{pergunta}
-  O que acontece no caso de $T$ infinita?
+Em uma arvoreta $T$, uma cadeia inicial $C \subset T$ é um conjunto totalmente ordenado fechado pra baixo. Uma cauda de $C$ é alguma interseção $\pracima{t} \cap C$ pra algum $t \in C$
 
-  Conjectura mais ou menos intuitivamente demonstrada: os perfis de $S(T)$ são todos ou ultrafiltros principais ou ultrafiltros de extremidades de $T$.
-\end{pergunta}
+\begin{proposicao}[Perfis de árvore de ordem correspondem a cadeias iniciais]
+  Seja $\tau$ um perfil de $S(T)$, onde $T$ é uma árvore de ordem. Então existe uma cadeia inicial $C \subset T$ tal que $\tau(A) = 1$ se e somente se existe uma cauda $\pracima{t} \cap C$ contida em $A$. Cada cadeia inicial define um único perfil dessa forma.
+\end{proposicao}
+\begin{prova}
 
-\begin{pergunta}
-  Como definir $S(T)$ para uma árvore de ordem $T$? E quem são seus perfis?
+  Detalhe: aqui estou usando os resultados do Handbook que eu acredito que foram pensados para árvores de ordem usuais, mas que eu acredito que podem ser generalizados para arvoretas (inclusive, com as próprias demos dele, que não acredito que usam a  boa ordem dos conjuntos pra baixo).
 
-  Conjectura mais ou menos intuitivamente demonstrada: faça do jeito mais óbvio possível, e vai dar certo, e seus perfis vão ser ultrafiltros principais ou ramos maximais.
-\end{pergunta}
+Vou procurar uma demonstração elementar, mas por agora: extenda $S(T)$ pra $B(T)$, a tree algebra de $T$ como definida no Handbook of Boolean Algebras. Por 16.4, $\tau$ se extende pra um (único) ultrafiltro. Por 16.11, ultrafiltros correspondem a cadeias iniciais.
 
-Temos nesta última proposição uma descrição de como $S(T)$ contém a estrutura da árvore $T$. Se estamos de posse de seu $S(T)$, poderiamos reconstruir $T$ tomando como conjunto de vértices os perfis de $S(T)$ e ligando eles entre si quando diferem em apenas um valor. Este seria um caminho para mostrar que todo conjunto árvore finito $S$ vem de uma árvore: usando os perfis de $S$ como vértices para construir a árvore. Mas, para provar esta proposição, não vamos fazer isso. Vamos construir uma árvore explicitamente em um processo indutivo (porque essa foi a primeira ideia que eu tive).
+\end{prova}
+
+O espaço de perfis aqui será homeomorfo ao espaço de Stone de $B(T)$. Quando $T$ é um grafo, $B(T)$ é a álgebra de cortes de $T$ e logo esse espaço de Stone é homeomorfo ao espaço de direções via arestas de $T$. Logo perfis de $T$ são vértices ou raios.
+
+
+% \begin{pergunta}
+%   O que acontece no caso de $T$ infinita?
+
+%   Conjectura mais ou menos intuitivamente demonstrada: os perfis de $S(T)$ são todos ou ultrafiltros principais ou ultrafiltros de extremidades de $T$.
+% \end{pergunta}
+
+
+% \begin{pergunta}
+%   Como definir $S(T)$ para uma árvore de ordem $T$? E quem são seus perfis?
+
+%   Conjectura mais ou menos intuitivamente demonstrada: faça do jeito mais óbvio possível, e vai dar certo, e seus perfis vão ser ultrafiltros principais ou ramos maximais.
+% \end{pergunta}
+
+Voltando ao caso finito. Temos em \ref{perfis-arvore-finito} uma descrição de como $S(T)$ contém a estrutura da árvore $T$. Se estamos de posse de seu $S(T)$, poderiamos reconstruir $T$ tomando como conjunto de vértices os perfis de $S(T)$ e ligando eles entre si quando diferem em apenas um valor. Este seria um caminho para mostrar que todo conjunto árvore finito $S$ vem de uma árvore: usando os perfis de $S$ como vértices para construir a árvore. Mas, para provar esta proposição, não vamos fazer isso. Vamos construir uma árvore explicitamente em um processo indutivo (porque essa foi a primeira ideia que eu tive).
 
 \begin{proposicao}[Árvore do conjunto árvore]
  Todo conjunto árvore finito $S$ admite um isomorfismo (de sistemas) a um $S(T)$ para uma única árvore.
@@ -482,18 +529,23 @@ Na verdade, resta provar a unicidade: se começarmos com um $S = S(T)$ para algu
 
 \end{prova}
 
-\begin{pergunta}
-  O que acontece quando $S$ é infinito?
+\begin{proposicao}[Conjunto-árvores infinitos vem de arvoretas]
+  Seja $S$ um conjunto árvore, agora possivelmente infinito. Existe uma arvoreta $T$ tal que $S \cong S(T)$.
+\end{proposicao}
+\begin{prova}
+  Pra escrever: adaptar a demo anterior fazendo indução transfinita e usando o resultado que perfis vem de cadeias iniciais.
+\end{prova}
 
-  Tem um artigo \cite{arvoredoconjuntoarvore} que é demonstrado que nesse caso o teorema é válido substituindo $T$ por um "tree-like space". Será que é válido substituindo $T$ por uma árvore de ordem?
-  
-  Conjectura intuitivamente mais ou menos demonstrada: o teorema segue verdade, substituindo $T$ por uma árvore de ordem. Agora a unicidade acredito que possa não valer, por causa de uma liberdade na escolha de raiz. Mas o espaço topológico definido pelos vértices da árvore vai ser o mesmo.
+É única? Imagino que não, por liberdade na escolha de raiz, mas talvez definam o mesmo espaço (ver pergunta abaixo). Existe uma noção de `isomorfismo' de árvore de ordem (arvoreta) a menos de escolha de raiz?
+
+\begin{pergunta}
+Tem um artigo \cite{arvoredoconjuntoarvore} que é demonstrado que conjuntos árvore infinitos se originam a partir de $T$ "tree-like space". Esses espaços são os que se originam de árvores de ordem?
 \end{pergunta}
 
 \begin{pergunta}
   No caso $S$ infinito, quem são os espaços $\text{Per}(S)$ quando $S$ é conjunto árvore?  
-  
-  Conjectura intuitivamente mais ou menos demonstrada: são os vértices da árvore (possivelmente de ordem) com topologia discreta, aderindo aos ramos da árvore.
+
+  Parece que vão ser os espaços de ultrafiltros de tree algebras. Que no caso acho que são espaços de cadeias iniciais de arvoretas. (topologia induzida como subespaço do espaço de caminhos?)
 \end{pergunta}
 
 
@@ -576,14 +628,6 @@ Usando nossa forma canônica para $S$, o teorema é equivalente a demonstrar que
 Existe uma condição topológica em $\text{Per}(S)$ que é equivalente a $N$ exibir todos os perfis? Isto ajuda a generalizar o teorema para o caso infinito?
 \end{pergunta}
 
-No caso de $S$ álgebra de Boole infinita, podemos dizer algumas coisas.
-
-\begin{proposicao*}[Árvore de emaranhados vale no caso de álgebra de Boole enumerável]
-  Seja $S \subset \mathcal{P}(V)$ uma álgebra de Boole enumerável. Então existe um conjunto árvore $N \subset S$ que exibe todos os ultrafiltros de $S$.
-\end{proposicao*}
-\begin{prova}
-  (Pra ser escrito - aqui é aquilo da árvore cujo espaço de extremidades é o espaço de Boole de $S$)
-\end{prova}
 
 \begin{proposicao*}[Árvore de emaranhados não vale no caso de álgebra de Boole não-enumerável]
   Não existe conjunto árvore que exibe todos os ultrafiltros de $\mathcal{P}(\mathbb{N})$.
@@ -591,6 +635,9 @@ No caso de $S$ álgebra de Boole infinita, podemos dizer algumas coisas.
 \begin{prova}
  (Pra ser escrito - ver https://mathoverflow.net/questions/508614/how-small-can-a-set-x-subset-2-omega-be-if-it-is-able-to-distinguish-any-ult)
 \end{prova}
+\begin{pergunta}
+  Uma álgebra de Boole enumerável tem seu espaço de Stone homeomorfo ao espaço de extremidades de uma árvore. Isso indica que talvez o teorema de árvore de emaranhados vale para álgebras de Boole enumeráveis?
+\end{pergunta}
 
 \begin{pergunta}
   (Pergunta do Gustavo) Todo conjunto aberto tem display? Todo $G_{\delta}$ tem display?
@@ -636,7 +683,7 @@ Quando $T$ for uma árvore de ordem, a definição intrínseca de estrelas-vért
 
   Um conjunto de estrelas $\mathcal{F}$ é dito $S$-consistente se sempre que $\{A\} \in \mathcal{F}$ então nenhum $B \subset A$, $B \in S$ é tal que $\{\lnot B\} \in \mathcal{F}$.
   
-  Dado dois conjuntos $R,A$ de interseção vazia, definimos um mapa $\mathcal{P}(V) \rightarrow \mathcal{P}(V)$ que chamamos de $(R,A)$-relativização. Dado um $X$, o mapa leva
+  Dado dois conjuntos $R \subset A$ definimos um mapa $\mathcal{P}(V) \rightarrow \mathcal{P}(V)$ que chamamos de $(R,A)$-relativização. Dado um $X$, o mapa leva
 
   \begin{align*} 
 X &\mapsto  X \cap R \text{ se } X \subset A \\ 
@@ -644,7 +691,7 @@ X &\mapsto \lnot(\lnot X \cap R) \text{ se } \lnot X \subset A \\
 X &\mapsto X \text{ caso contrário}
 \end{align*}
 
-  Dizemos que $S \subset \mathcal{P}(V)$ satisfaz a hipótese da dualidade se preserva $(R,A)$ relativizações pra quaisquer par $R,A \in S$ de interseção vazia.
+  Dizemos que $S \subset \mathcal{P}(V)$ satisfaz a hipótese da dualidade se preserva $(R,A)$ relativizações pra quaisquer par $R,A \in S$ com $R \subset A$.
   
   Dizemos que um conjunto de estrelas $\mathcal{F}$ satisfaz a $S$-hipótese da dualidade se para quaisquer dois $A,B \in S$ com interseção vazia e não decididos por $\mathcal{F}$, existe um $R \in S$ tal que $R \subset A$, $\lnot R \subset B$, e a imagem de qualquer estrela em $\mathcal{F}$ via $(R,A)$-relativização e também via $(\lnot R,B)$-relativização é ainda uma estrela em $\mathcal{F}$.
 \end{definicao*}
@@ -690,7 +737,7 @@ X &\mapsto X \text{ caso contrário}
 
     Aplique $(R,\lnot B_1)$-relativização em todos os elementos de $S_1$, obtendo $S_1'$. É uma conta de muitos casos, porém direta, verificar que $S_1'$ ainda se mantém árvore. Como $\mathcal{F}$ preserva estrelas após a relativização, $S_1'$ é um conjunto árvore cujas estrelas-vértices estão todas em $\mathcal{F}$, menos uma única estrela, que agora é referente ao conjunto $\{R\}$. Similarmente, ao aplicarmos $(\lnot R,\lnot B_2)$-relativização em $S_2$, obtemos um conjunto árvore $S_2'$ com todas as estrelas em $\mathcal{F}$ menos uma única estrela referente ao conjunto $\{\lnot R\}$.
 
-    Agora, finalmente, podemos combinar $S_1'$ e $S_2'$ em um conjunto árvore $S'$ com todas as estrelas em $\mathcal{F}$. Olhe para as árvores $T_1$ e $T_2$ tais que $S_1' \cong S(T_1)$ e $S_2' \cong S(T_2)$. $T_1$ deve conter um vértice cuja estrela-vértice correspondente em $S_1'$ será $\{R\}$, e portanto este vértice deve necessariamente ser um vértice de grau $1$, o chamemos de $v_1$. Veja que toda aresta de $T_1$ separa a árvore de forma que uma das suas componentes conexas contém $\{v_1\}$. Como $\{v_1\}$ é a estrela que é mandada pra $\{R\}$ via o isomorfismo entre $S_1'$ e $S(T_1)$, concluimos que pra qualquer $X \in S_1$ teremos ou $R \subset X$ ou $R \subset \lnot X$. Analogamente, repetimos o mesmo raciocínio para $S_2'$ e sua árvore $T_2$, com seu vértice $v_2$ referente a estrela-vértice $\{\lnot R\}$. Daí, para qualquer $Y \in S_2'$, teremos ou $\lnot R \subset Y$ ou $\lnot R \subset \lnot Y$. Juntando estes dois fatos, concluimos que pra quaisquer $X \in S_1', Y \in S_2'$, estes dois conjuntos vão estar encaixados. Logo $\S' \defeq S_1' \cup S_2'$ é um conjunto árvore. Sua árvore correspondente será a árvore $T'$ obtida a partir de $T_1$ e $T_2$ unindo ambas as árvores, as colando através dos vértices $v_1$ e $v_2$, e aí eliminando estes vértices, deixando sobrar uma aresta ligando diretamente o vizinho de $v_1$ em $T_1$ ao vizinho de $v_2$ em $T_2$. Assim, as estrelas-vértices de $T'$ são ou estrelas-vértices de $T_1$ fora $\{R\}$ ou estrelas vértices de $T_2$ fora $\{\lnot R\}$ - todas em $\mathcal{F}$, finalizando nossa demonstração.  
+    Agora, finalmente, podemos combinar $S_1'$ e $S_2'$ em um conjunto árvore $S'$ com todas as estrelas em $\mathcal{F}$. Olhe para as árvores $T_1$ e $T_2$ tais que $S_1' \cong S(T_1)$ e $S_2' \cong S(T_2)$. $T_1$ deve conter um vértice cuja estrela-vértice correspondente em $S_1'$ será $\{R\}$, e portanto este vértice deve necessariamente ser um vértice de grau $1$, o chamemos de $v_1$. Veja que toda aresta de $T_1$ separa a árvore de forma que uma das suas componentes conexas contém $\{v_1\}$. Como $\{v_1\}$ é a estrela que é mandada pra $\{R\}$ via o isomorfismo entre $S_1'$ e $S(T_1)$, concluimos que pra qualquer $X \in S_1$ teremos ou $R \subset X$ ou $R \subset \lnot X$. Analogamente, repetimos o mesmo raciocínio para $S_2'$ e sua árvore $T_2$, com seu vértice $v_2$ referente a estrela-vértice $\{\lnot R\}$. Daí, para qualquer $Y \in S_2'$, teremos ou $\lnot R \subset Y$ ou $\lnot R \subset \lnot Y$. Juntando estes dois fatos, concluimos que pra quaisquer $X \in S_1', Y \in S_2'$, estes dois conjuntos vão estar encaixados. Logo $S' \defeq S_1' \cup S_2'$ é um conjunto árvore. Sua árvore correspondente será a árvore $T'$ obtida a partir de $T_1$ e $T_2$ unindo ambas as árvores, as colando através dos vértices $v_1$ e $v_2$, e aí eliminando estes vértices, deixando sobrar uma aresta ligando diretamente o vizinho de $v_1$ em $T_1$ ao vizinho de $v_2$ em $T_2$. Assim, as estrelas-vértices de $T'$ são ou estrelas-vértices de $T_1$ fora $\{R\}$ ou estrelas vértices de $T_2$ fora $\{\lnot R\}$ - todas em $\mathcal{F}$, finalizando nossa demonstração.  
 
   \end{prova}
 
@@ -738,37 +785,214 @@ X &\mapsto X \text{ caso contrário}
    A apresentação de $S$ com todos os emaranhados sendo principais simplifica a demonstração ou a intuição por trás do teorema?
   \end{pergunta}
   
-  \begin{definicao*}[Extremidades]
-    Seja $S \subset \mathcal{P}(V)$ fechado pra complementar, $\epsilon$ um conjunto de elementos de $S$. Dizemos que $\epsilon$ é uma extremidade se $\epsilon = \{A_1, A_2, \dots\}$ e $A_{i+1} \subset A_i$ pra todo $i$.
 
 
-    Dizemos que $\epsilon$ é uma extremidade de um conjunto de estrelas $\mathcal{F}$ se pra todo $i$ existe uma estrela $E$ em $\mathcal{F}$ tal que $\{A_i, \lnot A_{i+1}\} \subset E$. 
-  \end{definicao*}
+% Aqui pra baixo tem minha tentativa de pensar dualidade fraca pro infinito. Do jeito que tá escrito tem erros. O que eu sei agora: eu consigo provar que se existe o conjunto árvore, então toda orientação seleciona uma estrela ou uma extremidade. Também consigo provar que se toda orientação seleciona uma estrela, então existe um conjunto árvore. Mas não dá pra juntar esses dois num resultado só de dualidade bonitinha pro infinito.
+
+  % \begin{definicao*}[Extremidades]
+  %   Seja $S \subset \mathcal{P}(V)$ fechado pra complementar, $\epsilon$ um conjunto de elementos de $S$. Dizemos que $\epsilon$ é uma extremidade se $\epsilon = \{A_1, A_2, \dots\}$ e $A_{i+1} \subset A_i$ pra todo $i$.
 
 
-    A volta vai ser a mesma demonstração do Jay, e notando que a orientação construida por elu evita extremidades. O jeito que eu fiz a demonstração delu foi construir um grafo a partir das estrelas de $\mathcal{F}$ (aresta entre estrela se dá pra juntar elas em uma árvore), mostrar que este grafo é uma floresta, descrever a condição neste grafo que garante a existência de um conjunto árvore com todas as estrelas-vértices em $\mathcal{F}$ e aí mostrar que se essa condição não vale podemos construir uma orientação que evita $\mathcal{F}$.
+  %   Dizemos que $\epsilon$ é uma extremidade de um conjunto de estrelas $\mathcal{F}$ se pra todo $i$ existe uma estrela $E$ em $\mathcal{F}$ tal que $\{A_i, \lnot A_{i+1}\} \subset E$. 
+  % \end{definicao*}
+
+
+  %   A volta vai ser a mesma demonstração do Jay, e notando que a orientação construida por elu evita extremidades. O jeito que eu fiz a demonstração delu foi construir um grafo a partir das estrelas de $\mathcal{F}$ (aresta entre estrela se dá pra juntar elas em uma árvore), mostrar que este grafo é uma floresta, descrever a condição neste grafo que garante a existência de um conjunto árvore com todas as estrelas-vértices em $\mathcal{F}$ e aí mostrar que se essa condição não vale podemos construir uma orientação que evita $\mathcal{F}$.
 
 
 
-  \begin{teorema*}[Dualidade fraca pro infinito]
-    Seja $\mathcal{F}$ um conjunto de estrelas de um sistema $S \subset \mathcal{P}(V)$.  Então:
+  % \begin{teorema*}[Dualidade fraca pro infinito]
+  %   Seja $\mathcal{F}$ um conjunto de estrelas de um sistema $S \subset \mathcal{P}(V)$.  Então:
 
-    Existe um conjunto-árvore $S(T) \cong S' \subset S$ cujas estrelas-vértices estão todas em $\mathcal{F}$ se e somente se toda orientação de $S$ seleciona uma estrela ou uma extremidade de $\mathcal{F}$.
-  \end{teorema*}
-  \begin{prova}
-    Escrever a ida: essa é a versão infinita da demonstração que ambos os casos da dualidade não podem acontecer ao mesmo tempo (orientação de arestas em uma árvore ou cai num ralo ou vai pro infinito).
+  %   Existe um conjunto-árvore $S(T) \cong S' \subset S$ cujas estrelas-vértices estão todas em $\mathcal{F}$ se e somente se toda orientação de $S$ seleciona uma estrela ou uma extremidade de $\mathcal{F}$.
+  % \end{teorema*}
+  % \begin{prova}
+  %   Escrever a ida: essa é a versão infinita da demonstração que ambos os casos da dualidade não podem acontecer ao mesmo tempo (orientação de arestas em uma árvore ou cai num ralo ou vai pro infinito).
 
-    Vamos para a volta. Primeiro resumimos a intuição da prova.Queremos construir um conjunto árvore a partir das estrelas de $\mathcal{F}$. Duas estrelas $E$ e $E'$ são `compatíveis', no sentido de que conseguimos colá-las em um processo de construção de uma árvore, apenas quando uma estrela possui um $A \in E$ e a outra o complementar $\lnot A \in E$. Este processo de colagem pode ser feito até chegarmos em uma árvore cujas estrelas são todas de $\mathcal[F]$. Se em toda possível tentativa desta construção falhar, por falta de estrelas em $\mathcal{F}$, isto será suficiente para construirmos uma orientação de $S$ que evita $\mathcal{F}$.
+  %   Vamos para a volta. Primeiro resumimos a intuição da prova.Queremos construir um conjunto árvore a partir das estrelas de $\mathcal{F}$. Duas estrelas $E$ e $E'$ são `compatíveis', no sentido de que conseguimos colá-las em um processo de construção de uma árvore, apenas quando uma estrela possui um $A \in E$ e a outra o complementar $\lnot A \in E$. Este processo de colagem pode ser feito até chegarmos em uma árvore cujas estrelas são todas de $\mathcal[F]$. Se em toda possível tentativa desta construção falhar, por falta de estrelas em $\mathcal{F}$, isto será suficiente para construirmos uma orientação de $S$ que evita $\mathcal{F}$.
 
-    Para formalizarmos esta construção, definimos um grafo cujos vértices são as estrelas de $\mathcal{F}$. Duas estrelas $E$ e $E'$ serão adjacentes se existe um $A \in S$ tal que $A \in E$ e $\lnot A \in E'$ - e colorimos esta aresta com uma cor associada ao par $\{A,\lnot A\}$. As cores $\{A, \lnot A\}$ pra cada $A \in E$, são ditas as cores de $E$. Se $E$ tem pelo menos uma aresta pra cada uma de suas cores, dizemos que $E$ é uma estrela feliz - caso contrário, ela é uma estrela triste. 
+  %   Para formalizarmos esta construção, definimos um grafo cujos vértices são as estrelas de $\mathcal{F}$. Duas estrelas $E$ e $E'$ serão adjacentes se existe um $A \in S$ tal que $A \in E$ e $\lnot A \in E'$ - e colorimos esta aresta com uma cor associada ao par $\{A,\lnot A\}$. As cores $\{A, \lnot A\}$ pra cada $A \in E$, são ditas as cores de $E$. Se $E$ tem pelo menos uma aresta pra cada uma de suas cores, dizemos que $E$ é uma estrela feliz - caso contrário, ela é uma estrela triste. 
     
-    Primeiramente, note que este grafo é uma árvore.
+  %   Primeiramente, note que este grafo é uma árvore.
 
-    Uma subárvore feliz $T_{f}$ é uma subárvore onde pra cada vértice $E$ dela: o $E$ é uma estrela feliz, e $T_f$ contém uma e apenas uma aresta pra toda cor de $E$. Se convença disso: achar uma subárvore feliz é a mesma coisa que encontrar um conjunto árvore $S' \subset S$ cujos estrela-vértice estão todos em $\mathcal{F}$.
+  %   Uma subárvore feliz $T_{f}$ é uma subárvore onde pra cada vértice $E$ dela: o $E$ é uma estrela feliz, e $T_f$ contém uma e apenas uma aresta pra toda cor de $E$. Se convença disso: achar uma subárvore feliz é a mesma coisa que encontrar um conjunto árvore $S' \subset S$ cujos estrela-vértice estão todos em $\mathcal{F}$.
 
-    Suponha que não exista subárvore feliz - vamos conseguir construir uma orientação $\tau$ de $S$ que não seleciona estrela nem extremidade de $\mathcal{F}$. Vamos olhar pra cada $A \in S$ e decidir se $\tau$ escolhe ele ou seu complementar. Pros $A \in S$ tais que $A$ nem $\lnot A$ estão em alguma estrela de $\mathcal{F}$, $\tau$ pode escolher qualquer um dos $A, \lnot A$.  Resta decidirmos os conjuntos que estão em estrelas. Para isso, tome uma estrela $E$ de $\mathcal{F}$. Primeiramente suponha que ela é triste. Então existe um $A \in E$ tal que $\lnot A \notin E'$ pra todo $E' \in \mathcal{F}$. Decida então que $\tau(\lnot A) = 1$ - isto já evita que $\tau$ escolhe $E$, e não toma nenhuma decisão sobre os conjuntos das outras estrelas. Agora suponha que $E$ é feliz. Faça agora uma construção indutiva em cada componente conexa de $\mathcal{F}$.
-  \end{prova}
+  %   Suponha que não exista subárvore feliz - vamos conseguir construir uma orientação $\tau$ de $S$ que não seleciona estrela nem extremidade de $\mathcal{F}$. Vamos olhar pra cada $A \in S$ e decidir se $\tau$ escolhe ele ou seu complementar. Pros $A \in S$ tais que $A$ nem $\lnot A$ estão em alguma estrela de $\mathcal{F}$, $\tau$ pode escolher qualquer um dos $A, \lnot A$.  Resta decidirmos os conjuntos que estão em estrelas. Para isso, tome uma estrela $E$ de $\mathcal{F}$. Primeiramente suponha que ela é triste. Então existe um $A \in E$ tal que $\lnot A \notin E'$ pra todo $E' \in \mathcal{F}$. Decida então que $\tau(\lnot A) = 1$ - isto já evita que $\tau$ escolhe $E$, e não toma nenhuma decisão sobre os conjuntos das outras estrelas. Agora suponha que $E$ é feliz. Faça agora uma construção indutiva em cada componente conexa de $\mathcal{F}$.
+  % \end{prova}
 
+
+  \section{A Lógica dos Emaranhados}
+
+  Álgebras de Boole são o estudo de teorias do cálculo proposiconal. Vou escrever sobre esta equivalência mais pra frente - mas um resumo: considere um alfabeto $\Sigma = \{p_1,p_2, \dots\}$ que vamos tratar como as proposições atômicas. $\Sigma_n$ vai ser o alfabeto com $n$ proposições para um $n \in w$ e $\Sigma_w$ o alfabeto com enumeráveis proposições. Chame de $\text{Sent}(\Sigma)$ o conjunto de sentenças, como usualmente definido, do cálculo proposicional. Dado um conjunto $T \subset \text{Sent}(\Sigma)$, podemos definir a relação de equivalência $\phi \cong_T \psi$ quando $T \vdash \phi \leftrightarrow \psi$. O quociente de $\text{Sent}(\Sigma)$ por $\cong_T$ vai ser chamado de $\mathcal{B}_T$ e os operadores $\vee,\wedge, \lnot$ o mune de uma estrutura de álgebra de Boole. Quando $T = \varnothing$, $\mathcal{B}_T$ é livre sobre $\Sigma$. Variando $T$, obtemos todas as álgebras de Boole (veja que isto é equivalente a dizer que toda álgebra de Boole é quociente de uma livre, isto é, achar uma apresentação pra uma álgebra de Boole). Ultrafiltros de $\mathcal{B}_T$ correspondem a modelos da teoria $T$, isto é, valorações (consistentes) das proposições que valoram $T$ em $1$.
+
+Dado um $S \subset \mathcal{B}_T$, um perfil $\tau$ de $S$ é uma valoração das proposições de $S$ que satisfazem consistência apenas em relação aos elementos que $S$ contém. Por exemplo, $\tau$ pode valorar três proposições $A,B,C \in S$ com $1$, mesmo que $A \cap B \cap C = \varnothing$, desde que em $S$ não existam as interseções $A \cap B$, $B \cap C$ e $A \cap C$. Interpretamos intuitivamente que $\tau$ é `$S$-consistente', e portanto não necessariamente pode ser extendido a um modelo da teoria inteira. Podemos ver perfis, então, como uma forma de generalização de valorações - uma nova semântica pro cálculo proposicional.
+
+Dois resultados clássicos da teoria de cálculo proposicional relacionam a semântica do cálculo (modelos, valorações) com a sintaxe (dedução natural, ou sistema axiomático com regras de inferência): o teorema da completude e o teorema da compacidade. Estes teoremas valem pra perfis? 
+
+Vou escrever definições para álgebras de Boole e que acredito que são naturalmente traduzidas para a linguagem de cálculo proposicional.
+
+
+
+\newcommand{\Sproves}[1]{\underset{#1}{\vdash}}
+
+\begin{definicao*}[$S$-provas, $S$-possibilidade e $S$-consistência]
+
+
+  Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer. \\
+  
+  Dizemos que $T$ $S$-prova $A$ e escrevemos $T \Sproves{S} A$ se vale pelo menos um dos itens:
+    
+  \begin{itemize}[label=\ding{212}]
+   \item $A \in T$
+    \item $B \subset A$ para um $B \in S$ onde $T \Sproves{S} A$
+    \item $A = B \cap C \in S$ para $B,C \in S$ onde $T \Sproves{S} B$ e $T \Sproves{S} C$
+  \end{itemize} 
+
+  Quando dois $A,B \in S$ são tais que $A \cap B \in S$ dizemos que este é um produto ou uma interseção ou uma conjunção $S$-possível. Quando $A \subset B$ com $A,B \in S$, dizemos que $B$ é uma implicação $S$-possível. Com isso, $T \Sproves{S} A$ exatamente quando $A$ pode ser obtido em uma sequência finita de implicações e conjunções $S$-possiveis que começa com elementos de $T$. Essa sequência finita é chamada de $S$-prova.\\
+
+  Quando não houver ambiguidade sobre quem é o $S$ subjacente, denotamos $T_{\vdash}$ como o conjunto de $A \in S$ tais que $T \Sproves{S} A$.\\
+
+  Dizemos que $T$ é $S$-consistente se não vale que $T \Sproves{S} \varnothing$, ou seja, $\varnothing \notin T_{\vdash}$.
+\end{definicao*}
+
+\begin{pergunta}
+  Quais são exatamente as regras lógicas para essa $S$-provabilidade, quando traduzimos de volta pro cálculo proposicional? Mais tarde mostramos um exemplo que clarifica que não é `usar dedução natural onde todos os elementos usados estão em $S$'.
+\end{pergunta}
+
+
+\begin{proposicao*}($S$-corretude)
+  Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer. \\
+
+  Se existe um perfil $\tau$ de $S$ que valora todos os elementos de $T$ em $1$, então $T$ é $S$-consistente.
+\end{proposicao*}
+
+\begin{prova}
+  Tome um perfil $\tau$ de $S$ que valora todos os elementos de $T$ em $1$. Por indução deduzimos que $\tau(A) = 1$ para todo $A \in S$ tal que $T \Sproves{S} A$. Se existisse $R \subset S$ tal que $T \cup R \Sproves{S} \varnothing$, então $\tau$ tem que valorar pelo menos um dos $A \in T$ como $0$ - logo não podemos ter $T \cup \{\lnot A\} \Sproves{S} \varnothing$ para todo $A \in R$.
+\end{prova}
+
+O teorema da completude é o que afirma a volta da proposição anterior. Infelizmente, ele não vale para nossas $S$-definições. 
+
+Um resultado fundacional do cálculo proposicional é o Teorema da Dedução. Uma forma de o afirmá-lo é que se $T \cup \{A\} \vdash \varnothing$ então $T \vdash \lnot A$. Este resultado não vale para $S$-provas, e é o motivo que o teorema da completude não vai valer também.
+
+\begin{exemplo*}[Um $S$ que não satisfaz dedução nem completude]
+Seja $\mathcal{B}$ o conjunto de partes de $V = \{1,2,3,4\}$ e
+\begin{align*}
+X &= \{1, 2\}           &  \lnot X &= \{3,4\}              \\
+Y &= \{2, 4 \}         &  \lnot Y &= \{1,3\}  \\
+Z&= \{1\}          &  \lnot Z &= \{2,3,4\} \\
+W &= \{4\}         &   \lnot W &= \{1,2,3\} \\
+A &= \{1,3\}       &    \lnot A &= \{2,4\}    
+\end{align*}
+
+
+Colete todos estes conjuntos no $S = \{X,Y,Z,W, \lnot X, \lnot Y, \lnot Z, \lnot W, \lnot A, \varnothing, V \}$, e considere $T = \{X,Y\}$. Seja $T_{\vdash}$ o conjunto de elementos $S$-provados por $T$. É uma continha ver que $T_{\vdash} = \{X,Y, \lnot Z, \lnot w\}$. Logo $T$ é $S$-consistente.
+
+Agora, $T \cup \{A\} \Sproves{S} Z$ pois $Z = X \cap A$. Daí $Z \cap Y = \varnothing$ e logo $T \cup \{A\} \Sproves{S} \varnothing$.
+
+Similarmente, $T \cup \{\lnot A\} \Sproves{S} W$ pois $W = \lnot A \cap Y$. Daí $W \cap X = \varnothing$ e logo $T \cup \{\lnot A\} \Sproves {S} \varnothing$.
+
+Assim, $T$ não satisfaz o teorema da dedução, pois temos ambos $T \cup \{\lnot A\} \Sproves {S} \varnothing$ e $T \cup \{A\} \Sproves{S} \varnothing$ mas $A,\lnot A \notin T_\vdash$. E também não satisfaz o teorema da completude: não pode haver perfil $\tau$ valorando $T$ inteiramente em $1$, pois $\tau$ valoraria um dos $A, \lnot A$ como $1$ e aí por $S$-corretude não poderiamos ter $T \cup \{A\}$ e $T \cup \{\lnot A\}$ ambos inconsistentes.
+
+\end{exemplo*}
+
+\begin{definicao*}[$S$-dedução]
+       Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$.
+
+       Suponha que pra qualquer $T \subset S$, temos que se $T \cup \{A\} \Sproves{S} \varnothing$ então $T \Sproves{S} \lnot A$. Dizemos neste caso que $S$ admite $S$-dedução.
+\end{definicao*}
+
+\begin{proposicao*}[Dedução implica completude]
+   Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer.  Suponha que $S$ admite $S$-dedução. Logo, se $T$ é $S$-consistente, deve existir um perfil $\tau$ de $S$ que valora todos os elementos de $T$ em $1$.
+\end{proposicao*}
+\begin{prova}
+  Suponha que $T$ é $S$-consistente. Seja $\tilde{T} = \{A \mid T \Sproves{S} A\}$. Veja que $\tilde{T} \Sproves{S} B$ se e somente se $T \Sproves{S} B$ se e somente se $B \in \tilde{T}$ - isto é, $\tilde{T}$ é fechado para $S$-provabilidade. A $S$-consistência de $T$ garante que $\varnothing \notin \tilde{T}$ - o que garante também que se $A \in \tilde{T}$, então $\lnot A \notin \tilde{T}$.\\
+   
+  Suponha que exista um $B \in S$ tal que $B, \lnot B \notin \tilde{T}$. Devemos ter que $\tilde{T} \cup \{B\}$ ainda é $S$-consistente, pois se não fosse, por $S$-dedução teriamos que $\tilde{T} \Sproves{S} \lnot B$. Extendemos $\tilde{T} \cup \{B\}$ para um $\widetilde{\tilde{T} \cup \{B\}}$ fechado para $S$-provabilidade, que não contém o vazio. Se ainda existir um $C \in S$ tal que nem $C$ nem $\lnot C$ estão em $\widetilde{\tilde{T} \cup \{B\}}$, repetimos o processo. Assim, por indução transfinita (ou lema de Zorn), chegamos a um elemento $U \subset S$ que: contém $T$, é $S$-consistente, é fechado pra $S$-provabilidade, e é maximal em relação a estas três propriedades. A maximalidade de $U$ garante que ele deve conter para todos $A \in S$ exatamente um dentre $A, \lnot A$. Definindo $\tau$ como sendo $1$ para todos os elementos de $U$ e $0$ fora, temos nosso perfil desejado.
+\end{prova}
+
+\begin{pergunta}
+  Exemplo de $S$ satisfazendo completude e não dedução?\\
+\end{pergunta}
+
+\begin{pergunta}
+  $S$ sub-Boole implica $S$-dedução?\\
+
+  Existe alguma condição razoável sobre $S$ que garante que $S$-dedução vale?\\
+
+  Na demonstração anterior, supus que $S$ satisfaz dedução pra toda teoria. Dá pra supor que só a teoria $T$ satisfaz dedução, mas fortalecendo dedução aonde agora $T \cup R \Sproves{S} \varnothing$ implica que $T \Sproves{S} \lnot A$ para algum $A \in R$. A demonstração é basicamente a mesma, só tem que ver que todas as intancias de uso de dedução nela seguem dessa dedução mais forte em $T$ valer. Essa hipótese é mais fácil de achar um exemplo?\\
+\end{pergunta}
+
+\newcommand{\Simplies}[1]{\underset{#1}{\vDash}}
+
+\begin{definicao*}[Satisfação, implicação semântica]
+Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer.\\
+
+Se um perfil $\tau$ de $S$ valora todo elemento de $T$ como $1$, dizemos que $\tau$ satisfaz $T$.\\
+
+
+Dado $A \in S$, dizemos que $T$ implica semanticamente $A$, ou $A$ é consequência semântica de $T$, e escrevemos $T \Simplies{S} A$, se pra todo perfil $\tau$ de $S$ que satisfaz $T$, temos que $\tau(A) = 1$.
+\end{definicao*}
+
+Em cálculo proposicional, o teorema da completude implica na equivalência sintáxe-semântica $T \vdash A \iff T \vDash A$. No nosso $S$-caso, apenas provamos a ida desta equivalência, que corresponde a $S$-corretude.
+
+\begin{proposicao*}[Equivalência sintáxe-semântica implica dedução e completude]
+       Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$.
+
+       Suponha que para todo $T \subset S$, temos que  $T \Simplies{S} A \implies T \Sproves{S} A$. Então $S$ satisfaz $S$-dedução, e portanto também o teorema de completude.
+\end{proposicao*}
+\begin{prova}
+Tome $T \subset S$ com $T \cup {A} \Sproves{S} \varnothing$. Tome um perfil $\tau$ que satisfaça $T$. Se $\tau(A) = 1$, teriamos que $\tau$ satisfaz $T \cup \{A\}$, e portanto por $S$-corretude, $T \cup \{A\}$ deveria ser consistente, o que já supomos que não é. Concluimos que $\tau(A) = 0$. Logo $T \Simplies{S} \lnot A$ e por hipótese temos que $T \Sproves{S} \lnot A$. Ou seja, $S$ satisfaz $S$-dedução, e já provamos anteriormente que isto implica que $S$ satisfaz o teorema de completude.
+\end{prova}
+
+
+\begin{exemplo*}[Um $S$ satisfazendo completude e dedução, mas não equivalência síntaxe-semântica]
+  Seja $\mathcal{B}$ o conjunto de partes de $V = \{a,b,1,2,3,4\}$ e
+\begin{align*}
+A &= \{a, 1, 2\}           &  \lnot A&= \{3,4,b\}              \\
+B &= \{a, 3, 4 \}         &  \lnot B &= \{1,2,b\}  \\
+C&= \{1,2\}          &  \lnot C &= \{a,b,3,4\} 
+\end{align*}
+
+Faça $S = \{A,B,C, \lnot A, \lnot B, \lnot C, \varnothing, V\}$ e $T = \{A,\lnot C\}$. Veja que $T_{\vdash} = T$, pois $A,C$ não possuem interseção em $S$ e não estão contidos em ninguém. Como $C = A \cap \lnot B$, qualquer perfil $\tau$ que valore $A, \lnot B$ como $1$ deve valorar $C$ como $1$, logo $T \Simplies{S} B$. Assim, não temos equivalência sintática-semântica.\\
+
+Também conseguimos mostrar que $S$ satisfaz $S$-dedução. Suponha que $T \cup \{X\} \Sproves{S} \varnothing$. Se $T$ é inconsistente, então $T \Sproves{S} \lnot X$ pois $T$ prova qualquer coisa ($\varnothing$ está contido em qualquer conjunto). Se $T$ não é inconsistente, então há alguns casos a considerar. Se $X = \lnot Y$ para algum $Y \in T$, então é claro $T \Sproves{S} \lnot X$. Fora as interseções entre um conjunto e seu complementar, temos apenas duas outras interseções resultando no vazio: $C \cap B = C \cap \lnot A = \varnothing$.Portanto, $X$ deve ser um dentre $C, B, \lnot A$. Se $X = C$, devemos ter ou $B$ ou $\lnot A$ em $T$ - ambos estão contidos em $\lnot C$ e logo $T \Sproves{S} \lnot C$. Se $X = B$ ou $X = \lnot A$, devemos ter $C \in T$, e $C$ está contido em $A$ e $\lnot B$, logo $T \Sproves{S} \lnot X$ em ambos os casos.\\
+
+Este também é um exemplo de um $S$ satisfazendo $S$-dedução que não é uma álgebra de Boole, nem uma álgebra sub-Boole.
+
+\end{exemplo*}
+
+O exemplo anterior também ilustra como a nossa noção de $S$-prova não é apenas `dedução natural onde todos os elementos usados estão em $S$'. Como $\lnot C = \lnot A \cup B$, ao traduzirmos isto de volta para lógica temos que $C$ é a implicação $A \rightarrow B$. Se usassemos modus ponens com $T = \{A, A \rightarrow B\}$, teriamos uma prova de $B$ que usa apenas elementos em $T$ - mas com a nossa noção de $S$-prova, $T$ não é capaz de provar nada fora seus próprios elementos.
+
+
+% \begin{teorema*}[$S$-completude]
+%   Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer. 
+
+%   Então, existe um perfil $\tau$ de $S$ que valora todos os elementos de $T$ em $1$ se e somente se $T$ é $S$-consistente.
+% \end{teorema*}
+% \begin{prova}
+%   ($\implies$) Tome um perfil $\tau$ de $S$ que valora todos os elementos de $T$ em $1$. Por indução deduzimos que $\tau(A) = 1$ para todo $A \in S$ tal que $T \Sproves{S} A$. Se existisse $R \subset S$ tal que $T \cup R \Sproves{S} \varnothing$, então $\tau$ tem que valorar pelo menos um dos $A \in T$ como $0$ - logo não podemos ter $T \cup \{\lnot A\} \Sproves{S} \varnothing$ para todo $A \in R$.
+
+%   ($\impliedby$) Suponha que $T$ é $S$-consistente. Seja $\tilde{T} = \{A \mid T \Sproves{S} A\}$. Veja que $\tilde{T} \Sproves{S} B$ se e somente se $T \Sproves{S} B$ se e somente se $B \in \tilde{T}$ - isto é, $\tilde{T}$ é fechado para $S$-provabilidade. A $S$-consistência de $T$ garante que $\varnothing \notin \tilde{T}$ - o que garante também que se $A \in \tilde{T}$, então $\lnot A \notin \tilde{T}$. Suponha que exista um $B \in S$ tal que $B, \lnot B \notin \tilde{T}$. Queremos mostrar que $\tilde{T} \cup \{B\}$ ainda é $S$-consistente. Tome um conjunto finito $R \subset S$ tal que $T \cup \{B\} \cup R$ consegue $S$-provar o vazio.
+
+% \end{prova}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  %Fazer a equivalência de Lindenbaum-Tarski pra álgebras de Boole. Traduzir emaranhados para esse contexto, onde vão virar `modelos $S$-consistentes'. Generalizar essa definição para outras lógicas (não precisa passar por Lindenbaum-Tarski?). Se perguntar o que vale da teoria usal agora para essas $S$-consistentes. (compacidade, completude, etc). Pensar o caso infinito. Pensar o que o teorema de árvore de emaranhados e dualidade árvore-emaranhado dizem no caso de lógica, e se tem como simplificar a prova, ou generalizar. Agora ainda mais especulativo: coloca uma relação no conjunto de modelos de uma teoria (por exemplo, a relação de ser extensão de forcing) - existem tangles nesse grafo? Brisar em lógica modal e teoria do JDH de multiverso.
 
 
 \bibliographystyle{plain}
