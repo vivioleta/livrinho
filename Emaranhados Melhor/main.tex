@@ -832,7 +832,6 @@ Dois resultados clássicos da teoria de cálculo proposicional relacionam a sem�
 Vou escrever definições para álgebras de Boole e que acredito que são naturalmente traduzidas para a linguagem de cálculo proposicional.
 
 
-
 \newcommand{\Sproves}[1]{\underset{#1}{\vdash}}
 
 \begin{definicao*}[$S$-provas, $S$-possibilidade e $S$-consistência]
@@ -840,25 +839,27 @@ Vou escrever definições para álgebras de Boole e que acredito que são natura
 
   Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer. \\
   
-  Dizemos que $T$ $S$-prova $A$ e escrevemos $T \Sproves{S} A$ se vale pelo menos um dos itens:
+  Dizemos que $T$ $S$-prova um $A \in S$ e escrevemos $T \Sproves{S} A$ se vale pelo menos um dos itens:
     
   \begin{itemize}[label=\ding{212}]
    \item $A \in T$
-    \item $B \subset A$ para um $B \in S$ onde $T \Sproves{S} A$
-    \item $A = B \cap C \in S$ para $B,C \in S$ onde $T \Sproves{S} B$ e $T \Sproves{S} C$
+    \item (conjunção) $A = B \cap C$ para $B,C \in S$ onde $T \Sproves{S} B$ e $T \Sproves{S} C$
+    \item (implicação) existe um $B \in S$ tal que $T \Sproves{S} B$ e vale que ou $B \subset A$ ou $T \Sproves{S} \lnot B \cup A$
+    \item (dedução) $T \cup \{\lnot A\} \Sproves{S} \varnothing $
   \end{itemize} 
-
-  Quando dois $A,B \in S$ são tais que $A \cap B \in S$ dizemos que este é um produto ou uma interseção ou uma conjunção $S$-possível. Quando $A \subset B$ com $A,B \in S$, dizemos que $B$ é uma implicação $S$-possível. Com isso, $T \Sproves{S} A$ exatamente quando $A$ pode ser obtido em uma sequência finita de implicações e conjunções $S$-possiveis que começa com elementos de $T$. Essa sequência finita é chamada de $S$-prova.\\
 
   Quando não houver ambiguidade sobre quem é o $S$ subjacente, denotamos $T_{\vdash}$ como o conjunto de $A \in S$ tais que $T \Sproves{S} A$.\\
 
   Dizemos que $T$ é $S$-consistente se não vale que $T \Sproves{S} \varnothing$, ou seja, $\varnothing \notin T_{\vdash}$.
 \end{definicao*}
 
+Esta definição foi inspirada na definição de dedução natural em cálculo proposicional. Quando $T \Sproves{S} A$ podemos desenhar uma árvore finita que explicita a estrutura recursiva dos usos de conjunção, implicação e dedução. Em resumo, $T$ $S$-prova $A$ quando existe uma dedução natural de $A$ a partir de $T$ que usa apenas elementos de $S$.
+
 \begin{pergunta}
-  Quais são exatamente as regras lógicas para essa $S$-provabilidade, quando traduzimos de volta pro cálculo proposicional? Mais tarde mostramos um exemplo que clarifica que não é `usar dedução natural onde todos os elementos usados estão em $S$'.
+  Originalmente eu tinha definido uma noção mais fraca de $S$-prova que não era suficiente para equivalência sintáxe-semântica. Essa noção era mais inspirada na definição de sistema axiomático do cálculo proposocional.Esses outros sistemas axiomáticos clássicos que são equivalentes a dedução natural - se definirmos uma $S$-prova como sendo uma prova (a partir destes outros sistemas) que usa apenas elementos de $S$, isso vai ser equivalente a definição que acabamos de dar? Penso que não, por que para se provar equivalência acho que vamos preicsar usar conjunções e implicações que não estão em $S$.
 \end{pergunta}
 
+É preciso mostrar uma certa noção de `boa fundação' para $\Sproves{S}$ para justificar nosso uso de indução na próxima proposição.
 
 \begin{proposicao*}($S$-corretude)
   Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer. \\
@@ -867,60 +868,46 @@ Vou escrever definições para álgebras de Boole e que acredito que são natura
 \end{proposicao*}
 
 \begin{prova}
-  Tome um perfil $\tau$ de $S$ que valora todos os elementos de $T$ em $1$. Por indução deduzimos que $\tau(A) = 1$ para todo $A \in S$ tal que $T \Sproves{S} A$. Se existisse $R \subset S$ tal que $T \cup R \Sproves{S} \varnothing$, então $\tau$ tem que valorar pelo menos um dos $A \in T$ como $0$ - logo não podemos ter $T \cup \{\lnot A\} \Sproves{S} \varnothing$ para todo $A \in R$.
+  Tome um perfil $\tau$ de $S$ que valora todos os elementos de $T$ em $1$. Por indução podemos deduzir que $\tau(A) = 1$ para todo $A \in S$ tal que $T \Sproves{S} A$. Como $\tau(\varnothing) = 0$, não podemos ter $T \Sproves{S} \varnothing$.
 \end{prova}
 
-O teorema da completude é o que afirma a volta da proposição anterior. Infelizmente, ele não vale para nossas $S$-definições. 
-
-Um resultado fundacional do cálculo proposicional é o Teorema da Dedução. Uma forma de o afirmá-lo é que se $T \cup \{A\} \vdash \varnothing$ então $T \vdash \lnot A$. Este resultado não vale para $S$-provas, e é o motivo que o teorema da completude não vai valer também.
-
-\begin{exemplo*}[Um $S$ que não satisfaz dedução nem completude]
-Seja $\mathcal{B}$ o conjunto de partes de $V = \{1,2,3,4\}$ e
-\begin{align*}
-X &= \{1, 2\}           &  \lnot X &= \{3,4\}              \\
-Y &= \{2, 4 \}         &  \lnot Y &= \{1,3\}  \\
-Z&= \{1\}          &  \lnot Z &= \{2,3,4\} \\
-W &= \{4\}         &   \lnot W &= \{1,2,3\} \\
-A &= \{1,3\}       &    \lnot A &= \{2,4\}    
-\end{align*}
+% \begin{exemplo*}[Um $S$ que não satisfaz dedução nem completude]
+% Seja $\mathcal{B}$ o conjunto de partes de $V = \{1,2,3,4\}$ e
+% \begin{align*}
+% X &= \{1, 2\}           &  \lnot X &= \{3,4\}              \\
+% Y &= \{2, 4 \}         &  \lnot Y &= \{1,3\}  \\
+% Z&= \{1\}          &  \lnot Z &= \{2,3,4\} \\
+% W &= \{4\}         &   \lnot W &= \{1,2,3\} \\
+% A &= \{1,3\}       &    \lnot A &= \{2,4\}    
+% \end{align*}
 
 
-Colete todos estes conjuntos no $S = \{X,Y,Z,W, \lnot X, \lnot Y, \lnot Z, \lnot W, \lnot A, \varnothing, V \}$, e considere $T = \{X,Y\}$. Seja $T_{\vdash}$ o conjunto de elementos $S$-provados por $T$. É uma continha ver que $T_{\vdash} = \{X,Y, \lnot Z, \lnot w\}$. Logo $T$ é $S$-consistente.
+% Colete todos estes conjuntos no $S = \{X,Y,Z,W, \lnot X, \lnot Y, \lnot Z, \lnot W, \lnot A, \varnothing, V \}$, e considere $T = \{X,Y\}$. Seja $T_{\vdash}$ o conjunto de elementos $S$-provados por $T$. É uma continha ver que $T_{\vdash} = \{X,Y, \lnot Z, \lnot w\}$. Logo $T$ é $S$-consistente.
 
-Agora, $T \cup \{A\} \Sproves{S} Z$ pois $Z = X \cap A$. Daí $Z \cap Y = \varnothing$ e logo $T \cup \{A\} \Sproves{S} \varnothing$.
+% Agora, $T \cup \{A\} \Sproves{S} Z$ pois $Z = X \cap A$. Daí $Z \cap Y = \varnothing$ e logo $T \cup \{A\} \Sproves{S} \varnothing$.
 
-Similarmente, $T \cup \{\lnot A\} \Sproves{S} W$ pois $W = \lnot A \cap Y$. Daí $W \cap X = \varnothing$ e logo $T \cup \{\lnot A\} \Sproves {S} \varnothing$.
+% Similarmente, $T \cup \{\lnot A\} \Sproves{S} W$ pois $W = \lnot A \cap Y$. Daí $W \cap X = \varnothing$ e logo $T \cup \{\lnot A\} \Sproves {S} \varnothing$.
 
-Assim, $T$ não satisfaz o teorema da dedução, pois temos ambos $T \cup \{\lnot A\} \Sproves {S} \varnothing$ e $T \cup \{A\} \Sproves{S} \varnothing$ mas $A,\lnot A \notin T_\vdash$. E também não satisfaz o teorema da completude: não pode haver perfil $\tau$ valorando $T$ inteiramente em $1$, pois $\tau$ valoraria um dos $A, \lnot A$ como $1$ e aí por $S$-corretude não poderiamos ter $T \cup \{A\}$ e $T \cup \{\lnot A\}$ ambos inconsistentes.
+% Assim, $T$ não satisfaz o teorema da dedução, pois temos ambos $T \cup \{\lnot A\} \Sproves {S} \varnothing$ e $T \cup \{A\} \Sproves{S} \varnothing$ mas $A,\lnot A \notin T_\vdash$. E também não satisfaz o teorema da completude: não pode haver perfil $\tau$ valorando $T$ inteiramente em $1$, pois $\tau$ valoraria um dos $A, \lnot A$ como $1$ e aí por $S$-corretude não poderiamos ter $T \cup \{A\}$ e $T \cup \{\lnot A\}$ ambos inconsistentes.
 
-\end{exemplo*}
+% \end{exemplo*}
 
-\begin{definicao*}[$S$-dedução]
-       Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$.
+% \begin{definicao*}[$S$-dedução]
+%        Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$.
 
-       Suponha que pra qualquer $T \subset S$, temos que se $T \cup \{A\} \Sproves{S} \varnothing$ então $T \Sproves{S} \lnot A$. Dizemos neste caso que $S$ admite $S$-dedução.
-\end{definicao*}
+%        Suponha que pra qualquer $T \subset S$, temos que se $T \cup \{A\} \Sproves{S} \varnothing$ então $T \Sproves{S} \lnot A$. Dizemos neste caso que $S$ admite $S$-dedução.
+% \end{definicao*}
 
-\begin{proposicao*}[Dedução implica completude]
-   Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer.  Suponha que $S$ admite $S$-dedução. Logo, se $T$ é $S$-consistente, deve existir um perfil $\tau$ de $S$ que valora todos os elementos de $T$ em $1$.
+\begin{proposicao*}[$S$-completude]
+   Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer. \\
+   
+   Se $T$ é $S$-consistente, deve existir um perfil $\tau$ de $S$ que valora todos os elementos de $T$ em $1$.
 \end{proposicao*}
 \begin{prova}
   Suponha que $T$ é $S$-consistente. Seja $\tilde{T} = \{A \mid T \Sproves{S} A\}$. Veja que $\tilde{T} \Sproves{S} B$ se e somente se $T \Sproves{S} B$ se e somente se $B \in \tilde{T}$ - isto é, $\tilde{T}$ é fechado para $S$-provabilidade. A $S$-consistência de $T$ garante que $\varnothing \notin \tilde{T}$ - o que garante também que se $A \in \tilde{T}$, então $\lnot A \notin \tilde{T}$.\\
    
-  Suponha que exista um $B \in S$ tal que $B, \lnot B \notin \tilde{T}$. Devemos ter que $\tilde{T} \cup \{B\}$ ainda é $S$-consistente, pois se não fosse, por $S$-dedução teriamos que $\tilde{T} \Sproves{S} \lnot B$. Extendemos $\tilde{T} \cup \{B\}$ para um $\widetilde{\tilde{T} \cup \{B\}}$ fechado para $S$-provabilidade, que não contém o vazio. Se ainda existir um $C \in S$ tal que nem $C$ nem $\lnot C$ estão em $\widetilde{\tilde{T} \cup \{B\}}$, repetimos o processo. Assim, por indução transfinita (ou lema de Zorn), chegamos a um elemento $U \subset S$ que: contém $T$, é $S$-consistente, é fechado pra $S$-provabilidade, e é maximal em relação a estas três propriedades. A maximalidade de $U$ garante que ele deve conter para todos $A \in S$ exatamente um dentre $A, \lnot A$. Definindo $\tau$ como sendo $1$ para todos os elementos de $U$ e $0$ fora, temos nosso perfil desejado.
+  Suponha que exista um $B \in S$ tal que $B, \lnot B \notin \tilde{T}$. Devemos ter que $\tilde{T} \cup \{B\}$ ainda é $S$-consistente, pois se não fosse, por dedução teriamos que $\tilde{T} \Sproves{S} \lnot B$. Extendemos $\tilde{T} \cup \{B\}$ para um $\widetilde{\tilde{T} \cup \{B\}}$ fechado para $S$-provabilidade, que não contém o vazio. Se ainda existir um $C \in S$ tal que nem $C$ nem $\lnot C$ estão em $\widetilde{\tilde{T} \cup \{B\}}$, repetimos o processo. Assim, por indução transfinita (ou lema de Zorn), chegamos a um elemento $U \subset S$ que: contém $T$, é $S$-consistente, é fechado pra $S$-provabilidade, e é maximal em relação a estas três propriedades. A maximalidade de $U$ garante que ele deve conter para todos $A \in S$ exatamente um dentre $A, \lnot A$. Definindo $\tau$ como sendo $1$ para todos os elementos de $U$ e $0$ fora, temos nosso perfil desejado.
 \end{prova}
-
-\begin{pergunta}
-  Exemplo de $S$ satisfazendo completude e não dedução?\\
-\end{pergunta}
-
-\begin{pergunta}
-  $S$ sub-Boole implica $S$-dedução?\\
-
-  Existe alguma condição razoável sobre $S$ que garante que $S$-dedução vale?\\
-
-  Na demonstração anterior, supus que $S$ satisfaz dedução pra toda teoria. Dá pra supor que só a teoria $T$ satisfaz dedução, mas fortalecendo dedução aonde agora $T \cup R \Sproves{S} \varnothing$ implica que $T \Sproves{S} \lnot A$ para algum $A \in R$. A demonstração é basicamente a mesma, só tem que ver que todas as intancias de uso de dedução nela seguem dessa dedução mais forte em $T$ valer. Essa hipótese é mais fácil de achar um exemplo?\\
-\end{pergunta}
 
 \newcommand{\Simplies}[1]{\underset{#1}{\vDash}}
 
@@ -933,37 +920,31 @@ Se um perfil $\tau$ de $S$ valora todo elemento de $T$ como $1$, dizemos que $\t
 Dado $A \in S$, dizemos que $T$ implica semanticamente $A$, ou $A$ é consequência semântica de $T$, e escrevemos $T \Simplies{S} A$, se pra todo perfil $\tau$ de $S$ que satisfaz $T$, temos que $\tau(A) = 1$.
 \end{definicao*}
 
-Em cálculo proposicional, o teorema da completude implica na equivalência sintáxe-semântica $T \vdash A \iff T \vDash A$. No nosso $S$-caso, apenas provamos a ida desta equivalência, que corresponde a $S$-corretude.
+A equivalência síntaxe-semântica é a junção de corretude e completude.
 
-\begin{proposicao*}[Equivalência sintáxe-semântica implica dedução e completude]
-       Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$.
+\begin{proposicao*}[$S$-equivalência sintáxe-semântica]
+  Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer. Então, pra todo $A \in S$,
 
-       Suponha que para todo $T \subset S$, temos que  $T \Simplies{S} A \implies T \Sproves{S} A$. Então $S$ satisfaz $S$-dedução, e portanto também o teorema de completude.
+       \[T \Sproves{S} A \iff T \Simplies{S} A \]
 \end{proposicao*}
 \begin{prova}
-Tome $T \subset S$ com $T \cup {A} \Sproves{S} \varnothing$. Tome um perfil $\tau$ que satisfaça $T$. Se $\tau(A) = 1$, teriamos que $\tau$ satisfaz $T \cup \{A\}$, e portanto por $S$-corretude, $T \cup \{A\}$ deveria ser consistente, o que já supomos que não é. Concluimos que $\tau(A) = 0$. Logo $T \Simplies{S} \lnot A$ e por hipótese temos que $T \Sproves{S} \lnot A$. Ou seja, $S$ satisfaz $S$-dedução, e já provamos anteriormente que isto implica que $S$ satisfaz o teorema de completude.
+($\implies$) Na demonstração de corretude, argumentamos por indução que todo perfil que satisfaz $T$ deve satisfazer $A$. Também podemos mostrar o mesmo resultado usando diretamente o enunciado de coretude: suponha que $T \Sproves{S}$. Se existisse um perfil $\tau$ que satisfaz $T$ mas não satisfaz $A$, então $\tau$ satisfaria $T \cup \{\lnot A\}$. Por $S$-corretude, $T \cup \{\lnot A\}$ deveria ser consistente, mas $T \Sproves{S} A$ implica que $T \cup \{\lnot A\}$ é inconsistente.
+
+($\impliedby$) Suponha que não vale que $T \Sproves{S} A$. Então $T \cup \{\lnot A\}$ é consistente, pois se não fosse teriamos por dedução que $T \Sproves{S} A$. Por $S$-completude, deve existir um perfil que satisfaz $T$ mas não satisfaz $A$, logo não vale que $T \Simplies{S} A$.
 \end{prova}
 
 
-\begin{exemplo*}[Um $S$ satisfazendo completude e dedução, mas não equivalência síntaxe-semântica]
-  Seja $\mathcal{B}$ o conjunto de partes de $V = \{a,b,1,2,3,4\}$ e
-\begin{align*}
-A &= \{a, 1, 2\}           &  \lnot A&= \{3,4,b\}              \\
-B &= \{a, 3, 4 \}         &  \lnot B &= \{1,2,b\}  \\
-C&= \{1,2\}          &  \lnot C &= \{a,b,3,4\} 
-\end{align*}
+% \begin{exemplo*}[Um $S$ satisfazendo completude e dedução, mas não equivalência síntaxe-semântica]
+%   Seja $\mathcal{B}$ o conjunto de partes de $V = \{a,b,1,2,3,4\}$ e
+% \begin{align*}
+% A &= \{a, 1, 2\}           &  \lnot A&= \{3,4,b\}              \\
+% B &= \{a, 3, 4 \}         &  \lnot B &= \{1,2,b\}  \\
+% C&= \{1,2\}          &  \lnot C &= \{a,b,3,4\} 
+% \end{align*}
 
-Faça $S = \{A,B,C, \lnot A, \lnot B, \lnot C, \varnothing, V\}$ e $T = \{A,\lnot C\}$. Veja que $T_{\vdash} = T$, pois $A,C$ não possuem interseção em $S$ e não estão contidos em ninguém. Como $C = A \cap \lnot B$, qualquer perfil $\tau$ que valore $A, \lnot B$ como $1$ deve valorar $C$ como $1$, logo $T \Simplies{S} B$. Assim, não temos equivalência sintática-semântica.\\
+% Faça $S = \{A,B,C, \lnot A, \lnot B, \lnot C, \varnothing, V\}$ e $T = \{A,\lnot C\}$. Veja que $T_{\vdash} = T$, pois $A,C$ não possuem interseção em $S$ e não estão contidos em ninguém. Como $C = A \cap \lnot B$, qualquer perfil $\tau$ que valore $A, \lnot B$ como $1$ deve valorar $C$ como $1$, logo $T \Simplies{S} B$. Assim, não temos equivalência sintática-semântica.\\
 
-Também conseguimos mostrar que $S$ satisfaz $S$-dedução. Suponha que $T \cup \{X\} \Sproves{S} \varnothing$. Se $T$ é inconsistente, então $T \Sproves{S} \lnot X$ pois $T$ prova qualquer coisa ($\varnothing$ está contido em qualquer conjunto). Se $T$ não é inconsistente, então há alguns casos a considerar. Se $X = \lnot Y$ para algum $Y \in T$, então é claro $T \Sproves{S} \lnot X$. Fora as interseções entre um conjunto e seu complementar, temos apenas duas outras interseções resultando no vazio: $C \cap B = C \cap \lnot A = \varnothing$.Portanto, $X$ deve ser um dentre $C, B, \lnot A$. Se $X = C$, devemos ter ou $B$ ou $\lnot A$ em $T$ - ambos estão contidos em $\lnot C$ e logo $T \Sproves{S} \lnot C$. Se $X = B$ ou $X = \lnot A$, devemos ter $C \in T$, e $C$ está contido em $A$ e $\lnot B$, logo $T \Sproves{S} \lnot X$ em ambos os casos.\\
-
-Este também é um exemplo de um $S$ satisfazendo $S$-dedução que não é uma álgebra de Boole, nem uma álgebra sub-Boole.
-
-\end{exemplo*}
-
-O exemplo anterior também ilustra como a nossa noção de $S$-prova não é apenas `dedução natural onde todos os elementos usados estão em $S$'. Como $\lnot C = \lnot A \cup B$, ao traduzirmos isto de volta para lógica temos que $C$ é a implicação $A \rightarrow B$. Se usassemos modus ponens com $T = \{A, A \rightarrow B\}$, teriamos uma prova de $B$ que usa apenas elementos em $T$ - mas com a nossa noção de $S$-prova, $T$ não é capaz de provar nada fora seus próprios elementos.
-
-
+% Também conseguimos mostrar que $S$ satisfaz $S$-dedução. Suponha que $T \cup \{X\} \Sproves{S} \varnothing$. Se $T$ é inconsistente, então $T \Sproves{S} \lnot X$ pois $T$ prova qualquer coisa ($\varnothing$ está contido em qualquer conjunto). Se $T$ não é inconsistente, então há alguns casos a considerar. Se $X = \lnot Y$ para algum $Y \in T$, então é claro $T \Sproves{S} \lnot X$. Fora as interseções entre um conjunto e seu complementar, temos apenas duas outras interseções resultando no vazio: $C \cap B = C \cap \lnot A = \varnothing$.Portanto, $X$ deve ser um dentre $C, B, \lnot A$. Se $X = C$, devemos ter ou $B$ ou $\lnot A$ em $T$ - ambos estão contidos em $\lnot C$ e logo $T \Sproves{S} \lnot C$. Se $X = B$ ou $X = \lnot A$, devemos ter $C \in T$, e $C$ está contido em $A$ e $\lnot B$, logo $T \Sproves{S} \lnot X$ em ambos os casos.\\
 % \begin{teorema*}[$S$-completude]
 %   Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer. 
 
@@ -975,10 +956,40 @@ O exemplo anterior também ilustra como a nossa noção de $S$-prova não é ape
 %   ($\impliedby$) Suponha que $T$ é $S$-consistente. Seja $\tilde{T} = \{A \mid T \Sproves{S} A\}$. Veja que $\tilde{T} \Sproves{S} B$ se e somente se $T \Sproves{S} B$ se e somente se $B \in \tilde{T}$ - isto é, $\tilde{T}$ é fechado para $S$-provabilidade. A $S$-consistência de $T$ garante que $\varnothing \notin \tilde{T}$ - o que garante também que se $A \in \tilde{T}$, então $\lnot A \notin \tilde{T}$. Suponha que exista um $B \in S$ tal que $B, \lnot B \notin \tilde{T}$. Queremos mostrar que $\tilde{T} \cup \{B\}$ ainda é $S$-consistente. Tome um conjunto finito $R \subset S$ tal que $T \cup \{B\} \cup R$ consegue $S$-provar o vazio.
 
 % \end{prova}
+% Este também é um exemplo de um $S$ satisfazendo $S$-dedução que não é uma álgebra de Boole, nem uma álgebra sub-Boole.
+
+% \end{exemplo*}
+
+
+\begin{proposicao*}[$S$-compacidade]
+Seja $\mathcal{B}$ uma álgebra de Boole, $S \subset \mathcal{B}$ um subconjunto fechado para complementar com $\varnothing \in S$ e $T \subset S$ um subconjunto qualquer.\\
+
+Se pra todo subconjunto finito de $T$ existe um perfil que o satisfaz, então existe um perfil que satisfaz $T$.
+
+\end{proposicao*}
+
+\begin{prova}
+  Se não existisse um perfil que satisfaz $T$, então por $S$-completude, $T$ deve ser inconsistente, isto é, $T \Sproves{S} \varnothing$. Deve existir uma árvore finita que atesta esta prova. O subconjunto $T'$ finito de elementos de $T$ usados nessa prova é, então, inconsistente, e por $S$-corretude, não pode ser satisfazível por nenhum perfil.
+\end{prova}
+
+\begin{pergunta}
+Exemplos legais?
+\end{pergunta}
+
+
+Agora, vamos para lógica de primeira ordem. Seja $\mathcal{B}$ o conjunto de sentenças de uma lógica de primeira ordem quocientado pela relação de provabilidade a partir de uma teoria.
 
 
 
+% se S tem todas as interseçoes possiveis de um conj finito de interseção vazia, então todo perfil de S tem ultrafiltro
 
+% mostrar aquela equiv de proposicao = conj de modelos que satisfazem
+
+% se um perfil não satisfaz uma teoria inconsistente, então ele se extende a um ultrafiltro
+
+% S = n-cláusulas, tangles de S não tem 2n-contradições
+
+% como tangles se relacionam com complexidade computacional? 
 
 
 
