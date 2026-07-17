@@ -658,18 +658,24 @@ Vamos brincar aqui de colar estas estrelas com o objetivo de que todo $A$ cole c
 Vamos dar aqui caracterizações para a existência de soluções para um dado $\mathcal{E}$, usando orientações e emaranhados. Lembrando, dado algum $S \subset \mathcal{B}$, uma orientação $\tau$ de $S$ é um mapa $\tau: S \rightarrow \{0,1\}$ tal que $\tau(A) = 0 \iff \tau(\lnot A) = 1$. Um emaranhado é uma orientação $\tau$ tal que $A\subset B$ implica $\tau(A) \leq \tau(B)$. Dizemos que uma orientação ou emaranhado $\tau$ satisfaz um $T \subset S$ se $\tau(t) = 1$ pra todo $t \in T$.
 
 \begin{proposicao}
-  Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$. Seja $S$ o fecho pra complementar de $\cup \mathcal{E}$. Se $\mathcal{E}$ não admite solução, isto é, se não existe $T \subset \mathcal{E}$ tal que $\cup T$ é fechado pra complementar, então existe uma orientação $\tau$ de $S$ tal que pra todo $E \in \mathcal{E}$, temos que $\tau$ não satisfaz $E$.
+  Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$. Seja $S$ o fecho pra complementar de $\cup \mathcal{E}$. Suponha que $S$ seja finito. Se $\mathcal{E}$ não admite solução, isto é, se não existe $\mathcal{T} \subset \mathcal{E}$ tal que $\cup \mathcal{T}$ é fechado pra complementar, então existe uma orientação $\tau$ de $S$ tal que pra todo $E \in \mathcal{E}$, temos que $\tau$ não satisfaz $E$.
 \end{proposicao}
 \begin{prova}
-Dados duas estrelas $E_1,E_2 \in \mathcal{E}$ que se colam, digamos via $a \in E_1, \lnot a \in E_2$, definimos $E_1 *_a E_2 \defeq E_1 \setminus {a} \cup E_2 \setminus {\lnot a}$. Seja $\overline{\mathcal{E}}$ o fecho de $\mathcal{E}$ por esta operação $*_a$ pra todos os $a \in S$.
+Suponha que $\mathcal{E}$ não admite solução.
 
-Defina $P = \{a \in S \mid \{a\} \notin \overline{\mathcal{E}}\}$. Veja que este conjunto satisfaz a propriedade
+Dado um conjunto de estrelas $\mathcal{F} \subset \mathcal{E}$, vamos colar todas estas estrelas e coletar em um conjunto os elementos delas que não foram pareados com seu complementar. Precisamente, definimos $ \mathcal{F}^* \defeq \{a \in \cup \mathcal{F} \mid \lnot a \notin \cup \mathcal{F}\}$. Agora vamos extender nosso conjunto de estrelas $\mathcal{E}$ para um maior $\overline{\mathcal{E}}$ com todos estes $\mathcal{F}^*$ - pensamos nisso como um fecho para a operação de colagem (veja que esta operação, como definimos, pode colar infinitas estrelas de uma vez). Isto é, $\overline{\mathcal{E}} \defeq \mathcal{E} \cup \{\mathcal{F}^* \mid \mathcal{F} \subset \mathcal{E}\}$.  Note que $\varnothing \in \overline{\mathcal{E}}$ se e somente se existe um $\mathcal{T} \subset \mathcal{E}$ tal que $\cup \mathcal{T}$ é fechado pra complementar. 
+
+Para um dado $X \subset S$, considere a seguinte propriedade
+
 \[
-(\star) \text{ para cada } E \in \overline{\mathcal{E}} \text{ existe } a \in P \text{ tal que } \lnot a \in E
+(\star) \text{ para cada } E \in \overline{\mathcal{E}}\text{ existe } a \in E \text{ tal que } \lnot a \in X
 \]
 
-pois se existisse um $E \in \overline{\mathcal{E}}$
+Defina $P = \{a \in S \mid \{a\} \notin \overline{\mathcal{E}}\}$. Vamos mostrar que $P$ satisfaz $(\star)$. Suponha que não - isto é, suponha que exista um $E \in \overline{\mathcal{E}}$ tal que pra todo $a \in E$, temos $\lnot a \notin P$, isto é, $\{\lnot a\} \in \overline{\mathcal{E}}\ $. Se $\{\lnot a\} \in \mathcal{E}$, defina $\mathcal{F}_a = \{\{\lnot a\}\}$ e se $\{\lnot a\} = \mathcal{F}^*$, defina $\mathcal{F}_a = \mathcal{F}$. Com isso, defina $\mathcal{T} \defeq \{E\} \cup \underset{a \in E}{\bigcup} \mathcal{F}_a$ quando $E \in \mathcal{E}$ e $\mathcal{T} \defeq \mathcal{F}_E \cup \underset{a \in E}{\bigcup} \mathcal{F}_a$ quando $E = \mathcal{F}_E^*$. Em ambos os casos, $\mathcal{T}$ é tal que $\cup \mathcal{T}$ é fechado pra complementar. Como supomos que $\mathcal{E}$ não admite solução, então temos uma contradição e podemos concluir que $(\star)$ vale para $P$.
 
+Agora, suponha que $a,\lnot a \in P$. Então não pode ser o caso que ambos $P \setminus {a}$ e $P \setminus {\lnot a}$ não satisfazem $(\star)$. Pois se isto acontecesse, teriamos duas estrelas $E_1, E_2 \in \overline{\mathcal{E}}$ tais que pra todo $b \in E_1$ temos $\lnot b \notin P \setminus {a}$ e pra todo $c \in E_2$ temos $\lnot c \notin P \setminus {a}$. Mas como $P$ satisfaz $(\star)$, existe um $x \in E_1$ tal que $\lnot x \in P$, e como $\lnot x \notin P \setminus {a}$, vamos ter que $\lnot x = a$, isto é, $\lnot a \in E_1$. Analogamente, temos que $a \in E_2$. Assim, $\{E_1,E_2\}^*$ seria uma contradição para propriedade $(\star)$ de $P$.
+
+Podemos então sucessivamente ir retirando um dos $a,\lnot a$ de $P$, em cada passo mantendo a propriedade $(\star)$ e eventualmente chegar em um conjunto $O \subset P$ que não contém dois elementos inversos um do outro. Colocado de outra forma, $O$ é o conjunto minimal em relação a inclusão que satisfaz $(\star)$ dentre os subconjuntos de $P$. A finitude de $S$ garante que este minimal existe. A prova está finalizada aqui: a orientação $\tau$ é a que valora todos os elementos de $O$ em $1$, seus inversos em $0$, e escolhe arbitrariamente entre $a$ e $\lnot a$ para elementos que não estão em $O$ nem tem seus inversos em $O$. A propriedade $(\star)$ de $O$ garante que $\tau$ não vai satisfazer nenhuma estrela de $\mathcal{E}$.
 
 \end{prova}
 
