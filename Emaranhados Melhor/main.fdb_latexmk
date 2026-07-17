@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1784274203 "main.aux" "main.bbl" "main" 1784274275
+["bibtex main"] 1784320145 "main.aux" "main.bbl" "main" 1784320197
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1784274275 3418 3d49b56c696b7ae77186787e2fcb9c56 "lualatex"
+  "main.aux" 1784320197 3724 68ea006b4b7ff63307f2d8b2a8d8264f "lualatex"
   "references.bib" 1775250336 2150 7a3ff579565e46e99e8048ebe06fd6c8 ""
   (generated)
   "main.bbl"
   "main.blg"
-["lualatex"] 1784274273 "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" "main.pdf" "main" 1784274275
+["lualatex"] 1784320195 "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" "main.pdf" "main" 1784320197
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/hb/:usr:share:texlive:texmf-dist:fonts:truetype:google:noto-emoji:NotoColorEmoji.ttf:1" 1760745728 144802 168c8cca504f83a34a2db79bf98b8132 ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/darwinserif-regular.luc" 1777571384 127263 cdd604148df3cad5385905e24d83ee14 ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1758584787 124213 a3bd0e7906af025b007d0cfb6e758f8b ""
@@ -14,7 +14,7 @@
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/fonts/otl/notocoloremoji.luc" 1760745728 386808 2196b06c45f77a6814be3a8ac48a3479 ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1760745728 484 0ec2989bdcec3e995fa2425edcc0c1b0 ""
   "/home/violeta/.texlive2021/texmf-var/luatex-cache/generic/names/luaotfload-names.luc" 1758584796 1704203 fef2d4c1c5806dd0ff2a0fe144a8c6e6 ""
-  "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" 1784274273 63304 c9d85913ca14a856b6482b55f32888ac ""
+  "/home/violeta/Desktop/livrinho/Emaranhados Melhor/main.tex" 1784320195 72661 312b4d495f82ac9e681307d4e9acbfe5 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -346,9 +346,9 @@
   "/var/lib/texmf/tex/generic/config/language.dat" 1758582029 5130 6d8cca2b40846333c1323ec98d5192f6 ""
   "/var/lib/texmf/web2c/luahbtex/lualatex.fmt" 1758582050 4555303 8e2fbc9f0496deb355be0524c277bb68 ""
   "DarwinSerif-Regular.otf" 1770982127 134196 a98621af05a09b3acbf5b155be2bad02 ""
-  "main.aux" 1784274275 3418 3d49b56c696b7ae77186787e2fcb9c56 "lualatex"
-  "main.bbl" 1784274203 264 2e5058329f55c4a841238a37880c6eec "bibtex main"
-  "main.out" 1784274275 966 dcb11dd4ee8c9d4fbbf0ba4d2f5cfb6e "lualatex"
+  "main.aux" 1784320197 3724 68ea006b4b7ff63307f2d8b2a8d8264f "lualatex"
+  "main.bbl" 1784320146 264 2e5058329f55c4a841238a37880c6eec "bibtex main"
+  "main.out" 1784320197 966 dcb11dd4ee8c9d4fbbf0ba4d2f5cfb6e "lualatex"
   "quiver.sty" 1770982127 1606 ac24526cc82038afe47d6f803f11170f ""
   (generated)
   "main.aux"
