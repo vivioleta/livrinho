@@ -29,6 +29,7 @@
 \usepackage{stmaryrd} % for \arrownot (notação de adjacência em grafo)
 \usepackage{quiver} %pacote do quiver pra desenhar diagramas mais legais
 
+
 %Fontes e Línguas
 \usepackage[portuguese]{babel}
 %\usepackage{eufrak}
@@ -40,7 +41,6 @@
 \renewcommand{\textit}[1]{{\fakeitalic#1}}
 \renewcommand{\bfseries}{\fakebold}
 \renewcommand{\itshape}{\fakeitalic}
-\newcommand{\myref}[1]{\hyperref[#1]{\namecref{#1} \ref{#1}}}
 
 
 
@@ -90,6 +90,8 @@
 
 \newcommand{\prabaixo}[1]{\lceil #1 \rceil}
 \newcommand{\pracima}[1]{\lfloor #1 \rfloor}
+
+
 
 
 %Caixinhas coloridas
@@ -388,18 +390,17 @@ Assim como definimos a topologia de Stone no espaço de ultrafiltros de uma álg
 Definimos uma topologia no conjunto de perfis $\text{Per}(S) = \{\tau: S \rightarrow \{0,1\} \text{ é perfil }\}$ como sendo a gerada pela sub-base de conjuntos da forma $U_b \defeq \{\tau \in \text{Per}(S) \mid \tau(b) = 1\}$ para cada $b \in S$.
 \end{definicao*}
 
-Como $S$ é fechado pra complementar e $\tau(b) = 1$ se e somente se $\tau(\lnot b) = 0$, temos que $U_b = \lnot U_{\lnot b}$. Assim, os geradores da topologia são fechados-abertos, e portanto $\text{Per}(S)$ é zero-dimensional. Também, conseguimos separar dois $\tau, \tau'$ distintos através do $U_b$ onde $b$ é um elemento tal que $\tau(b) \neq \tau'(b)$; ou seja, $\text{Per}(S)$ é Hausdorff. Finalmente, $\text{Per}(S) \subset \{0,1\}^S$ com a topologia induzida de subespaço. Como $\{0,1\}^S$ é compacto e 
+\begin{proposicao*}
+$\text{Per}(S) $ é um espaço de Stone (compacto, Hausdorff e zero dimensional).
+\end{proposicao*}
 
+\begin{prova}
+  Como $S$ é fechado pra complementar e $\tau(b) = 1$ se e somente se $\tau(\lnot b) = 0$, temos que $U_b = \lnot U_{\lnot b}$. Assim, os geradores da topologia são fechados-abertos, e portanto $\text{Per}(S)$ é zero-dimensional. Também, conseguimos separar dois $\tau, \tau'$ distintos através do $U_b$ onde $b$ é um elemento tal que $\tau(b) \neq \tau'(b)$; ou seja, $\text{Per}(S)$ é Hausdorff. Finalmente, $\text{Per}(S) \subset \{0,1\}^S$ com a topologia induzida de subespaço. Como $\{0,1\}^S$ é compacto pelo teorema de Tychonoff, se provarmos que $\text{Per}(S)$ é fechado podemos concluir que ele é compacto. De fato, $\{0,1\}^S \setminus \text{Per}(S) $ é aberto pois uma função $f$ não ser um perfil deve ser testemunhado por algum par $A,B \in S$ que irá não satisfazer uma das três propriedades listadas na definição. Tomando o subconjunto aberto $U_f$ das funções que concordam com $f$ em $A,B$, vamos ter que $U_f \subset \{0,1\}^S \setminus \text{Per}(S) $. Assim, construimos uma cobertura aberta para $\{0,1\}^S \setminus \text{Per}(S) $.
+\end{prova}
 
 
 \begin{pergunta}
-  Todo $\text{Per}(S)$ é compacto?
-\end{pergunta}
-
-Se isso fosse verdade, então na verdade os espaços $\text{Per}(S)$ são apenas espaços de Stone.
-
-\begin{pergunta}
-  Se não, quem são os espaços $\text{Per}(S)$? A categoria formada por eles exibe um funtor de volta para a categoria de sistemas?
+  Existe alguma descrição natural a partir de $S$ da álgebra de Boole que dá origem ao espaço de Stone $\text{Per}(S)$?
 \end{pergunta}
 
 Defina $B(S)$ como sendo a álgebra de Boole gerada por $S \subset \mathcal{P}(V)$. Seja $\text{Ult}(B(S))$ seu espaço de ultrafiltros.
@@ -426,9 +427,11 @@ Lembrando que estamos sempre conceitualizando um $A \subset V$ como uma partiç�
 
 Vamos entender o que tem de árvore em conjuntos árvore. 
 
-Quando falamos árvore, queremos dizer um grafo simples e sem ciclos (não necessariamente finito). Quando falamos árvore de ordem, queremos dizer um conjunto parcialmente ordenado $T$ tal que o conjunto de todos os elementos menores que $t$ é bem ordenado, pra todo $t \in T$. Vamos relaxar a definição de árvore de ordem, e definir algo que vamos chamar de \textit{arvoreta}: $T$ é uma arvoreta quando é um conjunto parcialmente ordenado tal que todos os elementos menores que $t$ formam uma cadeia (conjunto totalmente ordenado), pra todo $t \in T$.
+Quando falamos árvore, queremos dizer um grafo simples e sem ciclos (não necessariamente finito). Quando falamos árvore de ordem, queremos dizer um conjunto parcialmente ordenado $T$ tal que, dado um $t \in T$, o conjunto dos elementos menores que $t$ é bem ordenado. Vamos relaxar a definição de árvore de ordem e trabalhar com a noção de ordem prefix.
 
-Arvoreta na verdade é prefix order (Gustavo). Ajeitar depois.
+\begin{definicao*}[Ordem prefix]
+  Um conjunto parcialmente ordenado $T$ é dito prefix, ou uma ordem prefix, quando, dado um $t \in T$, o conjunto dos elementos menores que $t$ é uma cadeia (isto é, é totalmente ordenado).
+\end{definicao*}
 
 Primeiramente, toda árvore define um conjunto árvore.
 
@@ -439,11 +442,11 @@ Primeiramente, toda árvore define um conjunto árvore.
 Veja que cada aresta $e$ de $T$ define um $A \in S(T)$, tomando $A$ como uma das duas componentes conexas de $T \setminus e$, sendo a outra $\lnot A$. E, por outro lado, dado um $A \in S(T)$, se tomarmos $e$ como a aresta que liga $A$ a seu complementar, então $A$ é uma das componentes conexas de $G \setminus e$. Sabendo isso, vamos agora mostrar que $S(T)$ é um conjunto árvore. Tome dois $A,B \in S(T)$ não complementares, e seja $e,f$ suas arestas correspondentes. $f$ deve ligar dois vértices de uma das componentes conexas de $G\setminus e$, ou seja, $f$ é uma aresta do grafo induzido por $A$ ou uma aresta do grafo induzido por $\lnot A$. Digamos que $f$ é uma aresta de vértices em $A$. Então, ao retirarmos $f$, $\lnot A$ continua conexo. Logo $\lnot A$ será um subconjunto de uma das componentes conexas de $G \setminus F$, isto é, de $B$ ou $\lnot B$. Igualmente, se $f$ é uma aresta de vértices em $\lnot A$, então teriamos que $A$ é subconjunto de $B$ ou $\lnot B$. Concluimos que $S(T)$ é um conjunto árvore.
 \end{prova}
 
-Toda arvoreta define um conjunto árvore. 
+Todo prefix define um conjunto árvore. 
 Defina $\lfloor v \rfloor = \{w \in T \mid v \leq w\}$ pra um $v \in T$.
 
-\begin{proposicao}[Conjunto árvore de uma arvoreta]
-  Seja $T$ uma arvoreta. Defina $S(T) = \{A \subset T \mid A \text{ ou } A^c \text{ é da forma } \lfloor v \rfloor \text{ para algum } v \in T \}$. Então $S(T)$ é conjunto árvore.
+\begin{proposicao}[Conjunto árvore de um prefix]
+  Seja $T$ uma ordem prefix. Defina $S(T) = \{A \subset T \mid A \text{ ou } A^c \text{ é da forma } \lfloor v \rfloor \text{ para algum } v \in T \}$. Então $S(T)$ é conjunto árvore.
 \end{proposicao}
 \begin{prova}
 É uma continha simples!
@@ -464,36 +467,29 @@ Enumere as arestas de $T$ como $\{e_1,\dots, e_k\}$. Lembre-se da descrição na
 Agora, se dois vértices $v,w \in T$ são adjacentes, digamos pela aresta $e_i$, então com certeza $v$ e $w$ estão em componentes conexas diferentes ao remover $e_i$, assim $\tau_v$ e $\tau_w$ diferem no corte relativo a esta aresta. E, na retirada de qualquer outra aresta $e_j$, a $e_i$ se mantém, logo os vértices estarão na mesma componente conexa e portanto $\tau_v$ e $\tau_w$ concordaram no corte relativo a $e_j$. Já se eles não forem adjacentes, deve haver um caminho entre eles contendo no mínimo duas arestas. A retirada de ambas estas arestas coloca os vértices em componentes conexas diferentes, e portanto $\tau_v$ e $\tau_w$ diferem em pelo menos dois valores. De fato, a quantidade de diferenças é exatamente o número de arestas do caminho entre os vértices, recuperando a métrica da árvore.
 \end{prova}
 
-Em uma arvoreta $T$, uma cadeia inicial $C \subset T$ é um conjunto totalmente ordenado fechado pra baixo. Uma cauda de $C$ é alguma interseção $\pracima{t} \cap C$ pra algum $t \in C$
+%Aqui embaixo está uma demo errada da generalização do resultado anterior para ordens prefix. 
 
-\begin{proposicao}[Perfis de árvore de ordem correspondem a cadeias iniciais]
-  Seja $\tau$ um perfil de $S(T)$, onde $T$ é uma árvore de ordem. Então existe uma cadeia inicial $C \subset T$ tal que $\tau(A) = 1$ se e somente se existe uma cauda $\pracima{t} \cap C$ contida em $A$. Cada cadeia inicial define um único perfil dessa forma.
-\end{proposicao}
-\begin{prova}
+% Em uma ordem prefix $T$, uma cadeia inicial $C \subset T$ é um conjunto totalmente ordenado fechado pra baixo. Uma cauda de $C$ é alguma interseção $\pracima{t} \cap C$ pra algum $t \in C$
 
-  Detalhe: aqui estou usando os resultados do Handbook que eu acredito que foram pensados para árvores de ordem usuais, mas que eu acredito que podem ser generalizados para arvoretas (inclusive, com as próprias demos dele, que não acredito que usam a  boa ordem dos conjuntos pra baixo).
+% \begin{proposicao}[Perfis de árvore de ordem correspondem a cadeias iniciais]
+%   Seja $\tau$ um perfil de $S(T)$, onde $T$ é uma árvore de ordem. Então existe uma cadeia inicial $C \subset T$ tal que $\tau(A) = 1$ se e somente se existe uma cauda $\pracima{t} \cap C$ contida em $A$. Cada cadeia inicial define um único perfil dessa forma.
+% \end{proposicao}
+% \begin{prova}
 
-Vou procurar uma demonstração elementar, mas por agora: extenda $S(T)$ pra $B(T)$, a tree algebra de $T$ como definida no Handbook of Boolean Algebras. Por 16.4, $\tau$ se extende pra um (único) ultrafiltro. Por 16.11, ultrafiltros correspondem a cadeias iniciais.
+%   Detalhe: aqui estou usando os resultados do Handbook que eu acredito que foram pensados para árvores de ordem usuais, mas que eu acredito que podem ser generalizados para arvoretas (inclusive, com as próprias demos dele, que não acredito que usam a  boa ordem dos conjuntos pra baixo).
 
-\end{prova}
+% Vou procurar uma demonstração elementar, mas por agora: extenda $S(T)$ pra $B(T)$, a tree algebra de $T$ como definida no Handbook of Boolean Algebras. Por 16.4, $\tau$ se extende pra um (único) ultrafiltro. Por 16.11, ultrafiltros correspondem a cadeias iniciais.
 
-Checar se esse resultado vale pra prefix orders - conversa com Gustavo onde vimos que não é a cadeia inicial (prefix order sendo a reta, o espaço de perfis é o conjunto de Cantor acho).
+% \end{prova}
 
-O espaço de perfis aqui será homeomorfo ao espaço de Stone de $B(T)$. Quando $T$ é um grafo, $B(T)$ é a álgebra de cortes de $T$ e logo esse espaço de Stone é homeomorfo ao espaço de direções via arestas de $T$. Logo perfis de $T$ são vértices ou raios.
+% Checar se esse resultado vale pra prefix orders - conversa com Gustavo onde vimos que não é a cadeia inicial (prefix order sendo a reta, o espaço de perfis é o conjunto de Cantor acho).
 
+% O espaço de perfis aqui será homeomorfo ao espaço de Stone de $B(T)$. Quando $T$ é um grafo, $B(T)$ é a álgebra de cortes de $T$ e logo esse espaço de Stone é homeomorfo ao espaço de direções via arestas de $T$. Logo perfis de $T$ são vértices ou raios.
 
-% \begin{pergunta}
-%   O que acontece no caso de $T$ infinita?
+\begin{pergunta}
+  Quem são os perfis de $S(T)$ para uma ordem prefix? Se $T$ é de ordem, acredito que provei que são as cadeias iniciais - ou seja, `vértices ou raios de $T$'.
+\end{pergunta}
 
-%   Conjectura mais ou menos intuitivamente demonstrada: os perfis de $S(T)$ são todos ou ultrafiltros principais ou ultrafiltros de extremidades de $T$.
-% \end{pergunta}
-
-
-% \begin{pergunta}
-%   Como definir $S(T)$ para uma árvore de ordem $T$? E quem são seus perfis?
-
-%   Conjectura mais ou menos intuitivamente demonstrada: faça do jeito mais óbvio possível, e vai dar certo, e seus perfis vão ser ultrafiltros principais ou ramos maximais.
-% \end{pergunta}
 
 Voltando ao caso finito. Temos em \ref{perfis-arvore-finito} uma descrição de como $S(T)$ contém a estrutura da árvore $T$. Se estamos de posse de seu $S(T)$, poderiamos reconstruir $T$ tomando como conjunto de vértices os perfis de $S(T)$ e ligando eles entre si quando diferem em apenas um valor. Este seria um caminho para mostrar que todo conjunto árvore finito $S$ vem de uma árvore: usando os perfis de $S$ como vértices para construir a árvore. Mas, para provar esta proposição, não vamos fazer isso. Vamos construir uma árvore explicitamente em um processo indutivo (porque essa foi a primeira ideia que eu tive).
 
@@ -535,14 +531,21 @@ Na verdade, resta provar a unicidade: se começarmos com um $S = S(T)$ para algu
 
 \end{prova}
 
-\begin{proposicao}[Conjunto-árvores infinitos vem de arvoretas]
-  Seja $S$ um conjunto árvore, agora possivelmente infinito. Existe uma arvoreta $T$ tal que $S \cong S(T)$.
-\end{proposicao}
-\begin{prova}
-  Pra escrever: adaptar a demo anterior fazendo indução transfinita e usando o resultado que perfis vem de cadeias iniciais.
-\end{prova}
 
-É única? Imagino que não, por liberdade na escolha de raiz, mas talvez definam o mesmo espaço (ver pergunta abaixo). Existe uma noção de `isomorfismo' de árvore de ordem (arvoreta) a menos de escolha de raiz?
+% \begin{proposicao}[Conjunto-árvores infinitos vem de ordens prefix]
+%   Seja $S$ um conjunto árvore, agora possivelmente infinito. Existe uma arvoreta $T$ tal que $S \cong S(T)$.
+% \end{proposicao}
+% \begin{prova}
+%   Pra escrever: adaptar a demo anterior fazendo indução transfinita e usando o resultado que perfis vem de cadeias iniciais.
+% \end{prova}
+
+\begin{pergunta}
+  Conjunto-árvore infinito vem de ordem prefix? Acredito que a demo anterior generalizada com indução transfinita e com o resultado de perfis virem de cadeias iniciais resolveria o caso quando $S$ vem de uma árvore de ordem mas e o caso geral?
+\end{pergunta}
+
+\begin{pergunta}
+Se realmente conjunto-árvore infinitos vierem de ordens prefix, esta ordem vai ser única? Imagino que não, por liberdade na escolha de raiz, mas talvez definam o mesmo espaço (ver pergunta abaixo). Existe uma noção de `isomorfismo' de árvore de ordem/ordem prefix a menos de escolha de raiz?
+\end{pergunta}
 
 \begin{pergunta}
 Tem um artigo \cite{arvoredoconjuntoarvore} que é demonstrado que conjuntos árvore infinitos se originam a partir de $T$ "tree-like space". Esses espaços são os que se originam de árvores de ordem?
@@ -551,7 +554,7 @@ Tem um artigo \cite{arvoredoconjuntoarvore} que é demonstrado que conjuntos ár
 \begin{pergunta}
   No caso $S$ infinito, quem são os espaços $\text{Per}(S)$ quando $S$ é conjunto árvore?  
 
-  Parece que vão ser os espaços de ultrafiltros de tree algebras. Que no caso acho que são espaços de cadeias iniciais de arvoretas. (topologia induzida como subespaço do espaço de caminhos?)
+  Se $S$ vem de uma árvore de ordem, acho que vão ser os espaços de ultrafiltros de tree algebras. Que no caso acho que são espaços de cadeias iniciais de árvores de ordem. (topologia induzida como subespaço do espaço de caminhos?)
 \end{pergunta}
 
 
@@ -624,10 +627,8 @@ Resta apenas demonstrar um fato afirmado durante a demonstração e não provado
 
 \end{prova}
 
-Usando nossa forma canônica para $S$, o teorema é equivalente a demonstrar que, dado uma família de subconjuntos $S \subset \mathcal{P}(V)$ que é sub-Boole e separa cada elemento de $V$, existe um conjunto árvore $N \subset S$ que ainda separa cada elemento de $V$.
-
 \begin{pergunta}
-  Quando $S$ é infinito, o que precisamos pedir aqui para garantir a existência de $N$?
+  Podemos generalizar este teorema para $S$ infinito?
 \end{pergunta}
 
 \begin{pergunta}
@@ -646,12 +647,12 @@ Existe uma condição topológica em $\text{Per}(S)$ que é equivalente a $N$ ex
 \end{pergunta}
 
 \begin{pergunta}
-  (Pergunta do Gustavo) Todo conjunto aberto tem display? Todo $G_{\delta}$ tem display?
+  (Pergunta do Gustavo) Dado um subconjunto aberto $U \subset \text{Per}(S)$, existe um $N \subset S$ conjunto árvore que exibe todo $\tau \in U$? E se $U$ for $G_{\delta}$?
 \end{pergunta}
 
 \section{Teorema da Dualidade Árvore-Emaranhado}
 
-Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$.Chamamos os elementos de $\mathcal{E}$ de estrelas. Dizemos que duas estrelas $E_1,E_2 \in \mathcal{E}$ se colam se existe $a \in E_1, \lnot a \in E_2$.
+Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$.Chamamos os elementos de $\mathcal{E}$ de estrelas. Dizemos que duas estrelas $E_1,E_2 \in \mathcal{E}$ se colam via um $a \in S$ se vale que $a \in E_1, \lnot a \in E_2$.
 
 Vamos brincar aqui de colar estas estrelas com o objetivo de que todo $A$ cole com algum $\lnot A$ eventualmente. Vamos chamar de solução um subconjunto $T \subset \mathcal{E}$ tal que $\cup T$ é fechado pra complementar.
 
@@ -681,7 +682,7 @@ Podemos então sucessivamente ir retirando um dos $a,\lnot a$ de $P$, em cada pa
 
 Queremos agora trocar `orientação' por `emaranhado' neste último resultado. É com essa troca que vamos conseguir aplicações em grafos, como os teorema de dualidade entre decomposição de árvore e bramble (e possivelmente mais aplicações em lógica/conjuntos?). Pra isso, vamos ter que fortalecer nossas hipóteses, pedindo que o conjunto de estrelas $\mathcal{E}$ tenha uma certa propriedade, modelada em algo que vale para o caso de separações de grafos. Esta propriedade vai garantir que conseguiremos adaptar nossa construção da demonstração anterior de forma que a orientação se torne consistente, isto é, defina um emaranhado.
 
-A propriedade é a seguinte. Diga que $\mathcal{E}$ satisfaz a hipótese da dualidade se para quaisquer duas estrelas $E,F \in \mathcal{E}$, com $E = \{a, a_1, \dots, a_n\}, F = \{b, b_1, \dots, b_m\}$ satisfazendo $\lnot a \subset b$, vamos ter que existe um $x \in S$ tal que $\lnot b \subset x \subset a$ e existem estrelas $E',F' \in \mathcal{E}$ com $E' = \{x, a_1',\dots, a_n'\}, F' = \{\lnot x, b_1', \dots, b_m'\}$ e $a_i \subset a_i', b_i \subset b_i'$.
+A propriedade é a seguinte. Diga que $\mathcal{E}$ satisfaz a hipótese da dualidade se para quaisquer dois $E,F \in \overline{\mathcal{E}}$ (lembrando que este é o fecho definido na demonstração da proposição anterior), com $E = \{a, a_1, \dots, a_n\}, F = \{b, b_1, \dots, b_m\}$ satisfazendo $\lnot a \subset b$, vamos ter que existe um $x \in S$ tal que $\lnot b \subset x \subset a$ e existem estrelas $E',F' \in \overline{\mathcal{E}}$ com $E' = \{x, a_1',\dots, a_n'\}, F' = \{\lnot x, b_1', \dots, b_m'\}$ e $a_i \subset a_i', b_i \subset b_i'$.
 
 \begin{proposicao}[Ida da Dualidade Forte]
   Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$. Seja $S$ o fecho pra complementar de $\cup \mathcal{E}$. Suponha que $S$ seja finito. Suponha que $\mathcal{E}$ satisfaz a hipótese da dualidade. Se $\mathcal{E}$ não admite solução, isto é, se não existe $\mathcal{T} \subset \mathcal{E}$ tal que $\cup \mathcal{T}$ é fechado pra complementar, então existe um emaranhado $\tau$ de $S$ tal que pra todo $E \in \mathcal{E}$, temos que $\tau$ não satisfaz $E$.
@@ -704,29 +705,24 @@ A propriedade é a seguinte. Diga que $\mathcal{E}$ satisfaz a hipótese da dual
 
   Tome então $E_r,E_s \in \overline{\mathcal{E}}$ tais que pra todo $a \in E_r$, temos $\lnot a \notin O \setminus r$ e todo $b \in E_s$, temos $\lnot b \notin O \setminus s$. Como $O$ satisfaz $(\star)$, deve existir um $x \in E_r,y \in E_s$ tais que $\lnot x \in O, \lnot y \in O$ - e portanto $x = \lnot r, y = \lnot s$. Chame $E_r = \{\lnot r, a_1,\dots, a_n\}$ e $E_s = \{\lnot s, b_1, \dots, b_m\}$. Se algum dos $\lnot a_i$ não estivesse em $P$, então isso significaria que $\{\lnot a_i\} \in \overline{\mathcal{E}}$, e aí poderíamos fazer a colagem de $E_r$ com $\{\lnot a_i\}$ para obter que $E_r \setminus \{a_i\} \in \overline{\mathcal{E}}$ - e este ainda é uma testemunha para $O \setminus r$ não satisfazer $(\star)$. Podemos supor, então, que realizamos este processo a quantidade de vezes necessária para chegarmos em um $E_r$ tal que seus elementos $a_i$ são todos tais que $\lnot a_i \in P$. Igualmente, tomamos o $E_s$ tal que todos os $b_i$  estão em $P$.
 
-  Finalmente vamos utilizar a hipótese de dualidade. Porém, precisamos utilizá-la referente ao $\overline{E}$. Mais tarde voltamos a este detalhe - suponha por agora que $\overline{E}$ satisfaz a hipótese de dualidade.
-
- Lembrando que $r \subset \lnot s$, aplique a hipótese de dualidade em $E_r$ e $E_s$. Obtemos assim, duas estrelas $E_r' = \{a,a_1',\dots,a_n'\}, E_s' = \{\lnot a, b_1', \dots, b_m'\}$ em $\overline{\mathcal{E}}$ tais que $\lnot s \subset a \subset \lnot r$, $a_i \subset a_i'$, $b_i \subset b_i'$. Veja que $\lnot a_i' \notin O$, pois se esse não fosse o caso, então $\lnot a_i$ seria um elemento de $P$ que contém $\lnot a_i \in O$, e pela propriedade $(\bullet)$, teriamos $\lnot a_i \in O$, que já sabemos que não vale. Igualmente, $\lnot b_i' \not in O$. Como a colagem de $E_r'$ com $E_s'$ resulta em uma estrela de $\overline{\mathcal{E}}$ cujos elementos estão dentre os $a_i',b_i'$, ela seria então uma testemunha para $O$ não satisfazer $(\star)$ - contradição.
+Finalmente vamos utilizar a hipótese de dualidade. Lembrando que $r \subset \lnot s$, aplique a hipótese de dualidade em $E_r$ e $E_s$. Obtemos assim, duas estrelas $E_r' = \{a,a_1',\dots,a_n'\}, E_s' = \{\lnot a, b_1', \dots, b_m'\}$ em $\overline{\mathcal{E}}$ tais que $\lnot s \subset a \subset \lnot r$, $a_i \subset a_i'$, $b_i \subset b_i'$. Veja que $\lnot a_i' \notin O$, pois se esse não fosse o caso, então $\lnot a_i$ seria um elemento de $P$ que contém $\lnot a_i \in O$, e pela propriedade $(\bullet)$, teriamos $\lnot a_i \in O$, que já sabemos que não vale. Igualmente, $\lnot b_i' \notin O$. Como a colagem de $E_r'$ com $E_s'$ resulta em uma estrela de $\overline{\mathcal{E}}$ cujos elementos estão dentre os $a_i',b_i'$, ela seria então uma testemunha para $O$ não satisfazer $(\star)$ - contradição.
 
   Assim, chegamos a conclusão que $O$ é um subconjunto de $S$ tal que $a \in O \implies \lnot a \notin O$ e que se fecharmos $O$ para cima em relação a inclusão, isto é, $\overline{O} = \{x \in S \mid a \subset x \text{ para algum } a \in O\}$, então este fecho ainda satisfaz $x \in \overline{O} \implies \lnot x \notin \overline{O}$. Definimos $\tau$ como $1$ para todo elemento de $\overline{O}$, e $0$ para todos os seus inversos. Para o resto de $S$, extenda $\tau$ de qualquer maneira que o mantenha consistente. Dessa forma, chegamos a um emaranhado $\tau$ que devido a propriedade $(\star)$ de $O$, não irá satisfazer nenhuma estrela de $\mathcal{E}$.
-
-  Voltemos a ponta solta de alguns parágrafos atrás, e vamos mostrar que $\mathcal{E}$ satisfazer a hipótese da dualidade implica que $\overline{\mathcal{E}}$ a satisfaz também.
-
-  ...
 
 \end{prova}
 
 Mostramos que a não existência de uma orientação que não satisfaz nenhuma estrela de $\mathcal{E}$ é uma condição suficiente para garantirmos a existência de uma solução. Mas não é uma condição necessária: ciclos dão origem a soluções, e também a orientações que não satisfazem estrelas. Por exemplo, se tomarmos $\mathcal{E} = \{\{a,\lnot b \}, \{b, \lnot c\}, \{c, \lnot a\}\}$, então a união de todas estas estrelas é fechado para complementar, e a orientação $\tau$ que escolhe $\tau(b) = 1, \tau (c) = 1, \tau (a) = 1$ não satisfaz nenhuma estrela.
 
-Formalmente, definimos um ciclo em $\mathcal{E}$ como sendo uma sequência de estrelas $E_1, \dots, E_n$ em $\mathcal{E}$ tal que $E_i$ cola com $E_{i+1}$ e $E_n$ cola com $E_1$.
+Formalmente, definimos um ciclo em $\mathcal{E}$ como sendo uma sequência de estrelas $E_1, \dots, E_n$ em $\mathcal{E}$ tal que $E_i$ cola com $E_{i+1}$ e $E_n$ cola com $E_1$ - onde essas colagens acontecem todas via elementos de $S$ distintos.
+
+A demonstração a seguir é apenas uma adaptação da clássica demonstração de que em uma árvore direcionada deve existir uma fonte (um vértice com todas as arestas apontando para ele) - basta tomar um caminho direcionado maximal e ver que ele deve terminar em uma fonte.
 
 \begin{proposicao}[Volta da Dualidade Fraca e Forte]
   Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$. Seja $S$ o fecho pra complementar de $\cup \mathcal{E}$. Suponha que $S$ seja finito. Se $\mathcal{E}$ admite solução, isto é, se existe um $\mathcal{T} \subset \mathcal{E}$ tal que $\cup \mathcal{T}$ é fechado pra complementar, então ou existe um ciclo em $\mathcal{E}$ ou toda orientação $\tau$ (e portanto todo emaranhado) de $S$ satisfaz algum $E \in \mathcal{E}$.
 \end{proposicao}
 \begin{prova}
-Suponha que temos uma solução $\mathcal{T}$ e que $\mathcal{E}$ não admita ciclos. Tome uma orientação $\tau$ de $S$ qualquer.
+Suponha que temos uma solução $\mathcal{T}$. Tome uma orientação $\tau$ de $S$ qualquer. Vamos traçar um caminho pelas estrelas de $\mathcal{T}$ usando $\tau$ como referência. Comece com algum $E_1 \in \mathcal{T}$ qualquer. Se $\tau$ satisfaz $E_1$, acabamos. Caso contrário, existe $a_1 \in E_1$ tal que $\tau(a_1) = 0$. Deve existir um $E_2 \in \mathcal{T}$ tal que $\lnot a_1 \in E_2$. Se $\tau$ satisfaz $E_2$, então acabamos. Caso contrário, deve existir $a_2 \in E_2$ tal que $\tau(a_2) = 0$. Deve existir um $E_3 \in \mathcal{T}$ tal que $\lnot a_2 \in E_3$. Se $\tau$ não satisfizesse nenhum $E \in \mathcal{E}$, poderíamos continuar este processo indefinitivamente, obtendo uma sequência $E_1, E_2, \dots, E_i, E_{i+1}, \dots $ onde cada $E_i$ cola com $E_{i+1}$. Devido a finitude de $\cup \mathcal{E}$, esta sequência de estrelas deve conter um ciclo.
 
-...
 \end{prova}
 
 Juntando a ida e a volta, obtemos os resultados que queremos.
@@ -756,18 +752,22 @@ Juntando a ida e a volta, obtemos os resultados que queremos.
 \end{prova}
 
 
-%Fazer caso forte
-
-%Mostrar que minha versão implica a versão do Diestel - ou, melhor talvez, mostrar que implica no tree-decomp e bramble tree width duality?
+%Mostrar que minha versão implica a versão do Diestel - ou, melhor talvez, mostrar que implica no tree-decomp e bramble tree width duality? Mostrar alguma aplicação desse teorema, pelo menos?
 
 
 
-%Generalização pro infinito? (arjuna ?)
+\begin{pergunta}
+  Existe uma generalização pro infinito natural destes teoremas?
+
+  A volta da Dualidade generaliza para: se existe solução, então ou existe um ciclo ou toda orientação seleciona uma estrela ou um raio, onde um raio é uma sequência de estrelas que se colam.
+
+  A ida eu tinha achado que uma demonstração anterior que eu tinha feito generalizava pro infinito, mas agora não tenho certeza se aquela prova estava certa. Essa que apresentei aqui não parece obviamente generalizar pro infinito.
+\end{pergunta}
+
 
 %Ideia do aurichi de pensar classes de grafos caracterizadas por conjuntos de estrelas? (todos os grafos que nascem colando estrelas desse conjunto)
 
 %Escrever versão bonitinha como puzzle
-
 
 
   \section{A Lógica dos Emaranhados}

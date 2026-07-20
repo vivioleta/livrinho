@@ -1,6 +1,6 @@
-PWD /home/viola/Área de trabalho/livrinho/Emaranhados Melhor
+PWD /home/viola/Área de trabalho/livrinho/Minicurso
 INPUT /usr/local/texlive/2025/texmf-var/web2c/luahbtex/lualatex.fmt
-INPUT /home/viola/Área de trabalho/livrinho/Emaranhados Melhor/main.tex
+INPUT /home/viola/Área de trabalho/livrinho/Minicurso/main.tex
 OUTPUT main.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tex-ini-files/lualatexquotejobname.lua
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/ltluatex.lua
@@ -263,6 +263,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/mathtools/mhsetup.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/ncctools/nccmath.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/natbib/natbib.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -314,9 +315,9 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/grfext/grfext.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT ./main.out
 INPUT ./main.out
-OUTPUT main.pdf
 INPUT ./main.out
 OUTPUT main.out
+OUTPUT main.pdf
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/lm/ot1lmr.fd
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/rm-lmr10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/rm-lmr8.tfm
@@ -513,28 +514,5 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/boondox/BOONDOX-r-ds.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/boondox/BOONDOX-r-ds.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/boondox/zxxrl7z.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/boondox/BOONDOX-r-ds.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/boondox/BOONDOX-r-ds.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/boondox/zxxrl7z.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/boondox/BOONDOX-r-ds.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/boondox/BOONDOX-r-ds.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/boondox/zxxrl7z.tfm
-INPUT ./main.bbl
 INPUT ./main.aux
 INPUT ./main.out
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Regular.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb
