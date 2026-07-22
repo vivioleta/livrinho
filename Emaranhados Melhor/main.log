@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.1.23)  20 JUL 2026 18:18
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.1.23)  22 JUL 2026 19:08
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"/home/viola/Área de trabalho/livrinho/Emaranhados Melhor/main.tex"
@@ -1224,53 +1224,53 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11]
 LaTeX Font Info:    Font shape `U/BOONDOX-ds/m/n' will be
-(Font)              scaled to size 10.95pt on input line 640.
+(Font)              scaled to size 10.95pt on input line 642.
 LaTeX Font Info:    Font shape `U/BOONDOX-ds/m/n' will be
-(Font)              scaled to size 8.0pt on input line 640.
+(Font)              scaled to size 8.0pt on input line 642.
 LaTeX Font Info:    Font shape `U/BOONDOX-ds/m/n' will be
-(Font)              scaled to size 6.1pt on input line 640.
+(Font)              scaled to size 6.1pt on input line 642.
 
-Overfull \hbox (8.57433pt too wide) in paragraph at lines 643--645
+Overfull \hbox (8.57433pt too wide) in paragraph at lines 645--647
 []\TU/DarwinSerif-Regular.otf(1)/m/n/10.95 De-mons-tra-ção:[] \TU/DarwinSerif-Regular.otf(0)/m/n/10.95 (Pra ser es-crito - ver https://matho-ver-flow.net/ques-ti-ons/508614/how-small-
  []
 
 [12] [13] [14] [15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 789--790
+Underfull \hbox (badness 10000) in paragraph at lines 791--792
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 800--801
+Underfull \hbox (badness 10000) in paragraph at lines 802--803
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 813--815
+Underfull \hbox (badness 10000) in paragraph at lines 815--817
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--852
+Underfull \hbox (badness 10000) in paragraph at lines 853--854
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 856--857
+Underfull \hbox (badness 10000) in paragraph at lines 858--859
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 864--865
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 866--867
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 914--915
+Underfull \hbox (badness 10000) in paragraph at lines 868--869
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 916--917
 
  []
 
@@ -1288,12 +1288,12 @@ Here is how much of LuaTeX's memory you used:
  125129,1373583 words of node,token memory allocated
  659 words of node memory still in use:
    8 hlist, 2 vlist, 3 rule, 5 glue, 5 kern, 1 glyph, 25 attribute, 65 glue_spec, 14 attribute_list, 2 write nodes
-   avail lists: 1:1,2:843,3:314,4:119,5:3376,6:46,7:8321,8:39,9:586,10:32,11:677
+   avail lists: 1:1,2:832,3:314,4:119,5:3621,6:46,7:8269,8:39,9:636,10:32,11:744
  59610 multiletter control sequences out of 65536+600000
  196 fonts using 16752471 bytes
- 84i,6n,96p,3301b,544s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,6n,96p,3301b,528s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}<./DarwinSerif-Regular.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb>
-Output written on main.pdf (20 pages, 249815 bytes).
+Output written on main.pdf (20 pages, 249864 bytes).
 
 PDF statistics: 248 PDF objects out of 1000 (max. 8388607)
  193 compressed objects within 2 object streams
