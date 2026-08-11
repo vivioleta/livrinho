@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.1.23)  7 AUG 2026 17:23
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.1.23)  11 AUG 2026 17:26
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"/home/viola/Área de trabalho/livrinho/Emaranhados Melhor/main.tex"
@@ -1222,74 +1222,74 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 (Font)              scaled to size 6.6pt on input line 300.
 [1
 
-{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12]
+{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13]
 LaTeX Font Info:    Font shape `U/BOONDOX-ds/m/n' will be
-(Font)              scaled to size 10.95pt on input line 662.
+(Font)              scaled to size 10.95pt on input line 693.
 LaTeX Font Info:    Font shape `U/BOONDOX-ds/m/n' will be
-(Font)              scaled to size 8.0pt on input line 662.
+(Font)              scaled to size 8.0pt on input line 693.
 LaTeX Font Info:    Font shape `U/BOONDOX-ds/m/n' will be
-(Font)              scaled to size 6.1pt on input line 662.
+(Font)              scaled to size 6.1pt on input line 693.
 
-Overfull \hbox (8.57433pt too wide) in paragraph at lines 665--667
+Overfull \hbox (8.57433pt too wide) in paragraph at lines 696--698
 []\TU/DarwinSerif-Regular.otf(1)/m/n/10.95 De-mons-tra-ção:[] \TU/DarwinSerif-Regular.otf(0)/m/n/10.95 (Pra ser es-crito - ver https://matho-ver-flow.net/ques-ti-ons/508614/how-small-
  []
 
-[13] [14] [15] [16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 811--812
+[14] [15] [16] [17] [18]
+Underfull \hbox (badness 10000) in paragraph at lines 842--843
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 822--823
-
- []
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 846--848
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 884--885
+Underfull \hbox (badness 10000) in paragraph at lines 853--854
 
  []
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 889--890
+Underfull \hbox (badness 10000) in paragraph at lines 877--879
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 897--898
+Underfull \hbox (badness 10000) in paragraph at lines 915--916
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 899--900
+Underfull \hbox (badness 10000) in paragraph at lines 920--921
 
  []
 
 [20]
-Underfull \hbox (badness 10000) in paragraph at lines 947--948
+Underfull \hbox (badness 10000) in paragraph at lines 928--929
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 958--959
+Underfull \hbox (badness 10000) in paragraph at lines 930--931
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 978--979
 
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 966--968
+Underfull \hbox (badness 10000) in paragraph at lines 989--990
+
+ []
+
+
+Underfull \hbox (badness 1067) in paragraph at lines 997--999
 \TU/DarwinSerif-Regular.otf(0)/m/n/10.95 e $\OML/ntxstx2mi/m/it/10.95 T \LMS/ntxsy/m/n/10.95  B \U/ntxmia/m/it/10.95 = \LMS/ntxsy/m/n/10.95 P¹P¹f\OT1/lmr/m/n/10.95 1\OML/ntxstx2mi/m/it/10.95 ; \OT1/lmr/m/n/10.95 2\OML/ntxstx2mi/m/it/10.95 ; \OT1/lmr/m/n/10.95 3\LMS/ntxsy/m/n/10.95 gºº$\TU/DarwinSerif-Regular.otf(0)/m/n/10.95 . Esta no-ta-ção es-qui-sita vem da forma como va-mos
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 966--968
+Underfull \hbox (badness 10000) in paragraph at lines 997--999
 
  []
 
-[21] (./main.bbl) [22] (./main.aux)
+[22] (./main.bbl) [23] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1299,19 +1299,19 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 38351 strings out of 476076
+ 38481 strings out of 476076
  125129,1373583 words of node,token memory allocated
- 638 words of node memory still in use:
-   8 hlist, 2 vlist, 3 rule, 2 glue, 5 kern, 1 glyph, 25 attribute, 65 glue_spec, 14 attribute_list, 2 write nodes
-   avail lists: 2:843,3:316,4:119,5:3375,6:46,7:8324,8:47,9:586,10:32,11:678
- 59612 multiletter control sequences out of 65536+600000
+ 653 words of node memory still in use:
+   8 hlist, 2 vlist, 3 rule, 2 glue, 5 kern, 1 sub_mlist, 1 glyph, 29 attribute, 65 glue_spec, 16 attribute_list, 2 write nodes
+   avail lists: 2:1393,3:410,4:119,5:3545,6:46,7:8222,8:47,9:615,10:32,11:702
+ 59741 multiletter control sequences out of 65536+600000
  196 fonts using 16752471 bytes
- 84i,9n,96p,3301b,544s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,15n,96p,3301b,1015s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}<./DarwinSerif-Regular.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Regular.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb>
-Output written on main.pdf (22 pages, 262796 bytes).
+Output written on main.pdf (23 pages, 269262 bytes).
 
-PDF statistics: 259 PDF objects out of 1000 (max. 8388607)
- 201 compressed objects within 3 object streams
- 77 named destinations out of 1000 (max. 131072)
+PDF statistics: 263 PDF objects out of 1000 (max. 8388607)
+ 204 compressed objects within 3 object streams
+ 78 named destinations out of 1000 (max. 131072)
  56 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -319,7 +319,7 @@ Nosso objeto principal de estudo serão os emaranhados e os perfis de sistemas.
 
 \begin{definicao*}[Emaranhados e perfis]Seja $V$ um conjunto, e $S \subset \mathcal{P}(V)$ um subconjunto fechado para complementar. Uma função $\tau: S \rightarrow \{0,1\}$ é dita um \textit{emaranhado} se satisfaz
   \begin{itemize}[label=\ding{212}]
-  \item $\tau(A) = 1$ ou $\tau(\lnot A) = 1$ e ambos não podem acontecer ao mesmo tempo, para qualquer $A \in S$ 
+  \item $\tau(\lnot A) = \lnot (\tau(A))$
   \item se $A \subset B$, então $\tau(A) \leq \tau(B)$
   \end{itemize}
 Se $\tau$ satisfaz ainda a propriedade
@@ -418,10 +418,41 @@ $\text{Per}(S) $ é um espaço de Stone (compacto, Hausdorff e zero dimensional)
   Como $S$ é fechado pra complementar e $\tau(b) = 1$ se e somente se $\tau(\lnot b) = 0$, temos que $U_b = \lnot U_{\lnot b}$. Assim, os geradores da topologia são fechados-abertos, e portanto $\text{Per}(S)$ é zero-dimensional. Também, conseguimos separar dois $\tau, \tau'$ distintos através do $U_b$ onde $b$ é um elemento tal que $\tau(b) \neq \tau'(b)$; ou seja, $\text{Per}(S)$ é Hausdorff. Finalmente, $\text{Per}(S) \subset \{0,1\}^S$ com a topologia induzida de subespaço. Como $\{0,1\}^S$ é compacto pelo teorema de Tychonoff, se provarmos que $\text{Per}(S)$ é fechado podemos concluir que ele é compacto. De fato, $\{0,1\}^S \setminus \text{Per}(S) $ é aberto pois uma função $f$ não ser um perfil deve ser testemunhado por algum par $A,B \in S$ que irá não satisfazer uma das três propriedades listadas na definição. Tomando o subconjunto aberto $U_f$ das funções que concordam com $f$ em $A,B$, vamos ter que $U_f \subset \{0,1\}^S \setminus \text{Per}(S) $. Assim, construimos uma cobertura aberta para $\{0,1\}^S \setminus \text{Per}(S) $.
 \end{prova}
 
+Podemos descrever a álgebra de Boole de $\text{Per}(S)$. A ideia aqui é criar uma álgebra de Boole que é `quase livre' sobre $S$. O `quase' vem do fato de que em $S$ já temos a operação de complementar bem definida pra todo conjunto, e também temos para alguns pares de conjuntos a operação de interseção bem definida. A álgebra que iremos construir será livre, a menos de satisfazer as operações já previamente definidas.
 
-\begin{pergunta}
-  Existe alguma descrição natural a partir de $S$ da álgebra de Boole que dá origem ao espaço de Stone $\text{Per}(S)$?
-\end{pergunta}
+Vamos considerar $S \subset \mathcal{B}$ onde $\mathcal{B}$ é alguma álgebra de Boole qualquer. Relembrando, se pensarmos em $S$ apenas como um conjunto, a álgebra de Boole livre sobre $S$ é a única álgebra de Boole $F(S)$ tal que existe uma função $S \rightarrow F(S)$ e pra toda outra função $f: S \rightarrow A$ existe um homomorfismo $\tilde{f}: F(S) \rightarrow A$ que extende $f$, ou seja, que comuta o diagrama (onde $i$ é a inclusão)
+% https://q.uiver.app/#q=WzAsMyxbMCwxLCJTIl0sWzEsMSwiRihTKSJdLFswLDAsIkEiXSxbMCwxLCJpIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyLCJmIl0sWzEsMiwiXFx0aWxkZXtmfSIsMl1d
+\[\begin{tikzcd}
+	A & \\
+	S & {F(S)}
+	\arrow["f", from=2-1, to=1-1]
+	\arrow["i"', hook, from=2-1, to=2-2]
+	\arrow["{\tilde{f}}"', from=2-2, to=1-1]
+\end{tikzcd}\]
+
+Vamos coletar as restrições induzidas por $\mathcal{B}$ em $S$ em um subconjunto $R \subset F(S)$. 
+
+Se $A$ é o complementar de $B$ em $\mathcal{B}$, então coloque $A \cap B$ e $\lnot A \cap \lnot B$ em $R$.
+
+Se $A$ é a interseção de dois conjuntos $B$ e $C$ em $\mathcal{B}$, então coloque $A \cap \lnot(B \cap C)$ e $\lnot A \cap (B \cap C)$ em $R$.
+
+Seja $I$ o ideal induzido por $R$ em $F(S)$. A álgebra de Boole que procuramos será o quociente de $F(S)$ por $I$, e a denotaremos por $F_{\mathcal{B}}(S)$.
+
+\begin{proposicao*}[A álgebra de Boole do espaço de perfis]
+O espaço de ultrafiltros de $F_{\mathcal{B}}(S)$ é homeomorfo a $\text{Per}(S)$.
+\end{proposicao*}
+\begin{prova}
+Dado um perfil $\tau: S \rightarrow \{0,1\}$, podemos usar a propriedade universal da álgebra livre pra obter um homomorfismo $\tilde{\tau}: F(S) \rightarrow \{0,1\}$. As condições de ser perfil garantem que $\tilde{\tau}$ restrita a $I$ é identicamente nula, o que garante que ela induza um homomorfismo bem definido $\tau': F_{\mathcal{B}}(S) \rightarrow \{0,1\}$, isto é, um ultrafiltro. Reciprocamente, todo homomorfismo $\tau: F_{\mathcal{B}}(S) \rightarrow \{0,1\}$ se restringe a uma função em $S$ (considerando $S \subset F_{\mathcal{B}}(S)$), que irá ser perfil devido a $\tau$ `restrita' a $I$ ser identicamente nula (em melhores palavras, que $\tau$ é uma função bem definida no quociente) (também, note aqui que preservar $\lnot$ e $\cap$ é suficiente pra concluir a outra condição de perfil, que preserva inclusão, pois $A \leq B$ se e só se $A \cap B = A$).
+
+Construímos nossa bijeção - resta mostrar que é um homeomorfismo. Um aberto básico $\{\tau \in \text{Per}(S) \mid \tau(b) = 1\}$, com $b \in S$, é levado pela bijeção em $\{\tau \in \text{Ult}(F_{\mathcal{B}}(S)) \mid \tau(b) = 1\}$, também um aberto básico. Como $S$ gera $F_{\mathcal{B}}(S)$, estes abertos básicos formam uma sub-base para a topologia de $\text{Ult}(F_{\mathcal{B}}(S))$. Ou seja, a bijeção induz uma bijeção entre os abertos, isto é, é um homeomorfismo.
+\end{prova}
+
+%\begin{pergunta}
+ % Existe alguma descrição natural a partir de $S$ da álgebra de Boole que dá origem ao espaço de Stone $\text{Per}(S)$?
+%\end{pergunta}
+% Sim!! :)
+
+Uma adaptação da construção anterior também garante que existe uma álgebra de Boole pro espaço de emaranhados.
 
 Defina $B(S)$ como sendo a álgebra de Boole gerada por $S \subset \mathcal{P}(V)$. Seja $\text{Ult}(B(S))$ seu espaço de ultrafiltros.
 

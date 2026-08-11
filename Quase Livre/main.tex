@@ -279,7 +279,7 @@
 
 Seja $G$ um grupo, e $X \subset G$ um subconjunto qualquer. Queremos construir um grupo que é `livre' sobre $X$ a menos de restrições existentes pela operação de $G$ em $X$.
 
-Formalmente, vamos primeiro criar o grupo livre usual sobre $X$, chamemos de $F(X)$. Consideramos $X \subset F(X)$, ou seja, denotamos elementos de $X$ com o mesmo nome que seu correspondente em $F(X)$. Daí, definimos $Q_G \subset F(X)$ como sendo o subgrupo normal gerado por $\{xyz^-1 \in F(X) \mid x,y,z \in X \text{ e } xy = z\}$. Defina $F_G(X) \defeq \frac{F(X)}{Q_G}$, o grupo quase livre sobre $X$.
+Formalmente, vamos primeiro criar o grupo livre usual sobre $X$, chamemos de $F(X)$. Consideramos $X \subset F(X)$, ou seja, denotamos elementos de $X$ com o mesmo nome que seu correspondente em $F(X)$. Daí, definimos $Q_G \subset F(X)$ como sendo o subgrupo normal gerado por $\{xyz^{-1} \in F(X) \mid x,y,z \in X \text{ e } xy = z\}$. Defina $F_G(X) \defeq \frac{F(X)}{Q_G}$, o grupo quase livre sobre $X$.
 
 O grupo livre usual admite uma caracterização via uma propriedade universal. Pra obtermos uma propriedade universal, precisamos considerar funções que são `quase' homomorfismos, mais precisamente, funções que são homomorfismos sempre que a operação está bem definida em $X$.
 
@@ -300,12 +300,25 @@ O grupo livre usual admite uma caracterização via uma propriedade universal. P
 onde $i: X \rightarrow F_G(X)$ é a inclusão (denotamos com a cor verde funções que são perfis, e vermelho funções que são homomorfismos).
 \end{proposicao*}
 \begin{prova}
-  A unicidade vem 
+  A unicidade vem do fato de que $X$ gera $F_G(X)$. Para a existência, usamos a propriedade universal do grupo livre pra obter um mapa $f': F(X) \rightarrow H$. Como construímos $F_G(X)$ via um quociente de $F(X)$, temos um homomorfismos sobrejetor $q: F(X) \rightarrow F_G(X)$, e chamando de $j: X \rightarrow F(X)$ a inclusão de $X$ em $F(X)$, temos o seguinte diagrama comutativo.
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJYIl0sWzAsMCwiSCJdLFsxLDEsIkZfRyhYKSJdLFsxLDAsIkYoWCkiXSxbMCwyLCJpIiwyLHsiY29sb3VyIjpbMTUxLDYyLDYwXX0sWzE1MSw2Miw2MCwxXV0sWzAsMSwiZiIsMCx7ImNvbG91ciI6WzE1MSw2Miw2MF19LFsxNTEsNjIsNjAsMV1dLFszLDEsImYnIiwyLHsiY29sb3VyIjpbMzUwLDQ0LDYwXX0sWzM1MCw0NCw2MCwxXV0sWzMsMiwicSIsMCx7ImNvbG91ciI6WzM1MCw0NCw2MF19LFszNTAsNDQsNjAsMV1dLFswLDMsImoiLDEseyJjb2xvdXIiOlsxNTEsNjIsNjBdfSxbMTUxLDYyLDYwLDFdXV0=
+\[\begin{tikzcd}
+	H & {F(X)} \\
+	X & {F_G(X)}
+	\arrow["{f'}"', color={rgb,255:red,198;green,108;blue,123}, from=1-2, to=1-1]
+	\arrow["q", color={rgb,255:red,198;green,108;blue,123}, from=1-2, to=2-2]
+	\arrow["f", color={rgb,255:red,90;green,216;blue,155}, from=2-1, to=1-1]
+	\arrow["j"{description}, from=2-1, to=1-2]
+	\arrow["i"', color={rgb,255:red,90;green,216;blue,155}, from=2-1, to=2-2]
+\end{tikzcd}\]
+
+Para que $f'$ desça para um morfismo bem definido no quociente, basta $f'(q^{-1}(1)) = \{1\}$. Como $q^{-1}(1)$ é o subgrupo normal gerado por $\{xyz^{-1} \in F(X) \mid x,y,z \in X \text{ e } xy = z\}$, basta então mostrar que $f'(xyz^{-1}) = 1$ quando $xy = z$, mas isto é exatamente o pedido de que $f$ seja perfil (lembrando que $f'$ restrito a $X$ é $f$). Portanto $f'$ induz um homomorfismo bem definido $\tilde{f}: F_G(X) \rightarrow H$ que comuta o diagrama pedido pela comutatividade do diagrama acima.
+
 \end{prova}
 
 Fazendo uma caça a diagrama usual, conseguimos provar que a propriedade universal caracteriza unicamente o grupo quase livre.
 
-A última proposição também mostra que há uma bijeção entre perfis de $X$ em $H$ e homomorfismos entre $F_G(X)$ e $H$.
+A última proposição também mostra que há uma bijeção entre perfis de $X$ em $H$ e homomorfismos entre $F_G(X)$ e $H$ - já que qualquer homomorfismo desssa forma é um perfil em $X$ se restringirmos a
 
 
 \end{document}
