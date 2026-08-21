@@ -1,0 +1,421 @@
+\documentclass[11pt]{article}
+
+% Pacotes
+\RequirePackage{luatex85}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsthm}
+\usepackage{framed, color,xcolor}
+\usepackage{stmaryrd}
+\usepackage{rotating}           % Usado para rotacionar o texto
+\usepackage[all,knot,arc,import,poly]{xy}   % Pacote para desenhos gráficos
+% Este pacote pode conflitar com outros pacotes gráficos como o ``pictex''
+% Então é necessário usar apenas um dos pacotes conflitantes
+\usepackage{tikz, tikz-cd}
+\usepackage{epigraph}
+\usetikzlibrary{babel}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usepackage[stix2]{newtxmath}
+\usepackage{mathtools, nccmath}
+%\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{amssymb, mathrsfs}
+%\usepackage[numbers]{natbib}
+\usepackage{fontspec}
+\usepackage{enumitem} % pra substituir o símbolo do itemize por alguma coisa legal, tipo setinhas:  \begin{itemize}[label=\ding{212}]
+\usepackage{pifont}
+\usepackage{stmaryrd} % for \arrownot (notação de adjacência em grafo)
+\usepackage{quiver} %pacote do quiver pra desenhar diagramas mais legais
+
+
+%Fontes e Línguas
+\usepackage[portuguese]{babel}
+%\usepackage{eufrak}
+\usepackage{emoji}
+\setmainfont{DarwinSerif-Regular.otf}
+\newfontfamily\fakebold[FakeBold=1.75]{DarwinSerif-Regular.otf}
+\newfontfamily\fakeitalic[FakeSlant=0.2]{DarwinSerif-Regular.otf}
+\renewcommand{\textbf}[1]{{\fakebold#1}}
+\renewcommand{\textit}[1]{{\fakeitalic#1}}
+\renewcommand{\bfseries}{\fakebold}
+\renewcommand{\itshape}{\fakeitalic}
+
+
+
+
+%Cores
+
+
+%Comandinhos que gosto
+\usepackage{mathtools}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\eqdef}{=\vcentcolon}
+\newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+\newcommand{\logo}{\Rightarrow}
+\newcommand{\pulinho}{\vspace{.5cm}}
+\newcommand{\edge}{%
+  \mathrel{-}% minus as a relation
+  \joinrel\joinrel % some backup
+  \mathrel{-}% minus as a relation
+}
+\newcommand{\notedge}{%
+  \mathrel{\mkern2mu}% a small advancement
+  \arrownot % a short slash
+  \mathrel{\mkern-2mu}% compensate
+  \edge
+}
+
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\Cay}{\text{Cay}}
+
+\newcommand{\luafacil}{
+\emoji{waxing-crescent-moon}
+}
+
+\newcommand{\luamedio}{
+\emoji{first-quarter-moon}
+}
+
+\newcommand{\luadificil}{
+\emoji{waxing-gibbous-moon}
+}
+
+\newcommand{\luaprojeto}{
+\emoji{full-moon}
+}
+
+\let\varphi\phi
+
+\newcommand{\prabaixo}[1]{\lceil #1 \rceil}
+\newcommand{\pracima}[1]{\lfloor #1 \rfloor}
+
+
+
+
+%Caixinhas coloridas
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Teorema}
+\newenvironment{teorema}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{theorem}
+}
+{
+\end{theorem}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{theorem*}{Teorema}
+\newenvironment{teorema*}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{theorem*}
+}
+{
+\end{theorem*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{prop}{Proposição}
+\newenvironment{proposicao}{
+\definecolor{shadecolor}{HTML}{FFDBDF}
+\begin{shaded}
+\begin{prop}
+}
+{
+\end{prop}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{prop*}{Proposição}
+\newenvironment{proposicao*}{
+\definecolor{shadecolor}{HTML}{FFDBDF}
+\begin{shaded}
+\begin{prop*}
+}
+{
+\end{prop*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{cor}{Corolário}
+\newenvironment{corolario}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{cor}
+}
+{
+\end{cor}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{cor*}{Corolário}
+\newenvironment{corolario*}{
+\definecolor{shadecolor}{HTML}{f59aa3}
+\begin{shaded}
+\begin{cor*}
+}
+{
+\end{cor*}
+\end{shaded}
+}
+
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definição}
+\newenvironment{definicao}{
+\definecolor{shadecolor}{HTML}{defcfc}
+\begin{shaded}
+\begin{definition}
+}
+{
+\end{definition}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{definition*}{Definição}
+\newenvironment{definicao*}{
+\definecolor{shadecolor}{HTML}{defcfc}
+\begin{shaded}
+\begin{definition*}
+}
+{
+\end{definition*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{example}{Exemplo}
+\newenvironment{exemplo}{
+\definecolor{shadecolor}{HTML}{b9e6d3}
+\begin{shaded}
+\begin{example}
+}
+{
+\end{example}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{example*}{Exemplo}
+\newenvironment{exemplo*}{
+\definecolor{shadecolor}{HTML}{b9e6d3}
+\begin{shaded}
+\begin{example*}
+}
+{
+\end{example*}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem{veronica}{Lema}
+\newenvironment{lema}{
+\definecolor{shadecolor}{HTML}{FFF1F2}
+\begin{shaded}
+\begin{veronica}
+}
+{
+\end{veronica}
+\end{shaded}
+}
+
+\theoremstyle{definition}
+\newtheorem*{veronica*}{Lema}
+\newenvironment{lema*}{
+\definecolor{shadecolor}{HTML}{FFF1F2}
+\begin{shaded}
+\begin{veronica*}
+}
+{
+\end{veronica*}
+\end{shaded}
+}
+
+\newenvironment{prova}{\paragraph{Demonstração:}}{\hfill$\square$ 
+\pulinho
+}
+
+\newenvironment{aviso}{
+\definecolor{shadecolor}{HTML}{fffe9a}
+\begin{shaded}
+}{\end{shaded}}
+
+\theoremstyle{definition}
+\newtheorem{exersisio}{Exercício}
+\newenvironment{exercicio}{
+\definecolor{shadecolor}{HTML}{CFB5FF}
+\begin{shaded}
+\begin{exersisio}
+}
+{
+\end{exersisio}
+\end{shaded}
+}
+
+
+\theoremstyle{definition}
+\newtheorem{preguta}{Pergunta}
+\newenvironment{pergunta}{
+\definecolor{shadecolor}{HTML}{FFF8F0}
+\begin{shaded}
+\begin{preguta}
+}
+{
+\end{preguta}
+\end{shaded}
+}
+
+%Tamanho do papel
+\usepackage[a4paper,top=1cm,bottom=1cm,margin=3.5cm]{geometry}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Definições só pra esse texto
+\usepackage[bb=boondox]{mathalpha}
+
+
+
+\title{Dualidade Árvore-Emaranhado}
+\author{Violeta Mar}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$.Chamamos os elementos de $\mathcal{E}$ de estrelas. Dizemos que duas estrelas $E_1,E_2 \in \mathcal{E}$ se colam via um $a \in S$ se vale que $a \in E_1, \lnot a \in E_2$.
+
+Vamos brincar aqui de colar estas estrelas com o objetivo de que todo $A$ cole com algum $\lnot A$ eventualmente. Vamos chamar de solução um subconjunto $T \subset \mathcal{E}$ tal que $\cup T$ é fechado pra complementar.
+
+Vamos dar aqui caracterizações para a existência de soluções para um dado $\mathcal{E}$, usando orientações e emaranhados. Lembrando, dado algum $S \subset \mathcal{B}$, uma orientação $\tau$ de $S$ é um mapa $\tau: S \rightarrow \{0,1\}$ tal que $\tau(A) = 0 \iff \tau(\lnot A) = 1$. Um emaranhado é uma orientação $\tau$ tal que $A\subset B$ implica $\tau(A) \leq \tau(B)$ - colocado de outra forma, estamos dizendo que se $\tau(A) = 1$ e $A \subset B$ então $\tau(B) = 1$. Vamos nos referir a esta propriedade como consistência - um emaranhado é, então, uma orientação consistente. Dizemos que uma orientação ou emaranhado $\tau$ satisfaz um $T \subset S$ se $\tau(t) = 1$ pra todo $t \in T$.
+
+\begin{proposicao}[Ida da Dualidade Fraca]
+  Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$. Seja $S$ o fecho pra complementar de $\cup \mathcal{E}$. Suponha que $S$ seja finito. Se $\mathcal{E}$ não admite solução, isto é, se não existe $\mathcal{T} \subset \mathcal{E}$ tal que $\cup \mathcal{T}$ é fechado pra complementar, então existe uma orientação $\tau$ de $S$ tal que pra todo $E \in \mathcal{E}$, temos que $\tau$ não satisfaz $E$.
+\end{proposicao}
+\begin{prova}
+Suponha que $\mathcal{E}$ não admite solução.
+
+Dado um conjunto de estrelas $\mathcal{F} \subset \mathcal{E}$, vamos colar todas estas estrelas e coletar em um conjunto os elementos delas que não foram pareados com seu complementar. Precisamente, definimos $ \mathcal{F}^* \defeq \{a \in \cup \mathcal{F} \mid \lnot a \notin \cup \mathcal{F}\}$. Agora vamos extender nosso conjunto de estrelas $\mathcal{E}$ para um maior $\overline{\mathcal{E}}$ com todos estes $\mathcal{F}^*$ - pensamos nisso como um fecho para a operação de colagem (veja que esta operação, como definimos, pode colar infinitas estrelas de uma vez). Isto é, $\overline{\mathcal{E}} \defeq \mathcal{E} \cup \{\mathcal{F}^* \mid \mathcal{F} \subset \mathcal{E}\}$.  Note que $\varnothing \in \overline{\mathcal{E}}$ se e somente se existe um $\mathcal{T} \subset \mathcal{E}$ tal que $\cup \mathcal{T}$ é fechado pra complementar. 
+
+Para um dado $X \subset S$, considere a seguinte propriedade
+
+\[
+(\star) \text{ para cada } E \in \overline{\mathcal{E}}\text{ existe } a \in E \text{ tal que } \lnot a \in X
+\]
+
+Defina $P = \{a \in S \mid \{a\} \notin \overline{\mathcal{E}}\}$. Vamos mostrar que $P$ satisfaz $(\star)$. Suponha que não - isto é, suponha que exista um $E \in \overline{\mathcal{E}}$ tal que pra todo $a \in E$, temos $\lnot a \notin P$, isto é, $\{\lnot a\} \in \overline{\mathcal{E}}\ $. Se $\{\lnot a\} \in \mathcal{E}$, defina $\mathcal{F}_a = \{\{\lnot a\}\}$ e se $\{\lnot a\} = \mathcal{F}^*$, defina $\mathcal{F}_a = \mathcal{F}$. Com isso, defina $\mathcal{T} \defeq \{E\} \cup \underset{a \in E}{\bigcup} \mathcal{F}_a$ quando $E \in \mathcal{E}$ e $\mathcal{T} \defeq \mathcal{F}_E \cup \underset{a \in E}{\bigcup} \mathcal{F}_a$ quando $E = \mathcal{F}_E^*$. Em ambos os casos, $\mathcal{T}$ é tal que $\cup \mathcal{T}$ é fechado pra complementar. Como supomos que $\mathcal{E}$ não admite solução, então temos uma contradição e podemos concluir que $(\star)$ vale para $P$.
+
+Agora, suponha que $a,\lnot a \in P$. Então não pode ser o caso que ambos $P \setminus {a}$ e $P \setminus {\lnot a}$ não satisfazem $(\star)$. Pois se isto acontecesse, teriamos duas estrelas $E_1, E_2 \in \overline{\mathcal{E}}$ tais que pra todo $b \in E_1$ temos $\lnot b \notin P \setminus {a}$ e pra todo $c \in E_2$ temos $\lnot c \notin P \setminus {a}$. Mas como $P$ satisfaz $(\star)$, existe um $x \in E_1$ tal que $\lnot x \in P$, e como $\lnot x \notin P \setminus {a}$, vamos ter que $\lnot x = a$, isto é, $\lnot a \in E_1$. Analogamente, temos que $a \in E_2$. Assim, $\{E_1,E_2\}^*$ seria uma contradição para propriedade $(\star)$ de $P$.
+
+Podemos então sucessivamente ir retirando um dos $a,\lnot a$ de $P$, em cada passo mantendo a propriedade $(\star)$ e eventualmente chegar em um conjunto $O \subset P$ que não contém dois elementos inversos um do outro. Colocado de outra forma, $O$ é o conjunto minimal em relação a inclusão que satisfaz $(\star)$ dentre os subconjuntos de $P$. A finitude de $S$ garante que este minimal existe. A prova está finalizada aqui: a orientação $\tau$ é a que valora todos os elementos de $O$ em $1$, seus inversos em $0$, e escolhe arbitrariamente entre $a$ e $\lnot a$ para elementos que não estão em $O$ nem tem seus inversos em $O$. A propriedade $(\star)$ de $O$ garante que $\tau$ não vai satisfazer nenhuma estrela de $\mathcal{E}$.
+
+\end{prova}
+
+Queremos agora trocar `orientação' por `emaranhado' neste último resultado. É com essa troca que vamos conseguir aplicações em grafos, como os teorema de dualidade entre decomposição de árvore e bramble (e possivelmente mais aplicações em lógica/conjuntos?). Pra isso, vamos ter que fortalecer nossas hipóteses, pedindo que o conjunto de estrelas $\mathcal{E}$ tenha uma certa propriedade, modelada em algo que vale para o caso de separações de grafos. Esta propriedade vai garantir que conseguiremos adaptar nossa construção da demonstração anterior de forma que a orientação se torne consistente, isto é, defina um emaranhado.
+
+A propriedade é a seguinte. Diga que $\mathcal{E}$ satisfaz a hipótese da dualidade se para quaisquer dois $E,F \in \overline{\mathcal{E}}$ (lembrando que este é o fecho definido na demonstração da proposição anterior), com $E = \{a, a_1, \dots, a_n\}, F = \{b, b_1, \dots, b_m\}$ satisfazendo $\lnot a \subset b$, vamos ter que existe um $x \in S$ tal que $\lnot b \subset x \subset a$ e existem estrelas $E',F' \in \overline{\mathcal{E}}$ com $E' = \{x, a_1',\dots, a_n'\}, F' = \{\lnot x, b_1', \dots, b_m'\}$ e $a_i \subset a_i', b_i \subset b_i'$.
+
+\begin{proposicao}[Ida da Dualidade Forte]
+  Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$. Seja $S$ o fecho pra complementar de $\cup \mathcal{E}$. Suponha que $S$ seja finito. Suponha que $\mathcal{E}$ satisfaz a hipótese da dualidade. Se $\mathcal{E}$ não admite solução, isto é, se não existe $\mathcal{T} \subset \mathcal{E}$ tal que $\cup \mathcal{T}$ é fechado pra complementar, então existe um emaranhado $\tau$ de $S$ tal que pra todo $E \in \mathcal{E}$, temos que $\tau$ não satisfaz $E$.
+\end{proposicao}
+
+\begin{prova}
+  Suponha que $\mathcal{E}$ não admita solução. Vamos traçar os mesmos passos da demonstração da ida da dualidade fraca, definindo $\overline{\mathcal{E}}$, $P$, e a propriedade $(\star)$, que $P$ irá satisfazer. Agora, para construirmos nosso $O \subset P$ que irá dar origem ao emaranhado, precisamos tomar mais cuidado para garantir que ele será consistente. Para isso, defina uma propriedade a mais: para um $X \subset S$ qualquer, considere
+
+  \[
+  (\bullet) \text{ se } a \in X \text{ e } a \subset b \text{ para um } b \in P \text{ então } b \in X
+  \]
+
+  Claramente $P$ satisfaz $\bullet$. A finitude de $S$ permite que tomemos um $O \subset P$ que é minimal em $\{X \subset P \mid X \text{ satisfaz } (\star) \text{ e } (\bullet)\}$.
+
+  Vamos mostrar que não pode existir em $O$ dois elementos $r,s$ tais que $r \subset \lnot s$. Isto vai nos permitir concluir, ao mesmo tempo, que $O$ vai induzir uma orientação (pois não pode existir $\{a,\lnot a\} \subset O$) e que essa orientação vai ser consistente.
+
+  Tome, então, $r,s \in O$ com $r \subset \lnot s$. Se existisse $r',s' \in O$ com $r' \subset r$ e $s' \subset s$, então $r' \subset \lnot s'$ - usando a finitude de $S$ novamente, podemos então supor que $r,s$ foram tomados minimais. 
+
+  $O \setminus r$ não pode satisfazer ambos $(\star)$ e $(\bullet)$ devido a minimalidade de $O$. Se $O \setminus r$ não satisfizesse $(\bullet)$, deveria existir um $a \in O\setminus r$ com $a \subset b$, $b \in P$ e $b \notin O\setminus r$. Como $a \in O$ e $O$ satisfaz $(\bullet)$, temos que $b \in O$ e portanto $b = r$. Como $r$ é minimal, então $a = r$, contradizendo $\ \in O \setminus r$. Concluimos que $O \setminus r$ não satisfaz $(\star)$, e igualmente também $O \setminus s$ não satisfaz $(\star)$.
+
+  Tome então $E_r,E_s \in \overline{\mathcal{E}}$ tais que pra todo $a \in E_r$, temos $\lnot a \notin O \setminus r$ e todo $b \in E_s$, temos $\lnot b \notin O \setminus s$. Como $O$ satisfaz $(\star)$, deve existir um $x \in E_r,y \in E_s$ tais que $\lnot x \in O, \lnot y \in O$ - e portanto $x = \lnot r, y = \lnot s$. Chame $E_r = \{\lnot r, a_1,\dots, a_n\}$ e $E_s = \{\lnot s, b_1, \dots, b_m\}$. Se algum dos $\lnot a_i$ não estivesse em $P$, então isso significaria que $\{\lnot a_i\} \in \overline{\mathcal{E}}$, e aí poderíamos fazer a colagem de $E_r$ com $\{\lnot a_i\}$ para obter que $E_r \setminus \{a_i\} \in \overline{\mathcal{E}}$ - e este ainda é uma testemunha para $O \setminus r$ não satisfazer $(\star)$. Podemos supor, então, que realizamos este processo a quantidade de vezes necessária para chegarmos em um $E_r$ tal que seus elementos $a_i$ são todos tais que $\lnot a_i \in P$. Igualmente, tomamos o $E_s$ tal que todos os $b_i$  estão em $P$.
+
+Finalmente vamos utilizar a hipótese de dualidade. Lembrando que $r \subset \lnot s$, aplique a hipótese de dualidade em $E_r$ e $E_s$. Obtemos assim, duas estrelas $E_r' = \{a,a_1',\dots,a_n'\}, E_s' = \{\lnot a, b_1', \dots, b_m'\}$ em $\overline{\mathcal{E}}$ tais que $\lnot s \subset a \subset \lnot r$, $a_i \subset a_i'$, $b_i \subset b_i'$. Veja que $\lnot a_i' \notin O$, pois se esse não fosse o caso, então $\lnot a_i$ seria um elemento de $P$ que contém $\lnot a_i \in O$, e pela propriedade $(\bullet)$, teriamos $\lnot a_i \in O$, que já sabemos que não vale. Igualmente, $\lnot b_i' \notin O$. Como a colagem de $E_r'$ com $E_s'$ resulta em uma estrela de $\overline{\mathcal{E}}$ cujos elementos estão dentre os $a_i',b_i'$, ela seria então uma testemunha para $O$ não satisfazer $(\star)$ - contradição.
+
+  Assim, chegamos a conclusão que $O$ é um subconjunto de $S$ tal que $a \in O \implies \lnot a \notin O$ e que se fecharmos $O$ para cima em relação a inclusão, isto é, $\overline{O} = \{x \in S \mid a \subset x \text{ para algum } a \in O\}$, então este fecho ainda satisfaz $x \in \overline{O} \implies \lnot x \notin \overline{O}$. Definimos $\tau$ como $1$ para todo elemento de $\overline{O}$, e $0$ para todos os seus inversos. Para o resto de $S$, extenda $\tau$ de qualquer maneira que o mantenha consistente. Dessa forma, chegamos a um emaranhado $\tau$ que devido a propriedade $(\star)$ de $O$, não irá satisfazer nenhuma estrela de $\mathcal{E}$.
+
+\end{prova}
+
+Mostramos que a não existência de uma orientação que não satisfaz nenhuma estrela de $\mathcal{E}$ é uma condição suficiente para garantirmos a existência de uma solução. Mas não é uma condição necessária: ciclos dão origem a soluções, e também a orientações que não satisfazem estrelas. Por exemplo, se tomarmos $\mathcal{E} = \{\{a,\lnot b \}, \{b, \lnot c\}, \{c, \lnot a\}\}$, então a união de todas estas estrelas é fechado para complementar, e a orientação $\tau$ que escolhe $\tau(b) = 1, \tau (c) = 1, \tau (a) = 1$ não satisfaz nenhuma estrela.
+
+Formalmente, definimos um ciclo em $\mathcal{E}$ como sendo uma sequência de estrelas $E_1, \dots, E_n$ em $\mathcal{E}$ tal que $E_i$ cola com $E_{i+1}$ e $E_n$ cola com $E_1$ - onde essas colagens acontecem todas via elementos de $S$ distintos.
+
+A demonstração a seguir é apenas uma adaptação da clássica demonstração de que em uma árvore direcionada deve existir uma fonte (um vértice com todas as arestas apontando para ele) - basta tomar um caminho direcionado maximal e ver que ele deve terminar em uma fonte.
+
+\begin{proposicao}[Volta da Dualidade Fraca e Forte]
+  Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$. Seja $S$ o fecho pra complementar de $\cup \mathcal{E}$. Suponha que $S$ seja finito. Se $\mathcal{E}$ admite solução, isto é, se existe um $\mathcal{T} \subset \mathcal{E}$ tal que $\cup \mathcal{T}$ é fechado pra complementar, então ou existe um ciclo em $\mathcal{E}$ ou toda orientação $\tau$ (e portanto todo emaranhado) de $S$ satisfaz algum $E \in \mathcal{E}$.
+\end{proposicao}
+\begin{prova}
+Suponha que temos uma solução $\mathcal{T}$. Tome uma orientação $\tau$ de $S$ qualquer. Vamos traçar um caminho pelas estrelas de $\mathcal{T}$ usando $\tau$ como referência. Comece com algum $E_1 \in \mathcal{T}$ qualquer. Se $\tau$ satisfaz $E_1$, acabamos. Caso contrário, existe $a_1 \in E_1$ tal que $\tau(a_1) = 0$. Deve existir um $E_2 \in \mathcal{T}$ tal que $\lnot a_1 \in E_2$. Se $\tau$ satisfaz $E_2$, então acabamos. Caso contrário, deve existir $a_2 \in E_2$ tal que $\tau(a_2) = 0$. Deve existir um $E_3 \in \mathcal{T}$ tal que $\lnot a_2 \in E_3$. Se $\tau$ não satisfizesse nenhum $E \in \mathcal{E}$, poderíamos continuar este processo indefinitivamente, obtendo uma sequência $E_1, E_2, \dots, E_i, E_{i+1}, \dots $ onde cada $E_i$ cola com $E_{i+1}$. Devido a finitude de $\cup \mathcal{E}$, esta sequência de estrelas deve conter um ciclo.
+
+\end{prova}
+
+Juntando a ida e a volta, obtemos os resultados que queremos.
+
+\begin{teorema*}[Dualidade Árvore-Emaranhado Fraca]
+  Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$. Seja $S$ o fecho pra complementar de $\cup \mathcal{E}$. Suponha que $S$ seja finito, e que $\mathcal{E}$ não admita ciclos. Então vale um dos dois, e não ambos:
+  
+  \begin{itemize}[label=\ding{212}]
+  \item existe um subconjunto $T \subset \mathcal{E}$ tal que $\cup T$ é fechado pra complementar
+  \item existe uma orientação $\tau$ de $S$ que não satisfaz $E$ para toda estrela $E \in \mathcal{E}$.
+\end{itemize}
+\end{teorema*}
+\begin{prova}
+  A volta da Dualidade Forte e Fraca garante que ambos não valem, e Ida da Dualidade Fraca garante que pelo menos um vale.
+\end{prova}
+
+\begin{teorema*}[Dualidade Árvore-Emaranhado Forte]
+  Seja $\mathcal{B}$ uma álgebra de Boole e considere $\mathcal{E} \subset \mathcal{P}(\mathcal{B})$. Seja $S$ o fecho pra complementar de $\cup \mathcal{E}$. Suponha que $S$ seja finito, e que $\mathcal{E}$ não admita ciclos. Suponha que $\mathcal{E}$ satisfaz a hipótese da dualidade. Então vale um dos dois, e não ambos:
+  
+  \begin{itemize}[label=\ding{212}]
+  \item existe um subconjunto $T \subset \mathcal{E}$ tal que $\cup T$ é fechado pra complementar
+  \item existe um emaranhado $\tau$ de $S$ que não satisfaz $E$ para toda estrela $E \in \mathcal{E}$.
+\end{itemize}
+\end{teorema*}
+\begin{prova}
+  A volta da Dualidade Forte e Fraca garante que ambos não valem, e Ida da Dualidade Forte garante que pelo menos um vale.
+\end{prova}
+
+
+%Mostrar que minha versão implica a versão do Diestel - ou, melhor talvez, mostrar que implica no tree-decomp e bramble tree width duality? Mostrar alguma aplicação desse teorema, pelo menos?
+
+
+
+\begin{pergunta}
+  Existe uma generalização pro infinito natural destes teoremas?
+
+  A volta da Dualidade generaliza para: se existe solução, então ou existe um ciclo ou toda orientação seleciona uma estrela ou um raio, onde um raio é uma sequência de estrelas que se colam.
+
+  A ida eu tinha achado que uma demonstração anterior que eu tinha feito generalizava pro infinito, mas agora não tenho certeza se aquela prova estava certa. Essa que apresentei aqui não parece obviamente generalizar pro infinito.
+\end{pergunta}
+
+
+%Ideia do aurichi de pensar classes de grafos caracterizadas por conjuntos de estrelas? (todos os grafos que nascem colando estrelas desse conjunto)
+
+%Escrever versão bonitinha como puzzle
+
+
+
+
+\end{document}

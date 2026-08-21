@@ -307,5 +307,49 @@ Intuições:
 -> quando algo é compacto, suas propriedades gerais são capturadas pelas propriedades de seus subconjuntos finitos
 
 
+Proposta de roteiro:
+
+1o dia: começar com konig lemma e  de brujin erdos contável. lógica! teorema da compacidade em lógica de primeira ordem. aplicações: upward Lowen-Skolem (modelos elementares pra cima), nonstandard models de PA, completude de ACF e consequências,
+
+2o dia: "existencia de ultrafiltro", ultraproduto, prova de compacidade via ultraproduto, nonstandard analysis
+
+3o dia: topologia! generalizar konig lema com "limite inverso de não vazio é não vazio", tychonoff, mostrar como o teorema de compacidade pode ser visto nesse framework, aplicação: infinite ramsey implica finite ramsey?
+
+
+\section{Dia 1}
+
+Vamos tentar descrever um fenômeno que se repete muitas vezes pelo mundo da Combinatória Infinita. Chamamos de `o fenômeno da compacidade', onde, em algum sentido, uma estrutura infinita pode ser construída colando coerentemente estruturas finitas. Existem muitas formulações equivalentes, e em diferentes níveis de força. Vou dar aqui as minhas favoritas, com tentativas de construir intuição sobre como elas funcionam, e me esforçando para minimizar pré-requisitos. Noções gerais de topologia, lógica e conjuntos provavelmente vão ser o suficiente para acompanhar o texto, e se não forem, espero que as referências ajudem - além delas também aprofundarem a discussão.
+
+Ao longo do texto, coloco exercícios para interromper o fluxo de leitura passiva e incentivar uma atividade do leitor (você). Eles são marcados com um nível de dificuldade: \luafacil são mais alongamentos do que exercícios, coletando continhas ou raciocínios rotineiros; \luamedio são realmente exercícios, pedem mais atenção e tempo; \luadificil são desafios para os apaixonados, e \luaprojeto são jornadas, projetos de pesquisa ou problemas em aberto.
+
+Vamos começar com a versão mais simples do fenômeno - o Lema de König. Imagine que você está construindo algo, passo a passo, que vai precisar de um número infinito (enumerável...!) de passos para ser completado. Mas tem um problema: a cada passo, você tem finitas escolhas a serem feitas, e algumas delas podem levar a ruas sem saída, ou seja, passos onde não há escolhas possíveis para se continuar. O Lema de König é uma formulação do fato simples de que, se em todo momento existe uma escolha que leva a infinitas mais escolhas, então existe pelo menos um jeito de se completar a sua construção. Em um desenho:
+
+\begin{center}
+\includegraphics[scale=1.5]{desenhos/konig.png}
+\end{center}
+
+Visualizamos cada estado da nossa construção (ou seja, construções parciais) como uma destas bolinhas, e realizar um passo é subir através de uma aresta até outra bolinha acima. O lema será uma afirmação sobre desenhos deste tipo, que chamamos de árvores, formalizadas na linguagem de teoria de grafos.
+
+Rapidinho, as definições necessárias. Um grafo é um conjunto $V$, cujos elementos chamamos de vértices, com uma relação simétrica $E \subset V \times V$, representando quando dois vértices em $V$ estão ligados por uma aresta (neste caso, dizemos que os dois vértices são vizinhos ou adjacentes). Um caminho em um grafo é uma sequência de vértices $(v_n)$ onde existe sempre uma aresta entre $v_n$ e $v_{n+1}$. Um grafo é conexo se dados dois vértices, existe um caminho entre eles. Um grafo é uma árvore se ele é conexo e não contém ciclos, ou seja, caminhos que começam e terminam no mesmo vértice. Um grafo é infinito quando ele possui infinitos vértices, e um caminho é infinito se ele passa por infinitos vértices. Um grafo é localmente finito se todo vértice só está ligado a finitos outros vértices.
+
+Para brincar com as definições:
+
+\begin{exercicio}
+  (\luamedio) Se convença que uma árvore infinita com uma escolha de vértice é a mesma coisa que uma sequência infinita $(V_n)$ de conjuntos com funções $f_n:V_{n+1} \rightarrow V_n$ e $V_0$ contendo apenas um ponto (dica: $V_0$ é o vértice escolhido, $V_{n+1}$ são os vizinhos dos vértices em $V_n$, e $f_n$ te diz como eles estão conectados).
+
+  Nessa formulação, prove que a árvore é localmente finita se e somente se cada $V_n$ é finito.
+\end{exercicio}
+
+Esse primeiro exercício não vai ser necessário para a demonstração do lema de König, mas mais tarde vamos usar essa formulação pra generalizar o lema pra uma versão mais forte de compacidade.
+
+\begin{teorema}[Lema de König]
+  Seja $T$ uma árvore infinita localmente finita. Então $T$ possui um caminho infinito.
+\end{teorema}
+\begin{prova}
+\end{prova}
+
+
+
+
 
 \end{document}
