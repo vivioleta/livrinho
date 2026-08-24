@@ -343,9 +343,21 @@ Para brincar com as definições:
 Esse primeiro exercício não vai ser necessário para a demonstração do lema de König, mas mais tarde vamos usar essa formulação pra generalizar o lema pra uma versão mais forte de compacidade.
 
 \begin{teorema}[Lema de König]
-  Seja $T$ uma árvore infinita localmente finita. Então $T$ possui um caminho infinito.
+ Uma árvore infinita localmente finita sempre contém um caminho infinito.
 \end{teorema}
 \begin{prova}
+  Vamos começar nosso caminho infinito numa árvore $T$ a partir de um vértice arbitrário $v_0 \in T$. Como $T$ é infinita e conexa, existem infinitos caminhos diferentes partindo de $v_0$. O próximo vértice depois de $v_0$ em um qualquer um destes caminhos é um vértice vizinho de $v_0$. Mas $v_0$ só contém finitos vizinhos, então deve existir pelo menos um vizinho tal que infinitos caminhos partindo de $v_0$ tem como segundo vértice este vizinho. Escolha este vizinho para ser o nosso próximo vértice $v_1$. Agora temos infinitos caminhos saindo de $v_1$ e, lembrando que caminhos não repetem vértices, podemos então repetir o mesmo argumento que acabamos de fazer com os vizinhos de $v_0$ menos o $v_1$. Assim, obtemos outro $v_2$ vizinho de $v_1$ com infinitos caminhos partindo dele. Continuando assim, indutivamente, construímos um caminho infinito $(v_n)$.
+\end{prova}
+
+Vamos aplicar este resultado pra provar uma simplificação de um resultado clássico da teoria de grafos infinitos. Colorir vértices é uma grande diversao dos teoristas de grafos: uma $k$-coloração de um grafo é uma associação de cada vértice a uma cor dentre um conjunto de $k$ cores de forma que vértices vizinhos recebem cores diferentes. Uma pergunta simples de se fazer é, dado um grafo, qual o menor número de cores que precisamos ter para conseguirmos fazer uma coloração? Um resultado famoso desta área é o teorema das quatro cores, que diz que se o seu grafo é planar (intuitivamente, isso significa que ele pode ser desenhado em um plano sem arestas cruzando) então com certeza com $4$ cores você consegue. Provar isto é surpreendentemente difícil, e foi uma das primeiras demonstrações feitas com assistência de computadores nos anos 70. Este teorema foi provado pra grafos finitos, mas ele vai valer para infinitos também porque aqui conseguimos usar o truque da compacidade: reduzimos a pergunta da existência de uma $k$-coloração em um grafo infinito para a existência de uma $k$-coloração em cada um dos seus subgrafos finitos (lembrando aqui que um subgrafo é obtido através de um subconjunto de vértices e também um subconjunto de arestas do seu grafo maior).
+
+\begin{teorema}[De Bruijn-Erdös contável]
+  Seja $G$ um grafo contável. Então existe uma $k$-coloração para $G$ se e somente se existe uma $k$-coloração para cada subgrafo $G' \subset G$.
+\end{teorema}
+\begin{prova}
+  Vamos chamar $k$-coloração apenas de coloração pra facilitar nossa vida. A ida é clara - uma coloração do grafo todo se reduz a uma coloração de seus subgrafos. Primeiro perceba o problema da volta. Se começarmos a partir de uma coloração qualquer de um subgrafo $G'$, gostaríamos de extender esta coloração. Poderiamos ingenuamente pensar: tome um subgrafo maior contendo $G'$ e tome uma coloração para este subgrafo maior. Mas ela pode não extender a coloração original, ou seja, ela pode escolher cores diferentes das quais você tinha escolhido antes para os vértices de $G'$. Assim, não é claro porque um processo indutivo que iria aumentando os subgrafos considerados e tomando as colorações existentes realmente convergeria para uma coloração bem definida após infinitos passos. Pra isso acontecer, estas colorações precisam estar `encaixadas', ou seja, concordarem umas com as outras. Conseguimos mostrar a existência destas colorações encaixadas através do Lema de König.\\
+
+  Vamos construir uma árvore $T$ indutivamente. Escolha um vértice qualquer de $G$ e considere o subgrafo finito $G_0$ contendo apenas este vértice. Defina $G_{n+1}$ como sendo o subgrafo de $G$ de todos os vértices de distânciaO primeiro vértice de $T$ será uma coloração arbitrária de $G_0$. 
 \end{prova}
 
 
