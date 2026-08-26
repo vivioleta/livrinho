@@ -335,7 +335,7 @@ Rapidinho, as definições necessárias. Um grafo é um conjunto $V$, cujos elem
 Para brincar com as definições:
 
 \begin{exercicio}
-  (\luamedio) Se convença que uma árvore infinita com uma escolha de vértice é a mesma coisa que uma sequência infinita $(V_n)$ de conjuntos com funções $f_n:V_{n+1} \rightarrow V_n$ e $V_0$ contendo apenas um ponto (dica: $V_0$ é o vértice escolhido, $V_{n+1}$ são os vizinhos dos vértices em $V_n$, e $f_n$ te diz como eles estão conectados).
+  (\luamedio) Se convença que uma árvore infinita com uma escolha de vértice é a mesma coisa que uma sequência infinita $(T_n)$ de conjuntos com funções $f_n:T_{n+1} \rightarrow T_n$ e $T_0$ contendo apenas um ponto (dica: $T_0$ é o vértice escolhido, $T_{n+1}$ são os vizinhos dos vértices em $T_n$, e $f_n$ te diz como eles estão conectados).
 
   Nessa formulação, prove que a árvore é localmente finita se e somente se cada $V_n$ é finito.
 \end{exercicio}
@@ -351,15 +351,136 @@ Esse primeiro exercício não vai ser necessário para a demonstração do lema 
 
 Vamos aplicar este resultado pra provar uma simplificação de um resultado clássico da teoria de grafos infinitos. Colorir vértices é uma grande diversao dos teoristas de grafos: uma $k$-coloração de um grafo é uma associação de cada vértice a uma cor dentre um conjunto de $k$ cores de forma que vértices vizinhos recebem cores diferentes. Uma pergunta simples de se fazer é, dado um grafo, qual o menor número de cores que precisamos ter para conseguirmos fazer uma coloração? Um resultado famoso desta área é o teorema das quatro cores, que diz que se o seu grafo é planar (intuitivamente, isso significa que ele pode ser desenhado em um plano sem arestas cruzando) então com certeza com $4$ cores você consegue. Provar isto é surpreendentemente difícil, e foi uma das primeiras demonstrações feitas com assistência de computadores nos anos 70. Este teorema foi provado pra grafos finitos, mas ele vai valer para infinitos também porque aqui conseguimos usar o truque da compacidade: reduzimos a pergunta da existência de uma $k$-coloração em um grafo infinito para a existência de uma $k$-coloração em cada um dos seus subgrafos finitos (lembrando aqui que um subgrafo é obtido através de um subconjunto de vértices e também um subconjunto de arestas do seu grafo maior).
 
-\begin{teorema}[De Bruijn-Erdös contável]
-  Seja $G$ um grafo contável. Então existe uma $k$-coloração para $G$ se e somente se existe uma $k$-coloração para cada subgrafo $G' \subset G$.
+\begin{teorema}[De Bruijn-Erdös localmente finito]
+  Seja $G$ um grafo (infinito) localmente finito. Então existe uma $k$-coloração para $G$ se e somente se existe uma $k$-coloração para cada subgrafo $G' \subset G$.
 \end{teorema}
 \begin{prova}
   Vamos chamar $k$-coloração apenas de coloração pra facilitar nossa vida. A ida é clara - uma coloração do grafo todo se reduz a uma coloração de seus subgrafos. Primeiro perceba o problema da volta. Se começarmos a partir de uma coloração qualquer de um subgrafo $G'$, gostaríamos de extender esta coloração. Poderiamos ingenuamente pensar: tome um subgrafo maior contendo $G'$ e tome uma coloração para este subgrafo maior. Mas ela pode não extender a coloração original, ou seja, ela pode escolher cores diferentes das quais você tinha escolhido antes para os vértices de $G'$. Assim, não é claro porque um processo indutivo que iria aumentando os subgrafos considerados e tomando as colorações existentes realmente convergeria para uma coloração bem definida após infinitos passos. Pra isso acontecer, estas colorações precisam estar `encaixadas', ou seja, concordarem umas com as outras. Conseguimos mostrar a existência destas colorações encaixadas através do Lema de König.\\
 
-  Vamos construir uma árvore $T$ indutivamente. Escolha um vértice qualquer de $G$ e considere o subgrafo finito $G_0$ contendo apenas este vértice. Defina $G_{n+1}$ como sendo o subgrafo de $G$ de todos os vértices de distânciaO primeiro vértice de $T$ será uma coloração arbitrária de $G_0$. 
+  Vamos construir uma árvore $T$ indutivamente. Escolha um vértice qualquer de $G$ e considere o subgrafo finito $G_0$ contendo apenas este vértice. Defina $G_{n+1}$ como sendo o subgrafo de $G$ contendo $G_n$ e todos os vizinhos dos vértices de $G_m$. Agora, o primeiro vértice $r$ de $T$ será uma coloração arbitrária de $G_0$, e chamamos $T_0 = \{r\}$ de nível $0$ da árvore. Os próximos vértices serão todas as colorações de $G_1$ que extendem a coloração associada à $r$ e os ligamos com uma aresta ao $r$. Estes vértices coletamos no conjunto $T_1$, que chamamos de nível $1$ da árvore. Indutivamente, se já construímos um nível $T_n$ onde todos os elementos correspondem a colorações de $G_n$, criamos o nível $T_{n+1}$ com um vértice para cada coloração de $G_{n+1}$ e pra cada um destes, o ligamos ao vértice de $T_n$ correspondendo a coloração de $G_n$ da qual ela extende.\\
+
+  Como $G$ é infinito, então $T$ é infinito, e como $G$ é localmente finito, cada um dos $G_n$ vão ser finitos e logo $T$ é localmente finito. Pelo Lema de König, $T$ deve conter um caminho infinito. Um caminho infinito em $T$ corresponde a uma sequência de colorações dos $G_n$, uma extendendo a outra. Logo a união de todas estas colorações é uma coloração bem definida. Esta coloração está definida na união de todos os $G_n$, que é $G$.
 \end{prova}
 
+A brincadeira aqui foi usar uma árvore que capturava como construções locais se extendiam (como eles eram coerentes entre si), e o lema de König garantia uma sequência destas construções locais que se extendiam mutuamente, e portanto definiam uma construção global coerente para estrutura toda. A fraqueza do lema de König é que você precisa pedir que existam apenas finitas extensões de cada construção (a hipótese de `localmente finito'). Vamos capturar agora o fenômeno de compacidade na sua versão mais forte - o Teorema da Compacidade da lógica de primeira ordem. Ele vai ser capaz de provar o De Bruijn-Erdös para qualquer grafo, não só os localmente finitos.\\
+
+Vamos fazer um rapidíssimo resumo de o que é a lógica de primeira ordem, focando apenas nas definições necessárias para afirmarmos o Teorema da Compacidade. Recomendo bastante o texto da Anush para quem quiser ver mais detalhes - vou fazer referência a esse texto algumas vezes no livro. \\
+
+A ideia aqui é capturar, em uma linguagem formal, o processo de raciocínio matemático. Os símbolos de uma \textbf{linguagem} de primeira ordem $L$ vão ser
+
+\begin{itemize}[label=\ding{212}]
+  \item os conectivos lógicos $\vee,\wedge, \lnot, \rightarrow$
+  \item os quantificadores $\exists, \forall$
+  \item para cada natural $n$ um símbolo de variável $v_n$
+  \item o símbolo de igualdade $=$
+  \item um conjunto $R$ de símbolos de relações
+  \item um conjunto $F$ de símbolos de funções
+  \item um conjunto $C$ de símbolos de constantes
+  \item pontuações $, ( )$
+\end{itemize}
+
+Para especificarmos $L$, precisamos decidir quantos símbolos de relações, funções e constantes vamos ter, e também qual a `aridade' de cada relação e função (a aridade vai representar quantos `inputs' uma relação ou uma função recebe, quando formos interpretar estes símbolos). Uma \textbf{assinatura} $\sigma$ consiste exatamente disso: um cardinal para cada $R,F,C$ e duas funções $\sigma_R: R \rightarrow \mathbb{N}, \sigma_F: F \rightarrow \mathbb{N}$ que interpretamos como especificando sua aridade.
+
+A linguagem $L_{Con}$ de teoria de conjuntos é a dada pela seguinte assinatura: temos $0$ constantes e $0$ funções e $1$ símbolo relacional, que denotamos como $\in$ que tem aridade $2$.
+
+A linguagem $L_{Grf}$ de teoria de grafos é dada pela seguinte assinatura: temos $0$ constantes e $0$ funções e $1$ símbolo relacional, que denotamos como $\edge$ que tem aridade $2$.
+
+Espera, mas essas estruturas são iguais! Apenas usamos um nome diferente pro símbolo de relação binária para cada um. O que está acontecendo aqui é simples: em conjuntos nos importamos apenas com uma relação, a de pertencimento, e em grafos, com a de adjacência. As expressões destas linguagem são as mesmas, mas vamos ver grande diferença quando formos considerar a semântica destas expressões. Por exemplo, em teoria de conjuntos, vai ser um axioma que $\exists x (x \in x)$ é uma afirmação falsa mas em teoria de grafos esta afirmação pode ser verdadeira, representando um grafo onde um vértice possui uma aresta que liga ele nele mesmo.
+
+A linguagem $L_{Grp}$ de teoria de grupos é dada pela seguinte assinatura: temos $1$ constante, denotada por $e$, temos $1$ função de aridade $2$, denotada por $*$ e $0$ relações.
+
+A linguagem $L_{Art}$ da aritmética é dada pela seguinte assinatura: temos $1$ constante, denotada por $0$, temos $3$ funções, denotadas por $S$ de aridade $1$ (sucessor), $+$ de aridade $2$ (soma) e $\cdot$ de aridade $2$ (produto).
+
+\begin{exercicio}
+  \luafacil Dê uma assinatura possível para a teoria de anéis.
+\end{exercicio}
+
+Queremos juntar estes símbolos em `frases' (strings) que gostaríamos que expressassem de alguma maneira afirmações sobre objetos matemáticos. Primeiro descrevemos quais são as formas permitidas de se juntar estes símbolos para se criar estas frases (sintática), e depois vamos descrever como decidir o que estas frases estão expressando, isto é, a interpretação com significado delas (semântica). 
+
+Fixe uma linguagem $L$ definida por alguma assinatura $\sigma$. Uma \textbf{expressão} é simplesmente uma sequência arbitrária de símbolos da linguagem (por exemplo, digamos, $\exists \exists ( v f \forall$, uma bagunça). Vamos escolher um subconjunto comportado de expressões. Primeiro definimos \textbf{termos}. Símbolos de variáveis e símbolos de constantes são termos, e se $t_1, \dots, t_n$ são termos e $f$ um símbolo de função com aridade $n$ então a expressão $f(t_1,\dots, t_n)$ é um termo.
+
+\begin{exercicio}
+  \luafacil Dê exemplos de termos na linguagem da aritmética.
+\end{exercicio}
+
+Com termos, podemos definir \textbf{fórmulas}. Primeiramente, as \textbf{fórmulas atômicas} são expressões da forma
+
+\begin{itemize}[label=\ding{212}]
+  \item $t = s$ onde $t,s$ são termos
+  \item $r(t_1, \dots, t_n)$ onde $t_1, \dots, t_n$ são termos e $r$ é uma relação de aridade $n$.
+\end{itemize}
+
+O conjunto de todas as fórmulas é construido recursivamente a partir das atômicas e de usos sucessivos dos conectivos lógicos e dos quantificadores. Formalmente, uma expressão é uma fórmula se ela é de uma das formas
+
+\begin{itemize}[label=\ding{212}]
+  \item \lnot \phi
+  \item \phi \vee \psi
+  \item \phi \wedge \psi
+  \item \phi \rightarrow \psi
+  \item \exists v \phi
+  \item \forall v \phi
+\end{itemize}
+
+para alguma fórmula $\phi$ ou para duas fórmulas $\phi,\psi$, com $v$ sendo algum símbolo de variável.
+
+Os nomes que estamos dando para todos estes símbolos (variáveis, constantes, conectivos lógicos e etc) sugerem fortemente qual é o significado que queremos que as fórmulas tenham. Por exemplo, na linguagem da aritmética, $\forall v (S(v) + v = S(v + v))$ é a afirmação que queremos que diga que para todo número natural $v$, a soma de $v$ com seu sucessor é igual ao sucessor da soma de $v$ com ele mesmo. Formalmente, no entanto, até agora definimos apenas um conjunto especial de strings de símbolos. Para definirmos a semântica, precisamos de algo que vamos chamar de estrutura.\\
+
+Uma \textbf{estrutura} para uma linguagem $L$ é a escolha de:
+
+\begin{itemize}[label=\ding{212}]
+  \item um conjunto $M$ (o chamado `universo de discurso')
+  \item para cada símbolo de constante $c \in C$, um elemento $c_M \in M$
+  \item para cada símbolo de função $f \in F$ com aridade $n$, uma função $f_M: M^n \rightarrow M$
+  \item para cada símbolo de relação $r \in R$ com aridade $n$, uma relação $r_M \subset M^n$
+\end{itemize}
+
+Agora estamos falando de funções, relações e constantes de verdade, não apenas símbolos!\\
+
+Vamos interpretar as fórmulas em $M$. Pra isso vamos ter que passar pelo rito de passagem levemente sofrido no estudo de lógica de primeira ordem que é falar de variáveis livres e substituições de constantes. Perceba que nas nossas fórmulas, permitimos que símbolos de variáveis não estejam sempre ligados a quantificadores. No exemplo que demos da linguagem da aritmética,a fórmula $\forall v (S(v) + v = S(v + v))$ dizia uma afirmação sobre todos os números mas a expressão $S(v) + v = S(v + v)$ também é uma fórmula - porém aqui, $v$ está `livre' (não quantificado). 
+
+\begin{exercicio}
+  \luamedio Dê uma definição formal para quando uma fórmula contém uma variável livre, e defina uma \textbf{sentença} como uma fórmula sem variáveis livres. (se você se embananar, dê uma olhada na definição da Anush)
+\end{exercicio}
+
+Dada uma fórmula $\gamma$ com variáveis livres dentre os símbolos $v_1, \dots, v_n$, e uma escolha de $n$ elementos $m_1,\dots, m_n$ em $M$, vamos definir formalmente o que significa que $\gamma$ vale em $M$ com cada $v_i$ substituído pelo $m_i$. Denotamos isto como $M \vDash \gamma[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$. Quando $n = 0$, ou seja, $\gamma$ é sentença, então escrevemos apenas $M \vDash \gamma$. Se você já viu isso antes, ou a definição é muito intuitivamente óbvia para você do que deveria significar, se sinta livre para pular os próximos parágrafos...
+
+Começamos com as fórmulas atômicas. Primeiramente
+
+\begin{exercicio}
+  \luafacil Dado uma estrutura $M$, se convença que para cada termo sem variáveis livres $t$ temos um elemento $t_M \in M$. Já para um termo $t$ com $n$ variáveis livres, temos um elemento $t_M[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n] \in M$ para cada escolha de $n$ elementos $m_1,\dots, m_n$ em $M$.
+\end{exercicio} 
+
+Se sua fórmula for da forma $t = s$ para dois termos ou $r(t_1,\dots,t_n)$ para uma relação $r$ e termos $t_1,\dots, t_n$, então diga que
+
+\begin{itemize}[label=\ding{212}]
+  \item $M \vDash (t = s) [v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$ se vale que $t_M[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n] = s_M [v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$
+  \item $M \vDash r(t_1,\dots,t_n)[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$ se vale que $r_M(\tilde{t_1},\dots,\tilde{t_n})$ onde $\tilde{t_i} = (t_i)_M[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$.
+\end{itemize}
+
+Notação feia, porém espero que o significado esteja claro. Se a fórmula não é atômica, então, defina recursivamente que
+
+\begin{itemize}[label=\ding{212}]
+  \item $M \vDash \lnot \phi[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$ se não vale que  $M \vDash \phi[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$
+  \item $M \vDash \phi \vee \psi$ se vale que $M \vDash \phi[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$ ou $M \vDash \psi[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$
+  \item $M \vDash \phi \wedge \psi$ se vale que $M \vDash \phi[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$ e $M \vDash \psi[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$
+  \item $M \vDash \phi \rightarrow \psi$ se vale que $M \vDash \psi[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$ sempre que $M \vDash \psi[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$
+  \item $M \vDash \exists v \phi[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$ se existe um elemento $m \in M$ tal que $M \vDash \phi[v \rightarrow m, v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$
+  \item $M \vDash \forall v \phi[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$ se pra todo elemento $m \in M$ vale que $M \vDash \phi[v \rightarrow m, v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$
+\end{itemize}
+
+\begin{exemplo}
+  Grafos, grupos e etc
+\end{exemplo}
+
+Finalmente, podemos então dizer o que é um modelo! Se $T$ é um conjunto de sentenças (fórmulas sem variáveis livres), então uma estrutura $M$ é um modelo deste $T$ se vale que $M \vDash \phi$ pra todo $\phi \in T$. Denotamos isso como $M \vDash T$ e geralmente dizemos que $M$ satisfaz $T$.
+
+Vamos recompensar o leitor que passou por esse montante de definições técnicas com o enunciado do lindíssimo resultado central do nosso minicurso:
+
+\begin{teorema}[Teorema da Compacidade]
+  Seja $T$ um conjunto de sentenças de alguma linguagem de primeira ordem. Existe um modelo para $T$ se e somente se para cada subconjunto finito $T' \subset T$ existe um modelo que satisfaz $T'$.
+\end{teorema}
+
+Vamos provar este teorema na próxima seção - usando a construção dos ultraprodutos. 
 
 
 
