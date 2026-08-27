@@ -268,7 +268,7 @@
 
 
 
-\title{Compacidade - minicurso ECI}
+\title{Se para todos existe um então existe um para todos}
 \author{Violeta Mar}
 \date{}
 
@@ -277,43 +277,47 @@
 
 \maketitle
 
-ULTRAFILTROS E COMPACTIFICAÇÕES DAS COISAS
+\begin{center}
+\includegraphics[scale=0.7]{desenhos/good.png}
+\end{center}
 
-Teorema da compacidade - modelos, Ultrafiltros - F Limite, Tychonov
+% ULTRAFILTROS E COMPACTIFICAÇÕES DAS COISAS
 
-versão mais fraca: Konig's lemma, lema de seleção de rado
+% Teorema da compacidade - modelos, Ultrafiltros - F Limite, Tychonov
 
-Aplicações: 
+% versão mais fraca: Konig's lemma, lema de seleção de rado
 
-análise: análise não standard
+% Aplicações: 
 
-grafos: De Bruijn–Erdős theorem, teoremas de finito pro localmente finito (teorema casamento de hall, teorema de konig e seus amigos)
+% análise: análise não standard
 
-poset: Dilworth's theorem
+% grafos: De Bruijn–Erdős theorem, teoremas de finito pro localmente finito (teorema casamento de hall, teorema de konig e seus amigos)
 
-álgebra: robinson's principle: If a first-order sentence holds in every field of characteristic zero, then there exists a constant p such that the sentence holds for every field of characteristic larger than, ax-grothendieck theorem
+% poset: Dilworth's theorem
 
-autômatos celulares: garden of eden theorem
+% álgebra: robinson's principle: If a first-order sentence holds in every field of characteristic zero, then there exists a constant p such that the sentence holds for every field of characteristic larger than, ax-grothendieck theorem
 
-conjuntos: submodelos elementares
+% autômatos celulares: garden of eden theorem
 
-
-
-
-Intuições: 
-
--> compacidade é a 'generalização de finito pra infinito' - pra cada `direção pro infinito', coloque um ponto a mais que captura essa direção - isto compactifica seu espaço
-
--> quando algo é compacto, suas propriedades gerais são capturadas pelas propriedades de seus subconjuntos finitos
+% conjuntos: submodelos elementares
 
 
-Proposta de roteiro:
 
-1o dia: começar com konig lemma e  de brujin erdos contável. lógica! teorema da compacidade em lógica de primeira ordem. aplicações: upward Lowen-Skolem (modelos elementares pra cima), nonstandard models de PA, completude de ACF e consequências,
 
-2o dia: "existencia de ultrafiltro", ultraproduto, prova de compacidade via ultraproduto, nonstandard analysis
+% Intuições: 
 
-3o dia: topologia! generalizar konig lema com "limite inverso de não vazio é não vazio", tychonoff, mostrar como o teorema de compacidade pode ser visto nesse framework, aplicação: infinite ramsey implica finite ramsey?
+% -> compacidade é a 'generalização de finito pra infinito' - pra cada `direção pro infinito', coloque um ponto a mais que captura essa direção - isto compactifica seu espaço
+
+% -> quando algo é compacto, suas propriedades gerais são capturadas pelas propriedades de seus subconjuntos finitos
+
+
+% Proposta de roteiro:
+
+% 1o dia: começar com konig lemma e  de brujin erdos contável. lógica! teorema da compacidade em lógica de primeira ordem. aplicações: upward Lowen-Skolem (modelos elementares pra cima), nonstandard models de PA, completude de ACF e consequências,
+
+% 2o dia: "existencia de ultrafiltro", ultraproduto, prova de compacidade via ultraproduto, nonstandard analysis
+
+% 3o dia: topologia! generalizar konig lema com "limite inverso de não vazio é não vazio", tychonoff, mostrar como o teorema de compacidade pode ser visto nesse framework, aplicação: infinite ramsey implica finite ramsey?
 
 
 \section{Dia 1}
@@ -335,7 +339,7 @@ Rapidinho, as definições necessárias. Um grafo é um conjunto $V$, cujos elem
 Para brincar com as definições:
 
 \begin{exercicio}
-  (\luamedio) Se convença que uma árvore infinita com uma escolha de vértice é a mesma coisa que uma sequência infinita $(T_n)$ de conjuntos com funções $f_n:T_{n+1} \rightarrow T_n$ e $T_0$ contendo apenas um ponto (dica: $T_0$ é o vértice escolhido, $T_{n+1}$ são os vizinhos dos vértices em $T_n$, e $f_n$ te diz como eles estão conectados).
+  \luamedio Se convença que uma árvore infinita com uma escolha de vértice é a mesma coisa que uma sequência infinita $(T_n)$ de conjuntos com funções $f_n:T_{n+1} \rightarrow T_n$ e $T_0$ contendo apenas um ponto (dica: $T_0$ é o vértice escolhido, $T_{n+1}$ são os vizinhos dos vértices em $T_n$, e $f_n$ te diz como eles estão conectados).
 
   Nessa formulação, prove que a árvore é localmente finita se e somente se cada $V_n$ é finito.
 \end{exercicio}
@@ -352,7 +356,7 @@ Esse primeiro exercício não vai ser necessário para a demonstração do lema 
 Vamos aplicar este resultado pra provar uma simplificação de um resultado clássico da teoria de grafos infinitos. Colorir vértices é uma grande diversao dos teoristas de grafos: uma $k$-coloração de um grafo é uma associação de cada vértice a uma cor dentre um conjunto de $k$ cores de forma que vértices vizinhos recebem cores diferentes. Uma pergunta simples de se fazer é, dado um grafo, qual o menor número de cores que precisamos ter para conseguirmos fazer uma coloração? Um resultado famoso desta área é o teorema das quatro cores, que diz que se o seu grafo é planar (intuitivamente, isso significa que ele pode ser desenhado em um plano sem arestas cruzando) então com certeza com $4$ cores você consegue. Provar isto é surpreendentemente difícil, e foi uma das primeiras demonstrações feitas com assistência de computadores nos anos 70. Este teorema foi provado pra grafos finitos, mas ele vai valer para infinitos também porque aqui conseguimos usar o truque da compacidade: reduzimos a pergunta da existência de uma $k$-coloração em um grafo infinito para a existência de uma $k$-coloração em cada um dos seus subgrafos finitos (lembrando aqui que um subgrafo é obtido através de um subconjunto de vértices e também um subconjunto de arestas do seu grafo maior).
 
 \begin{teorema}[De Bruijn-Erdös localmente finito]
-  Seja $G$ um grafo (infinito) localmente finito. Então existe uma $k$-coloração para $G$ se e somente se existe uma $k$-coloração para cada subgrafo $G' \subset G$.
+  Seja $G$ um grafo (infinito) localmente finito. Existe uma $k$-coloração para $G$ se e somente se existe uma $k$-coloração para cada subgrafo finito $G' \subset G$.
 \end{teorema}
 \begin{prova}
   Vamos chamar $k$-coloração apenas de coloração pra facilitar nossa vida. A ida é clara - uma coloração do grafo todo se reduz a uma coloração de seus subgrafos. Primeiro perceba o problema da volta. Se começarmos a partir de uma coloração qualquer de um subgrafo $G'$, gostaríamos de extender esta coloração. Poderiamos ingenuamente pensar: tome um subgrafo maior contendo $G'$ e tome uma coloração para este subgrafo maior. Mas ela pode não extender a coloração original, ou seja, ela pode escolher cores diferentes das quais você tinha escolhido antes para os vértices de $G'$. Assim, não é claro porque um processo indutivo que iria aumentando os subgrafos considerados e tomando as colorações existentes realmente convergeria para uma coloração bem definida após infinitos passos. Pra isso acontecer, estas colorações precisam estar `encaixadas', ou seja, concordarem umas com as outras. Conseguimos mostrar a existência destas colorações encaixadas através do Lema de König.\\
@@ -379,17 +383,17 @@ A ideia aqui é capturar, em uma linguagem formal, o processo de raciocínio mat
   \item pontuações $, ( )$
 \end{itemize}
 
-Para especificarmos $L$, precisamos decidir quantos símbolos de relações, funções e constantes vamos ter, e também qual a `aridade' de cada relação e função (a aridade vai representar quantos `inputs' uma relação ou uma função recebe, quando formos interpretar estes símbolos). Uma \textbf{assinatura} $\sigma$ consiste exatamente disso: um cardinal para cada $R,F,C$ e duas funções $\sigma_R: R \rightarrow \mathbb{N}, \sigma_F: F \rightarrow \mathbb{N}$ que interpretamos como especificando sua aridade.
+Para especificarmos $L$, precisamos decidir quantos símbolos de relações, funções e constantes vamos ter, e também qual a `aridade' de cada relação e função (a aridade vai representar quantos `inputs' uma relação ou uma função recebe, quando formos interpretar estes símbolos). Uma \textbf{assinatura} $\sigma$ consiste exatamente disso: um cardinal para cada $R,F$ e $C$ e duas funções $\sigma_R: R \rightarrow \mathbb{N}, \sigma_F: F \rightarrow \mathbb{N}$ que interpretamos como especificando as aridades.
 
-A linguagem $L_{Con}$ de teoria de conjuntos é a dada pela seguinte assinatura: temos $0$ constantes e $0$ funções e $1$ símbolo relacional, que denotamos como $\in$ que tem aridade $2$.
+A linguagem $L_{\text{Con}}$ de teoria de conjuntos é a dada pela seguinte assinatura: temos $0$ constantes, $0$ funções e $1$ símbolo relacional, que denotamos como $\in$, que tem aridade $2$.
 
-A linguagem $L_{Grf}$ de teoria de grafos é dada pela seguinte assinatura: temos $0$ constantes e $0$ funções e $1$ símbolo relacional, que denotamos como $\edge$ que tem aridade $2$.
+A linguagem $L_{\text{Grf}}$ de teoria de grafos é dada pela seguinte assinatura: temos $0$ constantes, $0$ funções e $1$ símbolo relacional, que denotamos como $\edge$, que tem aridade $2$.
 
-Espera, mas essas estruturas são iguais! Apenas usamos um nome diferente pro símbolo de relação binária para cada um. O que está acontecendo aqui é simples: em conjuntos nos importamos apenas com uma relação, a de pertencimento, e em grafos, com a de adjacência. As expressões destas linguagem são as mesmas, mas vamos ver grande diferença quando formos considerar a semântica destas expressões. Por exemplo, em teoria de conjuntos, vai ser um axioma que $\exists x (x \in x)$ é uma afirmação falsa mas em teoria de grafos esta afirmação pode ser verdadeira, representando um grafo onde um vértice possui uma aresta que liga ele nele mesmo.
+Espera, mas essas estruturas são iguais! Apenas usamos um nome diferente pro símbolo de relação binária de cada um. O que está acontecendo aqui é simples: em conjuntos nos importamos apenas com uma relação, a de pertencimento, e em grafos, com a de adjacência. As expressões destas linguagem são as mesmas, mas vamos ver grande diferença quando formos considerar a semântica destas expressões. Por exemplo, em teoria de conjuntos, um dos axiomas em essência diz que $\lnot \exists x (x \in x)$ (não existe conjunto que pertence a ele mesmo), mas em teoria de grafos poderia valer que $\exists x (x \edge x)$, já que isso acontece com um grafo que contém um um vértice com uma aresta que liga o vértice nele mesmo.
 
-A linguagem $L_{Grp}$ de teoria de grupos é dada pela seguinte assinatura: temos $1$ constante, denotada por $e$, temos $1$ função de aridade $2$, denotada por $*$ e $0$ relações.
+A linguagem $L_{\text{Grp}}$ de teoria de grupos é dada pela seguinte assinatura: temos $1$ constante, denotada por $e$, temos $1$ função de aridade $2$, denotada por $*$ e $0$ relações.
 
-A linguagem $L_{Art}$ da aritmética é dada pela seguinte assinatura: temos $1$ constante, denotada por $0$, temos $3$ funções, denotadas por $S$ de aridade $1$ (sucessor), $+$ de aridade $2$ (soma) e $\cdot$ de aridade $2$ (produto).
+A linguagem $L_{\text{Art}}$ da aritmética é dada pela seguinte assinatura: temos $1$ constante, denotada por $0$, temos $3$ funções, denotadas por $S$ de aridade $1$ (sucessor), $+$ de aridade $2$ (soma) e $\cdot$ de aridade $2$ (produto) e $0$ relações.
 
 \begin{exercicio}
   \luafacil Dê uma assinatura possível para a teoria de anéis.
@@ -468,21 +472,135 @@ Notação feia, porém espero que o significado esteja claro. Se a fórmula não
   \item $M \vDash \forall v \phi[v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$ se pra todo elemento $m \in M$ vale que $M \vDash \phi[v \rightarrow m, v_1 \rightarrow m_1,\dots, v_n \rightarrow m_n]$
 \end{itemize}
 
-\begin{exemplo}
-  Grafos, grupos e etc
-\end{exemplo}
+\begin{exemplo*}
+\begin{itemize}[label=\ding{212}]
+\item Um grafo $G$ é uma estrutura para a linguagem da teoria de grafos, onde tomamos o universo de discurso como sendo os vértices de $G$ e a relação $\edge$ como sendo a relação de adjacência entre os vértices. Um grafo qualquer satisfaz $G \vDash \forall v \forall w (v \edge w) \rightarrow (w \edge v)$.
+\item Uma estrutura pra linguagem da aritmética é o conjunto de números naturais $\mathbb{N}$ como universo de discurso, com $S$ como sendo a função sucessora $x \rightarrow x + 1$, $+$ como sendo a operação de soma e $\cdot$ como sendo a operação produto.
+\item Uma estrutura muito esquisita para a linguagem da aritmética seria tomar $M$ como sendo o conjunto dos números inteiros $\mathbb{Z}$, $S$ a função $x \rightarrow 2x$, $+$ a função $ (x,y) \rightarrow x - y$ e $\cdot$ a função $(x,y) \rightarrow x + y$.
+\end{itemize}
+\end{exemplo*}
 
 Finalmente, podemos então dizer o que é um modelo! Se $T$ é um conjunto de sentenças (fórmulas sem variáveis livres), então uma estrutura $M$ é um modelo deste $T$ se vale que $M \vDash \phi$ pra todo $\phi \in T$. Denotamos isso como $M \vDash T$ e geralmente dizemos que $M$ satisfaz $T$.
 
+\begin{exercicio}
+  \luamedio Relembre alguns dos axiomas de ZFC, os escreva na linguagem de teoria de conjuntos, e encontre algum modelo para estes axiomas.
+\end{exercicio}
 Vamos recompensar o leitor que passou por esse montante de definições técnicas com o enunciado do lindíssimo resultado central do nosso minicurso:
 
 \begin{teorema}[Teorema da Compacidade]
   Seja $T$ um conjunto de sentenças de alguma linguagem de primeira ordem. Existe um modelo para $T$ se e somente se para cada subconjunto finito $T' \subset T$ existe um modelo que satisfaz $T'$.
 \end{teorema}
 
-Vamos provar este teorema na próxima seção - usando a construção dos ultraprodutos. 
+A demonstração clássica desse resultado primeiro passa pelo famoso Teorema de Completude de Gödel (não o de Incompletude!). Completude, em essência, diz que a única obstrução para a existência de um modelo para uma teoria $T$ é a existência de uma prova da contradição a partir de $T$ (em outras palavras, existe modelo para $T$ se e somente se $T$ não prova uma contradição). Aqui precisamos definir a noção de prova, que é onde introduziriamos regras de inferência e axiomática da lógica de primeira ordem. Vamos evitar essa discussão, e trazer uma demonstração puramente semântica do Teorema da Compacidade (através de ultraprodutos) na próxima seção.
 
+\begin{exercicio}
+  \luamedio Se já sabe (ou consegue imaginar, ou foi pesquisar) a definição de prova em lógica de primeira ordem, esboce a prova de Compacidade usando Completude. A ideia é simples: provas são finitas!
+\end{exercicio}
 
+Vamos finalizar essa primeira parte com a demonstração da versão sem restrições do Teorema de De Bruijn–Erdős.
 
+\begin{teorema}[De Bruijn–Erdős]
+    Seja $G$ um grafo (infinito). Existe uma $k$-coloração para $G$ se e somente se existe uma $k$-coloração para cada subgrafo finito $G' \subset G$.
+\end{teorema}
+\begin{prova}
+Tome um grafo infinito $G$. Adicione à linguagem da teoria de grafos uma constante $c_v$ para cada vértice $v$ de $G$. Adicione também, para cada $i$ natural entre $1$ e $k$, uma relação $r_i$ de aridade $1$, que iremos usar para dizer que um vértice está colorido ou não pela cor $i$. Seja $\tilde{L}$ a linguagem resultante. Defina as fórmulas
+\begin{itemize}[label=\ding{212}]
+  \item $\gamma: \forall x (r_1(x) \vee r_2(x) \dots \vee r_k(x))$ 
+  \item $\phi_{ij}: \forall x(r_i(x) \rightarrow \lnot r_j(x))$ para todo $i \neq j$
+  \item $\psi_{i}: \forall x \forall y (((x \edge y) \wedge r_i(x) )\rightarrow \lnot r_i(x))$
+\end{itemize}
+A primeira fórmula diz que todo vértice é dado uma cor, as fórmulas do segundo item dizem que os vértices são dados exatamente uma cor, e as fórmulas do terceiro item dizem que vértices adjacentes recebem cores diferentes. Seja $\phi$ a fórmula gerada pela conjunção ($\wedge$) de todas as fórmulas $\gamma$, $\phi_{ij}$ e $\psi_i$ (isto é possível pois são apenas finitas fórmulas).
 
+Agora, para cada par de vértices $v,w$ de $G$, vale que ou $v \edge w$ ou $\lnot (v \edge w)$. Se vale o primeiro caso, seja $\alpha_{vw}$ a fórmula $c_v \edge c_w$ e o no segundo caso a fórmula $\lnot (c_v \edge c_w)$. Defina $T \defeq \{\alpha_{vw} \mid v,w \in G\} \cup \{\phi\}$.
+
+\begin{exercicio}
+  \luafacil Se convença que um modelo para $T$ é exatamente um grafo isomorfo a $G$ com uma $k$-coloração.
+\end{exercicio}
+
+Tome um subconjunto finito $T' \subset T$. Se $T'$ não contém $\phi$ então $G$ é um modelo para $T'$. Suponha que $T'$ contém $\phi$. Como $T'$ é finito, só aparecem finitas constantes $c_v$. Considere o subgrafo $G'$ de $G$ com todos os vértices associados às constantes que aparecem em $T'$, junto com todas as arestas entre eles existentes em $G'$. Por hipótese, existe uma $k$-coloração para $G'$. Então $G'$ é um modelo para $T'$. Concluimos pelo Teorema da Compacidade que deve existir um modelo para $T$, ou seja, deve existir uma $k$-coloração para $G$.
+
+\end{prova}
+
+\begin{exercicio}[Modelo Não-Standard para a Aritmética]
+  \luadificil Seja $L_{\text{Art}}$ a linguagem da aritmética e $\mathbb{N}$ o conjunto dos números naturais. Seja $T$ o conjunto de todas as fórmulas $\phi$ tal que $\mathbb{N} \vDash \phi$. Use o Teorema da Compacidade para provar que existe um modelo para $T$ não isomorfo ao dos números naturais.
+
+  Um possível caminho: defina recursivamente os termos $t_0 \defeq 0$ e $t_{n+1} \defeq t_n + 1$. Seja $\tilde{L}$ uma extensão de $L_{\text{Art}}$ adicionando apenas uma constante $\omega$. Considere as fórmulas $\phi_n : \omega = t_n$ na linguagem $\tilde{L}$. Seja $\tilde{T} = T \cup \{\phi_n \mid n \in \mathbb{N}\}$. Use Compacidade em $\tilde{T}$ para achar um modelo para $\tilde{T}$, e argumente que este modelo deve ser um modelo para a aritmética não isomorfo ao $\mathbb{N}$.
+\end{exercicio}
+
+\section{Dia 2}
+
+Definir ultrafiltro. Provar Lema do Ultrafiltro. 
+
+Exemplos simples: F-Limite.
+
+Fixe uma linguagem $L$ em alguma assinatura. Suponha que temos uma coleção de estruturas $M_i$ indexados por algum conjunto $I$. Seja $u$ um ultrafiltro de $\mathcal{P}(I)$. Considere o produto $\prod_{i \in I} M_i$. Defina a relação de equivalência $(m_i) \sim_u (m'_i)$ se o conjunto $\{i \in I \mid m_i = m'_i\}$ é selecionado por $u$. Repare aqui na nossa notação: quando escrevemos $(m_i)$ isso representa a sequência cujos elementos são $m_i$ para cada $i \in I$ e quando escrevemos $m_i$ sem os parentêses queremos dizer o elemento de $M_i$ que é o $i$-ésimo da sequência $(m_i)$.
+
+\begin{exercicio}
+  \luafacil Verifique que $\sim_u$ é realmente uma relação de equivalência.
+\end{exercicio}
+
+Seja $M$ o quociente de $\prod_{i \in I} M_i$ por $\sim_u$. Este conjunto $M$ vai ser uma estrutura de $L$ chamada de \textbf{ultraproduto} dos $M_i$ via $u$, com as seguintes escolhas
+
+\begin{itemize}[label=\ding{212}]
+  \item dado um símbolo de constante $c$, escolha $c_M \defeq (c_i)$, onde cada $c_i$ é o elemento de $M_i$ referente a constante $c$
+  \item dado um símbolo de relação $r$ de aridade $n$, defina a relação $r_M \subset M^n$ como sendo $((m^1_i), \dots, (m^n_i)) \in r_M$ se $\{i \in I \mid (m^1_i, \dots, m^n_i) \in r_i\}$ é selecionado por $u$, onde $r_i$ é a relação associada ao símbolo $r$ na estrutura $M_i$
+  \item dado um símbolo de função $f$ de aridade $n$, defina a função $f_M: M^n \rightarrow M$ como sendo $((m^1_i), \dots, (m^n_i)) \mapsto (f_i(m^1_i, \dots, m^n_i))$
+\end{itemize}
+
+\begin{exercicio}
+  \luafacil Mostre que a relação $r_M$ e a função $f_M$ estão bem definidas, ou seja, se tivessemos tomado uma sequência equivalente sob $\sim_u$, obteríamos a mesma relação e a mesma função.
+\end{exercicio}
+
+Agora a parte mais mágica. Para saber se uma sentenças vale em $M$, basta checar a sentença em cada um dos $M_i$ e perguntar pro ultrafiltro o que ele acha.
+
+\begin{teorema}[Teorema de Łoś]
+  $M \vDash \phi$ se e somente se $\{i \in I \mid M_i \vDash \phi\} \in u$
+\end{teorema}
+\begin{prova}
+  Vamos provar na verdade o seguinte resultado mais forte. Para toda fórmula $\phi$ com variáveis livres dentre $v_1,\dots, v_n$ e $(m^1_i), \dots, (m^n_i)$ elementos de $M$, temos
+
+  \[M \vDash \phi[v_1 \rightarrow (m^1_i),\dots, v_n \rightarrow (m^n_i)] \]
+
+  \[\text{ se e somente se }\]
+  
+  \[\{i \in I \mid M_i \vDash \phi[v_1 \rightarrow m^1_i,\dots, v_n \rightarrow m^n_i]\} \in u \]
+
+  Quando $\phi$ é uma atômica que afirma a igualdade de dois termos, o teorema segue diretamente da definição de $\sim_u$, e quando $\phi$ afirma uma relação, o teorema diz praticamente a mesma coisa que a definição que demos para a relação em $M$.
+  \begin{exercicio}
+    \luafacil Se o último parágrafo não te convenceu, escreva as definições e abra as contas.
+  \end{exercicio}
+
+  Temos então que o teorema vale para as atômicas. Recursivamente, vamos ter a validade para todas as fórmulas.
+
+  \begin{itemize}[label=\ding{212}]
+    \item Se o teorema vale para $\phi$, então valerá para $\lnot \phi$ pois $A \in u \iff \lnot A \notin u$
+    \item se o teorema vale para $\phi$ e $\psi$, então vale para $\phi \vee \psi$ pois se $A, B \in u$ então $A \cup B \in u$
+    \item se o teorema vale para $\phi$ e $\psi$, então vale para $\phi \wedge \psi$ pois $A,B \in u \iff A \cap B \in u$
+    \item se o teorema vale para $\phi$ e $\psi$, então vale para $\phi \rightarrow \psi$ pois $A \in u$ e $A \subset B$, então $B \in u$
+  \end{itemize}
+
+  \begin{exercicio}
+    \luamedio Complete a demonstração mostrando que se o teorema vale para $\phi$, então vale para $\exists v \phi$ e para $\forall v \phi$.
+  \end{exercicio}
+\end{prova}
+
+Vamos voltar à nossa promessa de provar Compacidade!
+
+\begin{teorema}[Teorema da Compacidade - agora com a prova via Łoś]
+  Seja $T$ um conjunto (infinito) de sentenças de alguma linguagem de primeira ordem. Existe um modelo para $T$ se e somente se para cada subconjunto finito $T' \subset T$ existe um modelo que satisfaz $T'$.
+\end{teorema}
+\begin{prova}
+  É claro que um modelo para $T$ é um modelo para cada $T'$ - a parte não trivial é o outro lado. Para nos enquadrarmos na notação das últimas páginas, vamos chamar de $I$ o conjunto de todos os subconjuntos finitos de $T$ e suponha que para cada $i \in I$ tenhamos um modelo $M_i$ que satisfaça todas as fórmulas de $i$.
+  
+  Precisamos construir um ultrafiltro que irá `colar coerentemente' todos estes modelos. Considere, para cada $\phi \in T$, o subconjunto $I_{\phi} = \{ i \in I \mid \phi \in i\}$. Gostaríamos que todos estes conjuntos estejam no nosso ultrafiltro desejado. Como uma interseção finita de conjuntos da forma $I_{\phi}$ para diferentes $\phi$ é não vazia, podemos então garantir pelo Lema do Ultrafiltro que existe um ultrafiltro $u$ que seleciona todos os $I_{\phi}$. Seja $M$ o ultraproduto dos $M_i$ via $u$. Afirmamos que $M$ é modelo de $T$.
+
+  De fato, tome $\phi \in T$. Como $ \{i \in I \mid \phi \in i \} \subset \{i \in I \mid M_i \vDash \phi\} $, temos que $u$ seleciona $\{i \in I \mid M_i \vDash \phi\}$. Daí, por Łoś, temos que $M \vDash \phi$.
+\end{prova}
+
+\begin{exemplo*}[Análise Não-Standard]
+  Tome um ultrafiltro não principal $u$ qualquer nos naturais e defina a estrutura $\mathbb{R}^*$ como sendo o ultraproduto de enumeráveis cópias de $\mathbb{R}$. Teorema da transferência, elementos infinitos e infinitesimais. Acho que $\mathbb{N}^*$ é modelo pra PA não standard.
+\end{exemplo*}
+
+\section{Dia 3}
+Topologia!
 \end{document}
