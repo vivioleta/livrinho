@@ -597,8 +597,26 @@ Vamos voltar à nossa promessa de provar Compacidade!
   De fato, tome $\phi \in T$. Como $ \{i \in I \mid \phi \in i \} \subset \{i \in I \mid M_i \vDash \phi\} $, temos que $u$ seleciona $\{i \in I \mid M_i \vDash \phi\}$. Daí, por Łoś, temos que $M \vDash \phi$.
 \end{prova}
 
+Existe um caso especial do ultraproduto, conhecido como ultrapotência, onde o Teorema de Łoś se torna um resultado conhecido como Teorema da Transferência.
+
+\begin{teorema}[Teorema da Transferência]
+  Seja $M$ uma estrutura para uma linguagem $L$, $I$ um conjunto de índices,e $u$ um ultrafiltro de $\mathcal{P}(I)$. Seja $M^*$ o ultraproduto de $|I|$ cópias de $M$ via $u$. Então, pra toda fórmula $\phi$ em $L$
+
+  \[ M^* \vDash \phi \iff M \vDash \phi\]
+\end{teorema}
+\begin{exercicio}
+  \luafacil Prove o Teorema da Transferência.
+\end{exercicio}
+
+
 \begin{exemplo*}[Análise Não-Standard]
-  Tome um ultrafiltro não principal $u$ qualquer nos naturais e defina a estrutura $\mathbb{R}^*$ como sendo o ultraproduto de enumeráveis cópias de $\mathbb{R}$. Teorema da transferência, elementos infinitos e infinitesimais. Acho que $\mathbb{N}^*$ é modelo pra PA não standard.
+  Considere a linguagem $L$ de corpos ordenados, que tem duas operações binárias $+$ e $\cdot$ e uma relação binária $<$. O conjunto dos números reais $\mathbb{R}$ é uma estrutura pra $L$. Tome um ultrafiltro não principal $u$ qualquer nos naturais e defina a estrutura $\mathbb{R}^*$ como sendo o ultraproduto de enumeráveis cópias de $\mathbb{R}$.
+  
+  Como os reais formam um corpo totalmente ordenado, temos pelo Teorema da Transferência que $\mathbb{R}^*$ forma um corpo totalmente ordenado - e mais, que satisfaz qualquer afirmação (de primeira ordem) que os reais satisfazem. E também, as sequências constantes $(r) \in \mathbb{R}^*$ formam uma cópia de $\mathbb{R}$ dentro de $\mathbb{R}^*$. Porém, temos mais coisas lá! Considere $\epsilon = (1,\frac{1}{2}, \frac{1}{3}, \dots ) \in \mathbb{R}$. Veja que $\epsilon_i > 0 $ pra todo $i$ e portanto por Łoś temos que $\epsilon > 0 $. Mas, como pra todo natural $n$ temos que eventualmente $1/i < n$ pra $i$ suficientemente grande, temos que o conjunto de índices em que $\epsilon$ é menor que a sequência constante $(n)$ é cofinito e portanto é escolhido por $u$. Por Łoś, de novo, $\epsilon < (n)$. Temos então um corpo totalmente ordenado contendo uma cópia dos reais e um elemento infinitesimal: maior que $0$ e menor que qualquer natural! É claro, o inverso de $\epsilon$ vai ser um número infinitamente grande, e assim vamos ter muitas outras coisas esquisitas acontecendo. Este corpo é uma maneira de formalizar os cálculos feitos com infinitesimais no nascimento do cálculo, antes da formalização via limites.
+
+  Uma curiosidade que me fascina: $\mathbb{R}^*$ é conhecido como o corpo dos hiperreais, mas veja que ele depende de uma escolha de ultrafiltro. Então deveria existir `vários' corpos de hiperreais, um para cada ultrafiltro. Isto pode ser visto como algo não esperado, considerando o quão relevante ele é (ou poderia ser) em cálculo e análise. Porém, existe uma saída. Se supormos a hipótese do contínuo, então todos os corpos de hiperreais são isomorfos!
+
+  Para os interessados nisso, recomendo o livro do Goldblatt, Lectures on the Hyperreals, e o seminário do Joel David Hamkins sobre a hipótese do contínuo e os hiperreais.
 \end{exemplo*}
 
 \section{Dia 3}
