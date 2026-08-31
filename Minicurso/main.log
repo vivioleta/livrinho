@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.1.23)  28 AUG 2026 18:33
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.1.23)  31 AUG 2026 15:50
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"/home/viola/Área de trabalho/livrinho/Minicurso/main.tex"
@@ -1237,7 +1237,7 @@ Package luatex.def Info: desenhos/konig.png  used on input line 332.
 (luatex.def)             Requested size: 52.69672pt x 114.4272pt.
 [1
 
-{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./desenhos/good.png><./luatex.1dPtMu/1.png><./luatex.1dPtMu/2.png><./luatex.1dPtMu/3.png><./luatex.1dPtMu/4.png><./desenhos/konig.png>] [2]
+{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./desenhos/good.png><./luatex.sVctdF/1.png><./luatex.sVctdF/2.png><./luatex.sVctdF/3.png><./luatex.sVctdF/4.png><./desenhos/konig.png>] [2]
 Underfull \hbox (badness 10000) in paragraph at lines 362--363
 
  []
@@ -1273,7 +1273,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 441--442
 
  []
 
-[6] [7] [8] [9] [10] [11] [12] (./main.aux)
+[6] [7] [8] [9] [10] [11] [12] [13] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1283,7 +1283,7 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 38608 strings out of 476076
+ 38615 strings out of 476076
  125129,1373583 words of node,token memory allocated
  658 words of node memory still in use:
    8 hlist, 2 vlist, 3 rule, 5 glue, 5 kern, 1 glyph, 23 attribute, 66 glue_spec, 13 attribute_list, 2 write nodes
@@ -1292,10 +1292,10 @@ Here is how much of LuaTeX's memory you used:
  196 fonts using 17415511 bytes
  84i,6n,96p,3292b,499s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}<./DarwinSerif-Regular.otf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/stickstoo/stickstooMath-Italic.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/boondox/zxxrl8a.pfb>
-Output written on main.pdf (12 pages, 190584 bytes).
+Output written on main.pdf (13 pages, 192711 bytes).
 
-PDF statistics: 177 PDF objects out of 1000 (max. 8388607)
- 123 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 131072)
+PDF statistics: 187 PDF objects out of 1000 (max. 8388607)
+ 132 compressed objects within 2 object streams
+ 49 named destinations out of 1000 (max. 131072)
  40 words of extra memory for PDF output out of 10000 (max. 100000000)
 

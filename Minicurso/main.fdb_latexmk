@@ -1,5 +1,5 @@
 # Fdb version 4
-["lualatex"] 1787952783.8825 "/home/viola/Área de trabalho/livrinho/Minicurso/main.tex" "main.pdf" "main" 1787952786.53334 0
+["lualatex"] 1788202254.56095 "/home/viola/Área de trabalho/livrinho/Minicurso/main.tex" "main.pdf" "main" 1788202257.28747 0
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/hb/11d3e5db254c6b73d86ac3bbd5f6ef0aecc7463fab9726ee04d7203d35016ba4.luc" 1769438857.38489 130376 52cef6f437f4b7248c4007f155c35efa ""
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/darwinserif-regular.luc" 1787255260.0748 150779 40ffa1800798b868c2978b54c92707c8 ""
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1769438855.40496 128410 3f752579a721aabb697cb5411c2b5223 ""
@@ -7,7 +7,7 @@
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/fonts/otl/notocoloremoji.luc" 1769438857.2429 386799 76675ac66c072fb2a0e9abf8f2373f07 ""
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc" 1769442863.41978 485 860487eb8a03fc2cd109eac7c3a38e68 ""
   "/home/viola/.texlive2025/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz" 1769438854.38399 392839 9a60e9b8c85523fb50afd5137392a298 ""
-  "/home/viola/Área de trabalho/livrinho/Minicurso/main.tex" 1787952783.47731 40791 a4e3685871e7cc40e7d1f5c98afff91d ""
+  "/home/viola/Área de trabalho/livrinho/Minicurso/main.tex" 1788202254.17456 41899 0b9ab8a5fdf6a73d67c03ae6c2dd6113 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -340,9 +340,9 @@
   "DarwinSerif-Regular.otf" 1761141924 134196 a98621af05a09b3acbf5b155be2bad02 ""
   "desenhos/good.png" 1787948408.89676 428 db36e71d546cfa9a5ef731f923d22e71 ""
   "desenhos/konig.png" 1787348379.90859 332 b823a073bef383722d3c2bd52f80f594 ""
-  "main.aux" 1787952786.2082 1113 22bf34a86ed4e41f245b2728bdcf4702 "lualatex"
-  "main.out" 1787952786.2092 213 b609eabc5331420707695e6e5b3b97fc "lualatex"
-  "main.tex" 1787952783.47731 40791 a4e3685871e7cc40e7d1f5c98afff91d ""
+  "main.aux" 1788202256.94412 1315 9f60fba7aec54452e2f879916dbe56d7 "lualatex"
+  "main.out" 1788202256.94512 213 b609eabc5331420707695e6e5b3b97fc "lualatex"
+  "main.tex" 1788202254.17456 41899 0b9ab8a5fdf6a73d67c03ae6c2dd6113 ""
   "quiver.sty" 1761141922 1606 ac24526cc82038afe47d6f803f11170f ""
   (generated)
   "main.aux"
