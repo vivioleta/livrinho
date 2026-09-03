@@ -5,7 +5,6 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{amsthm}
 \usepackage{framed, color,xcolor}
 \usepackage{stmaryrd}
@@ -255,6 +254,14 @@
 \end{shaded}
 }
 
+% Referencing 
+\usepackage[colorlinks=false]{hyperref}
+\usepackage[capitalize]{cleveref}
+\newcommand{\myref}[1]{\hyperref[#1]{\nameref{#1} \ref{#1}}}
+\usepackage[normalem]{ulem}
+
+
+
 %Tamanho do papel
 \usepackage[a4paper,top=1cm,bottom=1cm,margin=3.5cm]{geometry}
 
@@ -322,18 +329,22 @@
 
 \section{Primeira parte: raios e modelos}
 
-\paragraph{Burocracias introdutórias} Vamos tentar descrever um fenômeno que se repete muitas vezes pelo mundo da Combinatória Infinita. Chamamos de `o fenômeno da compacidade', onde, em algum sentido, uma estrutura infinita pode ser construída colando coerentemente estruturas finitas. Existem muitas formulações equivalentes, e em diferentes níveis de força. Vou dar aqui as minhas favoritas, com tentativas de construir intuição sobre como elas funcionam, e me esforçando para minimizar pré-requisitos. Noções gerais de topologia, lógica e conjuntos provavelmente vão ser o suficiente para acompanhar o texto, e se não forem, espero que as referências ajudem - além delas também aprofundarem a discussão.
+\paragraph{Burocracias introdutórias} Vamos tentar descrever um fenômeno que se repete muitas vezes pelo mundo da combinatória infinita. Chamamos de `o fenômeno da compacidade', onde, em algum sentido, uma estrutura infinita pode ser construída colando coerentemente estruturas finitas. Existem muitas formulações equivalentes, e em diferentes níveis de força. Vou dar aqui as minhas favoritas, com tentativas de construir intuição sobre como elas funcionam, e me esforçando para minimizar pré-requisitos. Noções gerais de topologia, lógica e conjuntos provavelmente vão ser o suficiente para acompanhar o texto, e se não forem, espero que as referências ajudem - além delas também aprofundarem a discussão.
 
 Ao longo do texto, coloco exercícios para interromper o fluxo de leitura passiva e incentivar uma atividade do leitor (você). Eles são marcados com um nível de dificuldade: \luafacil são mais alongamentos do que exercícios, coletando continhas ou raciocínios rotineiros; \luamedio são realmente exercícios, pedem mais atenção e tempo; \luadificil são desafios para os apaixonados ou demandam teoria a mais não apresentada no texto, e \luaprojeto são jornadas, projetos de pesquisa ou problemas em aberto.
 
-Esse texto foi escrito para ser apresentado como um minicurso no ECI de 2026 (o maior evento de combinatória infinita da América Latina!!). Escrevi de forma que possa ser usado de forma razoavelmente autocontida, fora do contexto do minicurso, e adoraria receber feedback, elogios e críticas (eu sou carente, mandem e-mails para mim).
+Esse texto foi escrito para ser apresentado como um minicurso no ECI de 2026 (o maior evento de combinatória infinita da América Latina!!). Escrevi de forma que possa ser usado de forma razoavelmente autocontida, fora do contexto do minicurso, e adoraria receber feedback, elogios e críticas (eu sou carente, mandem emails para mim: violetamar@usp.br ).
 
 Como uma grandíssima fã de seres humanos e artesanato, não usei inteligência artifical em nenhum momento na escrita do texto e no desenho das imagens.
+
+\begin{center}
+\includegraphics[scale=0.08]{desenhos/selo.jpg}
+\end{center}
 
 \paragraph{Encontrando raios} Vamos começar com a versão mais simples do fenômeno - o Lema de König. Imagine que você está construindo algo, passo a passo, que vai precisar de um número infinito (enumerável...!) de passos para ser completado. Mas tem um problema: a cada passo, você tem finitas escolhas a serem feitas, e algumas delas podem levar a ruas sem saída, ou seja, passos onde não há escolhas possíveis para se continuar. O Lema de König é uma formulação do fato simples de que, se em todo momento existe uma escolha que leva a infinitas mais escolhas, então existe pelo menos um jeito de se completar a sua construção. Em um desenho:
 
 \begin{center}
-\includegraphics[scale=1.5]{desenhos/konig.png}
+\includegraphics[scale=2]{desenhos/konig.png}
 \end{center}
 
 Visualizamos cada estado da nossa construção (ou seja, construções parciais) como uma destas bolinhas, e realizar um passo é subir através de uma aresta até outra bolinha acima. O lema será uma afirmação sobre desenhos deste tipo, que chamamos de árvores, formalizadas na linguagem de teoria de grafos.
@@ -347,6 +358,7 @@ Um grafo é um conjunto $V$, cujos elementos chamamos de vértices, com uma rela
 Para brincar com as definições:
 
 \begin{exercicio}
+  \label{primeiroexercicio}
   \luamedio Se convença que uma árvore infinita com uma escolha de vértice é a mesma coisa que uma sequência infinita $(V_n)$ de conjuntos com funções $f_n:V_{n+1} \rightarrow V_n$ e $V_0$ contendo apenas um ponto (dica: $V_0$ é o vértice escolhido, $V_{n+1}$ são os vizinhos dos vértices em $V_n$, e $f_n$ te diz como eles estão conectados).
 
   Nessa formulação, prove que a árvore é localmente finita se e somente se cada $V_n$ é finito.
@@ -374,9 +386,15 @@ Vamos aplicar este resultado pra provar uma simplificação de um resultado clá
   Como $G$ é infinito, então $T$ é infinito, e como $G$ é localmente finito, cada um dos $G_n$ vão ser finitos e logo $T$ é localmente finito. Pelo Lema de König, $T$ deve conter um caminho infinito. Um caminho infinito em $T$ corresponde a uma sequência de colorações dos $G_n$, uma extendendo a outra. Logo a união de todas estas colorações é uma coloração bem definida. Esta coloração está definida na união de todos os $G_n$, que é $G$.
 \end{prova}
 
-A brincadeira aqui foi usar uma árvore que capturava como construções locais se extendiam (como eles eram coerentes entre si), e o lema de König garantia uma sequência destas construções locais que se extendiam mutuamente, e portanto definiam uma construção global coerente para estrutura toda. A fraqueza do lema de König é que você precisa pedir que existam apenas finitas extensões de cada construção (a hipótese de `localmente finito'). Vamos capturar agora o fenômeno de compacidade na sua versão mais forte - o Teorema da Compacidade da lógica de primeira ordem. Ele vai ser capaz de provar o De Bruijn-Erdös para qualquer grafo, não só os localmente finitos.
+A brincadeira aqui foi usar uma árvore que capturava como construções locais se extendiam (como eles eram coerentes entre si), e o lema de König garantia uma sequência destas construções locais que se extendiam mutuamente, e portanto definiam uma construção global coerente para estrutura toda. A fraqueza do lema de König é que você precisa pedir que existam apenas finitas extensões de cada construção (a hipótese de `localmente finito'). Vamos capturar agora o fenômeno de compacidade na sua versão mais forte - o teorema da compacidade da lógica de primeira ordem. Ele vai ser capaz de provar o De Bruijn-Erdös para qualquer grafo, não só os localmente finitos.
 
-\paragraph{Modelando lógica} Vamos fazer um rapidíssimo resumo de o que é a lógica de primeira ordem, focando apenas nas definições necessárias para afirmarmos o Teorema da Compacidade. Recomendo bastante o texto da Anush para quem quiser ver mais detalhes - vou fazer referência a esse texto algumas vezes no livro. \\
+\paragraph{Modelando lógica}
+
+\begin{center}
+\includegraphics[scale=3.0]{desenhos/logica1.png}
+\end{center}
+
+Vamos fazer um rapidíssimo resumo de o que é a lógica de primeira ordem, focando apenas nas definições necessárias para afirmarmos o teorema da Compacidade. Recomendo bastante o texto da Anush \cite{anush} para quem quiser ver mais detalhes. \\
 
 \begin{definicao*}[Linguagem e assinatura]
 A ideia aqui é capturar, em uma linguagem formal, o processo de raciocínio matemático. Os símbolos de uma \textbf{linguagem} de primeira ordem $L$ vão ser
@@ -515,13 +533,13 @@ Vamos recompensar o leitor que passou por esse montante de definições técnica
   Seja $T$ um conjunto de sentenças de alguma linguagem de primeira ordem. Existe um modelo para $T$ se e somente se para cada subconjunto finito $T' \subset T$ existe um modelo que satisfaz $T'$.
 \end{teorema}
 
-A demonstração clássica desse resultado primeiro passa pelo famoso Teorema de Completude de Gödel (não o de Incompletude!). Completude, em essência, diz que a única obstrução para a existência de um modelo para uma teoria $T$ é a existência de uma prova da contradição a partir de $T$ (em outras palavras, existe modelo para $T$ se e somente se $T$ não prova uma contradição). Aqui precisamos definir a noção de prova, que é onde introduziriamos regras de inferência e axiomática da lógica de primeira ordem. Vamos evitar essa discussão, e trazer uma demonstração puramente semântica do Teorema da Compacidade (através de ultraprodutos) na próxima seção.
+A demonstração clássica desse resultado primeiro passa pelo famoso teorema de completude de Gödel (não o de incompletude!). Completude, em essência, diz que a única obstrução para a existência de um modelo para uma teoria $T$ é a existência de uma prova da contradição a partir de $T$ (em outras palavras, existe modelo para $T$ se e somente se $T$ não prova uma contradição). Aqui precisamos definir a noção de prova, que é onde introduziriamos regras de inferência e axiomática da lógica de primeira ordem. Vamos evitar essa discussão, e trazer uma demonstração puramente semântica do teorema da compacidade (através de ultraprodutos) na próxima seção.
 
 \begin{exercicio}
   \luamedio Se já sabe (ou consegue imaginar, ou foi pesquisar) a definição de prova em lógica de primeira ordem, esboce a prova de Compacidade usando Completude. A ideia é simples: provas são finitas!
 \end{exercicio}
 
-Vamos finalizar essa primeira parte com a demonstração da versão sem restrições do Teorema de De Bruijn–Erdős.
+Vamos finalizar essa primeira parte com a demonstração da versão sem restrições do teorema de De Bruijn–Erdős.
 
 \begin{teorema}[De Bruijn–Erdős]
     Seja $G$ um grafo (infinito). Existe uma $k$-coloração para $G$ se e somente se existe uma $k$-coloração para cada subgrafo finito $G' \subset G$.
@@ -541,26 +559,26 @@ Agora, para cada par de vértices $v,w$ de $G$, vale que ou $v \edge w$ ou $\lno
   \luafacil Se convença que um modelo para $T$ é exatamente um grafo isomorfo a $G$ com uma $k$-coloração.
 \end{exercicio}
 
-Tome um subconjunto finito $T' \subset T$. Se $T'$ não contém $\phi$ então $G$ é um modelo para $T'$. Suponha que $T'$ contém $\phi$. Como $T'$ é finito, só aparecem finitas constantes $c_v$. Considere o subgrafo $G'$ de $G$ com todos os vértices associados às constantes que aparecem em $T'$, junto com todas as arestas entre eles existentes em $G'$. Por hipótese, existe uma $k$-coloração para $G'$. Então $G'$ é um modelo para $T'$. Concluimos pelo Teorema da Compacidade que deve existir um modelo para $T$, ou seja, deve existir uma $k$-coloração para $G$.
+Tome um subconjunto finito $T' \subset T$. Se $T'$ não contém $\phi$ então $G$ é um modelo para $T'$. Suponha que $T'$ contém $\phi$. Como $T'$ é finito, só aparecem finitas constantes $c_v$. Considere o subgrafo $G'$ de $G$ com todos os vértices associados às constantes que aparecem em $T'$, junto com todas as arestas entre eles existentes em $G'$. Por hipótese, existe uma $k$-coloração para $G'$. Então $G'$ é um modelo para $T'$. Concluimos pelo teorema da compacidade que deve existir um modelo para $T$, ou seja, deve existir uma $k$-coloração para $G$.
 
 \end{prova}
 
-\begin{exercicio}[Modelo Não-Standard para a Aritmética]
-  \luadificil Seja $L_{\text{Art}}$ a linguagem da aritmética e $\mathbb{N}$ o conjunto dos números naturais. Seja $T$ o conjunto de todas as fórmulas $\phi$ tal que $\mathbb{N} \vDash \phi$. Use o Teorema da Compacidade para provar que existe um modelo para $T$ não isomorfo ao dos números naturais.
+\begin{exercicio}[Modelo não-standard para a aritmética]
+  \luadificil Seja $L_{\text{Art}}$ a linguagem da aritmética e $\mathbb{N}$ o conjunto dos números naturais. Seja $T$ o conjunto de todas as fórmulas $\phi$ tal que $\mathbb{N} \vDash \phi$. Use o teorema da compacidade para provar que existe um modelo para $T$ não isomorfo ao dos números naturais.
 
-  Um possível caminho: defina recursivamente os termos $t_0 \defeq 0$ e $t_{n+1} \defeq t_n + 1$. Seja $\tilde{L}$ uma extensão de $L_{\text{Art}}$ adicionando apenas uma constante $\omega$. Considere as fórmulas $\phi_n : \omega = t_n$ na linguagem $\tilde{L}$. Seja $\tilde{T} = T \cup \{\phi_n \mid n \in \mathbb{N}\}$. Use Compacidade em $\tilde{T}$ para achar um modelo para $\tilde{T}$, e argumente que este modelo deve ser um modelo para a aritmética não isomorfo ao $\mathbb{N}$.
+  Um possível caminho: defina recursivamente os termos $t_0 \defeq 0$ e $t_{n+1} \defeq t_n + 1$. Seja $\tilde{L}$ uma extensão de $L_{\text{Art}}$ adicionando apenas uma constante $\omega$. Considere as fórmulas $\phi_n : \lnot (\omega = t_n)$ na linguagem $\tilde{L}$. Seja $\tilde{T} = T \cup \{\phi_n \mid n \in \mathbb{N}\}$. Use Compacidade em $\tilde{T}$ para achar um modelo para $\tilde{T}$, e argumente que este modelo deve ser um modelo para a aritmética não isomorfo ao $\mathbb{N}$.
 \end{exercicio}
 
 \section{Segunda parte: ultrafiltros}
 
 \paragraph{Coerentemente escolhendo} Ultrafiltros são um dos objetos mais recorrentes nessa área da matemática que estamos explorando. Existem muitas perspectivas para se entender o que eles são e como usá-los. Uma forma de se pensar neles no contexto em que estamos é a seguinte.
 
-O Teorema da Compacidade te diz que existe uma maneira de `colar coerentemente' modelos de partes finitas de uma dada teoria de forma a criar um modelo de toda a teoria. Essa maneira demanda que você faça uma série de `escolhas coerentes' (pense nas escolhas que você faz em procura de um raio em uma árvore, como fizemos no lema de König). Esse procedimento pode ser abstraído de uma certa forma, se transformando em problema de escolha coerente de subconjuntos de um dado conjunto. Um ultrafiltro é, essencialmente, uma solução para este problema abstraído. Com ele, então, qualquer problema de colagem coerente já é imediatamente resolvido, pois todas as escolhas já foram previamente codificadas no próprio ultrafiltro.
+O teorema da compacidade te diz que existe uma maneira de `colar coerentemente' modelos de partes finitas de uma dada teoria de forma a criar um modelo de toda a teoria. Essa maneira demanda que você faça uma série de `escolhas coerentes' (pense nas escolhas que você faz em procura de um raio em uma árvore, como fizemos no lema de König). Esse procedimento pode ser abstraído de uma certa forma, se transformando em problema de escolha coerente de subconjuntos de um dado conjunto. Um ultrafiltro é, essencialmente, uma solução para este problema abstraído. Com ele, então, qualquer problema de colagem coerente já é imediatamente resolvido, pois todas as escolhas já foram previamente codificadas no próprio ultrafiltro.
 
 Vamos para as definições formais.
 
 \begin{definicao*}[Ultrafiltro]
-Seja $X$ um conjunto e $\mathcal{P}(X)$ o conjunto de todos os seus subconjuntos. Um ultrafiltro em $\mathcal{P}(X)$ (às vezes chamado apenas de um ultrafiltro em $X$) é uma função $u: \mathcal{P}(X) \rightarrow \{0,1\}$ tal que
+Seja $X$ um conjunto e $\mathcal{P}(X)$ o conjunto de todos os seus subconjuntos. Um \textbf{ultrafiltro} em $\mathcal{P}(X)$ (às vezes chamado apenas de um ultrafiltro em $X$) é uma função $u: \mathcal{P}(X) \rightarrow \{0,1\}$ tal que
 \begin{itemize}[label=\ding{212}]
   \item $u(A \cup B) = u(A) \vee u(B)$
   \item $u(A \cap B) = u(A) \wedge u(B)$
@@ -588,12 +606,12 @@ Se sabe algo sobre álgebras de Boole, a definição fica ainda mais imediata: u
 
 Para cada $A \subset X$, um ultrafiltro em $X$ decide entre $A$ e seu complementar $X \setminus A$. E ele faz essa escolha `coerentemente': respeitando a interseção (se $A,B$ são selecionados então $A \cap B$ é selecionado) e a inclusão (se $A$ é selecionado e $A \subset B$ então $B$ é selecionado). Magicamente (ou não?), são estas escolhas e estas coerências necessárias para a construção de um modelo de uma teoria a partir de modelos de partes finitas da teoria.
 
-Existem várias propriedadezinhas bonitas que ultrafiltros satisfazem e que são importantes para fazer as contas necessárias com estes objetos. Com certeza vão ser necessárias para os resultados que vamos começar a apresentar agora. Mas como a ideia desse texto não é coletar tecnicalidades, não vou expor estas propriedades aqui, e vou esconder todas as contas em bloquinhos de exercícios. Tenho total fé que, mesmo se nunca mexeu com ultrafiltros antes, você irá conseguir redescobrir estas propriedades por si ao tentar atacar os exercícios e abrir as contas. Se travar em algo, dê uma olhada nas referências tal, tal e tal.
+Existem várias propriedadezinhas bonitas que ultrafiltros satisfazem e que são importantes para fazer as contas necessárias com estes objetos. Com certeza vão ser necessárias para os resultados que vamos começar a apresentar agora. Mas como a ideia desse texto não é coletar tecnicalidades, não vou expor estas propriedades aqui, e vou esconder todas as contas em bloquinhos de exercícios. Tenho total fé que, mesmo se nunca mexeu com ultrafiltros antes, você irá conseguir redescobrir estas propriedades por si ao tentar atacar os exercícios e abrir as contas. Se quiser referências, recomendo o livro do \cite{goldblatt2012lectures}. É um livro sobre análise não-standard, e faz um ótimo tratamento introdutório de ultrafiltros e ultraprodutos. O Discovering Modern Set Theory, \cite{Just1997}, é um lindíssimo livro de introdução a teoria de conjuntos, e no segundo volume os autores fazem os resultados clássicos de ultrafiltros no capítulo 13
 
 Dito isso, temos pelo menos um resultado da teoria de ultrafiltros que é fundamental demais para não ser mencionado - e, em essência, é quase que o coração do fenômeno de compacidade.
 
 \begin{teorema}[Lema do Ultrafiltro]
-Seja $X$ um conjunto e $\mathcal{T} \subset \mathcal{P}(X)$ um conjunto de subconjuntos de $X$ satisfazendo a seguinte propriedade, conhecida como `a propriedade da interseção finita' (PIF)
+Seja $X$ um conjunto e $\mathcal{T} \subset \mathcal{P}(X)$ um conjunto de subconjuntos de $X$ satisfazendo a seguinte propriedade, conhecida como \textbf{`a propriedade da interseção finita' (PIF)}
 
 \[ A_1 \cap A_2 \cap \dots \cap A_n \neq \varnothing \text{ para qualquer quantidade finita de conjuntos } A_1,A_2, \dots, A_n \in \mathcal{T}\]
 
@@ -610,18 +628,25 @@ Então existe um ultrafiltro $u$ tal que $A \in u$ pra todo $A \in \mathcal{T}$.
 \end{prova}
 
 \begin{exercicio}
-  \luafacil Abra as contas do último parágrafo da demonstração do Lema do Ultrafiltro (e veja como isso sugere mais uma definição equivalente de ultrafiltro: um subconjunto de $\mathcal{P}(X)$ que satisfaz PIF e é maximal. Poderíamos passar o dia todo dando definições equivalentes de ultrafiltro...).
+  \luafacil Abra as contas do último parágrafo da demonstração do lema do ultrafiltro (e veja como isso sugere mais uma definição equivalente de ultrafiltro: um subconjunto de $\mathcal{P}(X)$ que satisfaz PIF e é maximal. Poderíamos passar o dia todo dando definições equivalentes de ultrafiltro...).
 \end{exercicio}
 
-Às vezes `Lema do Ultrafiltro' se refere ao resultado de que todo filtro se extende a um ultrafiltro -  isso é praticamente a mesma coisa do que afirmamos aqui.
+Às vezes `lema do ultrafiltro' se refere ao resultado de que todo filtro se extende a um ultrafiltro -  isso é praticamente a mesma coisa do que afirmamos aqui.
 
-O Lema do Ultrafiltro tem uma carinha muito análoga ao Teorema da Completude - `PIF' é o pedido de consistência, e o ultrafiltro é o `modelo' que satisfaz a teoria. No cálculo proposicional, essa analogia é praticamente exata, o Teorema da Completude do Cálculo Proposicional é basicamente equivalente ao Lema do Ultrafiltro. Em lógica de primeira ordem, a situação é um pouco mais sofisticada, mas eu diria que a base de Completude continua estando aqui.
+O lema do ultrafiltro tem uma carinha muito análoga ao teorema da completude - `PIF' é o pedido de consistência, e o ultrafiltro é o `modelo' que satisfaz a teoria. No cálculo proposicional, essa analogia é praticamente exata, o teorema da completude do cálculo proposicional é basicamente equivalente ao lema do ultrafiltro. Em lógica de primeira ordem, a situação é um pouco mais sofisticada, mas eu diria que a base de completude continua estando aqui.
 
 \begin{exercicio}
   \luadificil Se já estudou o Cálculo Proposicional, se convença que o Lema do Ultrafiltro é equivalente ao seu teorema da completude (talvez aqui você vai precisar saber algo sobre a álgebra de Lindenbaum-Tarski, e ver que modelos de uma teoria são equivalentes a ultrafiltros desta álgebra).
 \end{exercicio}
 
-\paragraph{Colando modelos} Vamos começar a usar ultrafiltros para colar coisas. Fixe uma linguagem $L$ em alguma assinatura. Suponha que temos uma coleção de estruturas $M_i$ indexados por algum conjunto $I$. Seja $u$ um ultrafiltro de $\mathcal{P}(I)$. Considere o produto $\prod_{i \in I} M_i$. Defina a relação de equivalência $(m_i) \sim_u (m'_i)$ se o conjunto $\{i \in I \mid m_i = m'_i\}$ é selecionado por $u$. Repare aqui na nossa notação: quando escrevemos $(m_i)$ isso representa a sequência cujos elementos são $m_i$ para cada $i \in I$ e quando escrevemos $m_i$ sem os parentêses queremos dizer o elemento de $M_i$ que é o $i$-ésimo da sequência $(m_i)$.
+\paragraph{Colando modelos}
+
+
+\begin{center}
+\includegraphics[scale=3.0]{desenhos/ultrafiltro.png}
+\end{center}
+
+Vamos usar ultrafiltros para colar coisas. Fixe uma linguagem $L$ em alguma assinatura. Suponha que temos uma coleção de estruturas $M_i$ indexados por algum conjunto $I$. Seja $u$ um ultrafiltro de $\mathcal{P}(I)$. Considere o produto $\prod_{i \in I} M_i$. Defina a relação de equivalência $(m_i) \sim_u (m'_i)$ se o conjunto $\{i \in I \mid m_i = m'_i\}$ é selecionado por $u$. Repare aqui na nossa notação: quando escrevemos $(m_i)$ isso representa a sequência cujos elementos são $m_i$ para cada $i \in I$ e quando escrevemos $m_i$ sem os parentêses queremos dizer o elemento de $M_i$ que é o $i$-ésimo da sequência $(m_i)$.
 
 \begin{exercicio}
   \luafacil Verifique que $\sim_u$ é realmente uma relação de equivalência.
@@ -674,7 +699,7 @@ Agora a parte mais mágica. Para saber se uma sentenças vale em $M$, basta chec
   \end{exercicio}
 \end{prova}
 
-Vamos voltar à nossa promessa de provar Compacidade!
+Vamos voltar à nossa promessa de provar compacidade!
 
 \begin{teorema}[Teorema da Compacidade - agora com a prova via Łoś]
   Seja $T$ um conjunto (infinito) de sentenças de alguma linguagem de primeira ordem. Existe um modelo para $T$ se e somente se para cada subconjunto finito $T' \subset T$ existe um modelo que satisfaz $T'$.
@@ -687,7 +712,7 @@ Vamos voltar à nossa promessa de provar Compacidade!
   De fato, tome $\phi \in T$. Como $ \{i \in I \mid \phi \in i \} \subset \{i \in I \mid M_i \vDash \phi\} $, temos que $u$ seleciona $\{i \in I \mid M_i \vDash \phi\}$. Daí, por Łoś, temos que $M \vDash \phi$.
 \end{prova}
 
-Existe um caso especial do ultraproduto, conhecido como \textbf{ultrapotência}, onde o Teorema de Łoś se torna um resultado conhecido como Teorema (ou Princípio) da Transferência.
+Existe um caso especial do ultraproduto, conhecido como \textbf{ultrapotência}, onde o teorema de Łoś se torna um resultado conhecido como teorema (ou princípio) da transferência.
 
 \begin{teorema}[Teorema da Transferência]
   Seja $M$ uma estrutura para uma linguagem $L$, $I$ um conjunto de índices,e $u$ um ultrafiltro de $\mathcal{P}(I)$. Seja $M^*$ o ultraproduto de $|I|$ cópias de $M$ via $u$. Então, pra toda fórmula $\phi$ em $L$
@@ -695,27 +720,37 @@ Existe um caso especial do ultraproduto, conhecido como \textbf{ultrapotência},
   \[ M^* \vDash \phi \iff M \vDash \phi\]
 \end{teorema}
 \begin{exercicio}
-  \luafacil Prove o Teorema da Transferência.
+  \luafacil Prove o teorema da transferência.
 \end{exercicio}
 
 
-\begin{exemplo*}[Análise Não-Standard]
+\begin{exemplo*}[Análise não-standard]
   Considere a linguagem $L$ de corpos ordenados, que tem duas operações binárias $+$ e $\cdot$ e uma relação binária $<$. O conjunto dos números reais $\mathbb{R}$ é uma estrutura pra $L$. Tome um ultrafiltro não principal $u$ qualquer nos naturais e defina a estrutura $\mathbb{R}^*$ como sendo o ultraproduto de enumeráveis cópias de $\mathbb{R}$.
   
-  Como os reais formam um corpo totalmente ordenado, temos pelo Teorema da Transferência que $\mathbb{R}^*$ forma um corpo totalmente ordenado - e mais, que satisfaz qualquer afirmação (de primeira ordem) que os reais satisfazem. E também, as sequências constantes $(r) \in \mathbb{R}^*$ formam uma cópia de $\mathbb{R}$ dentro de $\mathbb{R}^*$. Porém, temos mais coisas lá! Considere $\epsilon = (1,\frac{1}{2}, \frac{1}{3}, \dots ) \in \mathbb{R}$. Veja que $\epsilon_i > 0 $ pra todo $i$ e portanto por Łoś temos que $\epsilon > 0 $. Mas, como pra todo natural $n$ temos que eventualmente $1/i < n$ pra $i$ suficientemente grande, temos que o conjunto de índices em que $\epsilon$ é menor que a sequência constante $(n)$ é cofinito e portanto é escolhido por $u$. Por Łoś, de novo, $\epsilon < (n)$. Temos então um corpo totalmente ordenado contendo uma cópia dos reais e um elemento infinitesimal: maior que $0$ e menor que qualquer natural! É claro, o inverso de $\epsilon$ vai ser um número infinitamente grande, e assim vamos ter muitas outras coisas esquisitas acontecendo. Este corpo é uma maneira de formalizar os cálculos feitos com infinitesimais no nascimento do cálculo, antes da formalização via limites.
+  Como os reais formam um corpo totalmente ordenado, temos pelo teorema da Transferência que $\mathbb{R}^*$ forma um corpo totalmente ordenado - e mais, que satisfaz qualquer afirmação (de primeira ordem) que os reais satisfazem. E também, as sequências constantes $(r) \in \mathbb{R}^*$ formam uma cópia de $\mathbb{R}$ dentro de $\mathbb{R}^*$. Porém, temos mais coisas lá! 
+  
+    \begin{center}
+\includegraphics[scale=3.0]{desenhos/infinitesimal.png}
+\end{center}
+  
+  Considere $\epsilon = (1,\frac{1}{2}, \frac{1}{3}, \dots ) \in \mathbb{R}$. Veja que $\epsilon_i > 0 $ pra todo $i$ e portanto por Łoś temos que $\epsilon > (0) $. Mas, como pra todo natural $n$ temos que eventualmente $1/i < 1/n$ pra $i$ suficientemente grande, temos que o conjunto de índices em que $\epsilon$ é menor que a sequência constante $(1/n)$ é cofinito e portanto é escolhido por $u$. Por Łoś, de novo, $\epsilon < (1/n)$. Temos então um corpo totalmente ordenado contendo uma cópia dos reais e um elemento infinitesimal: maior que $0$ e menor que todos os inversos de naturais! É claro, o inverso de $\epsilon$ vai ser um número infinitamente grande, e assim vamos ter muitas outras coisas esquisitas acontecendo. Este corpo é uma maneira de formalizar os cálculos feitos com infinitesimais no nascimento do cálculo, antes da formalização via limites.
 
   Uma curiosidade que me fascina: $\mathbb{R}^*$ é conhecido como o corpo dos hiperreais, mas veja que ele depende de uma escolha de ultrafiltro. Então deveria existir `vários' corpos de hiperreais, um para cada ultrafiltro. Isto pode ser visto como algo não esperado, considerando o quão relevante ele é (ou poderia ser) em cálculo e análise. Porém, existe uma saída. Se supormos a hipótese do contínuo, então todos os corpos de hiperreais são isomorfos!
 
-  Para os interessados nisso, recomendo o livro do Goldblatt, Lectures on the Hyperreals, e o seminário do Joel David Hamkins sobre a hipótese do contínuo e os hiperreais.
+  Para mais sobre os hiperreais, recomendo o livro \cite{goldblatt2012lectures} que já mencionei mais cedo. Sobre a relação com a hipótese do contínuo, isso é um resultado do Joel David Hamkins, exposto aqui \cite{joeldavid} e também em um seminário dele no Youtube \cite{joelyoutube}!
 \end{exemplo*}
 
 \section{Terceira parte: topologia}
 
-Compacidade é um fenômeno que pode ser descrito via várias lentes diferentes - vamos agora apresentar sua face topológica (e talvez finalmente justificar o uso do termo `compacto').
+    \begin{center}
+\includegraphics[scale=3.0]{desenhos/compacto.png}
+\end{center}
 
-No começo do texto, usamos uma árvore para capturar a estrutura de como construções parciais se extendem. Se você não fez o Exercício $1$, recomendo voltar agora e fazer, porque vamos generalizar exatamente aquela descrição de uma árvore. Ela vai nos permitir sair do formalismo gráfico e ir para um formalismo `categórico'.
+\paragraph{Lógica espacial}Compacidade é um fenômeno que pode ser descrito via várias lentes diferentes - vamos agora apresentar sua face topológica (e talvez finalmente justificar o uso do termo `compacto' nisso tudo).
 
-O que aconteceu no Exercício é que dividimos a árvore em níveis: $V_0$, $V_1,V_2, \dots$, com `funções de transição' $f_n: V_{n+1} \rightarrow V_n$ te dizendo de qual vértice do nível $n$ veio um dado vértice do nível $n+1$. Se pensarmos que a árvore está descrevendo construções parciais de algum objeto, então níveis mais altos representariam construções mais completas do que níveis mais baixos. Por exemplo, digamos que estamos tentando construir alguma função $f: \mathbb{N} \rightarrow X$ com alguma propriedade especial e cada $V_n$ seria então o conjunto de funções $f_n: \{1, \dots, n\} \rightarrow X$ com a propriedade especial. O mapa de transição aqui seria exatamente a restrição de uma função $f_{n+1}$ definida em $\{1, \dots, n, n+1\}$ para um domínimo menor $\{1, \dots, n\}$. Ou, se estamos tentando construir algum modelo de uma teoria infinita $T$ enumerada de forma $\{\phi_1, \phi_2,\dots\}$, o conjunto $V_n$ seria o conjunto de todos os modelos de $\{\phi_1,\phi_2, \dots, \phi_n\}$ e os mapas $f_n$ seriam apenas inclusões.
+No começo do texto, usamos uma árvore para capturar a estrutura de como construções parciais se extendem. Se você não fez o exercício \myref{primeiroexercicio}, recomendo voltar agora e fazer, porque vamos generalizar exatamente aquela descrição de uma árvore. Ela vai nos permitir sair do formalismo gráfico e ir para um formalismo `categórico'.
+
+O que aconteceu no exercício é que dividimos a árvore em níveis: $V_0$, $V_1,V_2, \dots$, com `funções de transição' $f_n: V_{n+1} \rightarrow V_n$ te dizendo de qual vértice do nível $n$ veio um dado vértice do nível $n+1$. Se pensarmos que a árvore está descrevendo construções parciais de algum objeto, então níveis mais altos representariam construções mais completas do que níveis mais baixos. Por exemplo, digamos que estamos tentando construir alguma função $f: \mathbb{N} \rightarrow X$ com alguma propriedade especial e cada $V_n$ seria então o conjunto de funções $f_n: \{1, \dots, n\} \rightarrow X$ com a propriedade especial. O mapa de transição aqui seria exatamente a restrição de uma função $f_{n+1}$ definida em $\{1, \dots, n, n+1\}$ para um domínimo menor $\{1, \dots, n\}$. Ou, se estamos tentando construir algum modelo de uma teoria infinita $T$ enumerada de forma $\{\phi_1, \phi_2,\dots\}$, o conjunto $V_n$ seria o conjunto de todos os modelos de $\{\phi_1,\phi_2, \dots, \phi_n\}$ e os mapas $f_n$ seriam apenas inclusões.
 
 Nesse formalismo, o conjunto de `construções totais' seria um certo conjunto especial $V$ com mapas $g_n: V \rightarrow V_n$ que comutam com os mapas de transição: $f_{n+1} \circ g_{n+1} = g_n$ (pense, de novo, nestes mapas como sendo `restrições' no caso de construção de funções ou `inclusões' no caso de construção de modelos).
 
@@ -732,13 +767,19 @@ A definição que vamos dar é um pouco mais geral do que acabamos de apresentar
 Também vamos pedir que a ordem parcial $\mathbb{P}$ é \textbf{direcionada}, o que significa que qualquer conjunto finito $A$ de elementos possui uma cota superior (um $c$ tal que $a\leq c$ pra todo $a \in A$). É claro que, a princípio, não teriamos necessidade de fazer essa restrição - mas a fazemos por duas razões. Primeiro, porque essa é a usada na definição comumente encontrada de sistema inverso. Segundo, porque ela captura a ideia que finitamente conseguimos sempre extender nossa construção. Todos os exemplos do fenômeno da compacidade são exemplos de situações onde conseguimos sempre finitamente extender, e gostariamos de poder extender infinitamente.
 
 \begin{definicao*}[Sistema inverso e limite]
-  Um \textbf{sistema inverso} é composto de uma ordem parcial direcionada $\mathbb{P}$, um conjunto $V_p$ para cada $p \in \mathbb{P}$ e uma função $f_{pq}: V_p \rightarrow V_q$ para todo par de elementos $q \leq p$ (chamadas funções de transição). Pedimos que estas funções sejam coerentes entre si: $f_{pq} \circ f_{qr} = f_{pr}$ sempre que $r \leq q \leq p$.
+ Um \textbf{sistema inverso} é composto de uma ordem parcial direcionada $\mathbb{P}$, um conjunto $V_p$ para cada $p \in \mathbb{P}$ e uma função $f_{pq}: V_p \rightarrow V_q$ para todo par de elementos $q \leq p$ (chamadas funções de transição). Pedimos que estas funções sejam coerentes entre si: $f_{pq} \circ f_{qr} = f_{pr}$ sempre que $r \leq q \leq p$.
 
   O \textbf{limite} $V$ de um sistema inverso (às vezes chamado de limite inverso) é o seguinte conjunto
 
   \[V \defeq \{l \in \prod_{p \in \mathbb{P}} V_p \mid f_{pq}(l_p) = l_q \text{ para todo par } p,q \text{ tal que } q \leq p \}\]
 
   onde denotamos $l_p$ como sendo a $p$-ésima coordenada de $l$.
+
+  \begin{center}
+\includegraphics[scale=2.0]{desenhos/sistemainverso.png}
+\end{center}
+
+
 \end{definicao*}
 
 \begin{exercicio}
@@ -764,7 +805,7 @@ Esse exemplo mostra como não é sempre que construções nas partes finitas de 
 Como falamos, vamos dar uma condição topológica. Eu sei que você já sabe a definição de um espaço compacto, mas eu ficaria muito triste de escrever um texto sobre compacidade sem colocar a definição de compacidade em algum lugar!
 
 \begin{definicao*}[Espaço compacto]
-  Um espaço topológico $X$ é compacto se para qualquer coleção $\mathcal{F}$ de fechados satisfazendo PIF (a propriedade da interseção finita, que diz que a interseção de uma quantidade finita de conjuntos nessa coleção é não vazia), temos que $\bigcap_{F \in \mathcal{F}} F$ é não vazio.
+  Um espaço topológico $X$ é \textbf{compacto} se para qualquer coleção $\mathcal{F}$ de fechados satisfazendo PIF (a propriedade da interseção finita, que diz que a interseção de uma quantidade finita de conjuntos nessa coleção é não vazia), temos que $\bigcap_{F \in \mathcal{F}} F$ é não vazio.
 \end{definicao*}
 
 \begin{exercicio}
@@ -807,16 +848,49 @@ Veja que o teorema de Tychonoff é (quase, ignorando a hipótese de Hausdorff) u
   Terminar.
 \end{prova}
 
-Veja que a formulação de compacidade usa FIP, a mesma propriedade que usamos pra garantir a existência de ultrafiltros. FIP também tem cara de `consistência'. Isso sugere que a versão topológica nada mais é do que uma reformulação da versão `lógica'. 
-
-\begin{exercicio}
-  Como formalizar isso?
-\end{exercicio}
-
-
 \begin{exemplo*}[Alguma aplicação de compacidade via versão topologica]
 \end{exemplo*}
 
 
+\paragraph{Tudo a mesma coisa?} Uma pergunta natural a ser feita aqui é se esse procedimento `topológico' pra colar estruturas finitas em uma estrutura infinita é realmente nada mais que uma reformulação em outra linguagem do teorema da compacidade lógico ou se é mais/menos `potente' ou até se é algo em essência diferente, por mais que similar. Essa pergunta não é apenas filosófica - poderia talvez existir algum algoritmo que traduziria uma demonstração que usa Tychonoff em uma demonstração que usa compacidade lógica, e vice-versa.
+
+É conhecimento folclórico que qualquer demonstração que usa uma das ferramentas apresentadas aqui poderia ser feita com qualquer uma das outras. Eu não conheço nenhum algoritmo que mostraria como fazer essa tradução formalmente, mas um possível caminho para se convencer de que isso tecnicamente é possível seria estudar como demonstrar um teorema a partir do outro. Isso é muito feito para quem se interessa nas dependências axiomáticas da matemática - as diferentes versões de compacidade são, muitas vezes, equivalentes (em ZF) ao Axioma da Escolha ou versões mais fracas dele.
+
+É possível provar o teorema de Tychonoff usando o teorema da compacidade com um truque linguístico - como em \cite{tychonoffviacomp1} ou \cite{tychonoffviacomp2} (esta última usa apenas a compacidade do cálculo proposicional (!) - mas precisa assumir que os espaços são Hausdorff).
+
+Pra provar compacidade assumindo Tychonoff, poderíamos fazer o caminho longo de usar Tychonoff para provar o lema do ultrafiltro, e aí fazer a mesma demonstração, via Łoś, de compacidade que fizemos. Isto não é muito iluminador. Talvez algo melhor seria passar pela seguinte reformulação do enunciado de compacidade.
+
+\begin{proposicao*}[Compacidade do espaço de Stone]
+  Seja $L$ uma linguagem de primeira ordem em alguma assinatura. Seja $M$ a coleção de todos os conjuntos $T$ de sentenças de $L$ que são maximalmente satisfazíveis. Isto significa que $T$ é satisfazível (existe um modelo para $T$) e que $T$ é maximal em relação a essa propriedade (não existe nenhum $T' \neq T$ satisfazível tal que $T \subset T'$). 
+
+  Pra cada sentença $\phi$ de $L$, defina $U_{\phi} \defeq \{T \in M \mid \phi \in T \}$ e use esta coleção de conjuntos como base para uma topologia em $M$. Munido dessa topologia, vamos ter que
+
+  \begin{center}
+$M$ é compacto $\iff$ pra todo conjunto de sentenças $T$, temos que se todo subconjunto finito de $T$ é satisfazível então $T$ é satisfazível
+  \end{center}
+\end{proposicao*}
+\begin{exercicio}
+  \luamedio Prove a proposição (para saber mais sobre, pesquise sobre espaços de Stone e álgebra de Lindenbaum-Tarski).
+\end{exercicio}
+
+Essa proposição é talvez a melhor justificativa pro nome `teorema da compacidade'. $M$ é, essencialmente, o espaço de todos os modelos de $L$ - o teorema da compacidade diz que este espaço é compacto.
+
+Pra falar a verdade, não tenho certeza como proceder para mostrar que $M$ é compacto via Tychonoff ou via um limite de um sistema inverso - mas acredito que deve existir.
+
+\begin{exercicio}
+  \luaprojeto Resolva isto pra mim e me mande um email com a resposta.
+\end{exercicio}
+
+Escrevi este texto (e montei esse minicurso) como uma tentativa de me esclarecer em relação a compacidade. Meu entendimento melhorou muito após a escrita, mas ainda sigo com muitas curiosidades e muito fascínio por toda essa área. Como pode este conceito de `compacto' ser tão recorrente e poderoso não só em lógica e combinatória infinita mas também em geometria, análise, álgebra? Há um universo de pesquisa e descoberta a seguir por aqui. Espero que tenha gostado da trilha que eu fiz por esta floresta de definições e resultados. Até mais :)
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+%Pra fazer:
+
+
+%botar referências pra parte de topologia (gustavo?)
+%provar tychonoff
+%botar aplicação topológica
+%pensar em colocar: infinite ramsey implica finite ramsey e as aplicações em álgebra que eu gosto
 \end{document}
-Gustavo
