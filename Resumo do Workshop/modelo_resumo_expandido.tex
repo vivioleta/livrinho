@@ -1,0 +1,113 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{graphicx}
+% (UN)COMMENT ACCORDING TO YOUR OPERATING SYSTEM:
+% ------------------------------------------------
+%\usepackage[latin1]{inputenc}    %% european characters can be used (Windows, old Linux)
+\usepackage[utf8]{inputenc}     %% european characters can be used (Linux)
+%\usepackage[applemac]{inputenc} %% european characters can be used (Mac OS)
+% ------------------------------------------------
+\usepackage[T1]{fontenc}   %% get hyphenation and accented letters right
+\usepackage{mathptmx}      %% use fitting times fonts also in formulas
+% do not change these lines:
+\pagestyle{empty}                %% no page numbers!
+\usepackage[left=35mm, right=35mm, top=15mm, bottom=20mm, noheadfoot]{geometry}
+%% please don't change geometry settings!
+
+
+\usepackage{wallpaper}
+
+% (UN)COMMENT ACCORDING TO WHICH LANGUAGE YOU WILL USE:
+\usepackage[brazil]{babel}
+%\usepackage[english]{babel}
+
+\usepackage[T1]{fontenc}
+\usepackage{indentfirst}
+\usepackage{xspace}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{mathrsfs}
+\usepackage{upgreek} 							
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage[rm]{titlesec}
+\usepackage{float}              	
+\usepackage{indentfirst, amsfonts, amsmath, amsthm, amscd,amssymb}
+\usepackage{bezier}
+\usepackage{biocon}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\usepackage{pst-grad}
+\usepackage{pst-plot}
+
+\usepackage{lipsum}
+
+\newtheorem{theorem}{{Teorema}}[section]
+\newtheorem{lemma}[theorem]{{Lema}}
+\newtheorem{corollary}[theorem]{{Corolário}}
+\newtheorem{remark}[theorem]{{Observação}}
+\newtheorem{definition}[theorem]{{Definição}}
+\newtheorem{proposition}[theorem]{{Proposição}}
+\newtheorem{example}[theorem]{{Exemplo}}
+
+\title{\LARGE{\textbf{\textcolor[RGB]{196,145,2}{XIV Workshop de Teses e Dissertações em Matemática}}}\\ %Não apagar este campo
+\vspace{1cm}
+\LARGE{\textbf{Boolean algebras of infinite graphs and tangle spaces}}}
+\author{Aluno: Violeta Martins de Freitas \\
+Orientador: Leandro Aurichi \\
+%Coorientador: (se houver) \\
+ICMC/USP - São Carlos, Brasil\\
+email.aluno@icmc.usp.br}
+\date{} % <--- leave date empty
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty} %% <-- you need this for the first page
+
+\textbf{\large Ends and their friends}
+The \textbf{end space} of an infinite graph is one of the most ubiquitous constructions in infinite graph theory. It provides not only an important invariant associated with a given graph, but also a method for building interesting topological spaces. The end space has been generalized in a lot of different directions. It can be extended to something called the \textbf{tangle space}, as developed by Diestel in \cite{tangle}. There's also a way to define an analogous version of the space, switching attention to edge-connectivity instead of the vertex-connectivity focus of the end space, and with that we get two distinct but related spaces: the edge-end space and the edge-direction space, as was studied by our colleagues at our lab here at ICMC, such as in \cite{edgelab1} and \cite{edgelab2}. Two of these, the tangle space and the edge-direction space, were both known to be Stone spaces. The category of Stone spaces is famously equivalent to the category of Boolean algebras - this is the phenomenon known as Stone duality. \textbf{Boolean algebras} are an algebraic structure that captures the algebraic properties of the propositional calculus, or, equivalently, of sets with the operation of intersection and union. We describe in our paper \cite{violeta} a combinatorial construction of the Boolean algebra associated to each of these Stone spaces. This, in essence, provides a new construction of all of these spaces, which was previously only known and used in certain special cases by researchers working in geometric group theory.
+
+In quick summary: removing a finite set of vertices from a graph can result in a disconnected graph. These are usually called (finite) separations. In the same way,  removing a finite set of edges may also disconnect the graph, which in this case is called a (finite) cut. There are natural ways of giving to these combinatorial connectivity constructions the structure of a Boolean algebra. These will give rise to ultrafilter spaces through Stone duality - and it is those spaces which will have canonical relationships with the spaces already explored in the literature of ends, tangles, edge-ends and edge-directions. 
+
+\textbf{\large The quest to categorize}
+There are many concepts in graph theory that can be formulated in the categorical language of \textbf{morphisms}. For instance, the study of minors is a major subfield (and it is the place where the concept of tangles originally appeared). A minor of a graph $G$ is a graph $M$ obtained by removing vertices, edges or by contracting an edge into a single vertex. The operation of repeated edge contractions can be more generally described by a quotient. A quotient of a graph $G$ induced by a partition $P$ of $V(G)$ into pairwise disjoint subsets is a graph $G / P$ whose vertices are the set of equivalence classes $V(G) / P$ and two of those are connected by an edge when in $G$ there is a pair of adjacent vertices, one from each equivalent class. This construction can be captured by the projection map $\pi:G \to G/P$, which is a function from the set of vertices of $G$ to the set of vertices of $G / P$ such that adjacent vertices get mapped to either adjacent vertices or to a single vertex. A map with that property is called an 1-complex morphism. $\pi$ is also surjective - the existence of a surjective 1-complex morphism from a graph $G$ to a graph $Q$ is, then, equivalent to $Q$ being a quotient graph of $G$. If we further ask that the fibers $\pi^{-1}(v)$ for each $v \in V(Q)$ are connected, then $Q$ is a minor of $G$ obtained purely by edge contractions. The other operations, of removing vertices and edges, can be captured by an injective 1-complex morphism: $M$ is obtained from $G$ by removal of vertices or edges if and only if there is an injective 1-complex morphism $i: M \rightarrow G$. In summary, what we have described here is that a graph being a minor of another can be captured by the existence of certain morphisms between the graphs.
+
+Inspired by cases like that, and the two authors' taste for category theory, we attempt to figure out appropriate classes of morphisms that can be used to define categories of graphs, where our end spaces and Booelean algebra constructions can be turned into functors. This would mean that a morphism between graphs would correspond to a homomorphism between their associated algebras or a continuous mappings between their associated spaces. This could provide algebraic or topological obstructions to the existence of graph morphisms, which can be further translated into combinatorial properties of interest to graph theorists, such as minors.
+
+
+\textbf{\large Tangles and their logic}
+The study of the Boolean algebra approach to ends has led me to pursue a study of \textbf{tangles}. Tangles were originally defined only for finite graphs, as objects capable of detecting high degrees of connectivity in a given graph. A highly abstracted, general version of tangles was successfully developed in the last 10 years, with applications not only to finite and infinite graph theory but also to other fields of combinatorics and even data science, as described in \cite{jay}. Inspired by this theory and my work with Gustavo on tangles and ends via Boolean algebras I was able to develop an understanding of tangles as a sort of `generalization' of the concept of an ultrafilter. This, in a way, opens up a whole new host of questions and possible applications of tangles in set theory and logic, which is the work I am pursuing right now.
+
+
+
+\begin{thebibliography}{99}
+\addcontentsline{toc}{chapter}{References}
+
+\bibitem{violeta} 
+Violeta Mar, Gustavo Boska, \emph{Describing ends and tangles (and their edge variants) through Boolean algebras and functors}, \textit{pre-print on arXiv:2606.17201}, \textbf{2026}.
+
+\bibitem{jay}
+Jay Kneip \emph{Tangles and where to find them}, \textit{Dissertation}, \textbf{2020}. 
+
+\bibitem{tangle}
+Reinhard Diestel \emph{Ends and tangles}, \textit{Abhandlungen aus dem Mathematischen Seminar der Universität Hamburg}, 87(2):223–244, \textbf{2017}.
+
+
+\bibitem{edgelab1}
+
+L. Aurichi, P. Magalhães Júnior, and L. Real \emph{Topological remarks on end and edge-end spaces}, \textbf{2024}.
+
+\bibitem{edgelab2}
+L. Aurichi and L. Real \emph{Edge-connectivity between (edge-)ends of infinite graphs}, \textbf{2024}.
+
+\end{thebibliography}
+
+\end{document}
