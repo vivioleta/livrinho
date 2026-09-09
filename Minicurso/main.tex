@@ -845,8 +845,28 @@ Veja que o teorema de Tychonoff é (quase, ignorando a hipótese de Hausdorff) u
 \begin{prova}
   O produto ser não vazio é exatamente o conteúdo do Axioma da Escolha.
 
-  Terminar.
+  Para mostrar a compacidade, vamos esboçar uma prova, que é baseada em argumentos rotineiros topológicos. Seja $X = \prod_{i \in I} X_i$.Vamos mostrar que toda cobertura aberta de $X$ admite subcobertura finita (a afirmação dual a nossa definição de compacidade). Lembrando de que uma sub-base para um espaço é uma coleção de abertos tal que qualquer aberto contém uma interseção finita, o primeiro passo é reduzir a questão de achar subcoberturas finitas para coberturas vindas de elementos de uma subbase.
+
+  \begin{proposicao*}[Lema da Sub-Base de Alexander]
+    Em qualquer espaço topológico com uma sub-base $\mathcal{B}$, se toda cobertura feita por elementos de $\mathcal{B}$ admite subcobertura finita, então o espaço é compacto.
+  \end{proposicao*}
+  \begin{exercicio}
+    \luamedio Prove o lema.
+  \end{exercicio}
+
+  Uma sub-base para $X$ é a coleção $\mathcal{B} \defeq \{\pi_i^{-1}(V) \mid V \subset X_i \text{ aberto }\}$ onde $\pi_i: X \rightarrow X$ são as projeções na $i$-ésima coordenada.
+
+  Tome uma cobertura $C$ de $X$. Para cada $i \in I$, defina $C_i \defeq \{V \subset X_i \mid \pi_i^{-1}(V) \in C \text{ e } V \text{ é aberto}\}$.
+
+  \begin{exercicio}
+    \luafacil Se convença que existe um $i \in I$ tal que $C_i$ é uma cobertura para $X$.
+  \end{exercicio}
+
+  Tome este tal $i$. Como $X_i$ é compacto, deve existir uma subcobertura finita $V_1, \dots, V_n$ deste $C_i$. Daí isto nos diria que $X = \prod_{i \in I} X_i = \cup_{1 \leq j \leq n} \pi_{i}^{-1}(V_j)$. Como cada um destes $\pi_{i}^{-1}(V_j)$ estão em $C$, encontramos uma subcobertura finita.
+
 \end{prova}
+
+Para mais detalhes dessa demonstação, ver o capítulo $5$ do \cite{aurichi}. Lá você pode encontrar mais resultados sobre espaços compactos, algumas aplicações, e uma demonstração alternativa do teorema do Tychonoff usando ultrafiltros!
 
 \begin{exemplo*}[Alguma aplicação de compacidade via versão topologica]
 \end{exemplo*}
@@ -858,7 +878,7 @@ Veja que o teorema de Tychonoff é (quase, ignorando a hipótese de Hausdorff) u
 
 É possível provar o teorema de Tychonoff usando o teorema da compacidade com um truque linguístico - como em \cite{tychonoffviacomp1} ou \cite{tychonoffviacomp2} (esta última usa apenas a compacidade do cálculo proposicional (!) - mas precisa assumir que os espaços são Hausdorff).
 
-Pra provar compacidade assumindo Tychonoff, poderíamos fazer o caminho longo de usar Tychonoff para provar o lema do ultrafiltro, e aí fazer a mesma demonstração, via Łoś, de compacidade que fizemos. Isto não é muito iluminador. Talvez algo melhor seria passar pela seguinte reformulação do enunciado de compacidade.
+Pra provar compacidade assumindo Tychonoff, poderíamos fazer o caminho longo de usar Tychonoff para provar o lema do ultrafiltro, e aí fazer a mesma demonstração, via Łoś, de compacidade que fizemos. Isto resolve o problema, mas também não é exatamente muito iluminador. Talvez algo melhor seria passar pela seguinte reformulação do enunciado de compacidade.
 
 \begin{proposicao*}[Compacidade do espaço de Stone]
   Seja $L$ uma linguagem de primeira ordem em alguma assinatura. Seja $M$ a coleção de todos os conjuntos $T$ de sentenças de $L$ que são maximalmente satisfazíveis. Isto significa que $T$ é satisfazível (existe um modelo para $T$) e que $T$ é maximal em relação a essa propriedade (não existe nenhum $T' \neq T$ satisfazível tal que $T \subset T'$). 
@@ -889,8 +909,8 @@ Escrevi este texto (e montei esse minicurso) como uma tentativa de me esclarecer
 %Pra fazer:
 
 
-%botar referências pra parte de topologia (gustavo?)
-%provar tychonoff
 %botar aplicação topológica
 %pensar em colocar: infinite ramsey implica finite ramsey e as aplicações em álgebra que eu gosto
+
+
 \end{document}
