@@ -1,0 +1,20 @@
+\frametitle{Essas associações são funtoriais?}
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAB12cYAPHAIwBmwAOIAnOmgAWAXxAzS6TLnyEUAFnJVajFm07c+Q4ACEIEBnIVLseAkQBMpAIzb6zVog5deA4QBUINCttGCgAc3giUEExCABbJDIQHAgkZ2p3PS8DX2AAQ4ZI-gkAAlhSuBg0OgkAc4BX+CtFEFiEpOpUpCcdD30fPmB4GrqIcphSmHjaujApOihMOWoGOn4YBgAFZTs1EDEscKkceVb2xMQMlLTEXqzPb0McYbhR8YqmBhwJQSxvuJwEIyIA
+\begin{center}
+\begin{tikzcd}
+\textbf{Graph} \arrow[rrrr, "\text{álgebra de separações}"] \arrow[rrd, "\text{espaço de emaranhados}"'] &  &              &  & \textbf{Bool} \arrow[lld, "\text{espaço de ultrafiltros}"] \\
+                                                                                                         &  & \textbf{Top} &  &
+\end{tikzcd}
+\end{center} \pause
+
+\begin{itemize}
+
+
+
+\item Será que um morfismo de grafos se torna um homomorfismo entre suas álgebras de separações? E uma função contínua entre seu espaço de emaranhados? \pause
+
+
+\item Invariantes funtoriais são famosamente úteis. Poderiamos determinar obstruções para construções combinatoriais. \pause
+
+\item Conseguimos funtorializar, encontrando uma classe restrita de morfismos de grafos.
+\end{itemize}

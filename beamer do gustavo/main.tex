@@ -137,14 +137,41 @@
     \end{itemize} 
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}[fragile]
 \frametitle{Essas associações são funtoriais?}
-colocar os diagramas certos aqui
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAB12cYAPHAIwBmwAOIAnOmgAWAXxAzS6TLnyEUAFnJVajFm07c+Q4ACEIEBnIVLseAkQBMpAIzb6zVog5deA4QBUINCttGCgAc3giUEExCABbJDIQHAgkZ2p3PS8DX2AAQ4ZI-gkAAlhSuBg0OgkAc4BX+CtFEFiEpOpUpCcdD30fPmB4GrqIcphSmHjaujApOihMOWoGOn4YBgAFZTs1EDEscKkceVb2xMQMlLTEXqzPb0McYbhR8YqmBhwJQSxvuJwEIyIA
+\begin{center}
+\begin{tikzcd}
+\textbf{Graph} \arrow[rrrr, "\text{álgebra de separações}"] \arrow[rrd, "\text{espaço de emaranhados}"'] &  &              &  & \textbf{Bool} \arrow[lld, "\text{espaço de ultrafiltros}"] \\
+                                                                                                         &  & \textbf{Top} &  &                                                           
+\end{tikzcd}
+\end{center} \pause 
+
+\begin{itemize}
+
+
+
+\item Será que um morfismo de grafos se torna um homomorfismo entre suas álgebras de separações? E uma função contínua entre seu espaço de emaranhados? \pause
+
+
+\item Invariantes funtoriais são famosamente úteis. Poderiamos determinar obstruções para construções combinatoriais. \pause
+
+\item Conseguimos funtorializar, encontrando uma classe restrita de morfismos de grafos.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{}
 \frametitle{Emaranhados e ultrafiltros}
-como resumir rapidamente o que to fazendo agora?
+
+\begin{itemize}
+    \item Emaranhados tem muito a cara de ultrafiltros: uma escolha de orientações consistentes. \pause
+    \item Essas escolhas não são feitas numa álgebra de Boole, mas em um `conjunto de separações' \pause
+    \item Como esse `conjunto de separações' não é fechado para interseção, os emaranhados meio que são `quase homomorfismos' \pause
+    \item A teoria abstrata de emaranhados em `conjuntos de separações' arbitrários teve bastante sucesso na combinatória finita, até com aplicações em ciência de dados \pause
+    \item Estou traduzindo e adaptando essa teoria para o mundo de teoria de conjuntos e lógica, onde emaranhados se tornam, em algum sentido, uma generalização de ultrafiltros que permitem o desenvolvimento de um tipo de `lógica paraconsistente'
+
+\end{itemize}
+
 \end{frame}
 
 
