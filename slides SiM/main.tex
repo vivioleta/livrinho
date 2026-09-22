@@ -58,7 +58,7 @@
     \item Álgebra é o estudo matemático de conjuntos com operações. \pause
     \item Operações: somar um número com outro número, compor uma função com outra função, aplicar uma simetria após a outra... \pause 
     \item Estudamos as 'propriedades gerais' que um conjunto com uma (ou mais que uma) operação deve satisfazer (geralmente, sempre supondo que ele satisfaça certas propriedades, colocadas em equações).\pause
-    \item Botar exemplo
+    \item Exemplo
 \end{itemize}
 \end{frame}
 
@@ -68,20 +68,112 @@ Mas em lógica temos operações no conjunto de fórmulas: $\vee, \wedge, \exist
 \end{frame}
 
 \begin{frame}{}
-\frametitle{Álgebra de Lind Tarski}
+\frametitle{Algebrização de Lindenbaum-Tarski}
+\pause
+\begin{itemize}
+    \item Dados duas fórmulas $\alpha, \beta$ do cálculo proposicional, diga que $\alpha$ é equivalente a $\beta$ quando $\alpha \rightarrow \beta \vee \beta \rightarrow \beta$ é uma tautologia. \pause
+    \item O conjunto de todas as fórmulas do cálculo proposicional, quocientado por essa relação de equivalência, forma uma álgebra com as operações $\vee, \wedge, \lnot$. \pause
+    \item Agora $\vee$ e $\wedge$ são comutativos, e satisfazem várias outras equações. \pause
+    \item Podemos fazer o mesmo processo com a lógica de primeira ordem. E com outras lógicas também! Estas são as álgebras de Lindenbaum-Tarski.
+\end{itemize}
+
 \end{frame}
 
 \begin{frame}{}
 \frametitle{Álgebra de Boole}
+\pause
+Uma álgebra de Boole $\mathcal{B}$ é um conjunto com duas operações binárias $\vee$ e $\wedge$, uma operação unária $\lnot$ e dois elementos $0,1 \in \mathcal{B}$ onde valem: \pause
+\begin{itemize}
+    \item associatividade: $(\alpha \vee \beta) \vee \gamma = \alpha \vee (\beta \vee \gamma)$ e $(\alpha \wedge \beta) \wedge \gamma = \alpha \wedge (\beta \wedge \gamma)$ \pause
+    \item comutatividade $\alpha \vee \beta = \beta \vee \alpha$ e $\alpha \wedge \beta = \beta \wedge \alpha$ \pause
+    \item distributividade $\alpha \vee (\beta \wedge \gamma) = (\alpha \vee \beta) \wedge (\alpha \vee \gamma)$ e $\alpha \wedge (\beta \vee \gamma) = (\alpha \wedge \beta) \vee (\alpha \wedge \gamma)$ \pause
+    \item identidade $\alpha \vee 0 = \alpha$ e $\alpha \wedge 1 = \alpha$ \pause
+    \item complemento $\alpha \vee \lnot \alpha = 1$ e $\alpha \wedge \lnot \alpha = 0$ \pause
+    \item absorção $\alpha \vee (\alpha \wedge \beta) = \alpha$ e $\alpha \wedge (\alpha \vee \beta) = \alpha$ \pause
+\end{itemize}
+A algebrização de Lindenbaum-Tarski do cálculo proposicional e da lógica de primeira ordem dão origens a álgebras de Boole! \pause (e meio que todas vem daqui). \pause
+Conjuntos de conjuntos com união, interseção e complementar também são álgebras de Boole. \pause (e também todas são isomorfas a uma desse tipo).
 \end{frame}
 
 \begin{frame}{}
 \frametitle{Álgebra de Halmos}
+E os quantificadores?\\ \pause
+
+Uma função $\exists: \mathcal{B} \rightarrow \mathcal{B}$ de uma álgebra de Boole $\mathcal{B}$ nela mesma é dita um quantificador se satisfaz \pause
+\begin{itemize}
+\item $\exists 0 = 0 $ \pause
+\item $\alpha \leq \exists \alpha$ (isto significa que $\alpha \wedge \exists \alpha = \alpha)$ \pause
+\item $\exists (\alpha \vee \beta) = (\exists \alpha) \vee (\exists \beta)$ \pause
+\item $\exists \exists \alpha = \exists \alpha$ \pause
+\item $\exists \lnot (\exists \alpha) = \lnot(\exists \alpha)$ \pause
+\end{itemize}
+
+Uma álgebra de Boole monádica é uma álgebra de Boole com apenas um quantificador. \\ \pause
+
+Uma álgebra de Halmos, ou uma álgebra poliádica, é uma álgebra de Boole com vários quantificadores e 'uma estrutura que descreve como estes quantificadores interagem' (substituições de variáveis). \pause
+
+A álgebra de Halmos captura a estrutura algébrica da lógica de primeira ordem.
 \end{frame}
 
 \begin{frame}{}
-\frametitle{Traduzindo!}
+\frametitle{Matemática do dia-a-dia}
+
+Não estamos tão longe do resto da matemática: anel Booleano, dualidade de Stone, fecho de Kuratowski... 
 \end{frame}
+
+\begin{frame}{}
+\frametitle{Semântica - completude do cálculo proposicional}
+
+\begin{itemize}
+\item Também conseguimos fazer os resultados semânticos (a parte mais legal!) dentro desse framework. \pause
+
+\item Em cálculo proposicional, uma valoração $u$ é uma associação, pra cada fórmula, pra $0$ ou $1$ que satisfaz 'o que esperamos' do ou, e, negação. \pause
+
+\item Podemos descrever isso algebricamente como um homomorfismo $u: \mathcal{B} \rightarrow \{0,1\}$ da álgebra de Boole do cálculo proposicional para a álgebra de Boole $\{0,1\}$. \pause
+
+\item O famoso 'teorema da completude do cálculo proposicional' diz que um conjunto de fórmulas $T$ não consegue provar a contradição ($\alpha \wedge \lnot \alpha)$, então existe uma valoração que valora todos as fórmulas de $T$ como $1$. \pause
+
+\item Isso é equivalente ao 'lema do ultrafiltro' que diz que pra todo subconjunto $T \subset \mathcal{B}$ de uma álgebra de Boole que satisfaz PIF (que pra qualquer conjunto finito de elementos, o $\wedge$ de todos eles é diferente de $0$), deve existir um homomorfismo $u: \mathcal{B} \rightarrow \{0,1\}$ tal que $u|_{T} = 1$. \pause
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Semântica - completude da lógica de primeira ordem}
+\pause 
+
+\begin{itemize}
+\item Em lógica de primeira ordem, a semântica é dada por modelos, que são conjuntos $M$ onde interpretamos os símbolos de funções, relações e constantes como funções, relações e constantes de verdade. \pause
+
+\item Também temos aqui completude, chamado também de Teorema da Completude de Gödel: se um conjunto de fórmulas $T$ não prova a contradição, então existe um modelo que satisfaz $T$. \pause
+
+\item A reformulação algébrica desse resultado é ainda mais algebricamente elegante do que no cálculo proposicional: Toda álgebra de Halmos é semisimples. \pause
+\item  Pra uma estrutura algébrica $A$ 'qualquer', a estrutura é dita simples se ela não admite quocientes não-triviais (equivalentemente, todo homomorfismo partindo de $A$ é injetivo ou constante). 
+\item Já $A$ é dito semisimples se, pra todo $a \in A$ tal que $a \neq 0$ então existe um homomorfismo $f: A \rightarrow S$ em uma estrutura algébrica simples $S$ onde $f(a) \neq 0$ \pause
+\item Em algum sentido, 'semântica de lógica' é basicamente 'teoria de representação'.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Semântica - incompletude}
+
+E até o Teorema de Incompletude de Gödel pode ser reformulado: ele basicamente diz que existem 'álgebras de Peano' não triviais.
+
+\end{frame}
+
+
+\begin{frame}{}
+\frametitle{Tchau!!}
+
+Valeu :)
+
+\end{frame}
+
+% "Lema do Ultrafiltro" = completude do cálculo proposicional
+
+% "Toda álgebra de Halmos é semisimples" = completude da lógica de primeira ordem
+
+% "Existem álgebras de Peano sem ideais não triviais" = incompletude de Godel
 
 %lógicas não clássicas?
 

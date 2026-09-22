@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.1.23)  21 SEP 2026 21:11
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025)  (format=lualatex 2026.1.23)  22 SEP 2026 17:57
  restricted system commands enabled.
 **main.tex -o main.pdf
 (./main.tex
@@ -1608,10 +1608,7 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 \@quotelevel=\count545
 \@quotereset=\count546
-(./main.aux
-Package babel Info: 'brazilian' activates 'portuges' shorthands.
-(babel)             Reported on input line 10.
-)
+(./main.aux)
 \openout1 = main.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
@@ -1762,6 +1759,8 @@ lations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `brazil'. on input line 9.
+Package babel Info: 'brazilian' activates 'portuges' shorthands.
+(babel)             Reported on input line 9.
  (./main.nav)
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <5> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 9.
@@ -1838,6 +1837,126 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] [29
 
+] [30
+
+] [31
+
+] [32
+
+] [33
+
+] [34
+
+] [35
+
+] [36
+
+]
+[37
+
+] [38
+
+] [39
+
+] [40
+
+] [41
+
+] [42
+
+] [43
+
+] [44
+
+] [45
+
+] [46
+
+] [47
+
+] [48
+
+] [49
+
+] [50
+
+] [51
+
+]
+[52
+
+] [53
+
+]
+Overfull \vbox (5.83319pt too high) detected at line 139
+ []
+
+[54
+
+]
+Overfull \vbox (5.83319pt too high) detected at line 139
+ []
+
+[55
+
+]
+Overfull \vbox (5.83319pt too high) detected at line 139
+ []
+
+[56
+
+]
+Overfull \vbox (5.83319pt too high) detected at line 139
+ []
+
+[57
+
+]
+Overfull \vbox (5.83319pt too high) detected at line 139
+ []
+
+[58
+
+]
+Overfull \vbox (5.83319pt too high) detected at line 139
+ []
+
+[59
+
+]
+Overfull \vbox (46.40326pt too high) detected at line 154
+ []
+
+[60
+
+]
+Overfull \vbox (46.40326pt too high) detected at line 154
+ []
+
+[61
+
+]
+Overfull \vbox (46.40326pt too high) detected at line 154
+ []
+
+[62
+
+]
+Overfull \vbox (46.40326pt too high) detected at line 154
+ []
+
+[63
+
+]
+Overfull \vbox (46.40326pt too high) detected at line 154
+ []
+
+[64
+
+] [65
+
+] [66
+
 ]
 \tf@nav=\write7
 
@@ -1853,34 +1972,44 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                main
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 
 \openout1 = main.run.xml
 )
 
 Here is how much of LuaTeX's memory you used:
- 51728 strings out of 476076
+ 51804 strings out of 476076
  100000,2373549 words of node,token memory allocated
- 1176 words of node memory still in use:
-   14 hlist, 7 vlist, 2 rule, 1 local_par, 19 glue, 5 kern, 8 penalty, 15 glyph,
- 62 attribute, 74 glue_spec, 32 attribute_list, 4 write, 10 pdf_colorstack nodes
+ 1284 words of node memory still in use:
+   16 hlist, 7 vlist, 2 rule, 2 local_par, 25 glue, 5 kern, 9 penalty, 18 glyph,
+ 68 attribute, 74 glue_spec, 35 attribute_list, 4 write, 10 pdf_colorstack nodes
 
-   avail lists: 2:823,3:277,4:170,5:77,6:24,7:2769,8:25,9:248,10:12,11:4
- 72728 multiletter control sequences out of 65536+600000
+   avail lists: 1:4,2:1132,3:504,4:170,5:238,6:35,7:3425,8:25,9:246,10:15,11:7
+ 72730 multiletter control sequences out of 65536+600000
  39 fonts using 2602687 bytes
  133i,11n,119p,765b,1650s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf
 ></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.o
 tf></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
-local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (29 pages, 79799 bytes).
+></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
+usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
+al/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (66 pages, 164498 bytes).
 
-PDF statistics: 200 PDF objects out of 1000 (max. 8388607)
- 150 compressed objects within 2 object streams
- 59 named destinations out of 1000 (max. 131072)
+PDF statistics: 398 PDF objects out of 1000 (max. 8388607)
+ 308 compressed objects within 4 object streams
+ 133 named destinations out of 1000 (max. 131072)
  21 words of extra memory for PDF output out of 10000 (max. 100000000)
 
