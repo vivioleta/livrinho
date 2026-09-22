@@ -1,0 +1,127 @@
+% Modified by LianTze Lim to work with fontspec/xelatex
+    % Choose for notes or slides
+    \if \slidemode 1
+        \documentclass{beamer}
+        \else
+        \documentclass{article}
+        \usepackage{beamerarticle}
+        \usepackage[a4paper,margin=2cm]{geometry}
+        \usepackage{multicol}
+    \fi 
+\usepackage{amsfonts,amsmath,amssymb,amsthm,amscd}
+\usepackage[style=authoryear]{biblatex}
+\renewcommand*{\nameyeardelim}{\addcomma\addspace}
+\AtBeginBibliography{\tiny}
+
+\usetheme{DarkConsole}
+\setbeamertemplate{theorems}[normal font]
+
+% Packages
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{multimedia} % provides \movie
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{arrows.meta,calc}
+\pgfplotsset{compat = 1.18}
+\usepgfplotslibrary{fillbetween}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{polynom}
+\usepackage{biblatex}
+\usepackage[outline]{contour} % glow around text
+\usetikzlibrary{angles,quotes,intersections,fillbetween} % for pic
+\newcommand{\myscale}{0.7}
+\contourlength{1.3pt}
+
+\tikzset{>=latex} % for LaTeX arrow head
+\usepackage{xcolor}
+\tikzstyle{vector}=[->,very thick,xcol]
+\tikzstyle{mydashed}=[dash pattern=on 2pt off 2pt]
+\def\tick#1#2{\draw[thick] (#1) ++ (#2:0.1) --++ (#2-180:0.2)} 
+
+% helper: open-dot macro (hollow circle)
+  \newcommand{\opendot}[2]{%
+    \filldraw[fill=white,draw=gray,thick] (#1,0) circle[radius=2.2pt];
+    \node[below=4pt] at (#1,0) {#2};
+  }
+  \newcommand{\closedot}[3][magenta]{%
+    \filldraw[fill=#1,draw=#1,thick] (#2,0) circle[radius=2.2pt];
+    \node[below=4pt] at (#2,0) {#3};
+  }
+\usepackage[brazilian]{babel}
+\usepackage{diagbox}
+\usepackage{booktabs}
+
+% collor-blind friendly pallete
+\definecolor{figcolor1}{RGB}{0,70,70}
+\definecolor{figcolor2}{RGB}{116,233,233}
+\definecolor{figcolor3}{RGB}{146,0,0}
+\definecolor{color1}{RGB}{0,70,70}
+\definecolor{color2}{RGB}{116,233,233}
+\definecolor{color3}{RGB}{146,0,0}
+
+
+% A counter, since TikZ is not clever enough (yet) to handle
+% arbitrary angle systems.
+\newcount\mycount
+\usepackage[percent]{overpic}
+\usepackage{xcolor}
+\usepackage{adjustbox}
+\usepackage{bbold}
+\newcommand{\rest}{\upharpoonright}
+
+% symbols
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\Open}{\mathcal{O}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\meta}[1]{\overset{\text{meta}}{#1}}
+\newcommand{\val}[1]{\llbracket #1 \rrbracket}
+\newcommand{\valin}[3]{
+	\sup_{#3 \in dom(#2)}\val{#3 = #1}#2(#3)}
+\newcommand{\valsub}[3]{
+	\inf_{#3 \in dom(#1)}(#1(#3)\implies \val{#3 \in #2})}
+\newcommand{\valeq}[2]{\val{#1 \subset #2}\val{#2 \subset #1}}
+% epimorphism arrow
+\newcommand{\rightarrowdbl}{\rightarrow\mathrel{\mkern-14mu}\rightarrow}
+\newcommand{\epimorphism}[2][]{%
+	\xrightarrow[#1]{#2}\mathrel{\mkern-14mu}\rightarrow
+}
+\newcommand{\catname}[1]{\textnormal{\textsc{#1}}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\Part}{\mathbb{P}}
+\newcommand{\sequence}[1]{\langle #1 \rangle}
+\DeclareMathOperator{\inter}{int}
+\newcommand{\interior}[2]{\inter_{#2} (#1)}
+\DeclareMathOperator{\clos}{cl}
+\DeclareMathOperator{\diam}{diam}
+\newcommand{\closure}[2]{\clos_{#2} (#1)}
+\newcommand{\st}{\,:\,}
+\newcommand{\dem}{\emph{dem.:}\\}
+\renewcommand{\d}{\mathrm{d}}
+
+% Theorem environments
+\numberwithin{equation}{section}
+% Theorem environments
+\newtheorem{teor}{Teorema}[section]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{prop}{Proposição}[section]
+\newtheorem{properties}{Propriedades}[section]
+\newtheorem{cor}{Corolário}[section]  
+\newtheorem{defin}{Definição}[section]
+\newtheorem{ex}{Exemplo}[section]
+\newtheorem*{theorem*}{Teorema}
+\newtheorem*{proposition*}{Proposição}
+\newtheorem*{corollary*}{Corolário}
+\newtheorem*{lemma*}{Lema}
+\theoremstyle{remark}
+\newtheorem{rmk}{Observação}[section]
+\newtheorem*{question}{Problema}
+\newtheorem{exerc}{Exercício}

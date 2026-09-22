@@ -1,0 +1,88 @@
+\newcommand{\slidemode}{1}
+\input{preamble.tex}
+
+\title{\texttt{Algebrizando a lógica}}
+\author{Violeta Mar}
+\date{}
+\addbibresource{bibliography.bib}
+
+\begin{document}
+
+\begin{frame}{}
+\maketitle
+\end{frame}
+
+\begin{frame}{}
+\frametitle{O que é lógica?}
+\pause
+\begin{itemize}
+    \item Lógica (como uma ciência, uma área do conhecimento) é o estudo de um tipo muito específico de pensamento.\pause
+    \item Pensamento racional? Analítico? Dedutivo? Formal? Mecânico? \pause
+    \item A lógica matemática 'captura' este tipo de pensamento em definições matemáticas (sistemas axiomáticos e dedutivos, linguagens formais, etc). \pause
+    \item O cálculo proposicional e a lógica de primeira ordem são os sistemas lógico-matemáticos mais comuns e difundidos, mas também temos muitos outros (lógicas não clássicas, lógicas modais, lógicas paraconsistentes, etc). \pause
+    \item Por essas coisas serem objetos matemáticos, podemos simplesmente fazer matemática sobre elas!
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{O Cálculo Proposicional}
+\pause
+\begin{itemize}
+\item O cálculo proposicional é uma linguagem formal cujo alfabeto é composto de enumeráveis símbolos $p_1,p_2, p_3, \dots$ e os símbolos conectores $\wedge, \vee, \lnot, \rightarrow$ \pause
+\item As 'palavras' formadas por este alfabeto de forma 'correta' são chamadas de fórmulas, e são coisas do tipo $p_2 \wedge \lnot p_1 \rightarrow p_3 \vee p_5$ \pause
+\item Usar como uma linguagem já é útil pra matemática! \pause
+\item Mas fazemos mais: definimos algumas fórmulas como especiais (por exemplo, as fórmulas $p \rightarrow p$, $p \wedge \lnot p$ e $\lnot(p \vee \lnot p)$ parecem representar 'verdades'), que vão ser as chamadas 'tautologias' \pause
+\item Também teremos um sistema dedutivo onde definimos quando que um conjunto $T$ de fórmulas deduz uma outra fórmula $\alpha$. (por exemplo, a partir das fórmulas $p \rightarrow q$ e $p$, podemos deduzir $q$) \pause
+\item De novo, estas são práticas comuns no fazer matemático. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{A Lógica de Primeira Ordem}
+\pause
+\begin{itemize}
+\item A lógica de primeira ordem é uma extensão do cálculo proposicional onde agora temos também símbolos que irão representar variáveis, constantes, funções, relações e quantificadores. \pause
+\item As fórmulas vão ser coisa do tipo $\exists x ((f(x,c) = d) \vee (R(x) \rightarrow x = d))$ \pause
+\item Agora nossa linguagem consegue falar de basicamente qualquer tópico matemático. \pause
+\item Também vamos ter aqui as fórmulas especiais (as que são sempre verdade), e um sistema dedutivo (que é basicamente Modus Ponens também). 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Semântica e resultados}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{O que é álgebra?}
+\begin{itemize}
+    \item Álgebra é o estudo matemático de conjuntos com operações. \pause
+    \item Operações: somar um número com outro número, compor uma função com outra função, aplicar uma simetria após a outra... \pause 
+    \item Estudamos as 'propriedades gerais' que um conjunto com uma (ou mais que uma) operação deve satisfazer (geralmente, sempre supondo que ele satisfaça certas propriedades, colocadas em equações).\pause
+    \item Botar exemplo
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{A álgebra da lógica}
+Mas em lógica temos operações no conjunto de fórmulas: $\vee, \wedge, \exists$... Qual é a estrutura algébrica aqui?
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Álgebra de Lind Tarski}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Álgebra de Boole}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Álgebra de Halmos}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Traduzindo!}
+\end{frame}
+
+%lógicas não clássicas?
+
+\end{document}

@@ -1,0 +1,152 @@
+\newcommand{\slidemode}{1}
+\input{preamble.tex}
+
+\title{\texttt{Álgebras de Boole de grafos infinitos (e espaços de emaranhados!)}}
+\author{Violeta Mar\\ Orientado por Leandro Aurichi \\ Lab Top, ICMC}
+\date{}
+\addbibresource{bibliography.bib}
+
+\begin{document}
+
+\begin{frame}{}
+\maketitle
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Introduções}
+    \begin{itemize}
+        \item Vou apresentar objetos, ideias e resultados do artigo que escrevi com o Gustavo Boska ano passado. \pause
+        \item Trabalhamos em Combinatória Infinita, mais especificamente em grafos infinitos. \pause
+        \item Vou tentar fazer uma apresentação para quem não é da área, então vai ter bastante definição. \pause
+        \item No final, vou dar uma ideia do que estou trabalhando este ano. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Extremidades}
+    \begin{itemize}
+        \item Um grafo consiste de um conjunto de vértices $V$ e um conjunto de arestas $E$ entre vértices (uma relação simétrica). \pause
+        \item Um grafo é infinito quando $V$ é infinito. \pause
+        \item Um caminho é uma sequência de vértices distintos $(v_1, v_2, \dots)$ onde $v_i$ é adjacente a $v_{i+1}$. \pause
+        \item Um raio é um caminho infinito. \pause
+        \item Dois raios são ditos equivalentes se existem infinitos caminhos disjuntos ligando eles entre si. \pause
+        \item Uma extremidade é a classe de equivalência de caminhos infinitos sob essa equivalência.
+        \item O conjunto das extremidades é denotado como $\Omega(G)$ e ele admite uma topologia natural.
+    \end{itemize}
+\end{frame}
+\begin{frame}{}
+\frametitle{Direções (= extremidades!)}
+    \begin{itemize}
+        \item Uma direção $\rho$ em um grafo $G$ é uma função que, dado um conjunto finito de vértices $F$ te retorna um conjunto de vértices $\rho(F)$ que corresponde a uma componente conexa do grafo $G \setminus F$. \pause
+        \item Uma direção deve satisfazer:  $F \subset F'$ então $\rho(F') \subset \rho(F)$ \pause
+        
+        \begin{theorem}[Diestel e Kuhn, 2003]
+        Toda extremidade define uma direção e toda direção vem de uma extremidade dessa forma.
+         \end{theorem}
+         \pause
+         \newline
+        \item Dado um raio $r$, \ direção $\rho_r$ é a que seleciona, dado um conjunto finito de vértices $F$, a componente $\rho(F)$ que tem infinitos vértices de $r$.\pause
+        \item A topologia em $\Omega(G)$ é a gerada pela base de conjuntos da forma $\{r \mid \rho_r(F) = \rho(F)\}$ para um dado conjunto finito $F$ de vértices e uma direção $\rho$.
+
+        \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Emaranhados}
+    \begin{itemize}
+        \item Dado um subconjunto de vértices $A \subset V$, o grafo $G[A]$ é o subgrafo de $G$ contendo todos os vértices em $A$ com todas as arestas entre eles.\pause
+        \item Uma separação $\{A,B\}$ é composta de dois subconjuntos de vértices $A,B$ tal que $G = G[A] \cup G[B]$ \pause
+        \item A ordem de uma separação é a cardinalidade $|A \cap B|$ \pause
+        \item Uma orientação $\tau$ é uma escolha de orientação $(A,B)$ para cada separação $\{A,B\}$ de ordem finita de um dado grafo. \pause
+        \item Dadas $n$ separações ordenadas $(A_1,B_1),\dots, (A_n, B_n)$, dizemos que elas formam uma $n$-contradição se $G[A_1] \cup \dots G_[A_n] = G$. \pause
+        \item Um emaranhado é uma orientação sem $1,2,3$-contradições.\pause
+        \begin{theorem}[Diestel, 2017]
+        Toda extremidade define um emaranhado. Mais: os emaranhados possuem uma topologia natural onde o espaço de extremidades se mergulha. O espaço de emaranhados é compacto, Hausdorff e zero-dimensional. (de Stone!)
+         \end{theorem}
+
+        \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Aresta-Extremidades e Aresta-Direções}
+    \begin{itemize}
+        \item Dois raios são ditos aresta-equivalentes se existem infinitos caminhos disjunto-de-arestas ligando eles entre si. \pause
+        \item Uma aresta-extremidade é a classe de equivalência de caminhos infinitos sob essa aresta-equivalência.\pause
+        \item Uma aresta-direção $\rho$ em um grafo $G$ é uma função que, dado um conjunto finito de arestas $F_E$ te retorna um conjunto de vértices $\rho(F_E)$ que corresponde a uma componente conexa do grafo $G \setminus F_E$. \pause
+        \item Uma aresta-direção deve satisfazer:  $F_E \subset F_{E}'$ então $\rho(F_{E}') \subset \rho(F_E)$ \pause
+        \item Definimos topologias nas aresta-extremidades e nas aresta-direções analogamente ao caso dos vértices.
+        \begin{theorem}[Boska, Duzi, Magalhães - 2025]
+            O espaço de aresta-extremidades se mergulha naturalmente no espaço de aresta-direções. O espaço de aresta-direções é compacto, Hausdorff e zero-dimensional. (de Stone!)
+        \end{theorem}
+        \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Aresta-Emaranhados?}
+    \begin{itemize}
+        \item Se definirmos um análogo dos emaranhados para arestas, vamos apenas obter o espaço de aresta-direções novamente. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{A situação}
+%desenhar grafo G -> omega(G) contido dentro de T(G) de Stone e omega_E(G) contido dentro de T_E(G) de Stone
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Dualidade de Stone}
+    \begin{itemize}
+        \item Álgebras de Boole são estruturas algébricas $(\mathcal{B}, \vee, \wedge, \lnot)$ que modelam as operações de união (ou), interseção (e), complementar (negação). \pause
+        \item Um subconjunto de $\mathcal{P}(X)$ fechado para união, interseção e complementar é uma álgebra de Boole \pause (na verdade, esses são todos os exemplos...) \pause
+        \item Espaços de Stone são espaços topológicos compactos, Hausdorff e zero-dimensionais. \pause
+        \begin{theorem}[Dualidade de Stone]
+            A categoria de álgebras de Boole é equivalente a categoria de espaços de Stone.
+        \end{theorem}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{}
+\frametitle{Álgebra -> Topologia}
+    \begin{itemize}
+        \item Um ultrafiltro em uma álgebra de Boole $\mathcal{B}$ é um homomorfismo $u: \mathcal{B} \rightarrow \{0,1\}$ \pause
+        \item O conjunto $\text{Ult}(\mathcal{B})$ admite uma topologia natural, dada pela base de conjuntos da forma $\{u \mid u(b) = 1\}$ para cada $b \in \mathcal{B}$ \pause
+        \item $\text{Ult}(\mathcal{B})$ é um espaço de Stone \pause
+        \item $\text{Ult}$ é funtorial.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Topologia -> Álgebra}
+    \begin{itemize}
+        \item Dado um espaço de Stone $X$, o conjunto $\text{Clp}(X) = \{U \subset X \mid U \text{ é aberto e fechado}\}$ é fechado para união, interseção e complementar - uma álgebra de Boole \pause
+        \item $\text{Clp}$ é funtorial. \pause
+        \item $\text{Ult}$ e $\text{Clp}$ se invertem: $\text{Ult}(\text{Clp}(X)) \cong X$  e $\text{Clp}(\text{Ult}(\mathcal{B})) \cong \mathcal{B}$
+    \end{itemize} 
+\end{frame}
+
+\begin{frame}{}
+\frametitle{A álgebra de separações e a álgebra de cortes}
+    \begin{itemize}
+        \item O conjunto $\mathfrak{s}(G) = \{A \subset E(G) \mid V(A) \cap V(E(G) \setminus A) \text{ é finito}\}$ é fechado para união, interseção e complementar. O chamamos de álgebra de separações de $G$. \pause
+        \item O conjunto $\mathfrak{c}(G) = \{A \subset V(G) \mid \text{existem finitas arestas entre } A \text{ e } G \setminus A\}$ é fechado para união, interseção e complementar. O chamamos de álgebra de cortes de $G$. \pause
+    \begin{theorem}[Violeta e Gustavo, 2026]
+        O espaço de ultrafiltros de um quociente da álgebra de separações é homeomorfo ao espaço de emaranhados.\\
+        O espaço de ultrafiltros de um quociente da álgebra de cortes é homeomorfo ao espaço de aresta-emaranhados (aresta-direções).
+    \end{theorem}
+    \end{itemize} 
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Essas associações são funtoriais?}
+colocar os diagramas certos aqui
+\end{frame}
+
+\begin{frame}{}
+\frametitle{Emaranhados e ultrafiltros}
+como resumir rapidamente o que to fazendo agora?
+\end{frame}
+
+
+
+\end{document}
